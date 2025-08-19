@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STANISLAV VIDEO PLUS (2014)</title>
+  <style>
+    /* =========================
+       ВЕБ 1.0 / РАННИЕ 2000-е
+       ДЛИННЫЙ И ПРОРАБОТАННЫЙ СТИЛЬ
+       ========================= */
+    html, body { height: 100%; }
+    :root{
+      --y:#ffd800; /* жёлтый для логотипа */
+      --c1:#0b0b0b; --c2:#1c1c1c; --c3:#111; --frame:#909090;
+      --neon:#ffea00; --accent:#9acd32;
+    }
+    body{
+      margin:0; color:#fff; font-family: Verdana, Geneva, Tahoma, sans-serif; line-height:1.35;
+      /* мозаичный фон в духе старых сайтов */
+      background:
+        radial-gradient(circle at 10% 20%, #222 2px, transparent 3px) 0 0/20px 20px,
+        radial-gradient(circle at 70% 10%, #1a1a1a 2px, transparent 3px) 0 0/30px 30px,
+        linear-gradient(#000, #111);
+      cursor:url('data:image/gif;base64,R0lGODlhEAAQAPAAAP///wAAACH5BAEAAAAALAAAAAAQABAAAAIojI+py+0Po5yUFQA7'),auto;
+    }
+    a{color:#ffff66; text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* мигание как старый <blink> */
+    .blink{animation:blink 1s step-start infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* бегущая строка-хедер */
+    .ticker{background:repeating-linear-gradient(45deg,#6600cc 0 10px,#330066 10px 20px);border-bottom:3px double #ff0;color:#fff;font-weight:bold;padding:6px 0;box-shadow:0 3px 0 #000 inset}
+    .ticker marquee{font-size:14px;letter-spacing:1px}
+
+    /* оболочка с рамками */
+    .wrapper{max-width:980px;margin:16px auto 40px;border:4px ridge var(--frame);background:var(--c1);box-shadow:0 0 0 4px #1c1c1c,0 0 30px rgba(255,255,0,.08) inset}
+    table.layout{width:100%;border-collapse:collapse}
+    td{vertical-align:top}
+
+    /* шапка */
+    .header{text-align:center;padding:18px 10px 10px;border-bottom:3px groove #444;background:linear-gradient(var(--c2),var(--c1))}
+    .logo{font-family:"ENGRY", Impact, "Arial Black", system-ui, sans-serif;font-size:46px;color:var(--y);text-shadow:3px 3px 0 #000,0 0 8px var(--neon);letter-spacing:2px}
+    .subline{margin-top:6px;font-size:12px;color:#ccc}
+
+    /* лэйаут колонок */
+    .sidebar{width:230px;border-right:2px dashed #333;padding:10px;background:#0f0f0f}
+    .content{padding:14px}
+
+    /* карточки в сайдбаре */
+    .box{border:3px outset #2b2b2b;padding:8px;margin-bottom:12px;background:#121212}
+    .box-title{font-family:"ENGRY", Impact, "Arial Black";font-size:16px;color:#ffea00;text-shadow:2px 2px 0 #000;margin:0 0 8px}
+    .badge{display:block;margin:8px auto;text-align:center;font-size:11px}
+    .badge img{display:block;width:100%;max-width:160px;height:auto;border:3px ridge #2c2c2c;background:#000;margin:0 auto}
+
+    /* контент: год/заголовки/описание */
+    .year{font-size:12px;color:#aaa;text-align:right;margin:0 0 10px}
+    .section-title{font-family:"ENGRY", Impact, "Arial Black";font-size:22px;color:#ffea00;text-shadow:2px 2px 0 #000;margin:0 0 8px}
+    .desc{font-size:13px;color:#ddd;margin:6px 0 14px}
+
+    /* видеоплеер по центру */
+    .player-wrap{border:4px groove #565656;padding:6px;background:#000;text-align:center;margin:0 auto 14px;max-width:720px}
+    .frame-aspect{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+    .frame-aspect iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+    .video-title{font-size:12px;color:var(--accent);margin:6px 0 0;font-family:"Courier New", monospace}
+
+    /* мини-превью вокруг видео (сеткой) */
+    .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:720px;margin:10px auto 0}
+    .thumbs a, .thumbs img{display:block;width:100%;border:3px ridge #2c2c2c;background:#000}
+
+    /* футер */
+    .footer{text-align:center;padding:10px;font-size:11px;color:#aaa;border-top:3px groove #444;background:#0e0e0e}
+    .counter{font-family:"Courier New", monospace;display:inline-block;padding:2px 6px;background:#000;border:2px inset #555}
+
+    /* баннер внизу */
+    .adbar{max-width:980px;margin:12px auto 24px;border:4px ridge #aa2222;background:#0d0d0d}
+    .adbar img{display:block;width:100%;height:auto}
+
+    /* наклейки */
+    .sticker{position:fixed;right:8px;bottom:8px;font-size:11px;background:#111;border:3px outset #444;padding:6px 8px}
+
+    /* mobile */
+    @media (max-width: 900px){
+      .sidebar{display:none}
+      .thumbs{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <!-- бегущая строка, без намёков на «новизну» -->
+  <div class="ticker">
+    <marquee scrollamount="6" behavior="scroll" direction="left">STANISLAV VIDEO PLUS ✦ Год сайта: 2014 ✦ Смешные видео от Стаса ✦</marquee>
+  </div>
+
+  <div class="wrapper">
+    <div class="header">
+      <div class="logo">STANISLAV VIDEO PLUS</div>
+      <div class="subline">видео и приколы | <span class="blink">онлайн‑проигрыватель</span></div>
+    </div>
+
+    <table class="layout">
+      <tr>
+        <!-- САЙДБАР: только GIF‑зона, без «гостевой» и без фразы «картинки fnaf» -->
+        <td class="sidebar">
+          <div class="box">
+            <p class="box-title">GIF ЗОНА</p>
+            <span class="badge"><img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic"></span>
+            <span class="badge"><img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014"></span>
+            <span class="badge"><img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet"></span>
+            <span class="badge"><img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro"></span>
+          </div>
+          <div class="box">
+            <p class="box-title">Кнопки</p>
+            <a class="badge" href="#"><img src="assets/btn-home.gif" alt="Home"></a>
+            <a class="badge" href="#"><img src="assets/btn-archive.gif" alt="Archive"></a>
+            <a class="badge" href="#"><img src="assets/btn-links.gif" alt="Links"></a>
+          </div>
+        </td>
+
+        <!-- КОНТЕНТ: год, описание, видео по центру, превьюшки -->
+        <td class="content">
+          <p class="year">Год сайта: <strong>2014</strong></p>
+          <h2 class="section-title">Описание</h2>
+          <p class="desc">Смешные видео от Стаса. Жми плей и смотри прямо здесь!</p>
+
+          <h2 class="section-title">Сборка видео</h2>
+          <div class="player-wrap">
+            <div class="frame-aspect">
+              <iframe
+                title="STANISLAV_VIDEO_PLUS_RECORDING.mp4"
+                src="https://www.youtube.com/embed/ApRbFxiTWh0?rel=0&modestbranding=1&fs=1&iv_load_policy=3&playsinline=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="video-title">STANISLAV_VIDEO_PLUS_RECORDING.mp4</div>
+          </div>
+
+          <div class="thumbs">
+            <a href="#"><img src="assets/thumb-1.gif" alt="Смешное видео 1"></a>
+            <a href="#"><img src="assets/thumb-2.gif" alt="Смешное видео 2"></a>
+            <a href="#"><img src="assets/thumb-3.gif" alt="Смешное видео 3"></a>
+            <a href="#"><img src="assets/thumb-4.gif" alt="Смешное видео 4"></a>
+            <a href="#"><img src="assets/thumb-5.gif" alt="Смешное видео 5"></a>
+            <a href="#"><img src="assets/thumb-6.gif" alt="Смешное видео 6"></a>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div class="footer">
+      © STANISLAV VIDEO PLUS, 2014. Счётчик посетителей: <span class="counter" id="counter">000000</span>
+    </div>
+  </div>
+
+  <!-- НИЖНИЙ БАННЕР -->
+  <div class="adbar">
+    <img src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" alt="Banner" />
+  </div>
+
+  <div class="sticker">UNDER CONSTRUCTION <span class="blink">⚠</span></div>
+
+  <script>
+    // псевдо-счётчик, как на сайтах того времени
+    (function(){
+      const key='svp_counter';
+      const el=document.getElementById('counter');
+      let n=parseInt(localStorage.getItem(key)||'1024',10)+Math.floor(Math.random()*3);
+      localStorage.setItem(key,String(n));
+      el.textContent=String(n).padStart(6,'0');
+    })();
+  </script>
+</body>
+</html>
