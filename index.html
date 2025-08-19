@@ -1,88 +1,168 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STANISLAV VIDEO PLUS (2014)</title>
   <style>
-    /* =========================
-       ВЕБ 1.0 / РАННИЕ 2000-е
-       ДЛИННЫЙ И ПРОРАБОТАННЫЙ СТИЛЬ
-       ========================= */
-    html, body { height: 100%; }
-    :root{
-      --y:#ffd800; /* жёлтый для логотипа */
-      --c1:#0b0b0b; --c2:#1c1c1c; --c3:#111; --frame:#909090;
-      --neon:#ffea00; --accent:#9acd32;
-    }
-    body{
-      margin:0; color:#fff; font-family: Verdana, Geneva, Tahoma, sans-serif; line-height:1.35;
-      /* мозаичный фон в духе старых сайтов */
+    html, body { height: 100%; margin:0; padding:0; }
+
+    body {
+      color:#fff;
+      /* СТИЛЬ 2000-х: Comic Sans + неоновый вайб */
+      font-family: "Comic Sans MS","Comic Sans",cursive,Verdana,Geneva,Tahoma,sans-serif;
+      line-height:1.35;
+      /* НОВЫЙ ФОН: космос */
       background:
-        radial-gradient(circle at 10% 20%, #222 2px, transparent 3px) 0 0/20px 20px,
-        radial-gradient(circle at 70% 10%, #1a1a1a 2px, transparent 3px) 0 0/30px 30px,
-        linear-gradient(#000, #111);
-      cursor:url('data:image/gif;base64,R0lGODlhEAAQAPAAAP///wAAACH5BAEAAAAALAAAAAAQABAAAAIojI+py+0Po5yUFQA7'),auto;
+        url("https://media.istockphoto.com/id/1732963074/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B7%D0%B2%D0%B5%D0%B7%D0%B4%D0%BD%D0%BE%D0%B5-%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B5-%D0%BD%D0%B5%D0%B1%D0%BE-%D0%B2-%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D1%81%D0%B5.jpg?s=612x612&w=0&k=20&c=DHW7DrSDaljmG6jW1ED7B2fJn3Xv-INIz-5qmDGbcVI=")
+        center center / cover no-repeat fixed #000;
+      cursor: url('data:image/gif;base64,R0lGODlhEAAQAPAAAP///wAAACH5BAEAAAAALAAAAAAQABAAAAIojI+py+0Po5yUFQA7'), auto;
     }
-    a{color:#ffff66; text-decoration:none}
+
+    a{color:#ffff66;text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* мигание как старый <blink> */
+    /* мигание */
     .blink{animation:blink 1s step-start infinite}
     @keyframes blink{50%{opacity:0}}
 
-    /* бегущая строка-хедер */
-    .ticker{background:repeating-linear-gradient(45deg,#6600cc 0 10px,#330066 10px 20px);border-bottom:3px double #ff0;color:#fff;font-weight:bold;padding:6px 0;box-shadow:0 3px 0 #000 inset}
-    .ticker marquee{font-size:14px;letter-spacing:1px}
+    /* бегущая строка — делаем её неоновой */
+    .ticker{
+      background:repeating-linear-gradient(45deg,#9900ff 0 10px,#330066 10px 20px);
+      border-bottom:3px double #ff0;
+      color:#fff;
+      font-weight:bold;
+      padding:6px 0;
+      box-shadow: inset 0 0 18px rgba(255,0,255,.7), 0 0 18px rgba(0,255,255,.5);
+    }
+    .ticker marquee{font-size:14px;letter-spacing:1px;text-shadow:0 0 8px #0ff}
 
-    /* оболочка с рамками */
-    .wrapper{max-width:980px;margin:16px auto 40px;border:4px ridge var(--frame);background:var(--c1);box-shadow:0 0 0 4px #1c1c1c,0 0 30px rgba(255,255,0,.08) inset}
+    /* основной контейнер — неон+полупрозрачный */
+    .wrapper{
+      max-width:980px;
+      margin:16px auto;
+      border:5px double #ff00ff;
+      background:rgba(0,0,0,.65);
+      box-shadow:0 0 30px rgba(0,255,255,.6), inset 0 0 18px rgba(255,255,0,.18);
+    }
     table.layout{width:100%;border-collapse:collapse}
     td{vertical-align:top}
 
-    /* шапка */
-    .header{text-align:center;padding:18px 10px 10px;border-bottom:3px groove #444;background:linear-gradient(var(--c2),var(--c1))}
-    .logo{font-family:"ENGRY", Impact, "Arial Black", system-ui, sans-serif;font-size:46px;color:var(--y);text-shadow:3px 3px 0 #000,0 0 8px var(--neon);letter-spacing:2px}
-    .subline{margin-top:6px;font-size:12px;color:#ccc}
+    /* шапка — яркий лого в духе геоситиз */
+    .header{
+      text-align:center;
+      padding:20px;
+      background:rgba(0,0,0,.85);
+      border-bottom:4px groove #ff00ff;
+      box-shadow:0 0 14px rgba(255,0,255,.5);
+    }
+    .logo{
+      font-size:56px;
+      color:#ffd800;
+      letter-spacing:2px;
+      text-shadow:
+        0 0 6px #ff0,
+        0 0 14px #ff0,
+        0 0 24px #0ff,
+        3px 3px 0 #000,
+        -2px -2px 0 #f0f;
+    }
+    .subline{
+      margin-top:6px;font-size:12px;color:#e4e4e4;
+      text-shadow:0 0 8px #0ff, 0 0 12px #ff0;
+    }
 
-    /* лэйаут колонок */
-    .sidebar{width:230px;border-right:2px dashed #333;padding:10px;background:#0f0f0f}
+    /* колонка */
+    .sidebar{
+      width:240px;
+      border-right:3px dashed #ff00ff;
+      padding:10px;
+      background:rgba(0,0,0,.75);
+      box-shadow:inset 0 0 12px rgba(255,0,255,.25);
+    }
     .content{padding:14px}
 
-    /* карточки в сайдбаре */
-    .box{border:3px outset #2b2b2b;padding:8px;margin-bottom:12px;background:#121212}
-    .box-title{font-family:"ENGRY", Impact, "Arial Black";font-size:16px;color:#ffea00;text-shadow:2px 2px 0 #000;margin:0 0 8px}
+    /* боксы — неоновые рамки */
+    .box{
+      border:3px ridge #ff00ff;
+      padding:8px;
+      margin-bottom:12px;
+      background:rgba(18,18,18,.9);
+      box-shadow:0 0 12px rgba(255,0,255,.45);
+    }
+    .box-title{
+      font-size:16px;
+      color:#ffff66;
+      margin:0 0 8px;
+      text-shadow:0 0 8px #ff0, 0 0 16px #0ff, 2px 2px 0 #000;
+    }
     .badge{display:block;margin:8px auto;text-align:center;font-size:11px}
-    .badge img{display:block;width:100%;max-width:160px;height:auto;border:3px ridge #2c2c2c;background:#000;margin:0 auto}
+    .badge img{
+      display:block;max-width:180px;height:auto;
+      border:3px ridge #00ffff;background:#000;margin:0 auto;
+      box-shadow:0 0 12px rgba(0,255,255,.6);
+    }
 
-    /* контент: год/заголовки/описание */
-    .year{font-size:12px;color:#aaa;text-align:right;margin:0 0 10px}
-    .section-title{font-family:"ENGRY", Impact, "Arial Black";font-size:22px;color:#ffea00;text-shadow:2px 2px 0 #000;margin:0 0 8px}
-    .desc{font-size:13px;color:#ddd;margin:6px 0 14px}
+    /* заголовки / текст */
+    .section-title{
+      font-size:24px;
+      color:#ffff00;
+      margin:10px 0 8px;
+      text-shadow:0 0 10px #ff0, 0 0 18px #0ff, 2px 2px 0 #000;
+    }
+    .desc{font-size:13px;color:#eee;margin:6px 0 14px;text-shadow:0 0 6px rgba(0,255,255,.3)}
 
-    /* видеоплеер по центру */
-    .player-wrap{border:4px groove #565656;padding:6px;background:#000;text-align:center;margin:0 auto 14px;max-width:720px}
+    /* видеоблок — рамка и подсветка */
+    .player-wrap{
+      border:5px groove #00ffff;
+      padding:6px;
+      background:#000;
+      text-align:center;
+      margin:0 auto 14px;
+      max-width:720px;
+      box-shadow:0 0 16px rgba(0,255,255,.8);
+    }
     .frame-aspect{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
     .frame-aspect iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-    .video-title{font-size:12px;color:var(--accent);margin:6px 0 0;font-family:"Courier New", monospace}
+    .video-title{font-size:12px;color:#9acd32;margin:6px 0 0;font-family:"Courier New", monospace;text-shadow:0 0 8px #9acd32}
 
-    /* мини-превью вокруг видео (сеткой) */
-    .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:720px;margin:10px auto 0}
-    .thumbs a, .thumbs img{display:block;width:100%;border:3px ridge #2c2c2c;background:#000}
+    /* превью — неон по краям */
+    .thumbs{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:720px;margin:10px auto 0
+    }
+    .thumbs img{
+      width:100%;
+      border:3px ridge #ff00ff;
+      background:#000;
+      box-shadow:0 0 12px rgba(255,0,255,.6);
+    }
 
-    /* футер */
-    .footer{text-align:center;padding:10px;font-size:11px;color:#aaa;border-top:3px groove #444;background:#0e0e0e}
-    .counter{font-family:"Courier New", monospace;display:inline-block;padding:2px 6px;background:#000;border:2px inset #555}
+    /* футер и счётчик */
+    .footer{
+      text-align:center;padding:10px;font-size:11px;color:#ddd;
+      border-top:4px groove #ff00ff;background:rgba(14,14,14,.9);
+      text-shadow:0 0 6px #0ff;
+    }
+    .counter{
+      font-family:"Courier New", monospace;display:inline-block;padding:2px 6px;background:#000;border:2px dashed #ff00ff;
+      box-shadow:0 0 8px rgba(255,0,255,.6)
+    }
 
-    /* баннер внизу */
-    .adbar{max-width:980px;margin:12px auto 24px;border:4px ridge #aa2222;background:#0d0d0d}
+    /* баннер */
+    .adbar{
+      max-width:980px;margin:12px auto;border:4px ridge #aa22aa;background:rgba(13,13,13,.95);
+      box-shadow:0 0 16px rgba(170,34,170,.7)
+    }
     .adbar img{display:block;width:100%;height:auto}
 
-    /* наклейки */
-    .sticker{position:fixed;right:8px;bottom:8px;font-size:11px;background:#111;border:3px outset #444;padding:6px 8px}
+    /* наклейка */
+    .sticker{
+      position:fixed;right:8px;bottom:8px;font-size:11px;background:rgba(17,17,17,.95);border:3px outset #ff00ff;padding:6px 8px;
+      box-shadow:0 0 10px rgba(255,0,255,.7)
+    }
 
-    /* mobile */
+    .separator {text-align:center;margin:20px 0;}
+    .separator img{max-height:50px;filter:drop-shadow(0 0 10px #ff6600)}
+
     @media (max-width: 900px){
       .sidebar{display:none}
       .thumbs{grid-template-columns:repeat(2,1fr)}
@@ -90,89 +170,104 @@
   </style>
 </head>
 <body>
-  <!-- бегущая строка, без намёков на «новизну» -->
-  <div class="ticker">
-    <marquee scrollamount="6" behavior="scroll" direction="left">STANISLAV VIDEO PLUS ✦ Год сайта: 2014 ✦ Смешные видео от Стаса ✦</marquee>
+
+<div class="ticker">
+  <marquee scrollamount="6">✦ WELCOME TO MY HOMEPAGE ✦ STANISLAV VIDEO PLUS ✦ ONLINE FUNNY VIDEOS ✦ BEST VIEWED IN INTERNET EXPLORER ✦</marquee>
+</div>
+
+<div class="wrapper">
+  <div class="header">
+    <div class="logo">STANISLAV VIDEO PLUS</div>
+    <div class="subline"><span class="blink">Welcome to my corner of the internet!</span></div>
   </div>
 
-  <div class="wrapper">
-    <div class="header">
-      <div class="logo">STANISLAV VIDEO PLUS</div>
-      <div class="subline">видео и приколы | <span class="blink">онлайн‑проигрыватель</span></div>
-    </div>
+  <table class="layout">
+    <tr>
+      <td class="sidebar">
+        <div class="box">
+          <!-- ПЕРЕИМЕНОВАНО -->
+          <p class="box-title">Мои любимые GIF</p>
+          <!-- старые гифки -->
+          <span class="badge"><img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic"></span>
+          <span class="badge"><img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014"></span>
+          <span class="badge"><img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet"></span>
+          <span class="badge"><img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro"></span>
+          <!-- новые гифки -->
+          <span class="badge"><img src="https://static.wikia.nocookie.net/fivenightsatfreddys/images/a/ac/C4F1D75C-2CB5-4A88-96CB-2FFF8C8B305A.gif" alt="Freddy"></span>
+          <span class="badge"><img src="https://media3.giphy.com/media/IRFQYGCokErS0/giphy.gif" alt="Skeleton Dance"></span>
+        </div>
 
-    <table class="layout">
-      <tr>
-        <!-- САЙДБАР: только GIF‑зона, без «гостевой» и без фразы «картинки fnaf» -->
-        <td class="sidebar">
-          <div class="box">
-            <p class="box-title">GIF ЗОНА</p>
-            <span class="badge"><img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic"></span>
-            <span class="badge"><img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014"></span>
-            <span class="badge"><img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet"></span>
-            <span class="badge"><img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro"></span>
+        <div class="box">
+          <p class="box-title">Навигация</p>
+          <a class="badge" href="#"><img src="assets/btn-home.gif" alt="Home"></a>
+          <a class="badge" href="#"><img src="assets/btn-archive.gif" alt="Archive"></a>
+          <a class="badge" href="#"><img src="assets/btn-links.gif" alt="Links"></a>
+        </div>
+      </td>
+
+      <td class="content">
+        <h2 class="section-title">Описание</h2>
+        <p class="desc">Смешные видео от Стаса. Жми плей и смотри прямо здесь!</p>
+
+        <div class="separator"><img src="https://www.animatedimages.org/data/media/562/animated-fire-divider-image-0012.gif" alt="divider"></div>
+
+        <h2 class="section-title">Сборка видео</h2>
+        <div class="player-wrap">
+          <div class="frame-aspect">
+            <iframe src="https://www.youtube.com/embed/ApRbFxiTWh0" frameborder="0" allowfullscreen></iframe>
           </div>
-          <div class="box">
-            <p class="box-title">Кнопки</p>
-            <a class="badge" href="#"><img src="assets/btn-home.gif" alt="Home"></a>
-            <a class="badge" href="#"><img src="assets/btn-archive.gif" alt="Archive"></a>
-            <a class="badge" href="#"><img src="assets/btn-links.gif" alt="Links"></a>
-          </div>
-        </td>
+          <div class="video-title">STANISLAV_VIDEO_PLUS_RECORDING.mp4</div>
+        </div>
 
-        <!-- КОНТЕНТ: год, описание, видео по центру, превьюшки -->
-        <td class="content">
-          <p class="year">Год сайта: <strong>2014</strong></p>
-          <h2 class="section-title">Описание</h2>
-          <p class="desc">Смешные видео от Стаса. Жми плей и смотри прямо здесь!</p>
+        <div class="thumbs">
+          <img src="assets/thumb-1.gif" alt="thumb1">
+          <img src="assets/thumb-2.gif" alt="thumb2">
+          <img src="assets/thumb-3.gif" alt="thumb3">
+          <img src="assets/thumb-4.gif" alt="thumb4">
+          <img src="assets/thumb-5.gif" alt="thumb5">
+          <img src="assets/thumb-6.gif" alt="thumb6">
+        </div>
 
-          <h2 class="section-title">Сборка видео</h2>
-          <div class="player-wrap">
-            <div class="frame-aspect">
-              <iframe
-                title="STANISLAV_VIDEO_PLUS_RECORDING.mp4"
-                src="https://www.youtube.com/embed/ApRbFxiTWh0?rel=0&modestbranding=1&fs=1&iv_load_policy=3&playsinline=1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="video-title">STANISLAV_VIDEO_PLUS_RECORDING.mp4</div>
-          </div>
+        <div class="separator"><img src="https://www.animatedimages.org/data/media/562/animated-fire-divider-image-0012.gif" alt="divider"></div>
 
-          <div class="thumbs">
-            <a href="#"><img src="assets/thumb-1.gif" alt="Смешное видео 1"></a>
-            <a href="#"><img src="assets/thumb-2.gif" alt="Смешное видео 2"></a>
-            <a href="#"><img src="assets/thumb-3.gif" alt="Смешное видео 3"></a>
-            <a href="#"><img src="assets/thumb-4.gif" alt="Смешное видео 4"></a>
-            <a href="#"><img src="assets/thumb-5.gif" alt="Смешное видео 5"></a>
-            <a href="#"><img src="assets/thumb-6.gif" alt="Смешное видео 6"></a>
-          </div>
-        </td>
-      </tr>
-    </table>
+        <!-- БЛОК ГАЛЕРЕИ ГИФОВ ОСТАВЛЯЮ, ЧТОБЫ БЫЛО КАК РАНЬШЕ -->
+        <h2 class="section-title">Мои любимые GIF</h2>
+        <div class="thumbs">
+          <img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic">
+          <img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014">
+          <img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet">
+          <img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro">
+          <img src="https://static.wikia.nocookie.net/fivenightsatfreddys/images/a/ac/C4F1D75C-2CB5-4A88-96CB-2FFF8C8B305A.gif" alt="Freddy">
+          <img src="https://media3.giphy.com/media/IRFQYGCokErS0/giphy.gif" alt="Skeleton Dance">
+        </div>
 
-    <div class="footer">
-      © STANISLAV VIDEO PLUS, 2014. Счётчик посетителей: <span class="counter" id="counter">000000</span>
-    </div>
+        <!-- БЛОК ПРО FLASH УДАЛЁН ПО ТВОЕЙ ПРОСЬБЕ -->
+        <!--
+        <h2 class="section-title">Flash Websites</h2>
+        <p class="desc">Flash-сайты открывали мир мультимедиа в браузере, но грузились целую вечность на старых Pentium!</p>
+        <img src="https://preview.redd.it/jc0wp2ahf2n81.jpg?width=640&auto=webp" alt="Old FNAF Poster" width="300">
+        -->
+      </td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    © STANISLAV VIDEO PLUS, 2014 ✦ Счётчик: <span class="counter" id="counter">000000</span> ✦ <span class="blink">Best viewed in IE 6.0</span>
   </div>
+</div>
 
-  <!-- НИЖНИЙ БАННЕР -->
-  <div class="adbar">
-    <img src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" alt="Banner" />
-  </div>
+<div class="adbar">
+  <img src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" alt="Banner">
+</div>
 
-  <div class="sticker">UNDER CONSTRUCTION <span class="blink">⚠</span></div>
+<div class="sticker">UNDER CONSTRUCTION <span class="blink">⚠</span></div>
 
-  <script>
-    // псевдо-счётчик, как на сайтах того времени
-    (function(){
-      const key='svp_counter';
-      const el=document.getElementById('counter');
-      let n=parseInt(localStorage.getItem(key)||'1024',10)+Math.floor(Math.random()*3);
-      localStorage.setItem(key,String(n));
-      el.textContent=String(n).padStart(6,'0');
-    })();
-  </script>
+<script>
+  const key='svp_counter';
+  const el=document.getElementById('counter');
+  let n=parseInt(localStorage.getItem(key)||'1024',10)+Math.floor(Math.random()*3);
+  localStorage.setItem(key,String(n));
+  el.textContent=String(n).padStart(6,'0');
+</script>
 </body>
 </html>
