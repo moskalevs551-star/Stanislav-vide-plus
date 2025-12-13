@@ -1,273 +1,585 @@
-<!DOCTYPE html> 
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>STANISLAV VIDEO PLUS (2014)</title>
-  <style>
-    html, body { height: 100%; margin:0; padding:0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1400">
+<title>Peashooter321 /// SERVER_ROOT [2014]</title>
+<style>
+    /* =========================================
+       0. CORE STYLES
+       ========================================= */
+    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=Black+Ops+One&family=Rock+Salt&family=Verdana&display=swap');
+
+    :root {
+        --void-black: #020202;
+        --blood-red: #8a0303;
+        --matrix-green: #00ff00;
+        --dirty-white: #cdcdcd;
+    }
+
+    * { box-sizing: border-box; }
 
     body {
-      color:#fff;
-      /* СТИЛЬ 2000-х: Comic Sans + неоновый вайб */
-      font-family: "Comic Sans MS","Comic Sans",cursive,Verdana,Geneva,Tahoma,sans-serif;
-      line-height:1.35;
-      /* НОВЫЙ ФОН: космос */
-      background:
-        url("https://media.istockphoto.com/id/1732963074/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B7%D0%B2%D0%B5%D0%B7%D0%B4%D0%BD%D0%BE%D0%B5-%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B5-%D0%BD%D0%B5%D0%B1%D0%BE-%D0%B2-%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D1%81%D0%B5.jpg?s=612x612&w=0&k=20&c=DHW7DrSDaljmG6jW1ED7B2fJn3Xv-INIz-5qmDGbcVI=")
-        center center / cover no-repeat fixed #000;
-      cursor: url('data:image/gif;base64,R0lGODlhEAAQAPAAAP///wAAACH5BAEAAAAALAAAAAAQABAAAAIojI+py+0Po5yUFQA7'), auto;
+        margin: 0; padding: 0;
+        background-color: #000;
+        color: var(--dirty-white);
+        font-family: 'Verdana', sans-serif;
+        font-size: 12px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        cursor: crosshair; 
     }
 
-    a{color:#ffff66;text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* мигание */
-    .blink{animation:blink 1s step-start infinite}
-    @keyframes blink{50%{opacity:0}}
-
-    /* бегущая строка — делаем её неоновой */
-    .ticker{
-      background:repeating-linear-gradient(45deg,#9900ff 0 10px,#330066 10px 20px);
-      border-bottom:3px double #ff0;
-      color:#fff;
-      font-weight:bold;
-      padding:6px 0;
-      box-shadow: inset 0 0 18px rgba(255,0,255,.7), 0 0 18px rgba(0,255,255,.5);
+    a { 
+        color: #ffff00; text-decoration: none; font-weight: bold; 
+        background: #000; padding: 2px; border: 1px solid #333;
     }
-    .ticker marquee{font-size:14px;letter-spacing:1px;text-shadow:0 0 8px #0ff}
-
-    /* основной контейнер — неон+полупрозрачный */
-    .wrapper{
-      max-width:980px;
-      margin:16px auto;
-      border:5px double #ff00ff;
-      background:rgba(0,0,0,.65);
-      box-shadow:0 0 30px rgba(0,255,255,.6), inset 0 0 18px rgba(255,255,0,.18);
-    }
-    table.layout{width:100%;border-collapse:collapse}
-    td{vertical-align:top}
-
-    /* шапка — яркий лого в духе геоситиз */
-    .header{
-      text-align:center;
-      padding:20px;
-      background:rgba(0,0,0,.85);
-      border-bottom:4px groove #ff00ff;
-      box-shadow:0 0 14px rgba(255,0,255,.5);
-    }
-    .logo{
-      font-size:56px;
-      color:#ffd800;
-      letter-spacing:2px;
-      text-shadow:
-        0 0 6px #ff0,
-        0 0 14px #ff0,
-        0 0 24px #0ff,
-        3px 3px 0 #000,
-        -2px -2px 0 #f0f;
-    }
-    .subline{
-      margin-top:6px;font-size:12px;color:#e4e4e4;
-      text-shadow:0 0 8px #0ff, 0 0 12px #ff0;
+    a:hover { 
+        background: var(--blood-red); color: #fff; 
+        box-shadow: 3px 3px 0 #fff; border-color: #fff;
+        cursor: help;
     }
 
-    /* колонка */
-    .sidebar{
-      width:240px;
-      border-right:3px dashed #ff00ff;
-      padding:10px;
-      background:rgba(0,0,0,.75);
-      box-shadow:inset 0 0 12px rgba(255,0,255,.25);
-    }
-    .content{padding:14px}
-
-    /* боксы — неоновые рамки */
-    .box{
-      border:3px ridge #ff00ff;
-      padding:8px;
-      margin-bottom:12px;
-      background:rgba(18,18,18,.9);
-      box-shadow:0 0 12px rgba(255,0,255,.45);
-    }
-    .box-title{
-      font-size:16px;
-      color:#ffff66;
-      margin:0 0 8px;
-      text-shadow:0 0 8px #ff0, 0 0 16px #0ff, 2px 2px 0 #000;
-    }
-    .badge{display:block;margin:8px auto;text-align:center;font-size:11px}
-    .badge img{
-      display:block;max-width:180px;height:auto;
-      border:3px ridge #00ffff;background:#000;margin:0 auto;
-      box-shadow:0 0 12px rgba(0,255,255,.6);
+    /* =========================================
+       1. BACKGROUND
+       ========================================= */
+    #universe {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10;
+        background: radial-gradient(circle at center, #050505 0%, #000 100%);
+        overflow: hidden;
+        transition: opacity 0.5s ease;
     }
 
-    /* заголовки / текст */
-    .section-title{
-      font-size:24px;
-      color:#ffff00;
-      margin:10px 0 8px;
-      text-shadow:0 0 10px #ff0, 0 0 18px #0ff, 2px 2px 0 #000;
+    .star-field {
+        position: absolute; width: 2px; height: 2px; background: white;
+        box-shadow: 100px 200px #fff, 400px 500px #fff, 700px 100px #fff, 1500px 800px #fff;
+        animation: space-drift 120s linear infinite; opacity: 0.8;
     }
-    .desc{font-size:13px;color:#eee;margin:6px 0 14px;text-shadow:0 0 6px rgba(0,255,255,.3)}
-
-    /* видеоблок — рамка и подсветка */
-    .player-wrap{
-      border:5px groove #00ffff;
-      padding:6px;
-      background:#000;
-      text-align:center;
-      margin:0 auto 14px;
-      max-width:720px;
-      box-shadow:0 0 16px rgba(0,255,255,.8);
-    }
-    .frame-aspect{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
-    .frame-aspect iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-    .video-title{font-size:12px;color:#9acd32;margin:6px 0 0;font-family:"Courier New", monospace;text-shadow:0 0 8px #9acd32}
-
-    /* превью — неон по краям */
-    .thumbs{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:720px;margin:10px auto 0
-    }
-    .thumbs img{
-      width:100%;
-      border:3px ridge #ff00ff;
-      background:#000;
-      box-shadow:0 0 12px rgba(255,0,255,.6);
+    .star-field:nth-child(2) {
+        width: 3px; height: 3px; opacity: 0.4; animation-duration: 200s;
+        box-shadow: 200px 300px #888, 500px 800px #888, 900px 100px #888;
     }
 
-    /* футер и счётчик */
-    .footer{
-      text-align:center;padding:10px;font-size:11px;color:#ddd;
-      border-top:4px groove #ff00ff;background:rgba(14,14,14,.9);
-      text-shadow:0 0 6px #0ff;
-    }
-    .counter{
-      font-family:"Courier New", monospace;display:inline-block;padding:2px 6px;background:#000;border:2px dashed #ff00ff;
-      box-shadow:0 0 8px rgba(255,0,255,.6)
+    .bg-ghost {
+        position: absolute; opacity: 0; pointer-events: none;
+        animation: ghost-float 25s infinite linear;
+        filter: blur(4px) grayscale(100%) invert(0.8);
+        mix-blend-mode: screen;
     }
 
-    /* баннер */
-    .adbar{
-      max-width:980px;margin:12px auto;border:4px ridge #aa22aa;background:rgba(13,13,13,.95);
-      box-shadow:0 0 16px rgba(170,34,170,.7)
-    }
-    .adbar img{display:block;width:100%;height:auto}
-
-    /* наклейка */
-    .sticker{
-      position:fixed;right:8px;bottom:8px;font-size:11px;background:rgba(17,17,17,.95);border:3px outset #ff00ff;padding:6px 8px;
-      box-shadow:0 0 10px rgba(255,0,255,.7)
+    @keyframes space-drift { from { transform: translateY(0); } to { transform: translateY(-2000px); } }
+    @keyframes ghost-float { 
+        0% { transform: translate(0, 100vh) scale(0.8); opacity: 0; } 
+        20% { opacity: 0.2; } 
+        80% { opacity: 0.2; } 
+        100% { transform: translate(50px, -100px) scale(1.2); opacity: 0; } 
     }
 
-    .separator {text-align:center;margin:20px 0;}
-    .separator img{max-height:50px;filter:drop-shadow(0 0 10px #ff6600)}
-
-    @media (max-width: 900px){
-      .sidebar{display:none}
-      .thumbs{grid-template-columns:repeat(2,1fr)}
+    #crt-noise {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
+        opacity: 0.04; pointer-events: none; z-index: 9000;
+        mix-blend-mode: overlay;
     }
-  </style>
+
+    /* =========================================
+       2. LAYOUT
+       ========================================= */
+    #main-container {
+        max-width: 1350px; margin: 30px auto;
+        border: 6px solid #444;
+        background: rgba(15, 15, 15, 0.96);
+        box-shadow: 0 0 60px rgba(0,0,0,0.9);
+        padding: 5px;
+    }
+
+    header {
+        background: url('https://i.pinimg.com/originals/2b/3d/34/2b3d3432329676736730644440000000.gif') repeat-x bottom #000;
+        border-bottom: 5px solid var(--blood-red);
+        padding: 30px; text-align: center; margin-bottom: 15px;
+    }
+    
+    h1 {
+        font-family: 'Black Ops One', cursive; font-size: 72px; color: #fff; margin: 0;
+        text-shadow: 4px 4px 0 #8a0303, -2px -2px 0 #000; 
+        text-transform: uppercase; letter-spacing: 6px;
+    }
+
+    .status-strip {
+        background: #111; border: 2px inset #444; color: #aaa;
+        font-family: 'VT323'; font-size: 22px; padding: 6px; text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .layout-grid { display: grid; grid-template-columns: 260px 1fr 280px; gap: 10px; }
+    .col { padding: 5px; }
+
+    .brutal-box {
+        background: #0a0a0a; border: 4px ridge #555; margin-bottom: 20px; 
+        padding: 10px; position: relative;
+    }
+    .box-title {
+        background: #333; color: white; padding: 4px; font-weight: bold; text-align: center;
+        border: 2px outset #666; margin-bottom: 12px; font-family: 'Special Elite'; 
+        text-transform: uppercase; letter-spacing: 2px;
+    }
+
+    /* =========================================
+       3. BLOG / LOG STYLES
+       ========================================= */
+    .blog-container {
+        height: 400px; overflow-y: scroll; 
+        background: #000; border: 2px inset #555; padding: 10px;
+    }
+    
+    .blog-entry {
+        margin-bottom: 20px; border-bottom: 1px dashed #333; padding-bottom: 15px;
+    }
+    .blog-date {
+        color: #ff00ff; font-family: 'VT323'; font-size: 18px; margin-bottom: 5px; display: block;
+    }
+    .blog-text {
+        color: #ddd; font-family: 'Verdana'; font-size: 12px; line-height: 1.5;
+    }
+    .blog-author {
+        color: #888; font-size: 10px; font-style: italic; margin-top: 5px; text-align: right;
+    }
+
+    /* =========================================
+       4. FORUM STYLES
+       ========================================= */
+    .forum-container {
+        border: 3px solid #555; background: #000; margin-top: 20px;
+        height: 400px; overflow-y: scroll; border-right: 15px solid #333;
+        display: block; 
+    }
+    
+    .post-row { display: flex; border-bottom: 1px solid #333; min-height: 100px; }
+    .post-row:nth-child(even) { background: #0e0e0e; }
+
+    .post-author {
+        width: 140px; background: #151515; padding: 10px; text-align: center;
+        border-right: 1px solid #333; color: #999; font-size: 11px;
+    }
+    .avatar-circle {
+        width: 60px; height: 60px; border-radius: 50%; 
+        margin: 5px auto; display: flex; align-items: center; justify-content: center;
+        font-size: 24px; font-weight: bold; color: #000; border: 2px solid #555;
+    }
+    .avatar-img { width: 60px; height: 60px; border: 2px solid #f00; object-fit: cover; }
+    .post-body { flex: 1; padding: 15px; color: #ccc; font-size: 12px; line-height: 1.5; }
+    .post-date { font-size: 9px; color: #555; margin-bottom: 5px; display: block; }
+    .sig-line { margin-top: 20px; border-top: 1px dashed #444; padding-top: 5px; color: #555; font-style: italic; font-size: 10px; }
+
+    /* =========================================
+       5. CONTENT WIDGETS
+       ========================================= */
+    .pic-wall { display: flex; flex-direction: column; gap: 10px; padding-right: 5px; }
+    .pic-wall img { width: 100%; border: 3px solid #fff; transition: 0.2s; filter: grayscale(0.5); }
+    .pic-wall img:hover { filter: grayscale(0); border-color: var(--blood-red); transform: scale(1.05); }
+
+    .sticker {
+        position: absolute; cursor: grab; padding: 5px; background: #fff; color: #000;
+        border: 1px solid #000; box-shadow: 4px 4px 0 rgba(0,0,0,0.8);
+        font-family: 'Rock Salt'; font-size: 10px; text-align: center;
+        transition: transform 0.1s;
+    }
+    .sticker img { pointer-events: none; width: 100%; max-width: 140px; display: block; }
+
+    /* HIDDEN TRIGGER (INNOCENT LOOKING) */
+    .hidden-trigger-box {
+        text-align: center; margin-top: 20px; 
+        border: 2px solid #444; padding: 10px; background: #080808;
+    }
+    .hidden-trigger-img {
+        width: 100%; max-width: 150px; cursor: pointer; filter: grayscale(0.5);
+        transition: 0.3s;
+    }
+    .hidden-trigger-img:hover {
+        filter: grayscale(0) contrast(1.2); transform: scale(1.05);
+    }
+
+    /* =========================================
+       6. BEAR5 APOCALYPSE MODE
+       ========================================= */
+    body.BEAR5_MODE {
+        filter: sepia(100%) saturate(1000%) hue-rotate(-50deg) contrast(150%);
+        background: #300 !important;
+        overflow-y: scroll !important; 
+    }
+    
+    body.BEAR5_MODE #main-container {
+        animation: swim 3s infinite ease-in-out;
+        border-color: #000;
+    }
+
+    body.BEAR5_MODE #universe {
+        background: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp') no-repeat center center !important;
+        background-size: cover !important;
+        opacity: 1 !important;
+    }
+    body.BEAR5_MODE .star-field,
+    body.BEAR5_MODE .bg-ghost { display: none !important; }
+
+    body.BEAR5_MODE #crt-noise { opacity: 0.2; mix-blend-mode: hard-light; }
+
+    body.BEAR5_MODE, body.BEAR5_MODE a, body.BEAR5_MODE div {
+        cursor: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp'), auto !important; 
+    }
+
+    @keyframes swim {
+        0% { transform: skew(0deg) translate(0,0); }
+        25% { transform: skew(2deg) translate(5px, 0); }
+        50% { transform: skew(-1deg) translate(0, 5px); }
+        75% { transform: skew(1deg) translate(-5px, 0); }
+        100% { transform: skew(0deg) translate(0,0); }
+    }
+
+</style>
 </head>
 <body>
 
-<div class="ticker">
-  <marquee scrollamount="6">✦ WELCOME TO MY HOMEPAGE ✦ STANISLAV VIDEO PLUS ✦ ONLINE FUNNY VIDEOS ✦ BEST VIEWED IN INTERNET EXPLORER ✦</marquee>
+<button id="audio-btn" onclick="initSite()" style="position:fixed; top:0; left:0; width:100%; height:100%; opacity:0; z-index:99999; cursor:crosshair;">CLICK TO START</button>
+
+<audio id="ambience" loop>
+    <source src="https://www.soundjay.com/mechanical/sounds/computer-fan-1.mp3" type="audio/mpeg">
+</audio>
+<audio id="scream" loop>
+    <source src="https://www.myinstants.com/media/sounds/fnaf-scream.mp3" type="audio/mpeg">
+</audio>
+
+<div id="crt-noise"></div>
+
+<div id="universe">
+    <div class="star-field"></div>
+    <div class="star-field"></div>
+    <img class="bg-ghost" src="https://i.pinimg.com/originals/11/73/11/1173111f04ec6e8afb8a4126294b1207.gif" style="left:20%; width:150px; animation-delay:0s;">
+    <img class="bg-ghost" src="https://i.pinimg.com/1200x/d7/f3/79/d7f379f60547ca2b14ee0088df775e16.jpg" style="right:10%; width:300px; animation-duration:40s; animation-delay:5s;">
+    <img class="bg-ghost" src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" style="left:50%; width:200px; animation-duration:15s; animation-delay:10s;">
 </div>
 
-<div class="wrapper">
-  <div class="header">
-    <div class="logo">STANISLAV VIDEO PLUS</div>
-    <div class="subline"><span class="blink">Welcome to my corner of the internet!</span></div>
-  </div>
+<div id="main-container">
+    
+    <header>
+        <div style="position:absolute; top:10px; right:10px; font-size:10px; color:#555;">[ SYSTEM_ID: 11-13-14 ]</div>
+        <h1>Peashooter321</h1>
+        <div style="color:#aaa; letter-spacing:8px; margin-top:5px; font-family:'VT323'; font-size:24px;">/// SERVER_ROOT ///</div>
+    </header>
 
-  <table class="layout">
-    <tr>
-      <td class="sidebar">
-        <div class="box">
-          <!-- ПЕРЕИМЕНОВАНО -->
-          <p class="box-title">Мои любимые GIF</p>
-          <!-- старые гифки -->
-          <span class="badge"><img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic"></span>
-          <span class="badge"><img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014"></span>
-          <span class="badge"><img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet"></span>
-          <span class="badge"><img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro"></span>
-          <!-- новые гифки -->
-          <span class="badge"><img src="https://static.wikia.nocookie.net/fivenightsatfreddys/images/a/ac/C4F1D75C-2CB5-4A88-96CB-2FFF8C8B305A.gif" alt="Freddy"></span>
-          <span class="badge"><img src="https://media3.giphy.com/media/IRFQYGCokErS0/giphy.gif" alt="Skeleton Dance"></span>
+    <div class="status-strip">
+        STATUS: <span style="color:red; font-weight:bold;">OFFLINE</span> | LAST SEEN: 13 NOV 2014 | VISITORS: <span style="color:red; background:#000; padding:2px 8px;">1567</span>
+    </div>
+
+    <div class="layout-grid">
+        
+        <div class="col">
+            <div class="brutal-box">
+                <div class="box-title">ADMIN_PROFILE</div>
+                <img src="https://i.pinimg.com/736x/2d/35/18/2d35180b0381859a6a87eff8310cb26f.jpg" style="width:100%; border:2px solid #ccc;">
+                <br><br>
+                <b>Nick:</b> Peashooter321<br>
+                <b>Age:</b> 15 (in 2014)<br>
+                <b>Mood:</b> <span style="color:#444;">[GONE]</span>
+            </div>
+
+            <div class="brutal-box">
+                <div class="box-title">MENU</div>
+                <ul style="list-style:square; padding-left:20px; line-height:2;">
+                    <li><a href="#">HOME PAGE</a></li>
+                    <li><a href="#">FORUM</a></li>
+                    <li><a href="#" style="text-decoration:line-through; color:#555;">MY SERVER</a></li>
+                    <li><a href="#" style="color:red;">BEAR5.EXE</a></li>
+                </ul>
+            </div>
+
+            <div class="hidden-trigger-box">
+                <div style="font-size:10px; color:#666; margin-bottom:5px;">My Fav Character:</div>
+                <img src="https://i.pinimg.com/736x/59/9f/1b/599f1bbc3fe2882a3ece6930bd75ba75.jpg" class="hidden-trigger-img" title="Freddy?" onclick="unleashBear5()">
+            </div>
         </div>
 
-        <div class="box">
-          <p class="box-title">Навигация</p>
-          <a class="badge" href="#"><img src="assets/btn-home.gif" alt="Home"></a>
-          <a class="badge" href="#"><img src="assets/btn-archive.gif" alt="Archive"></a>
-          <a class="badge" href="#"><img src="assets/btn-links.gif" alt="Links"></a>
+        <div class="col">
+            
+            <div class="brutal-box" style="border-color:#555;">
+                <div class="box-title">UPDATES_LOG.TXT</div>
+                <div class="blog-container">
+                    
+                    <div class="blog-entry">
+                        <span class="blog-date">June 1, 2014</span>
+                        <div class="blog-text">
+                            YES! Summer break is finally here! Me and my bro are gonna make this the best website ever. We learned HTML in school. I'm gonna post all my Halo clips here.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">June 15, 2014</span>
+                        <div class="blog-text">
+                            Added a music player but it broke the layout lol. Bro fixed it. He's way better at CSS than me. We are trying to beat Halo 3 on Legendary co-op. It's impossible.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">June 28, 2014</span>
+                        <div class="blog-text">
+                            Stayed up all night playing Minecraft. We built a huge castle. My eyes hurt. Also, I think I saw a Herobrine fake mod on the server.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">July 4, 2014</span>
+                        <div class="blog-text">
+                            Happy 4th! Went to see fireworks. Ate too many hotdogs. Site update: added more red colors because red is cool.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">July 20, 2014</span>
+                        <div class="blog-text">
+                            We bought Portal 2! The co-op is hilarious. My brother keeps dropping me in the acid on purpose. "For science" he says. Jerk. xD
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">August 2, 2014</span>
+                        <div class="blog-text">
+                            (Bro here) Just optimized the images. Site should load faster now. Also, Peashooter sucks at Portal. Just saying.
+                        </div>
+                        <div class="blog-author">- Brother</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">August 15, 2014</span>
+                        <div class="blog-text">
+                            Guys... have you seen the trailer for "Five Nights at Freddy's"? It looks crazy. Some guy played it on YouTube. I dare my brother to play it.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">August 28, 2014</span>
+                        <div class="blog-text">
+                            School starts in 3 days. NOOOOO. I don't wanna go back. Math is gonna be torture. 
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">September 10, 2014</span>
+                        <div class="blog-text">
+                            Homework sucks. I barely have time to code. But I added some cool stickers to the site! You can drag them around! Check it out!
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">September 25, 2014</span>
+                        <div class="blog-text">
+                            We finally played FNAF. I screamed so loud my mom got mad. My brother pretended not to be scared but he was totally shaking lol.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">October 12, 2014</span>
+                        <div class="blog-text">
+                            Something weird is happening with the site code. Images keep getting corrupted. My brother says it's just a server error, but it looks creepy.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">October 31, 2014</span>
+                        <div class="blog-text">
+                            Happy Halloween! We changed the theme to dark mode. I wanted to add a jumpscare script but my brother said it's too mean.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">November 5, 2014</span>
+                        <div class="blog-text">
+                            I found a file called "bear5.exe" in our project folder. I didn't put it there. Bro says he didn't either. It's just a picture of a weird bear running.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry">
+                        <span class="blog-date">November 10, 2014</span>
+                        <div class="blog-text">
+                            The computer turned on by itself last night. The static noise woke me up. I'm gonna delete the site soon, this is getting weird.
+                        </div>
+                        <div class="blog-author">- Peashooter321</div>
+                    </div>
+
+                    <div class="blog-entry" style="border-bottom:none; border: 2px solid red; padding:10px;">
+                        <span class="blog-date" style="color:red; font-weight:bold;">Updated: November 13, 2014</span>
+                        <div class="blog-text" style="color:#fff;">
+                            I managed to recover the file. My brother disappeared after watching it. If you see <b>Bear5</b> in the static, turn off your monitor immediately.
+                            <br><br>
+                            Also, check out my cool draggable stickers below xD
+                        </div>
+                        <div class="blog-author" style="color:red;">- Peashooter321</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="height:350px; position:relative; background:#111; border:2px dashed #333; margin-bottom:20px; overflow:hidden;" id="sticker-wall">
+                <div class="sticker" style="top:30px; left:40px; transform:rotate(-5deg);" onmousedown="dragElem(event, this)">
+                    <img src="https://i.pinimg.com/736x/9e/87/21/9e87213a690cefe8b82c12315a40ec33.jpg">
+                    GIR!
+                </div>
+                <div class="sticker" style="top:100px; right:60px; transform:rotate(8deg);" onmousedown="dragElem(event, this)">
+                    <img src="https://i.pinimg.com/736x/a7/69/07/a76907637884cf0d4ef4cdf340c970df.jpg">
+                    PEW PEW
+                </div>
+                <div class="sticker" style="bottom:50px; left:100px; transform:rotate(-2deg);" onmousedown="dragElem(event, this)">
+                    <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg">
+                    Real Gangster
+                </div>
+            </div>
+
+            <div style="border:5px groove #666; padding:2px; background:black;">
+                <div style="background:#8a0303; color:white; font-weight:bold; text-align:center;">ARCHIVED_FOOTAGE.MP4</div>
+                <iframe width="100%" height="320" src="https://www.youtube.com/embed/ApRbFxiTWh0?autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <h3 style="background:#333; color:white; padding:5px; margin-top:30px; text-align:center;">Community Forum</h3>
+            <div class="forum-container" id="forum-feed">
+                </div>
+
         </div>
-      </td>
 
-      <td class="content">
-        <h2 class="section-title">Описание</h2>
-        <p class="desc">Смешные видео от Стаса. Жми плей и смотри прямо здесь!</p>
+        <div class="col">
+            <div class="brutal-box">
+                <div class="box-title">SHOUTBOX</div>
+                <div style="height:150px; overflow-y:scroll; background:#000; padding:5px; font-family:'Verdana'; font-size:11px; color:#aaa;">
+                    <span style="color:lime;">xX_Slayer_xX:</span> Anyone wanna play COD?<br>
+                    <span style="color:cyan;">Peashooter321:</span> Can't, grounded.<br>
+                    <span style="color:pink;">EmoGirl99:</span> School sucks.<br>
+                    <span style="color:red;">Bear5:</span> ...<br>
+                    <span style="color:red;">Bear5:</span> ...<br>
+                    <span style="color:#555;">[System]:</span> Server Reset.<br>
+                </div>
+            </div>
 
-        <div class="separator"><img src="https://www.animatedimages.org/data/media/562/animated-fire-divider-image-0012.gif" alt="divider"></div>
-
-        <h2 class="section-title">Сборка видео</h2>
-        <div class="player-wrap">
-          <div class="frame-aspect">
-            <iframe src="https://www.youtube.com/embed/ApRbFxiTWh0" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="video-title">STANISLAV_VIDEO_PLUS_RECORDING.mp4</div>
+            <div class="brutal-box">
+                <div class="box-title">GALLERY</div>
+                <div class="pic-wall">
+                    <img src="https://i.pinimg.com/1200x/d1/0c/a0/d10ca07e0e999310b0cb0802b64a988a.jpg"> <img src="https://i.pinimg.com/736x/20/39/22/2039222143448c04ac49ee57ff4476e8.jpg"> <img src="https://i.pinimg.com/736x/27/20/11/272011497baca695e8e4e58ad62f47e0.jpg"> <img src="https://i.pinimg.com/1200x/4b/10/7a/4b107a5af938ce07108fe0a0f33c813d.jpg"> <img src="https://i.pinimg.com/736x/55/ad/16/55ad165dd4a2fb3d503de784837bc855.jpg"> <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg"> </div>
+            </div>
         </div>
 
-        <div class="thumbs">
-          <img src="assets/thumb-1.gif" alt="thumb1">
-          <img src="assets/thumb-2.gif" alt="thumb2">
-          <img src="assets/thumb-3.gif" alt="thumb3">
-          <img src="assets/thumb-4.gif" alt="thumb4">
-          <img src="assets/thumb-5.gif" alt="thumb5">
-          <img src="assets/thumb-6.gif" alt="thumb6">
-        </div>
+    </div>
 
-        <div class="separator"><img src="https://www.animatedimages.org/data/media/562/animated-fire-divider-image-0012.gif" alt="divider"></div>
+    <footer style="text-align:center; padding:20px; border-top:5px solid #333; margin-top:20px; color:#555;">
+        &copy; 2014 Peashooter321 & Brother. Made with Notepad.
+    </footer>
 
-        <!-- БЛОК ГАЛЕРЕИ ГИФОВ ОСТАВЛЯЮ, ЧТОБЫ БЫЛО КАК РАНЬШЕ -->
-        <h2 class="section-title">Мои любимые GIF</h2>
-        <div class="thumbs">
-          <img src="https://i.pinimg.com/originals/4c/1f/4c/4c1f4c6e7c9a9a7e7d1a4a35f7b3d1c2.gif" alt="FNaF Animatronic">
-          <img src="https://data.textstudio.com/output/sample/animated/7/8/4/4/2014-2-14487.gif" alt="2014">
-          <img src="https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/8688491/hiE5vMs.gif" alt="Old Internet">
-          <img src="https://static.wikia.nocookie.net/459d3c11-125b-4459-821d-7509c6f0edb1/scale-to-width/755" alt="Retro">
-          <img src="https://static.wikia.nocookie.net/fivenightsatfreddys/images/a/ac/C4F1D75C-2CB5-4A88-96CB-2FFF8C8B305A.gif" alt="Freddy">
-          <img src="https://media3.giphy.com/media/IRFQYGCokErS0/giphy.gif" alt="Skeleton Dance">
-        </div>
-
-        <!-- БЛОК ПРО FLASH УДАЛЁН ПО ТВОЕЙ ПРОСЬБЕ -->
-        <!--
-        <h2 class="section-title">Flash Websites</h2>
-        <p class="desc">Flash-сайты открывали мир мультимедиа в браузере, но грузились целую вечность на старых Pentium!</p>
-        <img src="https://preview.redd.it/jc0wp2ahf2n81.jpg?width=640&auto=webp" alt="Old FNAF Poster" width="300">
-        -->
-      </td>
-    </tr>
-  </table>
-
-  <div class="footer">
-    © STANISLAV VIDEO PLUS, 2014 ✦ Счётчик: <span class="counter" id="counter">000000</span> ✦ <span class="blink">Best viewed in IE 6.0</span>
-  </div>
 </div>
-
-<div class="adbar">
-  <img src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" alt="Banner">
-</div>
-
-<div class="sticker">UNDER CONSTRUCTION <span class="blink">⚠</span></div>
 
 <script>
-  const key='svp_counter';
-  const el=document.getElementById('counter');
-  let n=parseInt(localStorage.getItem(key)||'1024',10)+Math.floor(Math.random()*3);
-  localStorage.setItem(key,String(n));
-  el.textContent=String(n).padStart(6,'0');
+    // 1. SOUND INIT
+    function initSite() {
+        var btn = document.getElementById('audio-btn');
+        btn.remove();
+        var amb = document.getElementById('ambience');
+        amb.volume = 0.2; amb.play();
+    }
+
+    // 2. GENERATE FORUM MESSAGES
+    window.onload = function() {
+        const forumFeed = document.getElementById('forum-feed');
+        if(!forumFeed) return;
+
+        const users = [
+            {name: "Peashooter321", color: "orange"}, {name: "xX_Slayer_xX", color: "red"},
+            {name: "GamerGirl14", color: "pink"}, {name: "NoobMaster69", color: "lime"},
+            {name: "ShadowHunter", color: "purple"}, {name: "MinecraftSteve", color: "cyan"}
+        ];
+        const bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
+
+        // Initial Real Chats
+        const realChats = [
+            {u:0, t:"Dude, did you finish the math homework? Mrs. Johnson is gonna kill me."},
+            {u:1, t:"Nah man, I was playing Halo 3 all night. Legendary difficulty is impossible."},
+            {u:3, t:"Lol you guys are noobs. I finished it in homeroom."},
+            {u:2, t:"Anyone heard about the new FNAF 2 trailer? It looks so scary."},
+            {u:0, t:"Yeah! Toy Chica looks weird though. Why does she take her beak off?"},
+            {u:4, t:"My dad works at Scottgames, he says there is a secret purple guy animatronic."},
+            {u:1, t:"Liar. Your dad works at McDonalds."},
+            {u:5, t:"Join my server! IP: 192.168.0.1"},
+            {u:0, t:"Wait, my computer is acting weird. The screen keeps flickering."}
+        ];
+
+        function createPost(user, text, date) {
+            let div = document.createElement('div'); div.className = 'post-row';
+            let avaHTML = user.isBear ? `<img src="${bear5Src}" class="avatar-img">` : `<div class="avatar-circle" style="background:${user.color};">${user.name[0]}</div>`;
+            div.innerHTML = `<div class="post-author"><b>${user.name}</b><br>${avaHTML}Posts: ${Math.floor(Math.random()*500)}</div><div class="post-body"><span class="post-date">Posted: ${date}</span>${text}<div class="sig-line">________________<br>Sent from Windows XP</div></div>`;
+            forumFeed.appendChild(div);
+        }
+
+        realChats.forEach(chat => createPost(users[chat.u], chat.t, "Oct 2014"));
+        for(let i=0; i<40; i++) {
+            let user = users[Math.floor(Math.random() * users.length)];
+            let topics = ["Lag.", "Lol.", "Who wants to play?", "FNAF is cool.", "Sub to my channel.", "Rekt.", "Glitch?"];
+            createPost(user, topics[Math.floor(Math.random() * topics.length)], "Nov 2014");
+        }
+        const endChats = [
+            {u:0, t:"Okay seriously, who uploaded 'bear5.png' to the server? It's messing up the layout."},
+            {u:1, t:"Not me."}, {u:0, t:"It's staring at me. I can't delete it."}, {u:0, t:"HELP"}
+        ];
+        endChats.forEach(chat => createPost(users[chat.u], chat.t, "13 Nov 2014"));
+        for(let i=0; i<15; i++) { createPost({name: "Bear5", color: "red", isBear: true}, "I AM COMING", "NOW"); }
+    };
+
+    // 3. DRAGGABLE LOGIC
+    var zIndex = 1;
+    function dragElem(e, el) {
+        e.preventDefault(); zIndex++; el.style.zIndex = zIndex;
+        var startX = e.clientX, startY = e.clientY;
+        var rect = el.getBoundingClientRect();
+        var offsetX = startX - rect.left, offsetY = startY - rect.top;
+        var zone = document.getElementById('sticker-wall').getBoundingClientRect();
+        function move(e) { el.style.left = (e.clientX - zone.left - offsetX) + 'px'; el.style.top = (e.clientY - zone.top - offsetY) + 'px'; }
+        function stop() { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', stop); }
+        document.addEventListener('mousemove', move); document.addEventListener('mouseup', stop);
+    }
+
+    // 4. BEAR5 APOCALYPSE TRIGGER
+    function unleashBear5() {
+        var body = document.body;
+        var scream = document.getElementById('scream');
+        var amb = document.getElementById('ambience');
+        
+        amb.pause(); scream.volume = 1.0; scream.currentTime = 0; scream.play();
+        body.classList.add('BEAR5_MODE');
+        
+        // 1. Change ALL images to Bear5
+        var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
+        var allImages = document.getElementsByTagName('img');
+        for(var i=0; i<allImages.length; i++) {
+            allImages[i].src = bear5Src;
+            allImages[i].style.filter = "contrast(150%)"; // Сделать ярче
+        }
+
+        // 2. Change Text
+        var textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        var node;
+        while(node = textNodes.nextNode()) { if(node.nodeValue.trim() !== "") { node.nodeValue = "BEAR5 "; } }
+        
+        // 3. Force overrides
+        document.querySelector('h1').innerText = "BEAR 5";
+        document.querySelector('.status-strip').innerText = "STATUS: RUN RUN RUN";
+        
+        var stickers = document.querySelectorAll('.sticker');
+        stickers.forEach(s => { s.style.background = "red"; s.style.color = "black"; });
+    }
 </script>
 </body>
 </html>
