@@ -3,583 +3,2788 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1400">
-<title>Peashooter321 /// SERVER_ROOT [2014]</title>
+<title>Peashooter321's Homepage!!! lol [2014]</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-    /* =========================================
-       0. CORE STYLES
-       ========================================= */
-    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=Black+Ops+One&family=Rock+Salt&family=Verdana&display=swap');
 
-    :root {
-        --void-black: #020202;
-        --blood-red: #8a0303;
-        --matrix-green: #00ff00;
-        --dirty-white: #cdcdcd;
-    }
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+:root {
+  --bg:        #080808;
+  --bg2:       #0d0d0d;
+  --panel:     #0f0f0f;
+  --panel-hdr: #111111;
+  --border:    #1c1c1c;
+  --border2:   #242424;
+  --text:      #cccccc;
+  --text-lo:   #999999;
+  --text-hi:   #ffffff;
+  --text-w:    #ffffff;
+  --dim:       #888888;
+  --red:       #d12222;
+  --red-hi:    #ff3333;
+  --accent:    #444444;
+}
 
-    * { box-sizing: border-box; }
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    body {
-        margin: 0; padding: 0;
-        background-color: #000;
-        color: var(--dirty-white);
-        font-family: 'Verdana', sans-serif;
-        font-size: 12px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        cursor: crosshair; 
-    }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+  animation: bg-breathe 40s ease-in-out infinite;
+}
 
-    a { 
-        color: #ffff00; text-decoration: none; font-weight: bold; 
-        background: #000; padding: 2px; border: 1px solid #333;
-    }
-    a:hover { 
-        background: var(--blood-red); color: #fff; 
-        box-shadow: 3px 3px 0 #fff; border-color: #fff;
-        cursor: help;
-    }
+@keyframes bg-breathe {
+  0%, 100% { background-color: #080808; }
+  25%       { background-color: #0a0606; }
+  50%       { background-color: #080808; }
+  75%       { background-color: #060608; }
+}
 
-    /* =========================================
-       1. BACKGROUND
-       ========================================= */
-    #universe {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10;
-        background: radial-gradient(circle at center, #050505 0%, #000 100%);
-        overflow: hidden;
-        transition: opacity 0.5s ease;
-    }
+::-webkit-scrollbar       { width: 4px; background: #080808; }
+::-webkit-scrollbar-thumb { background: #1c1c1c; }
 
-    .star-field {
-        position: absolute; width: 2px; height: 2px; background: white;
-        box-shadow: 100px 200px #fff, 400px 500px #fff, 700px 100px #fff, 1500px 800px #fff;
-        animation: space-drift 120s linear infinite; opacity: 0.8;
-    }
-    .star-field:nth-child(2) {
-        width: 3px; height: 3px; opacity: 0.4; animation-duration: 200s;
-        box-shadow: 200px 300px #888, 500px 800px #888, 900px 100px #888;
-    }
+a { color: var(--dim); text-decoration: none; border-bottom: 1px solid #333; transition: color .2s; }
+a:hover { color: var(--text-hi); border-bottom-color: #777; background: none; padding: 0; }
 
-    .bg-ghost {
-        position: absolute; opacity: 0; pointer-events: none;
-        animation: ghost-float 25s infinite linear;
-        filter: blur(4px) grayscale(100%) invert(0.8);
-        mix-blend-mode: screen;
-    }
+strong { color: var(--text-hi); font-weight: normal; }
+em     { color: var(--dim); font-style: normal; }
 
-    @keyframes space-drift { from { transform: translateY(0); } to { transform: translateY(-2000px); } }
-    @keyframes ghost-float { 
-        0% { transform: translate(0, 100vh) scale(0.8); opacity: 0; } 
-        20% { opacity: 0.2; } 
-        80% { opacity: 0.2; } 
-        100% { transform: translate(50px, -100px) scale(1.2); opacity: 0; } 
-    }
+/* ============================================================
+   BACKGROUND LAYER — static grain
+   ============================================================ */
+#bg-stage {
+  position: fixed; inset: 0; z-index: -20;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-shift 120s linear infinite;
+}
+@keyframes grid-shift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
 
-    #crt-noise {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
-        opacity: 0.04; pointer-events: none; z-index: 9000;
-        mix-blend-mode: overlay;
-    }
+.floater {
+  position: absolute; opacity: 0; pointer-events: none;
+  animation: float-up linear infinite;
+  filter: brightness(0.4);
+  mix-blend-mode: screen;
+}
+@keyframes float-up {
+  0%   { transform: translateY(110vh); opacity: 0; }
+  8%   { opacity: .2; }
+  90%  { opacity: .2; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
 
-    /* =========================================
-       2. LAYOUT
-       ========================================= */
-    #main-container {
-        max-width: 1350px; margin: 30px auto;
-        border: 6px solid #444;
-        background: rgba(15, 15, 15, 0.96);
-        box-shadow: 0 0 60px rgba(0,0,0,0.9);
-        padding: 5px;
-    }
+/* ============================================================
+   OVERLAYS
+   ============================================================ */
+#scanlines {
+  position: fixed; inset: 0; z-index: 9990; pointer-events: none;
+  background: repeating-linear-gradient(0deg,
+    transparent, transparent 3px,
+    rgba(0,0,0,.15) 3px, rgba(0,0,0,.15) 4px);
+}
+#glitch-flash {
+  position: fixed; inset: 0; z-index: 9995; pointer-events: none;
+  opacity: 0; background: #fff; transition: opacity .04s;
+}
+#red-wash {
+  position: fixed; inset: 0; z-index: 9994; pointer-events: none;
+  opacity: 0; background: #3a0000; transition: opacity .8s;
+}
 
-    header {
-        background: url('https://i.pinimg.com/originals/2b/3d/34/2b3d3432329676736730644440000000.gif') repeat-x bottom #000;
-        border-bottom: 5px solid var(--blood-red);
-        padding: 30px; text-align: center; margin-bottom: 15px;
-    }
-    
-    h1 {
-        font-family: 'Black Ops One', cursive; font-size: 72px; color: #fff; margin: 0;
-        text-shadow: 4px 4px 0 #8a0303, -2px -2px 0 #000; 
-        text-transform: uppercase; letter-spacing: 6px;
-    }
+/* ============================================================
+   EYE POPUP WINDOW
+   ============================================================ */
+#eye-window {
+  position: fixed;
+  background: #000;
+  border: 1px solid #1c1c1c;
+  z-index: 99997;
+  display: none;
+  width: 220px;
+}
+#eye-window-bar {
+  background: #111;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #aaa;
+  cursor: move;
+  user-select: none;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+}
+#eye-close {
+  color: #777;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 2px;
+  transition: color .2s;
+}
+#eye-close:hover { color: #fff; }
+#eye-window img {
+  width: 100%;
+  display: block;
+}
 
-    .status-strip {
-        background: #111; border: 2px inset #444; color: #aaa;
-        font-family: 'VT323'; font-size: 22px; padding: 6px; text-align: right;
-        margin-bottom: 10px;
-    }
+/* ============================================================
+   SYSTEM ERROR WINDOWS
+   ============================================================ */
+.err-win {
+  position: fixed;
+  background: #0d0d0d;
+  border: 1px solid #1c1c1c;
+  z-index: 99990;
+  width: 340px;
+  font-family: 'Share Tech Mono', monospace;
+  display: none;
+}
+.err-bar {
+  background: #111;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #aaa;
+  cursor: move;
+  user-select: none;
+  letter-spacing: 2px;
+}
+.err-x {
+  color: #777; cursor: pointer; font-size: 11px;
+  padding: 0 3px; transition: color .15s;
+}
+.err-x:hover { color: var(--text-hi); }
+.err-body {
+  padding: 16px 16px;
+  color: #ccc;
+  font-size: 11px;
+  line-height: 1.8;
+  border-bottom: 1px solid #161616;
+}
+.err-body strong { color: #fff; }
+.err-foot {
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.err-btn {
+  background: #111;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 4px 14px;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: .15s;
+}
+.err-btn:hover { background: #171717; color: #fff; border-color: #555; }
 
-    .layout-grid { display: grid; grid-template-columns: 260px 1fr 280px; gap: 10px; }
-    .col { padding: 5px; }
+/* ============================================================
+   SCREAMER / FULLSCREEN FLASH
+   ============================================================ */
+#screamer-overlay {
+  position: fixed; inset: 0; z-index: 999999;
+  background: #000; display: none;
+  justify-content: center; align-items: center; cursor: pointer;
+}
+#screamer-overlay img {
+  max-width: 90%; max-height: 90%;
+  filter: contrast(1.3);
+  animation: scr-shake .06s infinite;
+}
+@keyframes scr-shake {
+  0%   { transform: translate(0,0); }
+  25%  { transform: translate(-4px, 3px); }
+  50%  { transform: translate(4px,-3px); }
+  75%  { transform: translate(-3px, 4px); }
+  100% { transform: translate(3px,-2px); }
+}
 
-    .brutal-box {
-        background: #0a0a0a; border: 4px ridge #555; margin-bottom: 20px; 
-        padding: 10px; position: relative;
-    }
-    .box-title {
-        background: #333; color: white; padding: 4px; font-weight: bold; text-align: center;
-        border: 2px outset #666; margin-bottom: 12px; font-family: 'Special Elite'; 
-        text-transform: uppercase; letter-spacing: 2px;
-    }
+/* ============================================================
+   HORROR ROOMS
+   ============================================================ */
+.room {
+  display: none; position: fixed; inset: 0; z-index: 99980;
+  background: #000; overflow-y: auto; padding: 40px;
+  flex-direction: column; align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+}
+.room.active { display: flex; }
 
-    /* =========================================
-       3. BLOG / LOG STYLES
-       ========================================= */
-    .blog-container {
-        height: 400px; overflow-y: scroll; 
-        background: #000; border: 2px inset #555; padding: 10px;
-    }
-    
-    .blog-entry {
-        margin-bottom: 20px; border-bottom: 1px dashed #333; padding-bottom: 15px;
-    }
-    .blog-date {
-        color: #ff00ff; font-family: 'VT323'; font-size: 18px; margin-bottom: 5px; display: block;
-    }
-    .blog-text {
-        color: #ddd; font-family: 'Verdana'; font-size: 12px; line-height: 1.5;
-    }
-    .blog-author {
-        color: #888; font-size: 10px; font-style: italic; margin-top: 5px; text-align: right;
-    }
+.room-close {
+  position: fixed; top: 16px; right: 20px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 5px 12px; cursor: pointer;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  letter-spacing: 2px; transition: .2s;
+}
+.room-close:hover { color: #fff; border-color: #777; }
 
-    /* =========================================
-       4. FORUM STYLES
-       ========================================= */
-    .forum-container {
-        border: 3px solid #555; background: #000; margin-top: 20px;
-        height: 400px; overflow-y: scroll; border-right: 15px solid #333;
-        display: block; 
-    }
-    
-    .post-row { display: flex; border-bottom: 1px solid #333; min-height: 100px; }
-    .post-row:nth-child(even) { background: #0e0e0e; }
+.room-title {
+  font-family: 'VT323', monospace; font-size: 42px;
+  color: #ccc; letter-spacing: 6px;
+  margin-bottom: 30px; text-align: center;
+  animation: title-drift 8s ease-in-out infinite;
+}
+@keyframes title-drift {
+  0%,100% { opacity: .9; }
+  50%     { opacity: .5; }
+}
 
-    .post-author {
-        width: 140px; background: #151515; padding: 10px; text-align: center;
-        border-right: 1px solid #333; color: #999; font-size: 11px;
-    }
-    .avatar-circle {
-        width: 60px; height: 60px; border-radius: 50%; 
-        margin: 5px auto; display: flex; align-items: center; justify-content: center;
-        font-size: 24px; font-weight: bold; color: #000; border: 2px solid #555;
-    }
-    .avatar-img { width: 60px; height: 60px; border: 2px solid #f00; object-fit: cover; }
-    .post-body { flex: 1; padding: 15px; color: #ccc; font-size: 12px; line-height: 1.5; }
-    .post-date { font-size: 9px; color: #555; margin-bottom: 5px; display: block; }
-    .sig-line { margin-top: 20px; border-top: 1px dashed #444; padding-top: 5px; color: #555; font-style: italic; font-size: 10px; }
+.room-text {
+  max-width: 620px; color: #ccc;
+  font-size: 13px; line-height: 2.2; text-align: center;
+  letter-spacing: 1px;
+}
+.room-image {
+  max-width: 380px; width: 100%;
+  border: 1px solid #333;
+  margin: 25px 0;
+}
+.room-nav { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
+.room-btn {
+  background: #000; border: 1px solid #333;
+  color: #ccc; padding: 7px 18px;
+  cursor: pointer; font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; transition: .15s;
+}
+.room-btn:hover { border-color: #666; color: #fff; }
 
-    /* =========================================
-       5. CONTENT WIDGETS
-       ========================================= */
-    .pic-wall { display: flex; flex-direction: column; gap: 10px; padding-right: 5px; }
-    .pic-wall img { width: 100%; border: 3px solid #fff; transition: 0.2s; filter: grayscale(0.5); }
-    .pic-wall img:hover { filter: grayscale(0); border-color: var(--blood-red); transform: scale(1.05); }
+/* SAD SATAN — nothing */
+#room-sadsatan {
+  background: #000; cursor: none;
+  justify-content: center; align-items: center;
+}
+#room-sadsatan img {
+  max-width: 420px; width: 80vw;
+  filter: brightness(0.85);
+}
 
-    .sticker {
-        position: absolute; cursor: grab; padding: 5px; background: #fff; color: #000;
-        border: 1px solid #000; box-shadow: 4px 4px 0 rgba(0,0,0,0.8);
-        font-family: 'Rock Salt'; font-size: 10px; text-align: center;
-        transition: transform 0.1s;
-    }
-    .sticker img { pointer-events: none; width: 100%; max-width: 140px; display: block; }
+/* CAMERA room */
+#room-camera { background: #000; cursor: none; }
+.cam-ui {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0,255,0,.025) 2px, rgba(0,255,0,.025) 4px);
+}
+.cam-label {
+  position: absolute;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; color: rgba(0,200,0,.6); letter-spacing: 2px;
+}
 
-    /* HIDDEN TRIGGER (INNOCENT LOOKING) */
-    .hidden-trigger-box {
-        text-align: center; margin-top: 20px; 
-        border: 2px solid #444; padding: 10px; background: #080808;
-    }
-    .hidden-trigger-img {
-        width: 100%; max-width: 150px; cursor: pointer; filter: grayscale(0.5);
-        transition: 0.3s;
-    }
-    .hidden-trigger-img:hover {
-        filter: grayscale(0) contrast(1.2); transform: scale(1.05);
-    }
+/* FRAME ROOM */
+#room-frames { background: #000; }
+.frame-box {
+  width: 80%; max-width: 560px; min-height: 320px;
+  border: 1px solid #222;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
 
-    /* =========================================
-       6. BEAR5 APOCALYPSE MODE
-       ========================================= */
-    body.BEAR5_MODE {
-        filter: sepia(100%) saturate(1000%) hue-rotate(-50deg) contrast(150%);
-        background: #300 !important;
-        overflow-y: scroll !important; 
-    }
-    
-    body.BEAR5_MODE #main-container {
-        animation: swim 3s infinite ease-in-out;
-        border-color: #000;
-    }
+/* VOID */
+#room-void {
+  background: #000; justify-content: center; cursor: none;
+}
+.void-text {
+  font-size: 12px; color: #333333; text-align: center;
+  max-width: 380px; line-height: 3; letter-spacing: 3px;
+  transition: color 4s;
+}
+#room-void:hover .void-text { color: #777777; }
 
-    body.BEAR5_MODE #universe {
-        background: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp') no-repeat center center !important;
-        background-size: cover !important;
-        opacity: 1 !important;
-    }
-    body.BEAR5_MODE .star-field,
-    body.BEAR5_MODE .bg-ghost { display: none !important; }
+/* NOVEMBER 13 */
+#room-nov13 { background: #000; justify-content: center; }
+.nov-date { font-family: 'VT323', monospace; font-size: 80px; color: #444; letter-spacing: 10px; animation: nov-flicker 6s infinite; }
+@keyframes nov-flicker {
+  0%,85%,100%{opacity:.6;}
+  87%{opacity:.2;}
+  88%{opacity:.6;}
+  90%{opacity:.1;}
+  91%{opacity:.5;}
+}
+.nov-sub { font-size: 12px; color: #666; letter-spacing: 5px; margin-top: 10px; }
 
-    body.BEAR5_MODE #crt-noise { opacity: 0.2; mix-blend-mode: hard-light; }
+/* DO NOT READ */
+#room-donotread { background: #0c0c0c; justify-content: center; }
+.dnr-block {
+  max-width: 580px; font-size: 13px; color: #0c0c0c;
+  line-height: 2.4; letter-spacing: 2px; text-align: center;
+  transition: color 2s; cursor: default;
+}
+#room-donotread:hover .dnr-block { color: #993333; }
 
-    body.BEAR5_MODE, body.BEAR5_MODE a, body.BEAR5_MODE div {
-        cursor: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp'), auto !important; 
-    }
+/* LOOP */
+#room-loop { background: #000; justify-content: center; }
 
-    @keyframes swim {
-        0% { transform: skew(0deg) translate(0,0); }
-        25% { transform: skew(2deg) translate(5px, 0); }
-        50% { transform: skew(-1deg) translate(0, 5px); }
-        75% { transform: skew(1deg) translate(-5px, 0); }
-        100% { transform: skew(0deg) translate(0,0); }
-    }
+/* RECOVERY */
+#room-recovery { background: #080808; font-family: 'Share Tech Mono', monospace; }
+.rec-log {
+  background: #000; border: 1px solid #222;
+  padding: 12px; font-size: 11px; color: #888;
+  max-height: 240px; overflow-y: auto; line-height: 1.9;
+  width: 100%; max-width: 600px;
+}
+.rec-bar-track { background: #0a0a0a; border: 1px solid #222; height: 4px; width: 100%; max-width: 600px; margin: 8px 0; }
+.rec-bar-fill   { height: 100%; background: #444; width: 0%; transition: width .4s; }
+
+/* TRAP — no exit */
+#room-trap {
+  display: none; position: fixed; inset: 0; z-index: 999990;
+  background: #000; justify-content: center; align-items: center;
+}
+#room-trap.active { display: flex; }
+#room-trap img { max-width: 55vw; max-height: 80vh; filter: brightness(0.6); }
+#trap-exit {
+  position: fixed; bottom: 8px; right: 10px;
+  font-size: 9px; color: rgba(80,80,80,.3);
+  cursor: pointer; font-family: 'Share Tech Mono', monospace;
+  opacity: 0; transition: opacity 3s; letter-spacing: 1px;
+}
+#trap-exit:hover { color: rgba(150,150,150,.5); }
+
+/* STATIC room */
+#room-static { background: #000; justify-content: center; }
+.static-overlay {
+  position: fixed; inset: 0; pointer-events: none;
+  animation: static-anim .08s steps(1) infinite;
+}
+@keyframes static-anim {
+  0%  { opacity: .04; }
+  50% { opacity: .07; }
+  100%{ opacity: .03; }
+}
+
+/* THE BROTHER */
+#room-brother { background: #000; }
+
+/* ============================================================
+   BEAR5 LOADING
+   ============================================================ */
+#b5-bar {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: #000; border: 1px solid #222;
+  padding: 10px 22px;
+  font-size: 11px; color: #888;
+  z-index: 99900; display: none;
+  min-width: 300px; text-align: center;
+  letter-spacing: 2px;
+}
+#b5-track { background: #0a0a0a; border: 1px solid #222; height: 3px; margin-top: 6px; }
+#b5-fill  { height: 100%; width: 0%; background: #6a0000; transition: width .4s; }
+
+/* ============================================================
+   GHOST DRIFT
+   ============================================================ */
+.ghost-msg {
+  position: fixed; pointer-events: none; z-index: 9992;
+  font-size: 13px; color: rgba(120,30,30,.7);
+  white-space: nowrap; letter-spacing: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  animation: ghost-move 11s linear forwards;
+}
+@keyframes ghost-move {
+  0%   { opacity: 0; transform: translateX(105vw); }
+  8%   { opacity: 1; }
+  90%  { opacity: .6; }
+  100% { opacity: 0; transform: translateX(-20vw); }
+}
+
+/* Blood micro-drops */
+.bdrop {
+  position: fixed; pointer-events: none; z-index: 9993;
+  width: 2px; background: #6a0000;
+  border-radius: 0 0 2px 2px;
+  animation: bdrop-fall linear forwards;
+}
+@keyframes bdrop-fall {
+  0%   { top: -10px; opacity: .8; }
+  100% { top: 110vh;  opacity: 0; }
+}
+
+/* ============================================================
+   MAIN WRAP
+   ============================================================ */
+#main-wrap {
+  max-width: 1400px; margin: 10px auto;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  position: relative;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  padding: 28px 22px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: #0b0b0b;
+  position: relative;
+  overflow: hidden;
+}
+.site-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 62px; color: #666;
+  display: inline-block; position: relative;
+  letter-spacing: 2px;
+}
+.title-ghost {
+  position: absolute; inset: 0;
+  color: #333;
+  animation: t-haunt 12s infinite; opacity: 0;
+}
+@keyframes t-haunt {
+  0%,90%,100%{opacity:0;transform:translateX(0);}
+  91%{opacity:.4;transform:translateX(-3px);clip-path:polygon(0 20%,100% 20%,100% 45%,0 45%);}
+  92%{opacity:.2;transform:translateX(3px);clip-path:polygon(0 55%,100% 55%,100% 80%,0 80%);}
+  93%{opacity:0;}
+}
+.site-subtitle {
+  font-family: 'VT323', monospace;
+  font-size: 18px; color: #555; letter-spacing: 10px; margin-top: 4px;
+}
+.header-meta {
+  margin-top: 10px; display: flex; justify-content: center; gap: 7px; flex-wrap: wrap;
+}
+.header-tag {
+  font-size: 10px; color: #777; border: 1px solid #222;
+  padding: 2px 8px; letter-spacing: 1px;
+}
+.mood-row {
+  margin-top: 8px; font-size: 10px; color: #666;
+  display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.px-stripe {
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+    var(--border) 0 12px, transparent 12px 24px);
+}
+.marquee-bar {
+  background: #080808; border-top: 1px solid #111; border-bottom: 1px solid #111;
+  padding: 5px 0; overflow: hidden; white-space: nowrap;
+  font-family: 'VT323', monospace; font-size: 15px; color: #555;
+}
+.marquee-inner { display: inline-block; animation: m-go 45s linear infinite; }
+@keyframes m-go { from{transform:translateX(100vw);} to{transform:translateX(-100%);} }
+
+/* ============================================================
+   STATUS STRIP
+   ============================================================ */
+.sts {
+  background: #090909; border-bottom: 1px solid var(--border);
+  padding: 5px 13px; display: flex; justify-content: space-between;
+  align-items: center; font-family: 'VT323', monospace; font-size: 17px; color: #777;
+}
+.sts-off { color: #8a1111; animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.layout-grid {
+  display: grid; grid-template-columns: 280px 1fr 300px;
+  gap: 1px; padding: 1px;
+  background: var(--border);
+}
+.col { background: var(--panel); display: flex; flex-direction: column; gap: 1px; }
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+.panel {
+  background: var(--panel);
+  border: none;
+  position: relative;
+}
+.panel-title {
+  background: var(--panel-hdr);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 11px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #888; display: flex; align-items: center; gap: 6px;
+}
+.panel-body { padding: 11px; }
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+.admin-photo {
+  width: 100%; display: block;
+  border: 1px solid var(--border);
+  filter: brightness(0.85);
+  transition: filter .4s;
+}
+.admin-photo:hover { filter: brightness(1); }
+
+.profile-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+.profile-table td { padding: 4px 5px; border-bottom: 1px solid #111; }
+.profile-table td:first-child { color: #777; font-size: 10px; width: 36%; }
+.p-gone { color: #9a2222; font-style: italic; animation: blink 3s infinite; }
+
+.skill-bars { margin-top: 10px; }
+.skill-row { margin-bottom: 5px; }
+.skill-label { display: flex; justify-content: space-between; font-size: 10px; color: #888; margin-bottom: 2px; }
+.skill-track { background: #0a0a0a; border: 1px solid #111; height: 4px; }
+.skill-fill   { height: 100%; background: #444; }
+.skill-fill.bad { background: #6a1111; }
+
+.interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 8px; }
+.int-item {
+  background: #0d0d0d; border: 1px solid #111;
+  padding: 5px; font-size: 10px; color: #888;
+  display: flex; align-items: center; gap: 4px; letter-spacing: .5px;
+}
+.int-item:hover { color: #aaa; border-color: #222; }
+
+.loc-box {
+  background: #0a0a0a; border: 1px solid #111;
+  padding: 7px; font-size: 10px; color: #666; margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav-list { list-style: none; }
+.nav-list li { border-bottom: 1px solid #111; }
+.nav-list li a {
+  display: flex; align-items: center; gap: 8px; padding: 8px 11px;
+  color: #888; border-bottom: none; font-size: 10px; letter-spacing: 1px;
+  transition: .15s;
+}
+.nav-list li a:hover { color: var(--text-w); padding-left: 16px; background: #0d0d0d; }
+.nav-del { text-decoration: line-through; color: #444 !important; }
+.nav-ano { color: #555 !important; animation: blink 4s infinite; }
+
+/* ============================================================
+   FILE EXPLORER
+   ============================================================ */
+.fex { background: #080808; border: 1px solid var(--border); font-size: 11px; }
+.fex-bar { background: #0d0d0d; padding: 4px 9px; color: #777; font-size: 10px; letter-spacing: 1px; border-bottom: 1px solid #111; }
+.fex-item {
+  padding: 5px 10px; cursor: pointer; color: #888;
+  display: flex; align-items: center; gap: 6px; transition: .1s;
+  border-bottom: 1px solid #0d0d0d;
+}
+.fex-item:hover { background: #0d0d0d; color: #aaa; }
+.fex-bad { color: #8a1111 !important; animation: f-flicker 6s infinite; }
+@keyframes f-flicker { 0%,85%,100%{opacity:1;} 88%{opacity:.2;} 92%{opacity:.7;} }
+
+/* ============================================================
+   MUSIC PLAYER
+   ============================================================ */
+.mplayer { background: #080808; border: 1px solid var(--border); padding: 10px; }
+.m-now { font-family: 'VT323', monospace; font-size: 17px; color: #999; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.m-sub { font-size: 10px; color: #666; margin-top: 2px; letter-spacing: 1px; }
+.m-controls { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
+.m-btn {
+  background: #0d0d0d; border: 1px solid #222;
+  color: #888; padding: 3px 8px; cursor: pointer;
+  font-family: 'VT323', monospace; font-size: 18px; transition: .1s;
+}
+.m-btn:hover { background: #111; color: var(--text-w); }
+.m-time { font-family: 'VT323', monospace; font-size: 16px; color: #777; margin-left: auto; }
+
+/* ============================================================
+   BEAR5 TRIGGER
+   ============================================================ */
+.b5-trigger {
+  padding: 10px; border: 1px solid #111;
+  background: #0a0a0a; text-align: center;
+  cursor: pointer; position: relative; transition: .4s;
+}
+.b5-trigger:hover { border-color: #222; background: #0d0d0d; }
+.b5-img {
+  width: 100%; max-width: 150px; display: block; margin: 0 auto;
+  filter: brightness(0.85); transition: filter .4s;
+}
+.b5-trigger:hover .b5-img { filter: brightness(1); }
+.b5-cap { font-size: 10px; color: #555; margin-bottom: 5px; letter-spacing: 1px; }
+
+/* ============================================================
+   METER
+   ============================================================ */
+.b5-meter { background: #080808; border: 1px solid #111; padding: 8px; margin-top: 1px; }
+.b5-m-head { display: flex; justify-content: space-between; font-size: 10px; color: #777; margin-bottom: 4px; letter-spacing: 1px; }
+.b5-m-track { background: #060606; border: 1px solid #111; height: 3px; }
+.b5-m-fill  { height: 100%; background: #6a0000; width: 0%; transition: width .6s; }
+.b5-m-warn  { font-size: 10px; color: #8a1111; margin-top: 3px; letter-spacing: 1px; }
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+.blog-scroll { max-height: 520px; overflow-y: scroll; padding-right: 2px; }
+.blog-entry { padding: 12px 0; border-bottom: 1px solid #111; }
+.blog-date   { font-family: 'VT323', monospace; font-size: 16px; color: #888; display: block; margin-bottom: 3px; }
+.blog-text   { color: var(--text); line-height: 1.8; font-size: 12px; }
+.blog-author { text-align: right; font-size: 10px; color: #666; margin-top: 5px; font-style: italic; }
+.blog-entry.dark { border: 1px solid #2a0000; background: #0c0000; padding: 10px; margin: 4px 0; }
+.blog-entry.dark .blog-date { color: #8a1111; }
+.blog-entry.dark .blog-text { color: #aa5555; }
+
+.hl-box { background: #0a0a0a; border-left: 2px solid #222; padding: 7px 10px; margin: 7px 0; font-size: 12px; color: #bbb; }
+
+/* ============================================================
+   STICKER WALL
+   ============================================================ */
+.sticker-wall {
+  position: relative; height: 300px;
+  background: #090909; border: 1px solid #111; overflow: hidden; margin-bottom: 1px;
+}
+.sw-hint { position: absolute; bottom: 7px; right: 8px; font-size: 10px; color: #444; letter-spacing: 1px; }
+
+.sticker {
+  position: absolute; cursor: grab;
+  background: #e8e8e8; color: #1a1a1a;
+  border: 1px solid #bbb;
+  padding: 6px; max-width: 125px;
+  font-family: 'Permanent Marker', cursive; font-size: 8px;
+  text-align: center; z-index: 10; user-select: none;
+  filter: brightness(0.95);
+  transition: filter .3s;
+}
+.sticker:hover { filter: brightness(1.05); }
+.sticker:active { cursor: grabbing; }
+.sticker img { width: 100%; display: block; pointer-events: none; margin-bottom: 3px; }
+.sticker .st-txt { font-size: 8px; line-height: 1.3; }
+
+/* ============================================================
+   TV
+   ============================================================ */
+.tv-outer {
+  position: relative; background: #080808;
+  border: 6px solid #111;
+  padding: 12px 12px 28px;
+  margin-bottom: 1px;
+}
+.tv-bezel { text-align: center; margin-bottom: 6px; font-size: 10px; color: #555; letter-spacing: 3px; }
+.tv-screen { position: relative; background: #000; border: 2px solid #111; overflow: hidden; }
+.tv-screen::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.1) 3px, rgba(0,0,0,.1) 4px);
+}
+.tv-btm { position: absolute; bottom: 6px; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
+.tv-led { width: 6px; height: 6px; border-radius: 50%; background: #4a0000; animation: blink 3s infinite; }
+.tv-lbl { font-size: 10px; color: #555; letter-spacing: 2px; }
+
+/* ============================================================
+   FORUM
+   ============================================================ */
+.forum-box {
+  border: 1px solid var(--border); background: #090909;
+  max-height: 500px; overflow-y: scroll;
+}
+.f-header {
+  background: #0d0d0d; border-bottom: 1px solid var(--border);
+  padding: 5px 10px; font-size: 10px; color: #666;
+  display: grid; grid-template-columns: 125px 1fr 80px;
+  letter-spacing: 1px;
+}
+.post-row { display: flex; border-bottom: 1px solid #0f0f0f; min-height: 78px; }
+.post-row:nth-child(even) { background: rgba(255,255,255,.01); }
+.post-row.bear-post { background: #0a0000; border-color: #1a0000; }
+.post-author-col {
+  width: 125px; flex-shrink: 0; padding: 8px; text-align: center;
+  border-right: 1px solid #0f0f0f; background: rgba(0,0,0,.3);
+}
+.p-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  margin: 3px auto; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; color: #000; border: 1px solid #222;
+}
+.p-av-img { width: 42px; height: 42px; object-fit: cover; border: 1px solid #2a0000; filter: brightness(0.85); }
+.p-name  { font-size: 10px; color: #999; margin-bottom: 2px; }
+.p-rank  { font-size: 9px;  color: #777; letter-spacing: 1px; }
+.p-count { font-size: 9px;  color: #555; }
+.post-body-col { flex: 1; padding: 9px 12px; font-size: 11px; line-height: 1.7; color: var(--text); }
+.p-when { font-size: 10px; color: #666; margin-bottom: 5px; display: block; }
+.p-sig  { margin-top: 10px; padding-top: 4px; border-top: 1px solid #0f0f0f; font-size: 10px; color: #555; font-style: italic; }
+
+/* Twitter meme box */
+.tweet-box {
+  background: #0a0a0a; border: 1px solid #222; border-radius: 2px;
+  padding: 10px 12px; margin: 7px 0; max-width: 380px;
+  filter: brightness(0.85);
+}
+.tw-head { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
+.tw-name { font-size: 11px; color: #999; }
+.tw-handle { font-size: 10px; color: #666; }
+.tw-img { width: 100%; border-radius: 1px; margin-top: 7px; }
+.tw-foot { font-size: 10px; color: #555; margin-top: 6px; }
+
+/* ============================================================
+   CHAT
+   ============================================================ */
+.chat-msgs {
+  height: 175px; overflow-y: scroll; background: #080808;
+  border: 1px solid var(--border); padding: 7px; font-size: 11px; line-height: 1.8;
+}
+.chat-line { padding: 1px 0; border-bottom: 1px solid #0d0d0d; }
+.c-name { color: #999; }
+.c-txt  { color: var(--text); }
+.c-time { color: #666; font-size: 10px; float: right; }
+.bear-chat .c-name { color: #8a1111; }
+.bear-chat .c-txt  { color: #aa5555; }
+.chat-form { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+.c-name-in, .c-msg-in {
+  background: #080808; border: 1px solid #222;
+  color: var(--text); padding: 5px 7px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; outline: none;
+}
+.c-name-in { width: 90px; }
+.c-name-in:focus, .c-msg-in:focus { border-color: #444; }
+.c-msg-in { flex: 1; }
+.c-send {
+  background: #0d0d0d; border: 1px solid #222;
+  color: #888; padding: 5px 10px; cursor: pointer;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; transition: .15s;
+}
+.c-send:hover { background: #111; color: var(--text-w); }
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.gal-grid img {
+  width: 100%; border: 1px solid #111;
+  filter: brightness(0.8) contrast(1.1);
+  transition: .3s; cursor: pointer; display: block;
+}
+.gal-grid img:hover { filter: brightness(1); }
+
+/* ============================================================
+   GUESTBOOK
+   ============================================================ */
+.gb-entries {
+  max-height: 220px; overflow-y: scroll; background: #080808;
+  border: 1px solid var(--border); padding: 7px; font-size: 11px; margin-bottom: 6px;
+}
+.gb-entry { padding: 6px 0; border-bottom: 1px solid #0f0f0f; }
+.gb-from { color: #999; font-size: 10px; }
+.gb-msg  { color: var(--text); margin-top: 2px; line-height: 1.5; }
+.gb-date { color: #666; font-size: 10px; float: right; }
+
+/* ============================================================
+   GUESTBOOK INPUT / CONTACT FIELDS
+   ============================================================ */
+.cf {
+  width: 100%; background: #080808; border: 1px solid #222;
+  color: var(--text); padding: 6px 7px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  outline: none; display: block; margin-bottom: 5px;
+}
+.cf:focus { border-color: #444; }
+textarea.cf { resize: vertical; min-height: 65px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  text-align: center; padding: 16px;
+  border-top: 1px solid var(--border);
+  color: #666; font-size: 10px; letter-spacing: 2px;
+  background: #090909; position: relative;
+}
+.f-br { color: #555; cursor: pointer; transition: color .3s; }
+.f-br:hover { color: #8a2222; }
+.web-badges { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
+.wb { font-size: 10px; padding: 1px 6px; border: 1px solid #222; color: #555; letter-spacing: 1px; }
+
+/* Hidden 1×1 portal to Sad Satan — placed inside footer */
+#sad-portal {
+  position: absolute; bottom: 0; left: 0;
+  width: 1px; height: 1px;
+  opacity: 0; cursor: default;
+  background: transparent;
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 99970;
+  background: rgba(0,0,0,.95); justify-content: center; align-items: center; cursor: zoom-out;
+}
+#lightbox.active { display: flex; }
+#lightbox img { max-width: 86%; max-height: 86%; filter: brightness(0.9); border: 1px solid #222; }
+
+/* ============================================================
+   MEME POPUP
+   ============================================================ */
+#meme-popup {
+  position: fixed; bottom: 18px; right: 18px;
+  z-index: 99985; display: none;
+  background: #000; border: 1px solid #222;
+  padding: 8px;
+}
+.mp-bar { font-size: 10px; color: #777; margin-bottom: 4px; display: flex; justify-content: space-between; letter-spacing: 1px; }
+.mp-x  { color: #666; cursor: pointer; font-size: 12px; transition: color .2s; }
+.mp-x:hover { color: #aaa; }
+#meme-popup img { width: 190px; display: block; filter: brightness(0.85); }
+
+/* ============================================================
+   REPLACE-ALL button (hidden until triggered)
+   ============================================================ */
+#replace-btn {
+  display: none; position: fixed; bottom: 7px; left: 7px;
+  z-index: 99000; background: #000; border: 1px solid #222;
+  color: #777; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  padding: 3px 8px; cursor: pointer; letter-spacing: 1px;
+}
+#replace-btn:hover { color: #aaa; border-color: #555; }
+
+/* ============================================================
+   SECRET MSG
+   ============================================================ */
+.sec-msg { color: #333; font-size: 9px; cursor: default; letter-spacing: 1px; }
+.sec-msg:hover { color: #8a0000; }
+
+/* ============================================================
+   BEAR5 FULL MODE (BLOOD RED + SPOTS)
+   ============================================================ */
+body.B5 { 
+    filter: sepia(100%) saturate(1000%) hue-rotate(-50deg) contrast(150%);
+    background: #3a0000 !important; 
+    overflow-y: scroll !important;
+}
+body.B5 #bg-stage {
+    background: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp') repeat center center !important;
+    background-size: cover !important;
+    opacity: 1 !important;
+}
+body.B5 .bg-grid, body.B5 .floater { display: none !important; }
+body.B5 #main-wrap { border-color: #000; animation: swim 3s infinite ease-in-out; }
+body.B5, body.B5 a, body.B5 div {
+    cursor: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp'), auto !important;
+}
+@keyframes swim {
+    0% { transform: skew(0deg) translate(0,0); }
+    25% { transform: skew(2deg) translate(5px, 0); }
+    50% { transform: skew(-1deg) translate(0, 5px); }
+    75% { transform: skew(1deg) translate(-5px, 0); }
+    100% { transform: skew(0deg) translate(0,0); }
+}
+
+/* ============================================================
+   SCREEN CRACK SVG
+   ============================================================ */
+#screen-crack { position:fixed;inset:0;z-index:9996;pointer-events:none;opacity:0;transition:opacity .15s; }
+#screen-crack.show { opacity:1; }
 
 </style>
 </head>
 <body>
 
-<button id="audio-btn" onclick="initSite()" style="position:fixed; top:0; left:0; width:100%; height:100%; opacity:0; z-index:99999; cursor:crosshair;">CLICK TO START</button>
-
-<audio id="ambience" loop>
-    <source src="https://www.soundjay.com/mechanical/sounds/computer-fan-1.mp3" type="audio/mpeg">
+<audio id="amb" loop>
+  <source src="scary-ambience_joAjSPC.mp3" type="audio/mpeg">
 </audio>
-<audio id="scream" loop>
-    <source src="https://www.myinstants.com/media/sounds/fnaf-scream.mp3" type="audio/mpeg">
+<audio id="snd-scream">
+  <source src="scary-violins-sound-effect.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-glitch">
+  <source src="integrity-curious-moonglitch-ogg.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-demonic">
+  <source src="demonic-audio.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-steps">
+  <source src="silent-hill-3-footsteps.mp3" type="audio/mpeg">
 </audio>
 
-<div id="crt-noise"></div>
+<button id="start-btn" onclick="initSite()" style="
+  position:fixed;inset:0;width:100%;height:100%;
+  opacity:0;z-index:999998;cursor:default;
+  background:transparent;border:none;"></button>
 
-<div id="universe">
-    <div class="star-field"></div>
-    <div class="star-field"></div>
-    <img class="bg-ghost" src="https://i.pinimg.com/originals/11/73/11/1173111f04ec6e8afb8a4126294b1207.gif" style="left:20%; width:150px; animation-delay:0s;">
-    <img class="bg-ghost" src="https://i.pinimg.com/1200x/d7/f3/79/d7f379f60547ca2b14ee0088df775e16.jpg" style="right:10%; width:300px; animation-duration:40s; animation-delay:5s;">
-    <img class="bg-ghost" src="https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp" style="left:50%; width:200px; animation-duration:15s; animation-delay:10s;">
+<div id="bg-stage">
+  <div class="bg-grid"></div>
+  <img class="floater" src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+       style="left:8%;width:170px;animation-duration:40s;animation-delay:0s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg"
+       style="left:54%;width:130px;animation-duration:56s;animation-delay:11s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/1200x/bf/63/6f/bf636ff2b10a3496da37a98f61c301bf.jpg"
+       style="right:10%;width:185px;animation-duration:46s;animation-delay:5s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/736x/74/23/1e/74231ebe6286e8a2446404b0a21ad939.jpg"
+       style="left:31%;width:150px;animation-duration:65s;animation-delay:20s;" alt="">
 </div>
 
-<div id="main-container">
-    
-    <header>
-        <div style="position:absolute; top:10px; right:10px; font-size:10px; color:#555;">[ SYSTEM_ID: 11-13-14 ]</div>
-        <h1>Peashooter321</h1>
-        <div style="color:#aaa; letter-spacing:8px; margin-top:5px; font-family:'VT323'; font-size:24px;">/// SERVER_ROOT ///</div>
-    </header>
+<div id="scanlines"></div>
+<div id="glitch-flash"></div>
+<div id="red-wash"></div>
 
-    <div class="status-strip">
-        STATUS: <span style="color:red; font-weight:bold;">OFFLINE</span> | LAST SEEN: 13 NOV 2014 | VISITORS: <span style="color:red; background:#000; padding:2px 8px;">1567</span>
-    </div>
+<svg id="screen-crack" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 700 0 L 620 200 L 750 350 L 560 600 L 680 900" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+  <path d="M 700 0 L 780 150 L 650 280 L 820 500" stroke="rgba(255,255,255,0.1)" stroke-width=".8" fill="none"/>
+  <path d="M 620 200 L 500 260 L 420 340" stroke="rgba(255,255,255,0.08)" stroke-width=".6" fill="none"/>
+</svg>
 
-    <div class="layout-grid">
-        
-        <div class="col">
-            <div class="brutal-box">
-                <div class="box-title">ADMIN_PROFILE</div>
-                <img src="https://i.pinimg.com/736x/2d/35/18/2d35180b0381859a6a87eff8310cb26f.jpg" style="width:100%; border:2px solid #ccc;">
-                <br><br>
-                <b>Nick:</b> Peashooter321<br>
-                <b>Age:</b> 15 (in 2014)<br>
-                <b>Mood:</b> <span style="color:#444;">[GONE]</span>
-            </div>
-
-            <div class="brutal-box">
-                <div class="box-title">MENU</div>
-                <ul style="list-style:square; padding-left:20px; line-height:2;">
-                    <li><a href="#">HOME PAGE</a></li>
-                    <li><a href="#">FORUM</a></li>
-                    <li><a href="#" style="text-decoration:line-through; color:#555;">MY SERVER</a></li>
-                    <li><a href="#" style="color:red;">BEAR5.EXE</a></li>
-                </ul>
-            </div>
-
-            <div class="hidden-trigger-box">
-                <div style="font-size:10px; color:#666; margin-bottom:5px;">My Fav Character:</div>
-                <img src="https://i.pinimg.com/736x/59/9f/1b/599f1bbc3fe2882a3ece6930bd75ba75.jpg" class="hidden-trigger-img" title="Freddy?" onclick="unleashBear5()">
-            </div>
-        </div>
-
-        <div class="col">
-            
-            <div class="brutal-box" style="border-color:#555;">
-                <div class="box-title">UPDATES_LOG.TXT</div>
-                <div class="blog-container">
-                    
-                    <div class="blog-entry">
-                        <span class="blog-date">June 1, 2014</span>
-                        <div class="blog-text">
-                            YES! Summer break is finally here! Me and my bro are gonna make this the best website ever. We learned HTML in school. I'm gonna post all my Halo clips here.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">June 15, 2014</span>
-                        <div class="blog-text">
-                            Added a music player but it broke the layout lol. Bro fixed it. He's way better at CSS than me. We are trying to beat Halo 3 on Legendary co-op. It's impossible.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">June 28, 2014</span>
-                        <div class="blog-text">
-                            Stayed up all night playing Minecraft. We built a huge castle. My eyes hurt. Also, I think I saw a Herobrine fake mod on the server.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">July 4, 2014</span>
-                        <div class="blog-text">
-                            Happy 4th! Went to see fireworks. Ate too many hotdogs. Site update: added more red colors because red is cool.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">July 20, 2014</span>
-                        <div class="blog-text">
-                            We bought Portal 2! The co-op is hilarious. My brother keeps dropping me in the acid on purpose. "For science" he says. Jerk. xD
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">August 2, 2014</span>
-                        <div class="blog-text">
-                            (Bro here) Just optimized the images. Site should load faster now. Also, Peashooter sucks at Portal. Just saying.
-                        </div>
-                        <div class="blog-author">- Brother</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">August 15, 2014</span>
-                        <div class="blog-text">
-                            Guys... have you seen the trailer for "Five Nights at Freddy's"? It looks crazy. Some guy played it on YouTube. I dare my brother to play it.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">August 28, 2014</span>
-                        <div class="blog-text">
-                            School starts in 3 days. NOOOOO. I don't wanna go back. Math is gonna be torture. 
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">September 10, 2014</span>
-                        <div class="blog-text">
-                            Homework sucks. I barely have time to code. But I added some cool stickers to the site! You can drag them around! Check it out!
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">September 25, 2014</span>
-                        <div class="blog-text">
-                            We finally played FNAF. I screamed so loud my mom got mad. My brother pretended not to be scared but he was totally shaking lol.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">October 12, 2014</span>
-                        <div class="blog-text">
-                            Something weird is happening with the site code. Images keep getting corrupted. My brother says it's just a server error, but it looks creepy.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">October 31, 2014</span>
-                        <div class="blog-text">
-                            Happy Halloween! We changed the theme to dark mode. I wanted to add a jumpscare script but my brother said it's too mean.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">November 5, 2014</span>
-                        <div class="blog-text">
-                            I found a file called "bear5.exe" in our project folder. I didn't put it there. Bro says he didn't either. It's just a picture of a weird bear running.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry">
-                        <span class="blog-date">November 10, 2014</span>
-                        <div class="blog-text">
-                            The computer turned on by itself last night. The static noise woke me up. I'm gonna delete the site soon, this is getting weird.
-                        </div>
-                        <div class="blog-author">- Peashooter321</div>
-                    </div>
-
-                    <div class="blog-entry" style="border-bottom:none; border: 2px solid red; padding:10px;">
-                        <span class="blog-date" style="color:red; font-weight:bold;">Updated: November 13, 2014</span>
-                        <div class="blog-text" style="color:#fff;">
-                            I managed to recover the file. My brother disappeared after watching it. If you see <b>Bear5</b> in the static, turn off your monitor immediately.
-                            <br><br>
-                            Also, check out my cool draggable stickers below xD
-                        </div>
-                        <div class="blog-author" style="color:red;">- Peashooter321</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div style="height:350px; position:relative; background:#111; border:2px dashed #333; margin-bottom:20px; overflow:hidden;" id="sticker-wall">
-                <div class="sticker" style="top:30px; left:40px; transform:rotate(-5deg);" onmousedown="dragElem(event, this)">
-                    <img src="https://i.pinimg.com/736x/9e/87/21/9e87213a690cefe8b82c12315a40ec33.jpg">
-                    GIR!
-                </div>
-                <div class="sticker" style="top:100px; right:60px; transform:rotate(8deg);" onmousedown="dragElem(event, this)">
-                    <img src="https://i.pinimg.com/736x/a7/69/07/a76907637884cf0d4ef4cdf340c970df.jpg">
-                    PEW PEW
-                </div>
-                <div class="sticker" style="bottom:50px; left:100px; transform:rotate(-2deg);" onmousedown="dragElem(event, this)">
-                    <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg">
-                    Real Gangster
-                </div>
-            </div>
-
-            <div style="border:5px groove #666; padding:2px; background:black;">
-                <div style="background:#8a0303; color:white; font-weight:bold; text-align:center;">ARCHIVED_FOOTAGE.MP4</div>
-                <iframe width="100%" height="320" src="https://www.youtube.com/embed/ApRbFxiTWh0?autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-
-            <h3 style="background:#333; color:white; padding:5px; margin-top:30px; text-align:center;">Community Forum</h3>
-            <div class="forum-container" id="forum-feed">
-                </div>
-
-        </div>
-
-        <div class="col">
-            <div class="brutal-box">
-                <div class="box-title">SHOUTBOX</div>
-                <div style="height:150px; overflow-y:scroll; background:#000; padding:5px; font-family:'Verdana'; font-size:11px; color:#aaa;">
-                    <span style="color:lime;">xX_Slayer_xX:</span> Anyone wanna play COD?<br>
-                    <span style="color:cyan;">Peashooter321:</span> Can't, grounded.<br>
-                    <span style="color:pink;">EmoGirl99:</span> School sucks.<br>
-                    <span style="color:red;">Bear5:</span> ...<br>
-                    <span style="color:red;">Bear5:</span> ...<br>
-                    <span style="color:#555;">[System]:</span> Server Reset.<br>
-                </div>
-            </div>
-
-            <div class="brutal-box">
-                <div class="box-title">GALLERY</div>
-                <div class="pic-wall">
-                    <img src="https://i.pinimg.com/1200x/d1/0c/a0/d10ca07e0e999310b0cb0802b64a988a.jpg"> <img src="https://i.pinimg.com/736x/20/39/22/2039222143448c04ac49ee57ff4476e8.jpg"> <img src="https://i.pinimg.com/736x/27/20/11/272011497baca695e8e4e58ad62f47e0.jpg"> <img src="https://i.pinimg.com/1200x/4b/10/7a/4b107a5af938ce07108fe0a0f33c813d.jpg"> <img src="https://i.pinimg.com/736x/55/ad/16/55ad165dd4a2fb3d503de784837bc855.jpg"> <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg"> </div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer style="text-align:center; padding:20px; border-top:5px solid #333; margin-top:20px; color:#555;">
-        &copy; 2014 Peashooter321 & Brother. Made with Notepad.
-    </footer>
-
+<div id="screamer-overlay" onclick="closeScreamer()">
+  <img id="screamer-img" src="" alt="">
 </div>
 
-<script>
-    // 1. SOUND INIT
-    function initSite() {
-        var btn = document.getElementById('audio-btn');
-        btn.remove();
-        var amb = document.getElementById('ambience');
-        amb.volume = 0.2; amb.play();
+<div id="eye-window" style="top:180px;left:260px;">
+  <div id="eye-window-bar" onmousedown="dragWin(event,'eye-window')">
+    <span style="letter-spacing:2px;">process</span>
+    <span id="eye-close" onclick="closeEyeWindow()">✕</span>
+  </div>
+  <img src="https://i.pinimg.com/originals/86/96/70/86967094d6d688c111cdc809df9aa975.gif" alt="">
+</div>
+
+<div class="err-win" id="err1" style="top:200px;left:300px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err1')">
+    <span>FILE INTEGRITY CHECK — FAILED</span>
+    <span class="err-x" onclick="closeErr('err1')">✕</span>
+  </div>
+  <div class="err-body">
+    File: <strong>[REDACTED]</strong><br>
+    Size: <strong>0 bytes / ∞ bytes</strong><br>
+    Created: <strong>—</strong><br>
+    Modified: <strong>NEVER</strong><br><br>
+    Windows cannot verify this file.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err1')">OK</button>
+    <button class="err-btn" onclick="closeErr('err1')">Cancel</button>
+  </div>
+</div>
+
+<div class="err-win" id="err2" style="top:240px;left:410px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err2')">
+    <span>CONNECTION — TIMEOUT</span>
+    <span class="err-x" onclick="closeErr('err2')">✕</span>
+  </div>
+  <div class="err-body">
+    Host: <strong>PEASHOOTER321_ROOT</strong><br>
+    Last response: <strong>NOV 13, 2014  23:47:02</strong><br><br>
+    Elapsed since last packet: <strong id="days-gone">—</strong><br><br>
+    The remote host has not responded.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err2')">Retry</button>
+  </div>
+</div>
+
+<div class="err-win" id="err3" style="top:310px;left:200px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err3')">
+    <span>ACCESS DENIED</span>
+    <span class="err-x" onclick="closeErr('err3')">✕</span>
+  </div>
+  <div class="err-body">
+    You do not have permission to perform this operation.<br><br>
+    The file cannot be moved.<br>
+    The file cannot be copied.<br>
+    The file cannot be closed.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err3')">OK</button>
+  </div>
+</div>
+
+<div class="err-win" id="err4" style="top:175px;left:340px;width:380px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err4')">
+    <span>WINDOWS — UNHANDLED EXCEPTION</span>
+    <span class="err-x" onclick="closeErr('err4')">✕</span>
+  </div>
+  <div class="err-body">
+    An unhandled exception occurred at <strong>0xDEAD0013</strong>.<br><br>
+    Process: <strong>[REDACTED].exe</strong><br>
+    Memory usage: <strong>UNDEFINED</strong><br><br>
+    This process cannot be terminated.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err4')">Close</button>
+    <button class="err-btn" onclick="moreErrors()">Report</button>
+  </div>
+</div>
+
+<div class="err-win" id="err5" style="top:230px;left:245px;width:360px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err5')">
+    <span>ANOMALOUS SESSION DETECTED</span>
+    <span class="err-x" onclick="closeErr('err5')">✕</span>
+  </div>
+  <div class="err-body">
+    This page was last accessed: <strong>NOV 13, 2014</strong><br><br>
+    It has not been offline since then.<br><br>
+    No administrator account is active.<br>
+    The site is maintaining itself.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err5')">Understood</button>
+  </div>
+</div>
+
+<div class="err-win" id="err6" style="top:260px;left:390px;width:350px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err6')">
+    <span>DISK READ ERROR</span>
+    <span class="err-x" onclick="closeErr('err6')">✕</span>
+  </div>
+  <div class="err-body">
+    Sector: <strong>47</strong><br>
+    Bad blocks detected: <strong>∞</strong><br><br>
+    Data recovery is not possible.<br>
+    The sector has been marked as unreadable since <strong>Nov 2014</strong>.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err6')">Skip</button>
+  </div>
+</div>
+
+<div id="b5-bar">
+  <span id="b5-txt">process running...</span>
+  <div id="b5-track"><div id="b5-fill"></div></div>
+</div>
+
+<button id="replace-btn" onclick="replaceAllText()">replace all</button>
+
+<div class="room" id="room-0">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div class="room-title">S T A T I C</div>
+  <img class="room-image" src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif" alt="">
+  <div class="room-text">
+    You found the file.<br>
+    We tried to delete it.<br>
+    It keeps coming back.<br><br>
+    On November 13th, the static started.<br>
+    My brother opened it.<br><br>
+    <span style="color:#aaa;">He said it was just a GIF.</span><br><br>
+    <span style="font-size:11px;color:#888;letter-spacing:3px;">Look at the frames.<br>Count them.<br>Don't stop at 7.</span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-brother')">continue</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">the file</button>
+  </div>
+</div>
+
+<div class="room" id="room-brother">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div class="room-title">T H E   B R O T H E R</div>
+  <img class="room-image" src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" alt="">
+  <div class="room-text">
+    He was better at CSS than me.<br>
+    He fixed the music player when it broke the layout.<br>
+    He portal-dropped me into acid pits "for science".<br><br>
+    <span style="color:#d12222;">He watched the file for 4 minutes and 37 seconds.</span><br><br>
+    He hasn't posted since August 2, 2014.<br><br>
+    <span style="font-size:11px;color:#aaa;letter-spacing:3px;display:block;margin-top:18px;">If you know where he is,<br>leave a message in the shoutbox.<br>Use the code: <span style="color:#ff3333;">IAMHERE</span></span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-0')">back</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">the file</button>
+  </div>
+</div>
+
+<div class="room" id="room-file">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div class="room-title">T H E   F I L E</div>
+  <img class="room-image" src="https://i.pinimg.com/736x/49/84/64/498464f32bd6aeea4252b10e198cf55a.jpg" alt="">
+  <div class="room-text">
+    <span style="color:#999;font-size:11px;letter-spacing:2px;">
+    FILE: [REDACTED].exe<br>
+    CREATED: —<br>
+    MODIFIED: NEVER<br>
+    SIZE: 0 bytes / ∞ bytes
+    </span><br><br>
+    It runs in a loop.<br>
+    The loop has no end.<br><br>
+    We tried to count the frames.<br>
+    There were too many.<br>
+    After frame 47, they stopped being what they were.<br><br>
+    <span style="font-size:11px;color:#888;letter-spacing:4px;">
+    Where did you find this.<br>
+    Why are you still here.
+    </span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-0')">back</button>
+    <button class="room-btn" onclick="changeRoom('room-hi')">?</button>
+  </div>
+</div>
+
+<div class="room" id="room-hi" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="text-align:center;margin-top:60px;">
+    <div style="font-family:'VT323',monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">HI</div>
+    <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+         style="width:260px;border:none;display:block;margin:25px auto;" alt="">
+    <div style="font-size:13px;color:#ccc;margin-top:16px;letter-spacing:4px;line-height:2.5;">
+      You weren't supposed to find this.<br>
+      <span style="color:#ff3333;">He's been here since November 13th.</span><br>
+      <span style="color:#999;font-size:11px;display:block;margin-top:20px;">
+        Close the browser.<br>Clear your cache.<br>Don't search for this.
+      </span>
+    </div>
+  </div>
+  <div class="room-nav" style="margin-top:35px;">
+    <button class="room-btn" onclick="closeRoom()">leave</button>
+  </div>
+</div>
+
+<div class="room" id="room-camera" style="background:#000;">
+  <div class="cam-ui"></div>
+  <div class="cam-label" style="top:8px;left:10px;">CAM 07</div>
+  <div class="cam-label" style="top:8px;right:10px;" id="cam-ts">00:00:00</div>
+  <div class="cam-label" style="bottom:8px;left:10px;">REC ●</div>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#1a3a1a;color:#2a6a2a;">[ disconnect ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:55px;width:100%;">
+    <div style="font-size:12px;color:rgba(0,255,0,0.9);max-width:560px;text-align:center;line-height:2.2;letter-spacing:2px;">
+      <span style="font-size:22px;display:block;margin-bottom:14px;letter-spacing:5px;">CAMERA 7</span>
+      This camera has been offline since November 13, 2014.<br>
+      Maintenance has been requested 47 times.<br>
+      No one enters the room.<br><br>
+      <span style="color:rgba(0,200,0,.8);">The camera turns itself on at 3:47 AM.</span><br>
+      <span style="color:rgba(0,180,0,.7);font-size:11px;">The feed shows a room that is not in the building.</span><br><br>
+      <span style="color:rgba(200,80,80,.9);font-size:11px;">Something has been standing in the corner for ten years.<br>We don't know if it moves when no one is watching.</span>
+    </div>
+    <img src="https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg"
+         style="max-width:320px;width:75%;border:1px solid rgba(0,255,0,.3);margin-top:22px;" alt="">
+  </div>
+</div>
+
+<div class="room" id="room-frames" style="background:#000;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="text-align:center;padding-top:30px;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div style="font-size:13px;color:#ccc;letter-spacing:4px;margin-bottom:5px;">THE FRAMES</div>
+    <div style="font-size:10px;color:#888;margin-bottom:18px;letter-spacing:2px;">frame <span id="frame-counter">1</span></div>
+    <div class="frame-box" id="frame-box">
+      <div id="frame-content" style="font-size:13px;color:#ccc;text-align:center;padding:20px;letter-spacing:2px;line-height:2;">
+        [ frame 1 ]<br><span style="font-size:11px;color:#aaa;">something running. nothing unusual.</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="room-btn" onclick="nextFrame(-1)">prev</button>
+      <button class="room-btn" onclick="nextFrame(1)">next frame</button>
+    </div>
+    <div style="font-size:10px;color:#777;margin-top:14px;max-width:480px;letter-spacing:2px;">
+      After frame 47, they stopped being what they were.
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-nov13" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <div class="nov-date">NOVEMBER 13</div>
+    <div class="nov-sub">2014</div>
+    <div style="font-size:11px;color:#aaa;letter-spacing:5px;line-height:3;margin-top:18px;">
+      THIS IS THE DATE THE SITE WENT OFFLINE<br>
+      THIS IS THE DATE THE STATIC STARTED<br>
+      THIS IS THE DATE HE OPENED IT<br>
+      <span style="color:#ff3333;">THIS IS THE DATE HE DISAPPEARED</span><br><br>
+      <span style="font-size:10px;color:#888;">23:47:02</span>
+    </div>
+    <div style="font-size:12px;color:#999;margin-top:18px;animation:blink 4s infinite;letter-spacing:3px;">
+      The time has not changed.
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-void" style="background:#000;justify-content:center;">
+  <div class="void-text">
+    you are very far from the surface now<br><br>
+    no one will find you here<br><br>
+    this is where the deleted files go<br><br>
+    <span style="color:#d12222;">he is here too</span><br><br>
+    <span style="font-size:10px;color:#777;letter-spacing:1px;">click anywhere to leave</span>
+  </div>
+  <div style="position:fixed;inset:0;cursor:pointer;z-index:0;" onclick="closeRoom()"></div>
+</div>
+
+<div class="room" id="room-donotread" style="background:#0c0c0c;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()" style="color:#777;border-color:#444;">[ close ]</button>
+  <div class="dnr-block">
+    THE PROGRAM WAS INSTALLED ON OCTOBER 31ST<br>
+    IT PRETENDED TO BE A GAME<br><br>
+    MY BROTHER FOUND IT IN THE SYSTEM32 FOLDER<br>
+    A FILE — ZERO BYTES — NO CREATION DATE<br>
+    NO AUTHOR<br><br>
+    HE OPENED IT ON NOVEMBER 12TH AT 11:47 PM<br>
+    THE SCREEN SHOWED SOMETHING RUNNING<br>
+    HE COUNTED THE FRAMES<br>
+    HE GOT TO 47<br><br>
+    I HEARD HIM STOP COUNTING<br>
+    I DID NOT GO CHECK ON HIM
+  </div>
+  <div style="margin-top:16px;font-size:10px;color:#888;letter-spacing:2px;">hover over text to read</div>
+</div>
+
+<div class="room" id="room-loop" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <div style="font-size:12px;color:#999;letter-spacing:5px;margin-bottom:20px;">THE LOOP</div>
+    <div style="font-size:12px;color:#ccc;line-height:2.4;max-width:480px;letter-spacing:2px;">
+      The GIF has no first frame.<br>
+      The GIF has no last frame.<br><br>
+      It has been running since before you found it.<br>
+      It will be running after you leave.<br><br>
+      <span style="color:#d12222;font-size:11px;">My brother asked: what happens if you let it run forever?<br>I told him I didn't know.</span>
+    </div>
+    <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+         style="width:160px;border:none;margin-top:20px;" alt="">
+    <div style="font-size:11px;color:#888;margin-top:18px;animation:blink 2.5s infinite;letter-spacing:3px;">
+      frame 1 / frame 1 / frame 1
+    </div>
+    <div class="room-nav" style="margin-top:22px;">
+      <button class="room-btn" onclick="changeRoom('room-frames')">frame 47</button>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-recovery" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()">[ abort ]</button>
+  <div style="max-width:600px;width:100%;padding-top:40px;display:flex;flex-direction:column;align-items:flex-start;">
+    <div style="font-size:12px;color:#ccc;letter-spacing:3px;margin-bottom:18px;">WINDOWS FILE RECOVERY</div>
+    <div style="font-size:11px;color:#aaa;line-height:2;margin-bottom:16px;letter-spacing:1px;">
+      An error was detected during the last session.<br>Attempting to recover corrupted files...
+    </div>
+    <div class="rec-log" id="rec-log"></div>
+    <div class="rec-bar-track"><div class="rec-bar-fill" id="rec-fill"></div></div>
+    <div id="rec-status" style="font-size:10px;color:#999;margin-top:8px;letter-spacing:2px;"></div>
+  </div>
+</div>
+
+<div class="room" id="room-warn" style="background:#080000;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#5a0000;color:#ff3333;">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:40px;gap:16px;">
+    <div style="font-size:11px;color:#ff4444;border:1px solid #aa0000;padding:12px 24px;letter-spacing:4px;text-align:center;animation:blink 2s infinite;">
+      THIS PAGE WAS NOT MEANT TO EXIST
+    </div>
+    <div style="font-size:10px;color:#d12222;border:1px solid #8a0000;padding:10px 22px;letter-spacing:3px;text-align:center;">
+      THE SERVER SHOULD HAVE DELETED THIS
+    </div>
+    <div style="font-size:10px;color:#b00000;border:1px solid #5a0000;padding:9px 20px;letter-spacing:3px;text-align:center;">
+      CLOSE YOUR BROWSER AND DO NOT RETURN
+    </div>
+    <img src="https://i.pinimg.com/736x/52/0a/f7/520af787fe27ed2b6b3b4cdafa3a46ec.jpg"
+         style="max-width:280px;width:65%;margin-top:18px;border:1px solid #aa0000;" alt="">
+    <div style="font-size:10px;color:#d12222;margin-top:14px;letter-spacing:3px;text-align:center;">
+      You were warned.<br>
+      <span style="color:#8a0000;font-size:9px;">There won't be another.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-sadsatan">
+  <img src="https://i.redd.it/ltqaqg0ukm0f1.gif" alt="">
+</div>
+
+<div id="room-trap">
+  <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
+  <span id="trap-exit" onclick="closeTrap()">leave</span>
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lb-img" src="" alt="">
+</div>
+
+<div id="meme-popup">
+  <div class="mp-bar">
+    <span>found this</span>
+    <span class="mp-x" onclick="document.getElementById('meme-popup').style.display='none'">✕</span>
+  </div>
+  <img src="https://i.pinimg.com/736x/2c/7a/7f/2c7a7f5e28ca8d42720e1963b5fae56a.jpg" alt="">
+</div>
+
+<div id="main-wrap">
+
+  <header>
+    <div style="position:absolute;top:9px;right:12px;font-size:9px;color:#777;letter-spacing:2px;">
+      [ SYSTEM_ID: 11-13-14 ] [ NODE: #321 ]
+    </div>
+    <div style="position:absolute;top:9px;left:12px;font-size:9px;color:#777;letter-spacing:2px;">
+      [ UPTIME: <span id="uptime-count">???</span> ] [ PING: <span style="color:#d12222;">TIMEOUT</span> ]
+    </div>
+    <h1 class="site-title" id="site-title">
+      Peashooter321
+      <span class="title-ghost" aria-hidden="true">Peashooter321</span>
+    </h1>
+    <div class="site-subtitle">/// My Awesome Site lol ///</div>
+    <div class="header-meta">
+      <span class="header-tag">🎮 GAMER</span>
+      <span class="header-tag">💻 HTML CODER</span>
+      <span class="header-tag">👻 FNAF FAN</span>
+      <span class="header-tag">🏒 GO HAWKS</span>
+      <span class="header-tag">🎃 2014</span>
+    </div>
+    <div class="mood-row">
+      <span>Admin: OFFLINE since Nov 13</span>
+      <span>|</span>
+      <span>Current mood: worried 🐻</span>
+      <span>|</span>
+      <span>Listening to: Linkin Park</span>
+    </div>
+  </header>
+
+  <div class="px-stripe"></div>
+
+  <div class="marquee-bar">
+    <span class="marquee-inner">
+      &nbsp;&nbsp;&nbsp;★ WELCOME TO MY SITE ★ NO COPYING MY HTML ★ FNAF IS THE SCARIEST GAME EVER ★ HALO 3 LEGENDARY GANG ★ MINECRAFT FOREVER ★ SCHOOL SUCKS ★ SIGN MY GUESTBOOK ★ LAST UPDATE: NOV 13 2014 ★ VISITORS: 1,567 ★ MADE WITH NOTEPAD ★ BEST VIEWED IN INTERNET EXPLORER ★ GO HAWKS ★ HALF-LIFE 3 WHEN?? ★ RESIDENT EVIL > EVERYTHING ★ SAD SATAN IS REAL ★ ©2014 PEASHOOTER321 ★&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <div class="sts">
+    <span>STATUS: <span class="sts-off">■ OFFLINE</span> | LAST SEEN: <strong>13 NOV 2014 — 23:47</strong></span>
+    <span>VISITORS: <span style="color:#ccc;" id="vis-count">1,567</span></span>
+    <span>[ <span id="clock-display">--:--:--</span> ] EST</span>
+  </div>
+
+  <div class="layout-grid">
+
+    <div class="col">
+
+      <div class="panel">
+        <div class="panel-title">ADMIN_PROFILE</div>
+        <div class="panel-body">
+          <img class="admin-photo" id="admin-photo" src="https://i.pinimg.com/736x/2d/35/18/2d35180b0381859a6a87eff8310cb26f.jpg" alt="">
+          <table class="profile-table">
+            <tr><td>Nick:</td><td><strong>Peashooter321</strong></td></tr>
+            <tr><td>Age:</td><td>15 (in 2014)</td></tr>
+            <tr><td>State:</td><td>Ohio, USA</td></tr>
+            <tr><td>School:</td><td>Jefferson Middle</td></tr>
+            <tr><td>Grade:</td><td>9th — Honors Math (barely)</td></tr>
+            <tr><td>Status:</td><td><span class="p-gone">[GONE]</span></td></tr>
+            <tr><td>Bro:</td><td><span id="bro-status" style="color:#888;">offline</span></td></tr>
+          </table>
+          <div class="skill-bars" style="margin-top:10px;">
+            <div style="font-size:9px;color:#aaa;margin-bottom:5px;letter-spacing:2px;">SKILLS</div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Halo 3 Legendary</span><span>91%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:91%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>HTML / CSS</span><span>67%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:67%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Counter-Strike</span><span>73%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:73%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Resident Evil (any%)</span><span>58%</span></div>
+              <div class="skill-track"><div class="skill-fill bad" style="width:58%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Not screaming (FNAF)</span><span>11%</span></div>
+              <div class="skill-track"><div class="skill-fill bad" style="width:11%;"></div></div>
+            </div>
+          </div>
+          <div class="interests-grid">
+            <div class="int-item">🎮 Xbox 360</div>
+            <div class="int-item">⛏️ Minecraft</div>
+            <div class="int-item">👻 FNAF</div>
+            <div class="int-item">🏒 Hockey</div>
+            <div class="int-item">🎵 Linkin Park</div>
+            <div class="int-item">🧟 Resident Evil</div>
+            <div class="int-item">🔫 Counter-Strike</div>
+            <div class="int-item">🌀 Portal 2</div>
+          </div>
+          <div class="loc-box" style="margin-top:7px;">
+            📍 Columbus, Ohio<br>
+            <span style="font-size:9px;">Go Blackhawks 🏒 · Est. Summer 2014</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">NAVIGATION</div>
+        <ul class="nav-list">
+          <li><a href="#" onclick="return false;">🏠 Home</a></li>
+          <li><a href="#blog-section">📝 Updates Log</a></li>
+          <li><a href="#forum-section">💬 Forum</a></li>
+          <li><a href="#gallery-section">🖼️ Gallery</a></li>
+          <li><a href="#guestbook-section">✍️ Guestbook</a></li>
+          <li><a href="#" onclick="openRoom('room-0');return false;" class="nav-del">📁 SERVER FILES</a></li>
+          <li><a href="#" onclick="return false;" class="nav-ano">— [CORRUPTED ENTRY] —</a></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">MY DOCUMENTS</div>
+        <div class="panel-body" style="padding:0;">
+          <div class="fex">
+            <div class="fex-bar">C:\Users\Peashooter\Desktop\</div>
+            <div class="fex-item">📄 halo3_clips_final.wmv</div>
+            <div class="fex-item">📄 cs_server_config.cfg</div>
+            <div class="fex-item">📄 re4_merchant_quotes.txt</div>
+            <div class="fex-item">📄 portal2_speedrun.wmv</div>
+            <div class="fex-item">📁 site_backup_aug2014\</div>
+            <div class="fex-item">📄 half_life_notes.doc</div>
+            <div class="fex-item fex-bad" onclick="openRoom('room-0')">⚠️ [CANNOT DELETE] [ACCESS DENIED]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">NOW PLAYING</div>
+        <div class="panel-body" style="padding:8px;">
+          <div class="mplayer">
+            <div class="m-now" id="now-track">Linkin Park — Numb</div>
+            <div class="m-sub" id="now-album">Album: Meteora (2003)</div>
+            <div class="m-controls">
+              <button class="m-btn" onclick="prevTrack()">⏮</button>
+              <button class="m-btn" id="play-btn" onclick="togglePlay()">▶</button>
+              <button class="m-btn" onclick="nextTrack()">⏭</button>
+              <span class="m-time" id="music-time">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="b5-trigger" onclick="unleashB5()">
+        <div class="b5-cap">my fav game character :)</div>
+        <img class="b5-img" src="https://i.pinimg.com/736x/59/9f/1b/599f1bbc3fe2882a3ece6930bd75ba75.jpg" alt="">
+        <div style="font-size:10px;color:#aaa;margin-top:4px;letter-spacing:1px;">Freddy!! 🐻</div>
+      </div>
+
+      <div class="b5-meter">
+        <div class="b5-m-head">
+          <span>SERVER ACTIVITY</span>
+          <span id="m-pct">0%</span>
+        </div>
+        <div class="b5-m-track"><div class="b5-m-fill" id="m-fill"></div></div>
+        <div class="b5-m-warn">status: <span id="m-warn">idle</span></div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <div class="panel" id="blog-section">
+        <div class="panel-title">UPDATES_LOG.TXT — <span style="opacity:.5;margin-left:3px;font-size:9px;">ENTRIES: 18</span></div>
+        <div class="panel-body">
+          <div class="blog-scroll" id="blog-scroll">
+
+            <div class="blog-entry">
+              <span class="blog-date">June 1, 2014</span>
+              <div class="blog-text">
+                YES!! Summer break starts today!! 🎉 Me and my bro are gonna make the best site ever. We learned HTML in class this year and I've been playing with CSS too. Plan is to post all my Halo clips, game reviews, and maybe a Minecraft server list. Also gonna review RE4 because I just played it for the first time and my jaw is on the floor.
+                <div class="hl-box" style="margin-top:7px;">Also — Stanley Cup Finals!! Blackhawks vs Kings. That overtime goal was the sickest thing I've ever watched.</div>
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">June 15, 2014</span>
+              <div class="blog-text">
+                Added a music player but it BROKE the entire layout. The sidebar just disappeared. I spent 3 hours trying to fix it. Bro figured it out in like 10 minutes. He's way better at CSS than me, it's so annoying.<br><br>
+                Currently trying to beat Halo 3 on Legendary co-op. We can't get past The Ark. The Flood sections make me want to throw my controller into the sun.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">June 28, 2014</span>
+              <div class="blog-text">
+                Stayed up until 4AM playing Minecraft. We built a massive castle on the server — took like a week. Bro added working portals inside it using Half-Life-style triggers. He's obsessed with Valve.<br><br>
+                Saw something weird at the edge of render distance last night. Asked bro if he put a Steve skin there. He said no. Probably just a Herobrine joke.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">July 4, 2014</span>
+              <div class="blog-text">
+                Happy Fourth!! 🇺🇸 Beat Half-Life 2 for the second time. The ending still gets me. Bro says I need to play HL1. He acts like this is an emergency.<br><br>
+                Started a Let's Play of Outlast on YouTube. That game is genuinely disturbing. Why would anyone go into that asylum willingly.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">July 20, 2014</span>
+              <div class="blog-text">
+                We bought Portal 2 on Steam for $5. The co-op is the funniest thing ever. My brother keeps dropping me into acid pits on purpose. "It's for science," he says.<br><br>
+                Also finished Halo 3 Legendary with bro!! We did it. This is the peak of gaming. Nothing will ever top this.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">August 2, 2014</span>
+              <div class="blog-text">
+                (Hey it's Bro. Pea let me write this one.)<br><br>
+                Optimized the site images. Fixed the CSS sidebar bug. You're welcome, little brother.<br><br>
+                Also: Peashooter cannot aim in CS:GO. His spray control is atrocious. He still thinks crouching helps.
+              </div>
+              <div class="blog-author">— Brother [guest post]</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">August 15, 2014</span>
+              <div class="blog-text">
+                Guys. GUYS. Have you seen the Five Nights at Freddy's trailer? Animatronics come alive and try to kill you. It looks insane. I dared bro to play it.<br><br>
+                He said "sounds easy." He will regret this.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">September 10, 2014</span>
+              <div class="blog-text">
+                We played FNAF. I screamed at 2AM and my mom came in thinking I got hurt. Bro pretended he wasn't scared but his hands were literally shaking. I have video proof.<br><br>
+                Bonnie's jumpscare is the worst thing ever put in a game.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">October 12, 2014</span>
+              <div class="blog-text">
+                Something weird is happening with the site files. Some images keep loading corrupted — not all of them, just random ones. Sometimes they show static or the wrong picture.<br><br>
+                Bro says it's probably a server cache issue. He's probably right. But it started the same week we added the forum.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">October 31, 2014</span>
+              <div class="blog-text">
+                Happy Halloween 🎃. Made the site even darker. Got a full size Snickers at the Hendersons'. Worth it.<br><br>
+                Started Resident Evil 2 for the first time. Mr. X's footsteps give me actual heart attacks.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">November 5, 2014</span>
+              <div class="blog-text">
+                Okay this is weird. I found a file in our project folder that I did NOT put there. I asked bro and he says he didn't either. It's a GIF of something running. The file is 0 bytes but it still plays. I can't delete it — it just gives an error. Tried from CMD. "Access Denied."<br><br>
+                Bro says it's probably some placeholder from our FTP client. That makes sense. Right?
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">November 10, 2014</span>
+              <div class="blog-text">
+                Something woke me up at 3AM. The computer turned itself on. I always shut it down. But there it was — running, with the desktop on and a static-y GIF playing fullscreen. I recognized it.<br><br>
+                I'm going to delete the site soon. Bro thinks I'm being paranoid.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry dark">
+              <span class="blog-date">November 13, 2014 — 11:34 PM</span>
+              <div class="blog-text">
+                I managed to get back into the site account. My brother disappeared 3 days ago. Not like he ran away. He just wasn't there in the morning. His room looked like he'd stepped out for a glass of water. Phone on the desk. Shoes by the door.<br><br>
+                The last thing he did on the computer was open that file. I know because it was still open when I got up.<br><br>
+                <strong>If you see it — the running shape — close the browser. Don't count the frames. Don't let it loop more than once.</strong><br><br>
+                I'm leaving this site up so someone can find this message.<br><br>
+                <em style="font-size:10px;color:#aaa;">Also check out my cool draggable stickers lol. He would have wanted me to keep the fun stuff.</em>
+              </div>
+              <div class="blog-author" style="color:#d12222;">— Peashooter321 [FINAL POST]</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">STICKER ZONE — <span style="font-size:9px;opacity:.5;margin-left:3px;">DRAG THEM AROUND</span></div>
+        <div class="sticker-wall" id="sticker-wall">
+          <div class="sticker" style="top:18px;left:25px;transform:rotate(-6deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/9e/87/21/9e87213a690cefe8b82c12315a40ec33.jpg" alt="">
+            <div class="st-txt">GIR is my spirit animal</div>
+          </div>
+          <div class="sticker" style="top:80px;right:40px;transform:rotate(9deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/a7/69/07/a76907637884cf0d4ef4cdf340c970df.jpg" alt="">
+            <div class="st-txt">PEW PEW 🔫</div>
+          </div>
+          <div class="sticker" style="bottom:30px;left:70px;transform:rotate(-3deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg" alt="">
+            <div class="st-txt">Real Gangster Hours</div>
+          </div>
+          <div class="sticker" style="top:25px;right:125px;transform:rotate(4deg);" onmousedown="dragSticker(event,this)" id="sticker-b5" onclick="maybeRoom(this)">
+            <img src="https://i.pinimg.com/736x/01/ad/07/01ad07b64ae1d927ea06d4e7dae69b37.jpg" alt="">
+            <div class="st-txt">cool pic bro found</div>
+          </div>
+          <div class="sticker" style="bottom:25px;right:50px;transform:rotate(-7deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/25/08/34/250834a80a634f90f06a8e186f4354b3.jpg" alt="">
+            <div class="st-txt">HALO FOREVER</div>
+          </div>
+          <div class="sticker" style="top:150px;left:160px;transform:rotate(2deg);max-width:145px;" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="">
+            <div class="st-txt">lmao found this tweet</div>
+          </div>
+          <div class="sw-hint">[ drag to move · click bear sticker 3× ]</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">ARCHIVED_FOOTAGE — <span style="font-family:'VT323',monospace;font-size:14px;opacity:.4;margin-left:3px;">CHANNEL 321</span></div>
+        <div class="panel-body">
+          <div class="tv-outer">
+            <div class="tv-bezel">TRINITRON MODEL T-321 · 1999</div>
+            <div class="tv-screen">
+              <iframe width="100%" height="285"
+                src="https://www.youtube.com/embed/ApRbFxiTWh0?rel=0&color=white&modestbranding=1"
+                title="Archived footage" frameborder="0"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <div class="tv-btm">
+              <div style="width:12px;height:12px;background:#0d0d0d;border:1px solid #111;border-radius:50%;cursor:pointer;"></div>
+              <div class="tv-lbl">CH-321 · PEASHOOTER_TV</div>
+              <div class="tv-led"></div>
+            </div>
+          </div>
+          <div style="font-size:10px;color:#888;text-align:center;letter-spacing:2px;margin-top:-5px;">
+            "my halo montage is coming soon. bro keeps losing the footage file."
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="forum-section">
+        <div class="panel-title">COMMUNITY FORUM — <span style="font-size:9px;opacity:.4;margin-left:3px;">GENERAL / GAMING</span></div>
+        <div class="panel-body" style="padding:0 10px 10px;">
+          <div class="f-header">
+            <span>USER</span><span>MESSAGE</span><span style="text-align:right;">DATE</span>
+          </div>
+          <div class="forum-box" id="forum-feed"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <div class="panel">
+        <div class="panel-title">SHOUTBOX — <span style="font-size:9px;opacity:.4;margin-left:3px;">LIVE</span></div>
+        <div class="panel-body">
+          <div class="chat-msgs" id="chat-box"></div>
+          <div class="chat-form">
+            <input class="c-name-in" id="chat-name" placeholder="Your name" maxlength="20">
+            <input class="c-msg-in" id="chat-input" placeholder="Say something..." maxlength="200" onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="c-send" onclick="sendChat()">SEND</button>
+          </div>
+          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">
+            Messages saved locally · Try typing IAMHERE
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="gallery-section">
+        <div class="panel-title">GALLERY</div>
+        <div class="panel-body">
+          <div class="gal-grid">
+            <img src="https://i.pinimg.com/1200x/d1/0c/a0/d10ca07e0e999310b0cb0802b64a988a.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/74/23/1e/74231ebe6286e8a2446404b0a21ad939.jpg"  alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/86/42/b1/8642b13623d403cc9067c2203bd10f1c.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/11/67/8a/11678ab9aec2471e0238006f783e3ba8.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/20/39/22/2039222143448c04ac49ee57ff4476e8.jpg"   alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/33/8b/1b/338b1be802b289272ef976f9681ce0c2.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/56/d6/80/56d6805b5465618d29b593d16a55da74.jpg"  alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/66/83/d1/6683d1e182387a582e0502b5bef83814.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/7a/5b/28/7a5b281cadc358131b59aeabbfb9fbcc.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/bf/63/6f/bf636ff2b10a3496da37a98f61c301bf.jpg" alt="" onclick="openLb(this.src)">
+          </div>
+          <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;letter-spacing:2px;">
+            One of these images has been replaced.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="guestbook-section">
+        <div class="panel-title">GUESTBOOK</div>
+        <div class="panel-body">
+          <div class="gb-entries" id="gb-entries"></div>
+          <input class="cf" id="gb-name" placeholder="Your name" maxlength="30">
+          <textarea class="cf" id="gb-msg" placeholder="Leave a message for Peashooter321..." rows="3" maxlength="400"></textarea>
+          <button class="c-send" style="width:100%;margin-top:1px;" onclick="submitGb()">SIGN GUESTBOOK</button>
+          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">Entries saved locally</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">ABOUT THIS SITE</div>
+        <div class="panel-body" style="font-size:11px;color:#ccc;line-height:2;">
+          Site started: <strong>June 1, 2014</strong><br>
+          Last update: <strong style="color:#d12222;">November 13, 2014</strong><br>
+          Built with: <strong>Notepad++, WinXP</strong><br>
+          Best viewed in: <strong>IE 8+</strong><br><br>
+          <span style="font-size:9px;font-style:italic;color:#999;">
+            "No part of this site may be copied.<br>
+            Except the CSS. You can take the CSS.<br>
+            Bro wrote most of it anyway."
+          </span>
+          <br><br>
+          <div class="sec-msg" onclick="revealSecret(this)">••••••••••••••••••••••••••</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">COOL LINKS</div>
+        <div class="panel-body" style="font-size:11px;line-height:2.4;color:#ccc;">
+          <a href="#" onclick="return false;">🎮 Newgrounds</a><br>
+          <a href="#" onclick="return false;">📺 PewDiePie's Channel</a><br>
+          <a href="#" onclick="return false;">🎮 Scottgames.com (FNAF)</a><br>
+          <a href="#" onclick="return false;" style="text-decoration:line-through;color:#777;">📄 Brother's Portfolio</a>
+          <span style="font-size:9px;color:#d12222;"> [404]</span><br>
+          <a href="#" onclick="openRoom('room-0');return false;" style="color:#888;font-size:10px;">
+            📁 ?????_archive.zip
+          </a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+  <footer>
+    <div class="px-stripe" style="margin-bottom:13px;"></div>
+    © 2014 Peashooter321 &amp; <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Made with Notepad++.
+    Site last active: Nov 13, 2014.
+    <div class="web-badges">
+      <span class="wb">MADE WITH NOTEPAD</span>
+      <span class="wb">IE 8+</span>
+      <span class="wb">800×600</span>
+      <span class="wb">NO FRAMES</span>
+      <span class="wb" style="cursor:pointer;" onclick="revealReplaceBtn()" title="">v1.0</span>
+    </div>
+    <div style="font-size:9px;color:#666;letter-spacing:1px;margin-top:6px;">
+      If you're reading this, try typing <span style="color:#aaa;">IAMHERE</span> into the shoutbox.
+    </div>
+    <div id="sad-portal" onclick="openRoom('room-sadsatan')"></div>
+  </footer>
+
+</div><script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const B5_GIF   = "https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif";
+const HORRORS  = [
+  "https://i.pinimg.com/736x/69/4f/b2/694fb2c4a65ba53b669a693ce2547a82.jpg",
+  "https://i.pinimg.com/736x/5c/b4/57/5cb4576a2c432ecf1403c7dfb739252a.jpg",
+  "https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg",
+  "https://i.pinimg.com/736x/52/0a/f7/520af787fe27ed2b6b3b4cdafa3a46ec.jpg",
+  "https://i.pinimg.com/736x/c2/73/b2/c273b25d21c6c273c3e7cd76ed8c3128.jpg",
+  "https://i.pinimg.com/736x/81/31/ec/8131ecf49fcd8b1f8f7bd4c940e9d03f.jpg",
+  "https://i.pinimg.com/736x/14/cb/64/14cb64a1461e7b9833734a596654e3fd.jpg",
+  "https://i.pinimg.com/736x/5f/d2/ba/5fd2baa2304b4a636f0e1973bd39e396.jpg",
+];
+const B5MSGS = [
+  "DO NOT LOOK AT CAMERA 7","HE OPENED IT AT 3:47 AM","I AM STILL IN THE FOLDER",
+  "YOU WERE NOT SUPPOSED TO FIND THIS","FRAME 47 SHOWS SOMETHING ELSE",
+  "THE LOOP HAS NO END","THE SHAPE IS RUNNING TOWARD YOU",
+  "I AM IN YOUR DOCUMENTS TOO","NOV 13 — THAT IS WHEN IT STARTED",
+  "HE SAID IT WAS JUST A GIF","STATIC IS NOT STATIC",
+  "DO NOT COUNT THE FRAMES","I WAS HERE BEFORE THE FOLDER EXISTED",
+  "HI","I SAW YOU READ THAT",
+];
+
+let b5Mode = false;
+let b5Pct  = 0;
+let s5Clicks = 0;
+let playing  = false;
+let trackIdx = 0;
+let mInterval= null;
+let mSecs    = 0;
+let frameIdx = 0;
+let trapOpen = false;
+let recStarted=false;
+let textReplaced=false;
+
+const tracks=[
+  {n:"Linkin Park — Numb",               a:"Meteora (2003)"},
+  {n:"Evanescence — Bring Me to Life",   a:"Fallen (2003)"},
+  {n:"My Chemical Romance — Welcome to the Black Parade",a:"The Black Parade (2006)"},
+  {n:"Skillet — Monster",               a:"Awake (2009)"},
+  {n:"Half-Life OST — Apprehension",    a:"Half-Life (1998)"},
+  {n:"Resident Evil 4 — Serenity",      a:"RE4 OST (2005)"},
+  {n:"[CORRUPTED] — ???",               a:"???.exe"},
+];
+
+// ============================================================
+// INIT
+// ============================================================
+function initSite(){
+  const b=document.getElementById('start-btn');
+  if(b) b.remove();
+  try{const a=document.getElementById('amb');a.volume=0.2;a.play().catch(()=>{});}catch(e){}
+  startClock(); startUptime(); startMeter(); scheduleEvents();
+  // Reveal sad-portal after being on the page 5+ minutes
+  setTimeout(()=>{
+    const p=document.getElementById('sad-portal');
+    if(p){p.style.width='12px';p.style.height='12px';}
+  }, 300000);
+}
+
+window.addEventListener('load',()=>{
+  buildForum(); loadChat(); loadGb();
+  startClock(); startUptime(); updateVis(); startMeter(); scheduleEvents();
+  makeWinDrag();
+});
+
+// ============================================================
+// CLOCK
+// ============================================================
+function startClock(){
+  const tick=()=>{
+    const n=new Date(),el=document.getElementById('clock-display');
+    if(el) el.textContent=pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+  };
+  tick(); setInterval(tick,1000);
+}
+function pad(n){return String(n).padStart(2,'0');}
+
+// ============================================================
+// UPTIME
+// ============================================================
+function startUptime(){ updateUptime(); setInterval(updateUptime,60000); }
+function updateUptime(){
+  const s=new Date('2014-11-13T23:47:00');
+  const d=Math.floor((Date.now()-s)/86400000);
+  const el=document.getElementById('uptime-count');
+  if(el) el.textContent=d.toLocaleString()+'d';
+  const dg=document.getElementById('days-gone');
+  if(dg) dg.textContent=d.toLocaleString()+' days';
+}
+
+// ============================================================
+// VISITOR COUNT
+// ============================================================
+function updateVis(){
+  let v=parseInt(localStorage.getItem('vis_c')||'1567');
+  v+=Math.floor(Math.random()*3);
+  localStorage.setItem('vis_c',v);
+  const el=document.getElementById('vis-count');
+  if(el) el.textContent=v.toLocaleString();
+}
+
+// ============================================================
+// FORUM
+// ============================================================
+function buildForum(){
+  const feed=document.getElementById('forum-feed');
+  if(!feed) return;
+  const users=[
+    {n:"Peashooter321",c:"#b06020"},
+    {n:"xX_Slayer_xX",  c:"#802020"},
+    {n:"GamerGirl14",   c:"#804060"},
+    {n:"NoobMaster69",  c:"#206040"},
+    {n:"ShadowHunter",  c:"#404070"},
+    {n:"MinecraftSteve",c:"#206060"},
+    {n:"EmoGirl99",     c:"#484848"},
+    {n:"420gamer",      c:"#486020"},
+    {n:"ItzTyler",      c:"#806020"},
+  ];
+  const ranks=["Site Admin","Senior Member","Member","Newbie","Member","Member","Member","Member","Member"];
+  const posts=[
+    {u:0,t:"Dude who finished the math homework? Mrs. Johnson is collecting it first period.",d:"Oct 4, 2014"},
+    {u:1,t:"Nah man I was up till 2AM on CS:GO.",d:"Oct 4, 2014"},
+    {u:3,t:"lol you guys are NOOBS. I did it in homeroom. Easy.",d:"Oct 4, 2014"},
+    {u:2,t:"Anyone seen the FNAF 2 trailer?? Toy Chica is TERRIFYING. Why does she take her beak off???",d:"Oct 7, 2014"},
+    {u:0,t:"RIGHT? And the Puppet is on another level. The lore goes super deep — purple guy, missing kids.",d:"Oct 7, 2014"},
+    {u:4,t:"My uncle works at Valve, says there's a real HL3 prototype running on Source 2 right now.",d:"Oct 8, 2014"},
+    {u:1,t:"Liar lmao. Your uncle works at GameStop.",d:"Oct 8, 2014"},
+    {u:5,t:"I set up a Minecraft server! IP: 192.168.0.1 port 25565. Come build a whole city.",d:"Oct 10, 2014"},
+    {u:6,t:"School is killing me. 3 tests this week. Parents took my Xbox. I hate everything.",d:"Oct 11, 2014"},
+    {u:7,t:"Resident Evil 2 is the greatest game ever made. Mr. X gives me actual nightmares.",d:"Oct 14, 2014"},
+    {u:3,t:"RE4 Merchant voice mod is the only reason to live. WHADDAYA BUYIN??",d:"Oct 14, 2014"},
+    {u:8,t:"Go Blackhawks!! That overtime goal last night was the sickest thing I've watched all year.",d:"Oct 16, 2014"},
+    {u:0,t:"HALO MCC IS COMING. EVERY HALO ON ONE DISC. NOV 11. I will not sleep for a week.",d:"Oct 20, 2014"},
+    {u:1,t:"I already pre-ordered. We're playing co-op first day, no excuses.",d:"Oct 20, 2014"},
+    {u:2,t:"can we talk about Sad Satan for a sec?? That game someone found on the dark web. The backwards audio.",d:"Oct 22, 2014",tweet:true},
+    {u:4,t:"It's real. The figure in the hallway doesn't move until you stop looking.",d:"Oct 22, 2014"},
+    {u:6,t:"I had a nightmare about Bonnie last night. And about a shape running that I couldn't stop.",d:"Oct 24, 2014"},
+    {u:7,t:"My computer is doing something weird. Static for half a second, then back. Happened 4 times today.",d:"Nov 1, 2014"},
+    {u:0,t:"Mine too. Thought it was the monitor. When did this start for you?",d:"Nov 1, 2014"},
+    {u:7,t:"Oct 26 maybe.",d:"Nov 1, 2014"},
+    {u:0,t:"...same for me. That's when I uploaded the site update.",d:"Nov 2, 2014"},
+    {u:2,t:"guys a forum link just showed me a GIF of a running shape and my cursor moved by itself for 2 seconds",d:"Nov 4, 2014"},
+    {u:1,t:"thats a RAT. someone sent you malware.",d:"Nov 4, 2014"},
+    {u:0,t:"Who uploaded that file to the server? The GIF thing. I can't delete it from the FTP.",d:"Nov 5, 2014"},
+    {u:4,t:"I've seen that GIF before. Something called bear5. Old creepypasta from 2009.",d:"Nov 6, 2014"},
+    {u:0,t:"It's watching me. Not the image — I don't know how to explain it. I'll try deleting again tonight.",d:"Nov 7, 2014"},
+    {u:1,t:"bro it's a GIF on your computer. You're scaring yourself.",d:"Nov 7, 2014"},
+    {u:0,t:"HELP",d:"Nov 13, 2014"},
+  ];
+
+  posts.forEach(p=>{
+    const u=users[p.u];
+    const div=document.createElement('div');
+    div.className='post-row';
+    const pc=Math.floor(Math.random()*400)+10;
+    let body=`<span>${p.t}</span>`;
+    if(p.tweet){
+      body=`<span>${p.t}</span>
+      <div class="tweet-box" style="margin-top:7px;">
+        <div class="tw-head">
+          <div style="width:32px;height:32px;border-radius:50%;background:#111;border:1px solid #1c1c1c;display:flex;align-items:center;justify-content:center;font-size:14px;">👤</div>
+          <div><div class="tw-name">GamerGirl14</div><div class="tw-handle">@gamer_girl_14</div></div>
+        </div>
+        <div style="font-size:11px;color:#aaa;">just found footage of that "sad satan" game. the corridor level is not okay. who made this</div>
+        <img class="tw-img" src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="">
+        <div class="tw-foot">Oct 22, 2014 · Twitter for Windows</div>
+      </div>`;
     }
+    div.innerHTML=`
+      <div class="post-author-col">
+        <div class="p-name">${u.n}</div>
+        <div class="p-av" style="background:${u.c};filter:brightness(0.85);">${u.n[0]}</div>
+        <div class="p-rank">${ranks[p.u]}</div>
+        <div class="p-count">Posts: ${pc}</div>
+      </div>
+      <div class="post-body-col">
+        <span class="p-when">Posted: ${p.d}</span>
+        ${body}
+        <div class="p-sig">Sent from Windows XP · IE 8</div>
+      </div>`;
+    feed.appendChild(div);
+  });
 
-    // 2. GENERATE FORUM MESSAGES
-    window.onload = function() {
-        const forumFeed = document.getElementById('forum-feed');
-        if(!forumFeed) return;
+  // Subtle intruder posts
+  ["I AM STILL HERE","CLOSE THE TAB","HI"].forEach(t=>{
+    const div=document.createElement('div');
+    div.className='post-row bear-post';
+    div.innerHTML=`
+      <div class="post-author-col">
+        <div class="p-name" style="color:#a00000;">????</div>
+        <img class="p-av-img" src="${B5_GIF}" alt="">
+        <div class="p-count" style="color:#a00000;">Posts: ∞</div>
+      </div>
+      <div class="post-body-col" style="color:#8a1a1a;">
+        <span class="p-when" style="color:#a00000;">Posted: NOW</span>
+        <span>${t}</span>
+        <div class="p-sig" style="color:#a00000;">Sent from unknown device</div>
+      </div>`;
+    feed.appendChild(div);
+  });
 
-        const users = [
-            {name: "Peashooter321", color: "orange"}, {name: "xX_Slayer_xX", color: "red"},
-            {name: "GamerGirl14", color: "pink"}, {name: "NoobMaster69", color: "lime"},
-            {name: "ShadowHunter", color: "purple"}, {name: "MinecraftSteve", color: "cyan"}
-        ];
-        const bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
+  setTimeout(()=>{ feed.parentElement.scrollTop=0; },100);
+}
 
-        // Initial Real Chats
-        const realChats = [
-            {u:0, t:"Dude, did you finish the math homework? Mrs. Johnson is gonna kill me."},
-            {u:1, t:"Nah man, I was playing Halo 3 all night. Legendary difficulty is impossible."},
-            {u:3, t:"Lol you guys are noobs. I finished it in homeroom."},
-            {u:2, t:"Anyone heard about the new FNAF 2 trailer? It looks so scary."},
-            {u:0, t:"Yeah! Toy Chica looks weird though. Why does she take her beak off?"},
-            {u:4, t:"My dad works at Scottgames, he says there is a secret purple guy animatronic."},
-            {u:1, t:"Liar. Your dad works at McDonalds."},
-            {u:5, t:"Join my server! IP: 192.168.0.1"},
-            {u:0, t:"Wait, my computer is acting weird. The screen keeps flickering."}
-        ];
+// ============================================================
+// CHAT
+// ============================================================
+const CKEY='ps321_chat_v4';
+const DFLT_CHAT=[
+  {n:"xX_Slayer_xX", t:"Anyone wanna play CS tonight?",          ts:"Oct 2014"},
+  {n:"Peashooter321",t:"Can't, I'm grounded 😭",                  ts:"Oct 2014"},
+  {n:"EmoGirl99",    t:"School is literally so awful I can't even",ts:"Oct 2014"},
+  {n:"MinecraftSteve",t:"join my server guys!!",                   ts:"Nov 2014"},
+  {n:"????",         t:"...",                                      ts:"Nov 2014",b:true},
+  {n:"[System]",     t:"Server reset. Connection lost.",           ts:"Nov 13 2014",sys:true},
+];
 
-        function createPost(user, text, date) {
-            let div = document.createElement('div'); div.className = 'post-row';
-            let avaHTML = user.isBear ? `<img src="${bear5Src}" class="avatar-img">` : `<div class="avatar-circle" style="background:${user.color};">${user.name[0]}</div>`;
-            div.innerHTML = `<div class="post-author"><b>${user.name}</b><br>${avaHTML}Posts: ${Math.floor(Math.random()*500)}</div><div class="post-body"><span class="post-date">Posted: ${date}</span>${text}<div class="sig-line">________________<br>Sent from Windows XP</div></div>`;
-            forumFeed.appendChild(div);
-        }
+function loadChat(){
+  const saved=localStorage.getItem(CKEY);
+  const msgs=saved?JSON.parse(saved):DFLT_CHAT;
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  box.innerHTML='';
+  msgs.forEach(m=>appendChat(m,false));
+  box.scrollTop=box.scrollHeight;
+}
 
-        realChats.forEach(chat => createPost(users[chat.u], chat.t, "Oct 2014"));
-        for(let i=0; i<40; i++) {
-            let user = users[Math.floor(Math.random() * users.length)];
-            let topics = ["Lag.", "Lol.", "Who wants to play?", "FNAF is cool.", "Sub to my channel.", "Rekt.", "Glitch?"];
-            createPost(user, topics[Math.floor(Math.random() * topics.length)], "Nov 2014");
-        }
-        const endChats = [
-            {u:0, t:"Okay seriously, who uploaded 'bear5.png' to the server? It's messing up the layout."},
-            {u:1, t:"Not me."}, {u:0, t:"It's staring at me. I can't delete it."}, {u:0, t:"HELP"}
-        ];
-        endChats.forEach(chat => createPost(users[chat.u], chat.t, "13 Nov 2014"));
-        for(let i=0; i<15; i++) { createPost({name: "Bear5", color: "red", isBear: true}, "I AM COMING", "NOW"); }
-    };
+function appendChat(msg,save=true){
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  const div=document.createElement('div');
+  div.className='chat-line'+(msg.b?' bear-chat':'');
+  if(msg.sys){
+    div.innerHTML=`<span style="color:#666;">[System]: ${msg.t}</span>`;
+  } else {
+    div.innerHTML=`<span class="c-time">${msg.ts}</span><span class="c-name">${msg.n}: </span><span class="c-txt">${msg.t}</span>`;
+  }
+  box.appendChild(div);
+  box.scrollTop=box.scrollHeight;
+  if(save) saveChat();
+}
 
-    // 3. DRAGGABLE LOGIC
-    var zIndex = 1;
-    function dragElem(e, el) {
-        e.preventDefault(); zIndex++; el.style.zIndex = zIndex;
-        var startX = e.clientX, startY = e.clientY;
-        var rect = el.getBoundingClientRect();
-        var offsetX = startX - rect.left, offsetY = startY - rect.top;
-        var zone = document.getElementById('sticker-wall').getBoundingClientRect();
-        function move(e) { el.style.left = (e.clientX - zone.left - offsetX) + 'px'; el.style.top = (e.clientY - zone.top - offsetY) + 'px'; }
-        function stop() { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', stop); }
-        document.addEventListener('mousemove', move); document.addEventListener('mouseup', stop);
+function saveChat(){
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  const msgs=Array.from(box.querySelectorAll('.chat-line')).map(l=>({
+    n: l.querySelector('.c-name')?.textContent.replace(':','').trim()||'[System]',
+    t: l.querySelector('.c-txt')?.textContent||l.textContent,
+    ts:l.querySelector('.c-time')?.textContent||'',
+    b: l.classList.contains('bear-chat'),
+  }));
+  localStorage.setItem(CKEY,JSON.stringify(msgs.slice(-50)));
+}
+
+function sendChat(){
+  const ni=document.getElementById('chat-name');
+  const mi=document.getElementById('chat-input');
+  if(!ni||!mi) return;
+  const name=ni.value.trim()||'Anonymous';
+  const text=mi.value.trim();
+  if(!text) return;
+  const now=new Date();
+  const ts=`${now.getMonth()+1}/${now.getDate()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  appendChat({n:name,t:text,ts});
+  mi.value='';
+  const lo=text.toLowerCase();
+  if(lo==='iamhere'){
+    setTimeout(()=>{
+      appendChat({n:'[System]',t:'Presence acknowledged. Opening file...',ts,sys:true});
+      setTimeout(()=>openRoom('room-0'),1400);
+    },1000);
+  } else if(lo.includes('bear5')||lo.includes('????')){
+    setTimeout(()=>appendChat({n:'????',t:'I HEARD THAT',ts,b:true}),1200);
+    setTimeout(()=>eFlash(),1800);
+  } else if(lo==='hi'||lo==='hello'){
+    setTimeout(()=>appendChat({n:'????',t:'HI',ts,b:true}),2000+Math.random()*2000);
+  } else if(lo.includes('sad satan')){
+    setTimeout(()=>appendChat({n:'????',t:'YOU SHOULD NOT HAVE SEARCHED FOR THAT',ts,b:true}),1500);
+  }
+}
+
+// occasional whisper
+setInterval(()=>{
+  if(b5Mode) return;
+  if(Math.random()<0.015){
+    const now=new Date();
+    const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+    try{const s=document.getElementById('snd-demonic');s.volume=0.3;s.currentTime=0;s.play();}catch(e){}
+    appendChat({n:'????',t:['...','.',`...`,'are you still there'][Math.floor(Math.random()*4)],ts,b:true});
+  }
+},10000);
+
+// ============================================================
+// GUESTBOOK
+// ============================================================
+const GBKEY='ps321_gb_v4';
+const DFLT_GB=[
+  {f:"xX_Slayer_xX", m:"sick site bro, add more gaming stuff!!",             d:"Jun 2014"},
+  {f:"GamerGirl14",  m:"omg I love the design!! so cool 💙",                  d:"Jul 2014"},
+  {f:"CoasterFan",   m:"Found this through Google. FNAF 2 hype is REAL",       d:"Sep 2014"},
+  {f:"anonymous",    m:"why does this site give me a weird feeling",           d:"Oct 2014"},
+  {f:"NoobMaster69", m:"your brother's CSS is actually really good lol",       d:"Oct 2014"},
+  {f:"????",         m:"i was here before you were",                           d:"Nov 2014"},
+];
+
+function loadGb(){
+  const saved=localStorage.getItem(GBKEY);
+  const entries=saved?JSON.parse(saved):DFLT_GB;
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  el.innerHTML='';
+  entries.forEach(e=>appendGb(e,false));
+  el.scrollTop=el.scrollHeight;
+}
+
+function appendGb(entry,save=true){
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  const div=document.createElement('div');
+  div.className='gb-entry';
+  const evil=entry.f.toLowerCase().includes('????');
+  div.innerHTML=`
+    <span class="gb-date">${entry.d}</span>
+    <div class="gb-from" style="${evil?'color:#a00000;':''}">${entry.f}</div>
+    <div class="gb-msg" style="${evil?'color:#a04040;':''}">${entry.m}</div>`;
+  el.appendChild(div);
+  el.scrollTop=el.scrollHeight;
+  if(save) saveGb();
+}
+
+function saveGb(){
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  const entries=Array.from(el.querySelectorAll('.gb-entry')).map(e=>({
+    f:e.querySelector('.gb-from')?.textContent||'',
+    m:e.querySelector('.gb-msg')?.textContent||'',
+    d:e.querySelector('.gb-date')?.textContent||''
+  }));
+  localStorage.setItem(GBKEY,JSON.stringify(entries.slice(-30)));
+}
+
+function submitGb(){
+  const ne=document.getElementById('gb-name');
+  const me=document.getElementById('gb-msg');
+  if(!ne||!me) return;
+  const f=ne.value.trim()||'Anonymous';
+  const m=me.value.trim();
+  if(!m) return;
+  const now=new Date();
+  const d=now.toLocaleString('default',{month:'short'})+' '+now.getFullYear();
+  appendGb({f,m,d});
+  ne.value=''; me.value='';
+  if(m.toLowerCase().includes('bear')||f.toLowerCase().includes('????')){
+    setTimeout(()=>{ appendGb({f:'????',m:'i noticed that.',d}); eFlash(); },1400);
+  }
+}
+
+// ============================================================
+// 20 UNIQUE EVENTS
+// ============================================================
+
+// 1: Flash
+function eFlash(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
+  const el=document.getElementById('glitch-flash');
+  if(!el) return;
+  [0,70,160,230].forEach(d=>setTimeout(()=>el.style.opacity=d%140===0?'0':'.45',d));
+  setTimeout(()=>el.style.opacity='0',280);
+}
+
+// 2: Bear5 text replacement on a random text node
+function eBearText(){
+  const candidates=[...document.querySelectorAll('.blog-text,.post-body-col span,.gb-msg,.c-txt')];
+  if(!candidates.length) return;
+  const el=candidates[Math.floor(Math.random()*candidates.length)];
+  const orig=el.innerHTML;
+  const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+  el.innerHTML=`<span style="color:#8a1a1a;font-size:12px;letter-spacing:4px;">${msg}</span>`;
+  document.getElementById('replace-btn').style.display='block';
+  setTimeout(()=>{el.innerHTML=orig;},5500);
+}
+
+// 3: Face flicker — 120–180ms horror image
+function eFaceFlicker(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
+  const img=document.createElement('img');
+  img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  img.style.cssText=`position:fixed;z-index:9999;pointer-events:none;
+    width:${120+Math.random()*180}px;
+    top:${Math.random()*75}vh;left:${Math.random()*75}vw;
+    opacity:.85;filter:brightness(0.7);`;
+  document.body.appendChild(img);
+  setTimeout(()=>img.remove(),120+Math.random()*80);
+}
+
+// 4: Red wash
+function eRedWash(){
+  try{const s=document.getElementById('snd-demonic'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
+  const rw=document.getElementById('red-wash');
+  if(!rw) return;
+  rw.style.opacity='.18';
+  eFlash();
+  document.querySelectorAll('.panel-title').forEach(p=>{p.style.transition='color 1s';p.style.color='#a00000';});
+  setTimeout(()=>{
+    rw.style.opacity='0';
+    document.querySelectorAll('.panel-title').forEach(p=>{p.style.color='';});
+  },9000+Math.random()*4000);
+}
+
+// 5: Cursor vanish
+function eCursorVanish(){
+  document.body.style.cursor='none';
+  setTimeout(()=>document.body.style.cursor='',3000+Math.random()*2000);
+}
+
+// 6: Fake process bar
+function eProcessBar(){
+  const bar=document.getElementById('b5-bar');
+  const fill=document.getElementById('b5-fill');
+  const txt=document.getElementById('b5-txt');
+  if(!bar||!fill) return;
+  bar.style.display='block';
+  let p=0;
+  const msgs=['process running...','reading filesystem...','locating frame 47...','cannot stop.'];
+  let mi=0; if(txt) txt.textContent=msgs[0];
+  const iv=setInterval(()=>{
+    p+=Math.random()*9+4;
+    if(p>100) p=100;
+    fill.style.width=p+'%';
+    if(mi<msgs.length&&p>(mi+1)*25) { if(txt) txt.textContent=msgs[Math.min(mi++,msgs.length-1)]; }
+    if(p>=100){
+      clearInterval(iv);
+      fill.style.background='#8a0000';
+      if(txt) txt.textContent='still running';
+      setTimeout(()=>{bar.style.display='none';fill.style.width='0%';fill.style.background='#6a0000';},3200);
+      b5Pct=Math.min(100,b5Pct+8);
     }
+  },290);
+}
 
-    // 4. BEAR5 APOCALYPSE TRIGGER
-    function unleashBear5() {
-        var body = document.body;
-        var scream = document.getElementById('scream');
-        var amb = document.getElementById('ambience');
-        
-        amb.pause(); scream.volume = 1.0; scream.currentTime = 0; scream.play();
-        body.classList.add('BEAR5_MODE');
-        
-        // 1. Change ALL images to Bear5
-        var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
-        var allImages = document.getElementsByTagName('img');
-        for(var i=0; i<allImages.length; i++) {
-            allImages[i].src = bear5Src;
-            allImages[i].style.filter = "contrast(150%)"; // Сделать ярче
-        }
+// 7: Element flip
+function eFlipEl(){
+  const targets=[...document.querySelectorAll('.blog-date,.p-when,.panel-title')];
+  if(!targets.length) return;
+  const el=targets[Math.floor(Math.random()*targets.length)];
+  el.style.transition='transform .5s';
+  el.style.transform='rotate(180deg)';
+  setTimeout(()=>{el.style.transform='';},3200);
+}
 
-        // 2. Change Text
-        var textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-        var node;
-        while(node = textNodes.nextNode()) { if(node.nodeValue.trim() !== "") { node.nodeValue = "BEAR5 "; } }
-        
-        // 3. Force overrides
-        document.querySelector('h1').innerText = "BEAR 5";
-        document.querySelector('.status-strip').innerText = "STATUS: RUN RUN RUN";
-        
-        var stickers = document.querySelectorAll('.sticker');
-        stickers.forEach(s => { s.style.background = "red"; s.style.color = "black"; });
+// 8: Admin photo swap
+function ePhotoSwap(){
+  const photo=document.getElementById('admin-photo');
+  if(!photo) return;
+  const orig=photo.src;
+  photo.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  photo.style.filter='brightness(0.85)';
+  setTimeout(()=>{photo.src=orig;photo.style.filter='';},2200);
+}
+
+// 9: Auto scroll blog
+function eAutoScroll(){
+  try{const s=document.getElementById('snd-steps'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
+  const s=document.querySelector('.blog-scroll');
+  if(!s) return;
+  const o=s.scrollTop;
+  s.scrollTo({top:s.scrollHeight,behavior:'smooth'});
+  setTimeout(()=>s.scrollTo({top:o,behavior:'smooth'}),3000);
+}
+
+// 10: Screen crack
+function eCrack(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.7; s.currentTime=0; s.play();}catch(e){}
+  const c=document.getElementById('screen-crack');
+  if(!c) return;
+  c.classList.add('show'); eFlash();
+  setTimeout(()=>c.classList.remove('show'),2200);
+}
+
+// 11: Ghost message drift
+function eGhost(){
+  try{const s=document.getElementById('snd-steps'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
+  const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+  const div=document.createElement('div');
+  div.className='ghost-msg';
+  div.textContent=msg;
+  div.style.top=(18+Math.random()*65)+'vh';
+  document.body.appendChild(div);
+  setTimeout(()=>div.remove(),12000);
+}
+
+// 12: Gallery corrupt
+function eGalCorrupt(){
+  const imgs=[...document.querySelectorAll('.gal-grid img')];
+  if(!imgs.length) return;
+  const origs=imgs.map(i=>i.src);
+  imgs.forEach((img,i)=>{img.src=HORRORS[i%HORRORS.length];});
+  setTimeout(()=>imgs.forEach((img,i)=>{img.src=origs[i];}),1400);
+}
+
+// 13: Hidden horror overlay (barely visible)
+function eHiddenReveal(){
+  const img=document.createElement('img');
+  img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  img.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:460px;width:55vw;opacity:0;transition:opacity 1.2s;z-index:9992;pointer-events:none;filter:brightness(0.4);mix-blend-mode:luminosity;';
+  document.body.appendChild(img);
+  setTimeout(()=>img.style.opacity='.15',100);
+  setTimeout(()=>{img.style.opacity='0';setTimeout(()=>img.remove(),1500);},4500);
+}
+
+// 14: All dates → Nov 13
+function eDateChange(){
+  const dates=[...document.querySelectorAll('.blog-date,.p-when,.gb-date')];
+  const origs=dates.map(d=>d.textContent);
+  dates.forEach(d=>{d.textContent='November 13, 2014 — 23:47';d.style.color='#a00000';});
+  setTimeout(()=>dates.forEach((d,i)=>{d.textContent=origs[i];d.style.color='';}),5500);
+}
+
+// 15: Quick invert
+function eInvert(){
+  document.body.style.transition='filter .25s';
+  document.body.style.filter='invert(1)';
+  setTimeout(()=>{document.body.style.filter='invert(0)';setTimeout(()=>document.body.style.filter='',350);},350);
+}
+
+// 16: Typewriter chat erase
+function eTypewriter(){
+  const lines=[...document.querySelectorAll('.c-txt')];
+  if(!lines.length) return;
+  const el=lines[Math.floor(Math.random()*lines.length)];
+  const orig=el.textContent;
+  let i=orig.length;
+  const iv=setInterval(()=>{
+    i--; el.textContent=orig.slice(0,i)+'|';
+    if(i<=0){
+      clearInterval(iv);
+      el.textContent='i was here';
+      el.style.color='#a00000';
+      setTimeout(()=>{el.textContent=orig;el.style.color='';},3200);
     }
+  },70);
+}
+
+// 17: Error window
+function eErrWin(){
+  const ids=['err1','err2','err3','err4','err5','err6'];
+  const id=ids[Math.floor(Math.random()*ids.length)];
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.style.top=(75+Math.random()*240)+'px';
+  el.style.left=(75+Math.random()*520)+'px';
+  el.style.display='block';
+}
+
+// 18: Bear5 chat message
+function eBearChat(){
+  try{const s=document.getElementById('snd-demonic'); s.volume=0.3; s.currentTime=0; s.play();}catch(e){}
+  const msgs=['...','I found the folder','don\'t open it','HI','are you alone'];
+  const now=new Date();
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+  appendChat({n:'????',t:msgs[Math.floor(Math.random()*msgs.length)],ts,b:true});
+}
+
+// 19: Meme popup
+function eMeme(){
+  const el=document.getElementById('meme-popup');
+  if(el){el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
+}
+
+// 20: Eye window popup
+function eEyeWindow(){
+  const w=document.getElementById('eye-window');
+  if(!w) return;
+  w.style.top=(100+Math.random()*300)+'px';
+  w.style.left=(100+Math.random()*600)+'px';
+  w.style.display='block';
+}
+
+function closeEyeWindow(){
+  const w=document.getElementById('eye-window');
+  if(w) w.style.display='none';
+}
+
+const EVENTS=[
+  eBearText, eFaceFlicker, eRedWash, eCursorVanish, eProcessBar,
+  eFlipEl, ePhotoSwap, eAutoScroll, eCrack, eGhost,
+  eGalCorrupt, eHiddenReveal, eDateChange, eInvert, eTypewriter,
+  eErrWin, eBearChat, eMeme, eEyeWindow, eEyeWindow, // eye is doubled for more frequency
+];
+
+// ============================================================
+// SCHEDULER — events every 22–65s (doubled from original)
+// ============================================================
+function scheduleEvents(){
+  function next(){
+    const delay=22000+Math.random()*43000; // 22–65s
+    setTimeout(()=>{
+      if(!b5Mode) EVENTS[Math.floor(Math.random()*EVENTS.length)]();
+      next();
+    },delay);
+  }
+  setTimeout(()=>{eBearChat();next();},15000+Math.random()*15000);
+}
+
+// ============================================================
+// ERRORS
+// ============================================================
+function closeErr(id){
+  const el=document.getElementById(id);
+  if(el) el.style.display='none';
+  if(Math.random()<0.2&&!b5Mode) setTimeout(()=>eErrWin(),900);
+}
+function moreErrors(){
+  closeErr('err4');
+  setTimeout(()=>eErrWin(),200);
+  setTimeout(()=>eErrWin(),500);
+}
+
+// ============================================================
+// DRAG
+// ============================================================
+const _drag={};
+function dragWin(e,id){
+  e.preventDefault();
+  const el=document.getElementById(id);
+  if(!el) return;
+  const r=el.getBoundingClientRect();
+  _drag[id]={ox:e.clientX-r.left,oy:e.clientY-r.top};
+  el.style.zIndex=99993;
+  const mv=ev=>{el.style.left=(ev.clientX-_drag[id].ox)+'px';el.style.top=(ev.clientY-_drag[id].oy)+'px';};
+  const st=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',st);};
+  document.addEventListener('mousemove',mv);
+  document.addEventListener('mouseup',st);
+}
+function makeWinDrag(){}
+
+// ============================================================
+// SCREAMER
+// ============================================================
+function doScreamer(){
+  const o=document.getElementById('screamer-overlay');
+  const i=document.getElementById('screamer-img');
+  if(!o||!i) return;
+  i.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  o.style.display='flex';
+  try{const s=document.getElementById('snd-scream');s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
+  setTimeout(()=>closeScreamer(),2400);
+}
+function closeScreamer(){
+  const o=document.getElementById('screamer-overlay');
+  if(o) o.style.display='none';
+  try{const s=document.getElementById('snd-scream');s.pause();s.currentTime=0;}catch(e){}
+}
+
+// ============================================================
+// ROOMS
+// ============================================================
+function openRoom(id){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.classList.add('active');
+  document.body.style.overflow='hidden';
+  if(id==='room-camera') startCamTs();
+  if(id==='room-recovery') startRecovery();
+  if(id==='room-brother') {
+      try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
+  }
+}
+function closeRoom(){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  document.body.style.overflow='';
+}
+function changeRoom(id){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  if(id==='room-camera') startCamTs();
+  if(id==='room-recovery') startRecovery();
+}
+
+// Camera timestamp
+function startCamTs(){
+  const el=document.getElementById('cam-ts');
+  if(!el) return;
+  const t=()=>{ if(el) el.textContent=pad(new Date().getHours())+':'+pad(new Date().getMinutes())+':'+pad(new Date().getSeconds()); };
+  t(); setInterval(t,1000);
+}
+
+// Recovery room
+function startRecovery(){
+  if(recStarted) return;
+  recStarted=true;
+  const log=document.getElementById('rec-log');
+  const fill=document.getElementById('rec-fill');
+  const status=document.getElementById('rec-status');
+  if(!log||!fill) return;
+  const entries=[
+    'Scanning C:\\...','Found 4,823 files','Checking file integrity...',
+    'halo3_clips.wmv — OK','portal2_speedrun.wmv — OK','cs_demos.dem — OK',
+    'site_backup_aug2014.zip — CORRUPTED',
+    '[REDACTED].exe — FOUND','Attempting to read...','File size: 0 bytes',
+    'File size: ∞ bytes','Cannot read metadata','Cannot determine origin',
+    'Cannot quarantine','Cannot delete','No creation date',
+    'Last modified: NEVER','The file is still running.',
+    'Recovery failed.','The file will not be removed.',
+    'It was here before Windows.','Recovery complete. 1 file unrecovered.',
+  ];
+  let i=0;
+  const iv=setInterval(()=>{
+    if(i<entries.length){
+      const line=document.createElement('div');
+      const bad=entries[i].includes('[REDACTED]')||entries[i].includes('CORRUPTED')||
+                 entries[i].includes('Cannot')||entries[i].includes('failed')||
+                 entries[i].includes('NEVER')||entries[i].includes('unrecovered')||
+                 entries[i].includes('before Windows');
+      line.style.color=bad?'#aa5555':'#888888';
+      line.textContent='> '+entries[i];
+      log.appendChild(line); log.scrollTop=log.scrollHeight;
+      fill.style.width=((i+1)/entries.length*100)+'%';
+      if(status) status.textContent=entries[i];
+      i++;
+    } else { clearInterval(iv); }
+  },580);
+}
+
+// Trap room
+function openTrap(){
+  if(trapOpen) return;
+  trapOpen=true;
+  const tr=document.getElementById('room-trap');
+  if(tr) tr.classList.add('active');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{ const ex=document.getElementById('trap-exit'); if(ex) ex.style.opacity='1'; },18000);
+}
+function closeTrap(){
+  trapOpen=false;
+  const tr=document.getElementById('room-trap');
+  if(tr) tr.classList.remove('active');
+  document.body.style.overflow='';
+}
+
+// Random trap access from gallery
+setInterval(()=>{
+  if(!trapOpen&&!b5Mode&&b5Pct>55&&Math.random()<0.002) openTrap();
+},5000);
+
+// ============================================================
+// FRAME 47
+// ============================================================
+const FRAME_DATA=[
+  {t:'[ frame 1 ]\nsomething running. nothing unusual.',c:'#777',s:'13px'},
+  {t:'[ frame 3 ]\nstill running. the background seems slightly darker.',c:'#777',s:'12px'},
+  {t:'[ frame 7 ]\nsomething is wrong with the background.',c:'#888',s:'12px'},
+  {t:'[ frame 12 ]\nthe shadow doesn\'t match the shape.',c:'#9a5555',s:'12px'},
+  {t:'[ frame 19 ]\nthere are two shadows now.',c:'#a03030',s:'11px'},
+  {t:'[ frame 25 ]\nthe second shadow is larger.\nit is not running.',c:'#a03030',s:'11px'},
+  {t:'[ frame 31 ]\nthe shape has slowed down.\nthe second shadow has not.',c:'#a03030',s:'11px'},
+  {t:'[ frame 38 ]\nthe shape is standing still.\nwe do not know when it stopped.',c:'#a03030',s:'11px'},
+  {t:'[ frame 44 ]\nthe shape is looking at you.\nthis is not possible.',c:'#b00000',s:'12px'},
+  {t:'[ frame 46 ]\nplease stop.\ndo not go to frame 47.',c:'#b00000',s:'11px'},
+  {t:'[ frame 47 ]',c:'#8a0000',s:'11px',img:HORRORS[0]},
+  {t:'',c:'#000',s:'1px',img:B5_GIF,end:true},
+];
+function nextFrame(dir){
+  frameIdx=Math.max(0,Math.min(FRAME_DATA.length-1,frameIdx+dir));
+  const d=FRAME_DATA[frameIdx];
+  const counter=document.getElementById('frame-counter');
+  const box=document.getElementById('frame-content');
+  if(counter) counter.textContent=frameIdx+1;
+  if(box){
+    if(d.img){
+      box.innerHTML=`<img src="${d.img}" style="max-width:320px;max-height:260px;border:none;filter:brightness(0.6);" alt="">
+        <div style="font-size:${d.s};color:${d.c};margin-top:8px;letter-spacing:2px;white-space:pre-line;">${d.t}</div>`;
+    } else {
+      box.innerHTML=`<div style="font-size:${d.s};color:${d.c};white-space:pre-line;padding:20px;letter-spacing:2px;line-height:2;">${d.t}</div>`;
+    }
+    if(frameIdx===10) eFlash();
+    if(d.end) setTimeout(()=>{closeRoom();openTrap();},2500);
+  }
+}
+
+// ============================================================
+// STICKERS
+// ============================================================
+let szZ=100;
+function dragSticker(e,el){
+  e.preventDefault();
+  szZ++; el.style.zIndex=szZ;
+  const wall=document.getElementById('sticker-wall');
+  const wr=wall.getBoundingClientRect(),er=el.getBoundingClientRect();
+  const ox=e.clientX-er.left,oy=e.clientY-er.top;
+  const mv=ev=>{
+    let x=ev.clientX-wr.left-ox,y=ev.clientY-wr.top-oy;
+    x=Math.max(0,Math.min(wr.width-er.width,x));
+    y=Math.max(0,Math.min(wr.height-er.height,y));
+    el.style.left=x+'px';el.style.top=y+'px';
+    el.style.right='auto';el.style.bottom='auto';
+  };
+  const st=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',st);};
+  document.addEventListener('mousemove',mv);
+  document.addEventListener('mouseup',st);
+}
+function maybeRoom(el){
+  s5Clicks++;
+  if(s5Clicks>=3){
+    s5Clicks=0;
+    const img=el.querySelector('img');
+    if(img){const o=img.src;img.src=B5_GIF;img.style.filter='brightness(0.7)';
+      setTimeout(()=>{img.src=o;img.style.filter='';openRoom('room-0');},500);}
+  }
+}
+
+// ============================================================
+// METER
+// ============================================================
+function startMeter(){
+  setInterval(()=>{
+    if(b5Mode) return;
+    b5Pct=Math.min(100,b5Pct+.12+Math.random()*.18);
+    updateMeter();
+  },6000);
+}
+function updateMeter(){
+  const f=document.getElementById('m-fill');
+  const p=document.getElementById('m-pct');
+  const w=document.getElementById('m-warn');
+  if(!f) return;
+  f.style.width=b5Pct+'%';
+  if(p) p.textContent=Math.round(b5Pct)+'%';
+  if(w){
+    if(b5Pct<20)      w.textContent='idle';
+    else if(b5Pct<45) w.textContent='low';
+    else if(b5Pct<70) w.textContent='elevated';
+    else if(b5Pct<88) w.textContent='high';
+    else               w.textContent='critical';
+  }
+  if(b5Pct>=30&&b5Pct<31) eBearText();
+  if(b5Pct>=55&&b5Pct<56) eErrWin();
+  if(b5Pct>=80&&b5Pct<81) eProcessBar();
+  if(b5Pct>=100) unleashB5();
+}
+
+// ============================================================
+// B5 FULL MODE (BLOODY APOCALYPSE)
+// ============================================================
+function unleashB5(){
+  if(b5Mode) return;
+  b5Mode=true;
+  eFlash();setTimeout(eFlash,150);setTimeout(eFlash,300);
+  
+  // Play sound
+  try{const s=document.getElementById('snd-scream');const a=document.getElementById('amb');a.pause();s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
+  
+  // Add CSS class for bloody filter
+  document.body.classList.add('B5');
+  
+  // Change all normal images to Bear5 face
+  var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
+  document.querySelectorAll('img:not(#screamer-img):not(.floater)').forEach(img=>{
+    img.src=bear5Src;
+    img.style.filter='contrast(150%)';
+  });
+  
+  // Alter texts
+  const title=document.getElementById('site-title');
+  if(title) title.childNodes[0].textContent='BEAR 5';
+  
+  document.querySelectorAll('.blog-text').forEach(el=>{
+    el.innerHTML='<span style="color:#000;font-size:16px;letter-spacing:4px;font-weight:bold;">BEAR5 BEAR5 BEAR5</span>';
+  });
+  
+  document.querySelectorAll('.sts').forEach(el => el.innerHTML = 'STATUS: RUN RUN RUN');
+
+  b5Pct=100; updateMeter();
+  
+  // Flood chat
+  const now=new Date();
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+  for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'I AM COMING',ts,b:true},false),i*280);
+  
+  // Trigger screamer then reset
+  setTimeout(()=>{if(b5Mode){doScreamer();}},4500);
+  setTimeout(resetB5,22000);
+}
+
+function resetB5(){
+  b5Mode=false;
+  document.body.classList.remove('B5');
+  setTimeout(()=>location.reload(),2000);
+}
+
+// ============================================================
+// REPLACE ALL TEXT
+// ============================================================
+function replaceAllText(){
+  if(textReplaced){location.reload();return;}
+  textReplaced=true;
+  function walk(node){
+    if(node.nodeType===Node.TEXT_NODE){
+      const txt=node.textContent.trim();
+      if(txt.length>3&&!node.parentElement?.closest('#screamer-overlay,#room-trap,#room-sadsatan,script,style')){
+        node.textContent=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+      }
+    } else if(node.nodeType===Node.ELEMENT_NODE){
+      if(!['SCRIPT','STYLE','INPUT','TEXTAREA','IFRAME'].includes(node.tagName)){
+        Array.from(node.childNodes).forEach(walk);
+      }
+    }
+  }
+  walk(document.getElementById('main-wrap'));
+  document.title='STILL RUNNING';
+  eRedWash();
+  const btn=document.getElementById('replace-btn');
+  if(btn) btn.textContent='undo (reload)';
+}
+function revealReplaceBtn(){
+  document.getElementById('replace-btn').style.display='block';
+}
+
+// ============================================================
+// MUSIC
+// ============================================================
+function updateTrack(){
+  const t=tracks[trackIdx];
+  const el=document.getElementById('now-track');
+  const al=document.getElementById('now-album');
+  if(el) el.textContent=t.n;
+  if(al) al.textContent='Album: '+t.a;
+  mSecs=0;
+}
+function togglePlay(){
+  playing=!playing;
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent=playing?'⏸':'▶';
+  if(playing){
+    mInterval=setInterval(()=>{
+      mSecs++;
+      const m=Math.floor(mSecs/60),s=String(mSecs%60).padStart(2,'0');
+      const el=document.getElementById('music-time');
+      if(el) el.textContent=`${m}:${s}`;
+      if(mSecs>180+Math.random()*80) nextTrack();
+    },1000);
+  } else { clearInterval(mInterval); }
+}
+function nextTrack(){
+  clearInterval(mInterval);playing=false;
+  trackIdx=(trackIdx+1)%tracks.length;
+  updateTrack();
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent='▶';
+  if(tracks[trackIdx].a==='???.exe'){ setTimeout(()=>{eFlash();eBearText();},500); }
+}
+function prevTrack(){
+  clearInterval(mInterval);playing=false;
+  trackIdx=(trackIdx-1+tracks.length)%tracks.length;
+  updateTrack();
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent='▶';
+}
+
+// ============================================================
+// GALLERY LIGHTBOX
+// ============================================================
+function openLb(src){
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lb-img');
+  if(!lb||!img) return;
+  img.src=src; lb.classList.add('active');
+  if(Math.random()<0.12) setTimeout(()=>{img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];eFlash();},900);
+  if(Math.random()<0.04) setTimeout(()=>{closeLightbox();openTrap();},1800);
+}
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  if(lb) lb.classList.remove('active');
+}
+
+// ============================================================
+// SECRETS
+// ============================================================
+function revealSecret(el){
+  el.textContent='The brother came back. Just not as himself.';
+  el.style.color='#a00000'; el.style.fontStyle='italic';
+  el.onclick=null;
+  setTimeout(()=>openRoom('room-brother'),2500);
+}
+
+// ============================================================
+// SAD SATAN PORTAL — Sad Satan is also accessible by hovering
+// the 1×1 pixel bottom-left div for 3 seconds while scrolled
+// to the bottom of the page.
+// ============================================================
+let sadHover=null;
+const portal=document.getElementById('sad-portal');
+if(portal){
+  portal.addEventListener('mouseenter',()=>{
+    sadHover=setTimeout(()=>openRoom('room-sadsatan'),3000);
+  });
+  portal.addEventListener('mouseleave',()=>{
+    clearTimeout(sadHover); sadHover=null;
+  });
+}
+
 </script>
 </body>
 </html>
