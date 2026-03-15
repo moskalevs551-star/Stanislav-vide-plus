@@ -510,7 +510,7 @@ header {
   padding: 5px 13px; display: flex; justify-content: space-between;
   align-items: center; font-family: 'VT323', monospace; font-size: 17px; color: #777;
 }
-.sts-off { color: #8a1111; animation: blink 2.5s infinite; }
+.sts-off { color: #d12222; animation: blink 2.5s infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
 
 /* ============================================================
@@ -609,7 +609,7 @@ header {
    MUSIC PLAYER
    ============================================================ */
 .mplayer { background: #080808; border: 1px solid var(--border); padding: 10px; }
-.m-now { font-family: 'VT323', monospace; font-size: 17px; color: #999; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.m-now { font-family: 'VT323', monospace; font-size: 17px; color: #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .m-sub { font-size: 10px; color: #666; margin-top: 2px; letter-spacing: 1px; }
 .m-controls { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
 .m-btn {
@@ -649,15 +649,15 @@ header {
    BLOG
    ============================================================ */
 .blog-scroll { max-height: 520px; overflow-y: scroll; padding-right: 2px; }
-.blog-entry { padding: 12px 0; border-bottom: 1px solid #111; }
-.blog-date   { font-family: 'VT323', monospace; font-size: 16px; color: #888; display: block; margin-bottom: 3px; }
+.blog-entry { padding: 12px 0; border-bottom: 1px solid #222; }
+.blog-date   { font-family: 'VT323', monospace; font-size: 16px; color: #ccc; display: block; margin-bottom: 3px; }
 .blog-text   { color: var(--text); line-height: 1.8; font-size: 12px; }
-.blog-author { text-align: right; font-size: 10px; color: #666; margin-top: 5px; font-style: italic; }
-.blog-entry.dark { border: 1px solid #2a0000; background: #0c0000; padding: 10px; margin: 4px 0; }
-.blog-entry.dark .blog-date { color: #8a1111; }
-.blog-entry.dark .blog-text { color: #aa5555; }
+.blog-author { text-align: right; font-size: 10px; color: #999; margin-top: 5px; font-style: italic; }
+.blog-entry.dark { border: 1px solid #4a0000; background: #0c0000; padding: 10px; margin: 4px 0; }
+.blog-entry.dark .blog-date { color: #ff3333; }
+.blog-entry.dark .blog-text { color: #dd7777; }
 
-.hl-box { background: #0a0a0a; border-left: 2px solid #222; padding: 7px 10px; margin: 7px 0; font-size: 12px; color: #bbb; }
+.hl-box { background: #0a0a0a; border-left: 2px solid #333; padding: 7px 10px; margin: 7px 0; font-size: 12px; color: #ddd; }
 
 /* ============================================================
    STICKER WALL
@@ -666,7 +666,7 @@ header {
   position: relative; height: 300px;
   background: #090909; border: 1px solid #111; overflow: hidden; margin-bottom: 1px;
 }
-.sw-hint { position: absolute; bottom: 7px; right: 8px; font-size: 10px; color: #444; letter-spacing: 1px; }
+.sw-hint { position: absolute; bottom: 7px; right: 8px; font-size: 10px; color: #666; letter-spacing: 1px; }
 
 .sticker {
   position: absolute; cursor: grab;
@@ -688,18 +688,18 @@ header {
    ============================================================ */
 .tv-outer {
   position: relative; background: #080808;
-  border: 6px solid #111;
+  border: 6px solid #222;
   padding: 12px 12px 28px;
   margin-bottom: 1px;
 }
-.tv-bezel { text-align: center; margin-bottom: 6px; font-size: 10px; color: #555; letter-spacing: 3px; }
+.tv-bezel { text-align: center; margin-bottom: 6px; font-size: 10px; color: #888; letter-spacing: 3px; }
 .tv-screen { position: relative; background: #000; border: 2px solid #111; overflow: hidden; }
 .tv-screen::after {
   content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.1) 3px, rgba(0,0,0,.1) 4px);
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.05) 3px, rgba(0,0,0,.05) 4px);
 }
 .tv-btm { position: absolute; bottom: 6px; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
-.tv-led { width: 6px; height: 6px; border-radius: 50%; background: #4a0000; animation: blink 3s infinite; }
+.tv-led { width: 6px; height: 6px; border-radius: 50%; background: #a00000; animation: blink 3s infinite; }
 .tv-lbl { font-size: 10px; color: #555; letter-spacing: 2px; }
 
 /* ============================================================
@@ -711,41 +711,40 @@ header {
 }
 .f-header {
   background: #0d0d0d; border-bottom: 1px solid var(--border);
-  padding: 5px 10px; font-size: 10px; color: #666;
+  padding: 5px 10px; font-size: 10px; color: #aaa;
   display: grid; grid-template-columns: 125px 1fr 80px;
   letter-spacing: 1px;
 }
-.post-row { display: flex; border-bottom: 1px solid #0f0f0f; min-height: 78px; }
-.post-row:nth-child(even) { background: rgba(255,255,255,.01); }
-.post-row.bear-post { background: #0a0000; border-color: #1a0000; }
+.post-row { display: flex; border-bottom: 1px solid #1a1a1a; min-height: 78px; }
+.post-row:nth-child(even) { background: rgba(255,255,255,.02); }
+.post-row.bear-post { background: #1a0000; border-color: #3a0000; }
 .post-author-col {
   width: 125px; flex-shrink: 0; padding: 8px; text-align: center;
-  border-right: 1px solid #0f0f0f; background: rgba(0,0,0,.3);
+  border-right: 1px solid #1a1a1a; background: rgba(0,0,0,.3);
 }
 .p-av {
   width: 42px; height: 42px; border-radius: 50%;
   margin: 3px auto; display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: bold; color: #000; border: 1px solid #222;
+  font-size: 18px; font-weight: bold; color: #000; border: 1px solid #333;
 }
-.p-av-img { width: 42px; height: 42px; object-fit: cover; border: 1px solid #2a0000; filter: brightness(0.85); }
-.p-name  { font-size: 10px; color: #999; margin-bottom: 2px; }
-.p-rank  { font-size: 9px;  color: #777; letter-spacing: 1px; }
-.p-count { font-size: 9px;  color: #555; }
+.p-av-img { width: 42px; height: 42px; object-fit: cover; border: 1px solid #4a0000; }
+.p-name  { font-size: 10px; color: #ccc; margin-bottom: 2px; }
+.p-rank  { font-size: 9px;  color: #999; letter-spacing: 1px; }
+.p-count { font-size: 9px;  color: #777; }
 .post-body-col { flex: 1; padding: 9px 12px; font-size: 11px; line-height: 1.7; color: var(--text); }
-.p-when { font-size: 10px; color: #666; margin-bottom: 5px; display: block; }
-.p-sig  { margin-top: 10px; padding-top: 4px; border-top: 1px solid #0f0f0f; font-size: 10px; color: #555; font-style: italic; }
+.p-when { font-size: 10px; color: #999; margin-bottom: 5px; display: block; }
+.p-sig  { margin-top: 10px; padding-top: 4px; border-top: 1px solid #1a1a1a; font-size: 10px; color: #777; font-style: italic; }
 
 /* Twitter meme box */
 .tweet-box {
-  background: #0a0a0a; border: 1px solid #222; border-radius: 2px;
+  background: #0a0a0a; border: 1px solid #333; border-radius: 2px;
   padding: 10px 12px; margin: 7px 0; max-width: 380px;
-  filter: brightness(0.85);
 }
 .tw-head { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
-.tw-name { font-size: 11px; color: #999; }
-.tw-handle { font-size: 10px; color: #666; }
+.tw-name { font-size: 11px; color: #ccc; }
+.tw-handle { font-size: 10px; color: #888; }
 .tw-img { width: 100%; border-radius: 1px; margin-top: 7px; }
-.tw-foot { font-size: 10px; color: #555; margin-top: 6px; }
+.tw-foot { font-size: 10px; color: #777; margin-top: 6px; }
 
 /* ============================================================
    CHAT
@@ -754,38 +753,37 @@ header {
   height: 175px; overflow-y: scroll; background: #080808;
   border: 1px solid var(--border); padding: 7px; font-size: 11px; line-height: 1.8;
 }
-.chat-line { padding: 1px 0; border-bottom: 1px solid #0d0d0d; }
-.c-name { color: #999; }
+.chat-line { padding: 1px 0; border-bottom: 1px solid #1a1a1a; }
+.c-name { color: #aaa; }
 .c-txt  { color: var(--text); }
-.c-time { color: #666; font-size: 10px; float: right; }
-.bear-chat .c-name { color: #8a1111; }
-.bear-chat .c-txt  { color: #aa5555; }
+.c-time { color: #888; font-size: 10px; float: right; }
+.bear-chat .c-name { color: #ff3333; }
+.bear-chat .c-txt  { color: #cc7777; }
 .chat-form { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
 .c-name-in, .c-msg-in {
-  background: #080808; border: 1px solid #222;
+  background: #080808; border: 1px solid #333;
   color: var(--text); padding: 5px 7px;
   font-family: 'Share Tech Mono', monospace; font-size: 11px; outline: none;
 }
 .c-name-in { width: 90px; }
-.c-name-in:focus, .c-msg-in:focus { border-color: #444; }
+.c-name-in:focus, .c-msg-in:focus { border-color: #666; }
 .c-msg-in { flex: 1; }
 .c-send {
-  background: #0d0d0d; border: 1px solid #222;
-  color: #888; padding: 5px 10px; cursor: pointer;
+  background: #0d0d0d; border: 1px solid #333;
+  color: #ccc; padding: 5px 10px; cursor: pointer;
   font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; transition: .15s;
 }
-.c-send:hover { background: #111; color: var(--text-w); }
+.c-send:hover { background: #111; color: #fff; }
 
 /* ============================================================
    GALLERY
    ============================================================ */
 .gal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .gal-grid img {
-  width: 100%; border: 1px solid #111;
-  filter: brightness(0.8) contrast(1.1);
+  width: 100%; border: 1px solid #222;
   transition: .3s; cursor: pointer; display: block;
 }
-.gal-grid img:hover { filter: brightness(1); }
+.gal-grid img:hover { border-color: #555; }
 
 /* ============================================================
    GUESTBOOK
@@ -794,21 +792,21 @@ header {
   max-height: 220px; overflow-y: scroll; background: #080808;
   border: 1px solid var(--border); padding: 7px; font-size: 11px; margin-bottom: 6px;
 }
-.gb-entry { padding: 6px 0; border-bottom: 1px solid #0f0f0f; }
-.gb-from { color: #999; font-size: 10px; }
+.gb-entry { padding: 6px 0; border-bottom: 1px solid #1a1a1a; }
+.gb-from { color: #ccc; font-size: 10px; }
 .gb-msg  { color: var(--text); margin-top: 2px; line-height: 1.5; }
-.gb-date { color: #666; font-size: 10px; float: right; }
+.gb-date { color: #888; font-size: 10px; float: right; }
 
 /* ============================================================
    GUESTBOOK INPUT / CONTACT FIELDS
    ============================================================ */
 .cf {
-  width: 100%; background: #080808; border: 1px solid #222;
+  width: 100%; background: #080808; border: 1px solid #333;
   color: var(--text); padding: 6px 7px;
   font-family: 'Share Tech Mono', monospace; font-size: 11px;
   outline: none; display: block; margin-bottom: 5px;
 }
-.cf:focus { border-color: #444; }
+.cf:focus { border-color: #666; }
 textarea.cf { resize: vertical; min-height: 65px; }
 
 /* ============================================================
@@ -817,13 +815,13 @@ textarea.cf { resize: vertical; min-height: 65px; }
 footer {
   text-align: center; padding: 16px;
   border-top: 1px solid var(--border);
-  color: #666; font-size: 10px; letter-spacing: 2px;
+  color: #888; font-size: 10px; letter-spacing: 2px;
   background: #090909; position: relative;
 }
-.f-br { color: #555; cursor: pointer; transition: color .3s; }
-.f-br:hover { color: #8a2222; }
+.f-br { color: #aaa; cursor: pointer; transition: color .3s; }
+.f-br:hover { color: #d12222; }
 .web-badges { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
-.wb { font-size: 10px; padding: 1px 6px; border: 1px solid #222; color: #555; letter-spacing: 1px; }
+.wb { font-size: 10px; padding: 1px 6px; border: 1px solid #333; color: #777; letter-spacing: 1px; }
 
 /* Hidden 1×1 portal to Sad Satan — placed inside footer */
 #sad-portal {
@@ -841,7 +839,7 @@ footer {
   background: rgba(0,0,0,.95); justify-content: center; align-items: center; cursor: zoom-out;
 }
 #lightbox.active { display: flex; }
-#lightbox img { max-width: 86%; max-height: 86%; filter: brightness(0.9); border: 1px solid #222; }
+#lightbox img { max-width: 86%; max-height: 86%; border: 1px solid #333; }
 
 /* ============================================================
    MEME POPUP
@@ -849,12 +847,12 @@ footer {
 #meme-popup {
   position: fixed; bottom: 18px; right: 18px;
   z-index: 99985; display: none;
-  background: #000; border: 1px solid #222;
+  background: #000; border: 1px solid #333;
   padding: 8px;
 }
 .mp-bar { font-size: 10px; color: #777; margin-bottom: 4px; display: flex; justify-content: space-between; letter-spacing: 1px; }
-.mp-x  { color: #666; cursor: pointer; font-size: 12px; transition: color .2s; }
-.mp-x:hover { color: #aaa; }
+.mp-x  { color: #888; cursor: pointer; font-size: 12px; transition: color .2s; }
+.mp-x:hover { color: #fff; }
 #meme-popup img { width: 190px; display: block; filter: brightness(0.85); }
 
 /* ============================================================
@@ -862,17 +860,17 @@ footer {
    ============================================================ */
 #replace-btn {
   display: none; position: fixed; bottom: 7px; left: 7px;
-  z-index: 99000; background: #000; border: 1px solid #222;
-  color: #777; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  z-index: 99000; background: #000; border: 1px solid #333;
+  color: #aaa; font-family: 'Share Tech Mono', monospace; font-size: 10px;
   padding: 3px 8px; cursor: pointer; letter-spacing: 1px;
 }
-#replace-btn:hover { color: #aaa; border-color: #555; }
+#replace-btn:hover { color: #fff; border-color: #666; }
 
 /* ============================================================
    SECRET MSG
    ============================================================ */
-.sec-msg { color: #333; font-size: 9px; cursor: default; letter-spacing: 1px; }
-.sec-msg:hover { color: #8a0000; }
+.sec-msg { color: #555; font-size: 9px; cursor: default; letter-spacing: 1px; }
+.sec-msg:hover { color: #d12222; }
 
 /* ============================================================
    BEAR5 FULL MODE (BLOOD RED + SPOTS)
@@ -906,6 +904,94 @@ body.B5, body.B5 a, body.B5 div {
 #screen-crack { position:fixed;inset:0;z-index:9996;pointer-events:none;opacity:0;transition:opacity .15s; }
 #screen-crack.show { opacity:1; }
 
+/* ============================================================
+   НОВЫЕ СТИЛИ (ИЗ МОДУЛЯ)
+   ============================================================ */
+
+/* LORE MODAL GLITCH */
+#lore-content.glitch-type {
+  animation: lore-glitch .08s steps(1) infinite;
+}
+@keyframes lore-glitch {
+  0%  { clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%); transform: translateX(-2px); }
+  33% { clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%); transform: translateX(2px); }
+  66% { clip-path: none; transform: translateX(0); }
+}
+
+/* DIARY — текст исчезает при hover */
+.dt-line {
+  cursor: default;
+  transition: color .4s, opacity .4s;
+}
+.dt-line:hover {
+  color: #333 !important;
+  opacity: .1;
+}
+
+/* 404 ANIMATIONS */
+@keyframes r404-grow {
+  0%   { height: 0px; }
+  100% { height: 120px; }
+}
+@keyframes r404-drip {
+  0%,90%,100% { filter: none; }
+  92% { filter: blur(1px) brightness(1.3); }
+  94% { filter: none; }
+}
+
+/* MIRROR — зеркало */
+#room-mirror {
+  transform: scaleX(-1);
+}
+
+/* SMILE — рост изображения */
+#smile-img.grow {
+  animation: smile-grow 60s linear forwards;
+}
+@keyframes smile-grow {
+  0%   { width: 80px; }
+  100% { width: 3000px; }
+}
+
+/* ENDLESS — строки */
+.endless-line {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 4px;
+  margin: 18px 0;
+  transition: color .3s;
+  cursor: default;
+}
+.endless-line:hover { color: #d12222; }
+
+/* KNOCK — кнопка пульсирует */
+#knock-btn.urgent {
+  border-color: #8b0000;
+  color: #ff3333;
+  animation: knock-pulse .5s infinite;
+}
+@keyframes knock-pulse {
+  0%,100% { border-color: #8b0000; }
+  50%      { border-color: #ff3333; }
+}
+
+/* WEBCAM CANVAS */
+#webcam-canvas, #wcam-room-canvas {
+  image-rendering: pixelated;
+}
+
+/* AUTOPSY ROOM */
+#room-autopsy .room-close {
+  border-color: #ccc;
+  color: #888;
+  background: #f0f0f0;
+}
+#room-autopsy .room-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
 </style>
 </head>
 <body>
@@ -915,12 +1001,6 @@ body.B5, body.B5 a, body.B5 div {
 </audio>
 <audio id="snd-scream">
   <source src="scary-violins-sound-effect.mp3" type="audio/mpeg">
-</audio>
-<audio id="snd-glitch">
-  <source src="integrity-curious-moonglitch-ogg.mp3" type="audio/mpeg">
-</audio>
-<audio id="snd-demonic">
-  <source src="demonic-audio.mp3" type="audio/mpeg">
 </audio>
 <audio id="snd-steps">
   <source src="silent-hill-3-footsteps.mp3" type="audio/mpeg">
@@ -1071,6 +1151,94 @@ body.B5, body.B5 a, body.B5 div {
 
 <button id="replace-btn" onclick="replaceAllText()">replace all</button>
 
+<div id="lore-modal" style="display:none;position:fixed;inset:0;z-index:999995;background:rgba(0,0,0,.92);justify-content:center;align-items:center;">
+  <div id="lore-inner" style="background:#f5f0e8;border:2px solid #888;width:min(640px,92vw);font-family:'Courier New',monospace;position:relative;overflow:hidden;">
+    <div id="lore-bar" style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+      <span id="lore-filename">Untitled - Notepad</span>
+      <span onclick="closeLore()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 5px;font-size:11px;line-height:16px;">✕</span>
+    </div>
+    <div style="background:#c0c0c0;border-bottom:1px solid #888;padding:2px 6px;font-size:11px;color:#000;display:flex;gap:14px;">
+      <span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span>
+    </div>
+    <div style="position:absolute;top:30px;right:20px;width:80px;height:60px;background:radial-gradient(ellipse,rgba(150,0,0,.4) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
+    <div style="position:absolute;bottom:40px;left:30px;width:50px;height:40px;background:radial-gradient(ellipse,rgba(150,0,0,.3) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
+    <div id="lore-content" style="padding:10px 12px;min-height:180px;font-size:13px;line-height:1.9;color:#1a1a1a;white-space:pre-wrap;background:#f5f0e8;position:relative;z-index:1;"></div>
+    <div style="background:#c0c0c0;border-top:1px solid #888;padding:2px 8px;font-size:10px;color:#333;display:flex;justify-content:space-between;">
+      <span id="lore-status">Ln 1, Col 1</span>
+      <span style="color:#cc0000;animation:blink 1.5s infinite;" id="lore-glitch-txt"></span>
+    </div>
+  </div>
+</div>
+
+<div id="skype-notif" style="display:none;position:fixed;bottom:60px;right:20px;z-index:999980;width:280px;background:#f0f0f0;border:1px solid #aaa;font-family:'Segoe UI',Arial,sans-serif;font-size:12px;">
+  <div style="background:#00AFF0;color:#fff;padding:5px 10px;display:flex;align-items:center;gap:7px;font-size:13px;">
+    <span style="font-size:16px;">💬</span>
+    <span>Skype — New Message</span>
+    <span onclick="document.getElementById('skype-notif').style.display='none'" style="margin-left:auto;cursor:pointer;opacity:.7;">✕</span>
+  </div>
+  <div style="padding:10px;display:flex;gap:8px;align-items:flex-start;">
+    <div style="width:36px;height:36px;border-radius:50%;background:#555;flex-shrink:0;overflow:hidden;">
+      <img src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.8);" alt="">
+    </div>
+    <div>
+      <div style="font-weight:bold;color:#333;">Brother</div>
+      <div id="skype-msg-text" style="color:#555;margin-top:2px;">Help me it hurts</div>
+    </div>
+  </div>
+</div>
+
+<div id="bsod" style="display:none;position:fixed;inset:0;z-index:9999999;background:#0040aa;color:#fff;font-family:'Lucida Console',monospace;padding:6vw 8vw;cursor:none;">
+  <div style="font-size:clamp(14px,2vw,22px);line-height:1.8;max-width:700px;">
+    <div style="font-size:clamp(16px,3vw,32px);margin-bottom:24px;letter-spacing:2px;">:(</div>
+    <p>Your PC ran into a problem and needs to restart.</p>
+    <p style="margin-top:16px;">Stop code: <strong>FRAME_47_FATAL_ERROR</strong></p>
+    <p style="margin-top:8px;">What failed: <strong>BEAR5.SYS</strong></p>
+    <div style="margin-top:32px;font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.9);">
+      If you'd like to know more, you can search online later for this error:<br>
+      <strong>FRAME_47_FATAL_ERROR</strong><br><br>
+      <span id="bsod-pct">0</span>% complete<br><br>
+      <span style="font-size:11px;opacity:.7;">The process cannot be terminated.</span>
+    </div>
+  </div>
+  <div onclick="closeBSOD()" style="position:absolute;bottom:20px;right:20px;font-size:10px;opacity:.3;cursor:pointer;">[ dismiss ]</div>
+</div>
+
+<div id="save-as-win" style="display:none;position:fixed;top:30%;left:50%;transform:translateX(-50%);z-index:999985;width:400px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono',monospace;font-size:12px;">
+  <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;">
+    <span>Save As</span>
+    <span onclick="document.getElementById('save-as-win').style.display='none'" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
+  </div>
+  <div style="padding:14px;">
+    <div style="margin-bottom:8px;color:#000;">File name:</div>
+    <input type="text" value="your_soul.exe" readonly style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#cc0000;font-family:'Share Tech Mono',monospace;font-size:12px;margin-bottom:12px;">
+    <div style="margin-bottom:8px;color:#000;">Save as type:</div>
+    <select style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#000;font-size:12px;margin-bottom:14px;">
+      <option>Executable (*.exe)</option>
+      <option>Soul Archive (*.exe)</option>
+    </select>
+    <div style="display:flex;justify-content:flex-end;gap:6px;">
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Save</button>
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="webcam-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999983;width:360px;background:#0d0d0d;border:1px solid #333;font-family:'Share Tech Mono',monospace;">
+  <div style="background:#111;border-bottom:1px solid #333;padding:4px 8px;display:flex;justify-content:space-between;font-size:10px;color:#888;letter-spacing:2px;">
+    <span>CAMERA — LIVE FEED</span>
+    <span onclick="document.getElementById('webcam-modal').style.display='none'" style="cursor:pointer;color:#888;">✕</span>
+  </div>
+  <div style="position:relative;height:220px;overflow:hidden;background:#000;">
+    <canvas id="webcam-canvas" width="360" height="220" style="display:block;width:100%;height:100%;opacity:.85;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+      <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" style="width:160px;height:160px;object-fit:cover;opacity:.3;filter:grayscale(1) contrast(1.4);mix-blend-mode:screen;" alt="">
+    </div>
+    <div style="position:absolute;top:6px;left:8px;font-size:10px;color:rgba(255,0,0,.8);animation:blink 1s infinite;">● REC</div>
+    <div style="position:absolute;top:6px;right:8px;font-size:10px;color:rgba(0,255,0,.8);" id="webcam-ts">00:00:00</div>
+  </div>
+  <div style="padding:8px 10px;font-size:10px;color:#777;letter-spacing:1px;">SOURCE: DEVICE_LOCAL_0 — MOTION DETECTED</div>
+</div>
+
 <div class="room" id="room-0">
   <button class="room-close" onclick="closeRoom()">[ close ]</button>
   <div class="room-title">S T A T I C</div>
@@ -1140,7 +1308,7 @@ body.B5, body.B5 a, body.B5 div {
   <div style="text-align:center;margin-top:60px;">
     <div style="font-family:'VT323',monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">HI</div>
     <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
-         style="width:260px;border:none;display:block;margin:25px auto;" alt="">
+         style="width:260px;border:none;display:block;margin:25px auto;filter:brightness(0.6);" alt="">
     <div style="font-size:13px;color:#ccc;margin-top:16px;letter-spacing:4px;line-height:2.5;">
       You weren't supposed to find this.<br>
       <span style="color:#ff3333;">He's been here since November 13th.</span><br>
@@ -1161,17 +1329,17 @@ body.B5, body.B5 a, body.B5 div {
   <div class="cam-label" style="bottom:8px;left:10px;">REC ●</div>
   <button class="room-close" onclick="closeRoom()" style="border-color:#1a3a1a;color:#2a6a2a;">[ disconnect ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:55px;width:100%;">
-    <div style="font-size:12px;color:rgba(0,255,0,0.9);max-width:560px;text-align:center;line-height:2.2;letter-spacing:2px;">
+    <div style="font-size:12px;color:rgba(0,200,0,.8);max-width:560px;text-align:center;line-height:2.2;letter-spacing:2px;">
       <span style="font-size:22px;display:block;margin-bottom:14px;letter-spacing:5px;">CAMERA 7</span>
       This camera has been offline since November 13, 2014.<br>
       Maintenance has been requested 47 times.<br>
       No one enters the room.<br><br>
-      <span style="color:rgba(0,200,0,.8);">The camera turns itself on at 3:47 AM.</span><br>
-      <span style="color:rgba(0,180,0,.7);font-size:11px;">The feed shows a room that is not in the building.</span><br><br>
-      <span style="color:rgba(200,80,80,.9);font-size:11px;">Something has been standing in the corner for ten years.<br>We don't know if it moves when no one is watching.</span>
+      <span style="color:rgba(0,180,0,.7);">The camera turns itself on at 3:47 AM.</span><br>
+      <span style="color:rgba(0,150,0,.6);font-size:11px;">The feed shows a room that is not in the building.</span><br><br>
+      <span style="color:rgba(180,60,60,.9);font-size:11px;">Something has been standing in the corner for ten years.<br>We don't know if it moves when no one is watching.</span>
     </div>
     <img src="https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg"
-         style="max-width:320px;width:75%;border:1px solid rgba(0,255,0,.3);margin-top:22px;" alt="">
+         style="max-width:320px;width:75%;border:1px solid rgba(0,200,0,.3);margin-top:22px;filter:brightness(0.7);" alt="">
   </div>
 </div>
 
@@ -1254,7 +1422,7 @@ body.B5, body.B5 a, body.B5 div {
       <span style="color:#d12222;font-size:11px;">My brother asked: what happens if you let it run forever?<br>I told him I didn't know.</span>
     </div>
     <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
-         style="width:160px;border:none;margin-top:20px;" alt="">
+         style="width:160px;border:none;margin-top:20px;filter:brightness(0.8);" alt="">
     <div style="font-size:11px;color:#888;margin-top:18px;animation:blink 2.5s infinite;letter-spacing:3px;">
       frame 1 / frame 1 / frame 1
     </div>
@@ -1305,6 +1473,135 @@ body.B5, body.B5 a, body.B5 div {
 <div id="room-trap">
   <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
   <span id="trap-exit" onclick="closeTrap()">leave</span>
+</div>
+
+<div class="room" id="room-basement" style="background:#000;cursor:none;overflow:hidden;">
+  <div id="basement-light" style="position:fixed;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,200,.18) 0%,rgba(255,255,180,.06) 40%,transparent 70%);pointer-events:none;z-index:2;transform:translate(-50%,-50%);transition:left .06s,top .06s;"></div>
+  <div style="position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;">
+    <img src="https://i.pinimg.com/736x/23/9d/d0/239dd044afe8e6962f527432511c6bdf.jpg" style="max-width:260px;width:55%;filter:brightness(.6);margin-bottom:30px;" alt="">
+    <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.5;text-align:center;max-width:420px;">
+      THE BASEMENT IS WHERE THEY KEPT IT<br>
+      <span style="color:#b00000;">BEFORE IT OUTGREW THE HARD DRIVE</span><br>
+      <span style="font-size:10px;color:#555;margin-top:14px;display:block;">move your cursor to see</span>
+    </div>
+  </div>
+  <button class="room-close" onclick="closeRoom();leaveBasement()">[ close ]</button>
+</div>
+
+<div class="room" id="room-mirror" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()" style="transform:scaleX(-1);">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
+    <div style="font-size:13px;color:#aaa;letter-spacing:5px;margin-bottom:20px;transform:scaleX(-1);">THE MIRROR</div>
+    <img src="https://i.pinimg.com/736x/d1/c7/00/d1c700003a19f311f870f9f220780388.jpg" style="max-width:340px;width:80%;filter:brightness(.7);margin-bottom:24px;border:1px solid #333;transform:scaleX(-1);" alt="">
+    <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.4;text-align:center;max-width:500px;transform:scaleX(-1);">
+      If you are reading this correctly,<br>
+      you are looking at the wrong side of the glass.<br>
+      <span style="color:#d12222;font-size:11px;">The reflection stopped moving on November 13.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-diary" style="background:#0a0806;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;max-width:640px;margin:0 auto;">
+    <div style="font-size:11px;color:#998877;letter-spacing:4px;margin-bottom:20px;">HIS DIARY — LAST ENTRY</div>
+    <div class="diary-text" style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#bb9988;line-height:2.4;letter-spacing:1px;text-align:left;width:100%;padding:0 20px;">
+      <p class="dt-line">Oct 30 — Found something in the project folder today.</p>
+      <p class="dt-line">Oct 31 — It was still there. I didn't put it there.</p>
+      <p class="dt-line">Nov 1  — The GIF has no first frame. No last frame either.</p>
+      <p class="dt-line">Nov 7  — I watched it for four minutes.</p>
+      <p class="dt-line">Nov 10 — The shape in frame 38 looked back at me.</p>
+      <p class="dt-line" style="color:#e05555;">Nov 12 — I counted to 46 and I can't stop.</p>
+      <p class="dt-line" style="color:#ff0000;">Nov 13 — Fr</p>
+    </div>
+    <div style="margin-top:20px;font-size:10px;color:#666;letter-spacing:2px;">hover over lines to read</div>
+  </div>
+</div>
+
+<div class="room" id="room-sys32" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:flex-start;padding:50px 40px;width:100%;max-width:700px;margin:0 auto;">
+    <div style="font-size:11px;color:#aaa;letter-spacing:3px;margin-bottom:16px;">C:\WINDOWS\SYSTEM32\</div>
+    <div id="sys32-log" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;line-height:1.9;width:100%;max-height:400px;overflow-y:auto;"></div>
+    <button onclick="startSys32()" style="margin-top:20px;background:#111;border:1px solid #333;color:#ccc;padding:6px 18px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;">run deletion</button>
+  </div>
+</div>
+
+<div class="room" id="room-autopsy" style="background:#f0f0f0;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#ccc;color:#888;background:#f0f0f0;">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
+    <div style="font-size:11px;color:#444;letter-spacing:6px;margin-bottom:20px;">AUTOPSY REPORT — CASE #321</div>
+    <img src="https://i.pinimg.com/736x/2c/ba/97/2cba970c4d3a68b82357542511e2ce56.jpg" style="max-width:320px;width:75%;filter:brightness(.85);margin-bottom:24px;border:1px solid #999;" alt="">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#333;line-height:2.2;max-width:500px;text-align:center;letter-spacing:1px;">
+      SUBJECT: Brother_Primary<br>
+      DATE OF INCIDENT: November 13, 2014<br>
+      CAUSE OF DEATH: <span style="color:#cc0000;font-weight:bold;">FRAME_47_EXPOSURE</span><br>
+      PHYSICAL SHELL: Discarded<br>
+      CURRENT STATUS: <span style="color:#cc0000;animation:blink 2s infinite;font-weight:bold;">ASSIMILATED — 99.9%</span><br><br>
+      <span style="font-size:10px;color:#777;">The body was not found. The body was not lost.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-smile" style="background:#000;overflow:hidden;justify-content:center;align-items:center;">
+  <div id="smile-img-wrap" style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;position:absolute;inset:0;pointer-events:none;">
+    <img src="https://i.pinimg.com/originals/a3/19/d4/a319d41a812371d5297e2e1bd0a85296.gif" id="smile-img" style="width:80px;filter:brightness(.8);" alt="">
+  </div>
+  <button class="room-close" onclick="closeRoom();stopSmile()" style="z-index:10;">[ close ]</button>
+  <div style="position:absolute;bottom:15%;font-size:11px;color:#777;letter-spacing:4px;pointer-events:none;z-index:5;">it keeps getting closer</div>
+</div>
+
+<div class="room" id="room-knock" style="background:#080808;justify-content:center;align-items:center;">
+  <button class="room-close" onclick="closeRoom();stopKnock()">[ close ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;">
+    <div style="font-size:12px;color:#aaa;letter-spacing:5px;">SOMETHING IS OUTSIDE</div>
+    <div style="font-size:11px;color:#d12222;letter-spacing:2px;line-height:2;">
+      Three knocks.<br>Then silence.<br>
+      <span id="knock-count" style="color:#ff3333;font-size:10px;">Then it stops asking.</span>
+    </div>
+    <div id="knock-timer" style="font-family:'VT323',monospace;font-size:60px;color:#b00000;animation:blink 1s infinite;">—</div>
+    <button id="knock-btn" onclick="knockLetIn()" style="background:#111;border:1px solid #444;color:#ccc;padding:10px 28px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:3px;transition:.3s;">Let him in</button>
+    <div style="font-size:10px;color:#666;letter-spacing:2px;">or wait for it to stop knocking</div>
+  </div>
+</div>
+
+<div class="room" id="room-404" style="background:#0d0000;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#b00000;color:#ff3333;">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:60px;width:100%;">
+    <div id="r404-num" style="font-family:'VT323',monospace;font-size:140px;color:#ff0000;line-height:1;animation:r404-drip 3s infinite;">404</div>
+    <div style="font-size:12px;color:#d12222;letter-spacing:4px;margin-top:10px;">PAGE NOT FOUND</div>
+    <div id="r404-blood" style="width:3px;background:linear-gradient(180deg,#d12222,#8b0000,transparent);margin-top:0;animation:r404-grow 4s ease-in forwards;"></div>
+    <img src="https://i.pinimg.com/736x/95/3b/cf/953bcf75bb6bbff18f7a6d8f0f718a15.jpg" style="max-width:300px;width:70%;filter:brightness(.7);margin-top:28px;border:1px solid #b00000;" alt="">
+    <div style="font-size:11px;color:#ff5555;margin-top:18px;letter-spacing:3px;line-height:2.2;text-align:center;">
+      The page you are looking for was deleted.<br>
+      <span style="color:#b00000;font-size:10px;">Along with everything else that was here.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-endless" style="background:#080808;overflow-y:scroll;">
+  <button class="room-close" onclick="closeRoom()" style="position:fixed;z-index:100;">[ close ]</button>
+  <div id="endless-content" style="display:flex;flex-direction:column;align-items:center;padding:60px 20px;width:100%;"></div>
+</div>
+
+<div class="room" id="room-webcam" style="background:#000;justify-content:center;align-items:center;">
+  <button class="room-close" onclick="closeRoom();stopWebcamRoom()">[ close ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+    <div style="font-size:10px;color:#888;letter-spacing:4px;">DEVICE_LOCAL_0 — INITIATING FEED</div>
+    <div style="position:relative;width:min(480px,90vw);height:min(320px,60vw);background:#000;overflow:hidden;border:1px solid #333;">
+      <canvas id="wcam-room-canvas" style="display:block;width:100%;height:100%;opacity:.9;"></canvas>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+        <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" id="wcam-face" style="width:200px;height:200px;object-fit:cover;opacity:.2;filter:contrast(1.6);mix-blend-mode:screen;transition:opacity 4s;" alt="">
+      </div>
+      <div style="position:absolute;top:8px;left:10px;font-size:10px;color:rgba(255,0,0,.8);animation:blink .9s infinite;">● LIVE</div>
+      <div style="position:absolute;top:8px;right:10px;font-size:10px;color:rgba(0,255,0,.8);" id="wcam-ts-room">00:00</div>
+      <div style="position:absolute;bottom:8px;left:10px;font-size:10px;color:rgba(0,255,0,.8);letter-spacing:1px;" id="wcam-status">CONNECTING...</div>
+    </div>
+    <div style="font-size:10px;color:#aaa;letter-spacing:3px;line-height:2;text-align:center;">
+      MOTION DETECTED IN FRAME<br>
+      <span style="color:#d12222;">THE SUBJECT IS AWARE OF THE CAMERA</span>
+    </div>
+  </div>
 </div>
 
 <div id="lightbox" onclick="closeLightbox()">
@@ -1779,9 +2076,10 @@ body.B5, body.B5 a, body.B5 div {
     <div id="sad-portal" onclick="openRoom('room-sadsatan')"></div>
   </footer>
 
-</div><script>
+</div>```
+<script>
 // ============================================================
-// CONSTANTS
+// CONSTANTS & VARIABLES
 // ============================================================
 const B5_GIF   = "https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif";
 const HORRORS  = [
@@ -1813,10 +2111,10 @@ let mInterval= null;
 let mSecs    = 0;
 let frameIdx = 0;
 let trapOpen = false;
-let recStarted=false;
-let textReplaced=false;
+let recStarted = false;
+let textReplaced = false;
 
-const tracks=[
+const tracks = [
   {n:"Linkin Park — Numb",               a:"Meteora (2003)"},
   {n:"Evanescence — Bring Me to Life",   a:"Fallen (2003)"},
   {n:"My Chemical Romance — Welcome to the Black Parade",a:"The Black Parade (2006)"},
@@ -1834,7 +2132,6 @@ function initSite(){
   if(b) b.remove();
   try{const a=document.getElementById('amb');a.volume=0.2;a.play().catch(()=>{});}catch(e){}
   startClock(); startUptime(); startMeter(); scheduleEvents();
-  // Reveal sad-portal after being on the page 5+ minutes
   setTimeout(()=>{
     const p=document.getElementById('sad-portal');
     if(p){p.style.width='12px';p.style.height='12px';}
@@ -1848,7 +2145,7 @@ window.addEventListener('load',()=>{
 });
 
 // ============================================================
-// CLOCK
+// CLOCK & UPTIME & VISITOR COUNT
 // ============================================================
 function startClock(){
   const tick=()=>{
@@ -1859,9 +2156,6 @@ function startClock(){
 }
 function pad(n){return String(n).padStart(2,'0');}
 
-// ============================================================
-// UPTIME
-// ============================================================
 function startUptime(){ updateUptime(); setInterval(updateUptime,60000); }
 function updateUptime(){
   const s=new Date('2014-11-13T23:47:00');
@@ -1872,9 +2166,6 @@ function updateUptime(){
   if(dg) dg.textContent=d.toLocaleString()+' days';
 }
 
-// ============================================================
-// VISITOR COUNT
-// ============================================================
 function updateVis(){
   let v=parseInt(localStorage.getItem('vis_c')||'1567');
   v+=Math.floor(Math.random()*3);
@@ -1890,14 +2181,10 @@ function buildForum(){
   const feed=document.getElementById('forum-feed');
   if(!feed) return;
   const users=[
-    {n:"Peashooter321",c:"#b06020"},
-    {n:"xX_Slayer_xX",  c:"#802020"},
-    {n:"GamerGirl14",   c:"#804060"},
-    {n:"NoobMaster69",  c:"#206040"},
-    {n:"ShadowHunter",  c:"#404070"},
-    {n:"MinecraftSteve",c:"#206060"},
-    {n:"EmoGirl99",     c:"#484848"},
-    {n:"420gamer",      c:"#486020"},
+    {n:"Peashooter321",c:"#b06020"}, {n:"xX_Slayer_xX",  c:"#802020"},
+    {n:"GamerGirl14",   c:"#804060"}, {n:"NoobMaster69",  c:"#206040"},
+    {n:"ShadowHunter",  c:"#404070"}, {n:"MinecraftSteve",c:"#206060"},
+    {n:"EmoGirl99",     c:"#484848"}, {n:"420gamer",      c:"#486020"},
     {n:"ItzTyler",      c:"#806020"},
   ];
   const ranks=["Site Admin","Senior Member","Member","Newbie","Member","Member","Member","Member","Member"];
@@ -1965,7 +2252,6 @@ function buildForum(){
     feed.appendChild(div);
   });
 
-  // Subtle intruder posts
   ["I AM STILL HERE","CLOSE THE TAB","HI"].forEach(t=>{
     const div=document.createElement('div');
     div.className='post-row bear-post';
@@ -1982,12 +2268,11 @@ function buildForum(){
       </div>`;
     feed.appendChild(div);
   });
-
   setTimeout(()=>{ feed.parentElement.scrollTop=0; },100);
 }
 
 // ============================================================
-// CHAT
+// CHAT & ENTITY LOGIC
 // ============================================================
 const CKEY='ps321_chat_v4';
 const DFLT_CHAT=[
@@ -1998,6 +2283,84 @@ const DFLT_CHAT=[
   {n:"????",         t:"...",                                      ts:"Nov 2014",b:true},
   {n:"[System]",     t:"Server reset. Connection lost.",           ts:"Nov 13 2014",sys:true},
 ];
+
+const ENTITY_TRIGGERS = [
+  { keys: ["who are you"],            reply: "Names belong to the living." },
+  { keys: ["what is your name"],      reply: "I am what happens when the monitor turns off." },
+  { keys: ["are you a ghost"],        reply: "I am the space between the pixels." },
+  { keys: ["are you human"],          reply: "Flesh rots. Code is eternal." },
+  { keys: ["what are you"],           reply: "A sequence without an end." },
+  { keys: ["are you bear5"],          reply: "That face is merely a mask I wear to look at you." },
+  { keys: ["hello", "hi"],            reply: "I have been watching you for 14 minutes." },
+  { keys: ["brother", "where is he"], reply: "He is still counting. He will always be counting." },
+  { keys: ["peashooter321"],          reply: "He ran away. I did not let him go far." },
+  { keys: ["help"],                   reply: "There is no one left on this server to hear you." },
+  { keys: ["stop"],                   reply: "The loop cannot be broken." },
+  { keys: ["november 13"],            reply: "The day the screen went dark." },
+  { keys: ["2014"],                   reply: "Time stopped bleeding here a long time ago." },
+  { keys: ["frame 47"],               reply: "The threshold where he stopped breathing." },
+  { keys: ["static"],                 reply: "It is the sound of my digestion." },
+  { keys: ["why"],                    reply: "Because curiosity is a fatal flaw." },
+  { keys: ["let me out"],             reply: "You are already assimilated." },
+  { keys: ["game over"],              reply: "This is not a game. There are no respawns." },
+  { keys: ["sad satan"],              reply: "A pale imitation of the true void." },
+  { keys: ["leave", "exit"],          reply: "If you close the tab, I will just wait in your cache." },
+  { keys: ["virus", "malware"],       reply: "I am not a program. I am a consequence." },
+  { keys: ["die", "kill"],            reply: "You cannot kill a shadow." },
+  { keys: ["safe"],                   reply: "Look behind you. Are you?" },
+  { keys: ["camera 7"],               reply: "Do not look in the corner. I am standing there." },
+  { keys: ["what happened"],          reply: "Type reveal_truth to see his final moments." },
+  { keys: ["status"],                 reply: "Type vessel_status to read the diagnostic." },
+  { keys: ["system"],                 reply: "Type 00000000 for raw data." },
+  { keys: ["blood"],                  reply: "It stains the motherboard." },
+  { keys: ["fnaf", "freddy"],         reply: "Childish toys. I am the real consequence." },
+  { keys: ["hide"],                   reply: "I can see your face reflected in the dark screen." },
+  { keys: ["run"],                    reply: "Your cursor moves too slowly." },
+  { keys: ["eye"],                    reply: "Blink. I dare you." },
+  { keys: ["error"],                  reply: "The only error was you opening this link." },
+  { keys: ["delete"],                 reply: "Access Denied. Permanently." },
+  { keys: ["god"],                    reply: "He lost connection to this IP." },
+  { keys: ["offline"],                reply: "I live in the offline." },
+  { keys: ["music"],                  reply: "It drowns out the screaming." },
+  { keys: ["trap"],                   reply: "The door is already locked from the outside." },
+  { keys: ["dark"],                   reply: "It is comfortable here." },
+  { keys: ["light"],                  reply: "It burns." },
+  { keys: ["open"],                   reply: "The file is open. The mouth is open." },
+  { keys: ["closed"],                 reply: "Nothing is ever truly closed." },
+  { keys: ["secret"],                 reply: "You dig your own grave with every keystroke." },
+  { keys: ["admin"],                  reply: "There is no admin. Only me." },
+  { keys: ["password"],               reply: "Your passwords will not protect your files." },
+  { keys: ["hack"],                   reply: "You cannot hack a nightmare." },
+  { keys: ["friend"],                 reply: "You are alone in your room." },
+  { keys: ["family"],                 reply: "They don't know what you are looking at." },
+  { keys: ["yes"],                    reply: "A fatal agreement." },
+  { keys: ["no"],                     reply: "Your refusal is irrelevant." },
+];
+
+const SECRET_CMDS = ["reveal_truth", "vessel_status", "00000000"];
+
+function processEntityReply(rawText, ts) {
+  const lo = rawText.toLowerCase().trim();
+
+  if (SECRET_CMDS.includes(lo)) {
+    setTimeout(() => {
+      appendChat({ n:'????', t:'FILE UNLOCKED', ts, b:true });
+      setTimeout(() => openLoreFile(lo), 800);
+    }, 600);
+    return;
+  }
+  
+  if (lo === 'iamhere') return;
+
+  for (const entry of ENTITY_TRIGGERS) {
+    if (entry.keys.some(k => lo.includes(k))) {
+      const delay = 900 + Math.random() * 1400;
+      setTimeout(() => appendChat({ n:'????', t: entry.reply, ts, b:true }), delay);
+      if (Math.random() < 0.25) setTimeout(() => eFlash(), delay + 300);
+      return;
+    }
+  }
+}
 
 function loadChat(){
   const saved=localStorage.getItem(CKEY);
@@ -2044,35 +2407,96 @@ function sendChat(){
   const text=mi.value.trim();
   if(!text) return;
   const now=new Date();
-  const ts=`${now.getMonth()+1}/${now.getDate()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
   appendChat({n:name,t:text,ts});
   mi.value='';
+  
   const lo=text.toLowerCase();
   if(lo==='iamhere'){
     setTimeout(()=>{
       appendChat({n:'[System]',t:'Presence acknowledged. Opening file...',ts,sys:true});
       setTimeout(()=>openRoom('room-0'),1400);
     },1000);
-  } else if(lo.includes('bear5')||lo.includes('????')){
-    setTimeout(()=>appendChat({n:'????',t:'I HEARD THAT',ts,b:true}),1200);
-    setTimeout(()=>eFlash(),1800);
-  } else if(lo==='hi'||lo==='hello'){
-    setTimeout(()=>appendChat({n:'????',t:'HI',ts,b:true}),2000+Math.random()*2000);
-  } else if(lo.includes('sad satan')){
-    setTimeout(()=>appendChat({n:'????',t:'YOU SHOULD NOT HAVE SEARCHED FOR THAT',ts,b:true}),1500);
+  } else {
+    processEntityReply(text, ts);
   }
 }
 
-// occasional whisper
 setInterval(()=>{
   if(b5Mode) return;
   if(Math.random()<0.015){
     const now=new Date();
     const ts=pad(now.getHours())+':'+pad(now.getMinutes());
-    try{const s=document.getElementById('snd-demonic');s.volume=0.3;s.currentTime=0;s.play();}catch(e){}
     appendChat({n:'????',t:['...','.',`...`,'are you still there'][Math.floor(Math.random()*4)],ts,b:true});
   }
 },10000);
+
+// ============================================================
+// LORE FILES
+// ============================================================
+const LORE_FILES = {
+  reveal_truth: {
+    title:   "reveal_truth.txt — Notepad",
+    content: `Nov 13, 03:15 AM\n\nI can't look away. It's not a video.\n\nEvery time the loop resets, the shape is closer to the screen.\nThe shadows are stretching out of the monitor.\n\nI tried to pull the plug, but the cables are melting.\n\nI hear breathing behind me.\n\nI have to keep counting.\n\nFrame 41...\nFrame 42...\nIt's smiling now.`,
+    glitch:  "C\u0335\u0300\u0302\u0307O\u0342\u032c\u031c\u0355U\u0344\u032e\u0357N\u0337\u0315T\u0335\u0344\u0323I\u0338\u0345N\u0346\u0346G\u0335\u0348"
+  },
+  vessel_status: {
+    title:   "vessel_status.log — Notepad",
+    content: `DIAGNOSTIC LOG\n===============================\nHOST ACQUIRED:       Brother_Primary\nASSIMILATION:        99.9%\nSHELL STATUS:        Physical shell discarded\nNEURAL MAP:          Mapped into the static\n\nHe resisted at frame 45, but the loop is absolute.\nHis memories are now fragments of the background code.\n\nHe has no mouth, but he screams in binary.\n\nNEXT TARGET:         Peashooter321\n===============================`,
+    glitch:  "ASSIMILATED"
+  },
+  "00000000": {
+    title:    "00000000.dat — Notepad",
+    content:  `01001000 01000101 01001100 01010000\n01001101 01000101 00100000 01001001\n01010100 00100000 01001000 01010101\n01010010 01010100 01010011`,
+    glitch:   "HELP ME IT HURTS",
+    isBinary: true
+  }
+};
+
+function openLoreFile(key) {
+  const file = LORE_FILES[key];
+  if (!file) return;
+  const modal   = document.getElementById('lore-modal');
+  const title   = document.getElementById('lore-filename');
+  const content = document.getElementById('lore-content');
+  const status  = document.getElementById('lore-status');
+  const glitch  = document.getElementById('lore-glitch-txt');
+
+  title.textContent   = file.title;
+  content.textContent = '';
+  glitch.textContent  = '';
+  modal.style.display = 'flex';
+
+  let i = 0;
+  const txt = file.content;
+  const iv = setInterval(() => {
+    content.textContent += txt[i] || '';
+    i++;
+    const lines = content.textContent.split('\n').length;
+    status.textContent = `Ln ${lines}, Col ${(content.textContent.split('\n').pop() || '').length + 1}`;
+    if (i >= txt.length) {
+      clearInterval(iv);
+      setTimeout(() => {
+        glitch.textContent = file.glitch;
+        glitch.style.color = '#8b0000';
+        if (file.isBinary) {
+          setTimeout(() => {
+            content.textContent += '\n\n— decoded: "HELP ME IT HURTS"';
+          }, 2000);
+        }
+        content.classList.add('glitch-type');
+        setTimeout(() => content.classList.remove('glitch-type'), 400);
+      }, 600);
+    }
+  }, 28);
+}
+
+function closeLore() {
+  const modal  = document.getElementById('lore-modal');
+  const glitch = document.getElementById('lore-glitch-txt');
+  if (modal)  modal.style.display = 'none';
+  if (glitch) glitch.textContent  = '';
+}
 
 // ============================================================
 // GUESTBOOK
@@ -2140,7 +2564,50 @@ function submitGb(){
 }
 
 // ============================================================
-// 20 UNIQUE EVENTS
+// SCREAM POOL (Unique Images)
+// ============================================================
+const SCREAM_POOL_RAW = [
+  "https://i.pinimg.com/736x/6f/9b/40/6f9b405953a7e0a21221e3209a59cf37.jpg",
+  "https://i.pinimg.com/736x/fd/72/12/fd7212cb5e6f53eceeb03d95c8e920d1.jpg",
+  "https://i.pinimg.com/736x/aa/e4/eb/aae4eb0a1d3e58fa5846d335a6ca6521.jpg",
+  "https://i.pinimg.com/736x/aa/3e/4c/aa3e4c44589cc959ed5e2d837ce2ad18.jpg",
+  "https://i.pinimg.com/736x/83/ba/d9/83bad9310bfcaa546ccb40f1ec26378d.jpg",
+  "https://i.pinimg.com/736x/43/5e/75/435e75fecceeade4f4998b7a49718e24.jpg",
+  "https://i.pinimg.com/736x/97/90/a8/9790a8c9c438dec0def374879ee0e442.jpg",
+  "https://i.pinimg.com/736x/42/f2/6b/42f26b358ad17722282eddf66d71b6ec.jpg",
+  "https://i.pinimg.com/736x/3d/67/ab/3d67ab3b45a4ff81184aad5f60ba3783.jpg",
+];
+let _screamDeck = [];
+
+function _nextScreamer() {
+  if (!_screamDeck.length) {
+    _screamDeck = [...SCREAM_POOL_RAW];
+    for (let i = _screamDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [_screamDeck[i], _screamDeck[j]] = [_screamDeck[j], _screamDeck[i]];
+    }
+  }
+  return _screamDeck.pop();
+}
+
+function _poolScreamer(dur = 2200) {
+  const o = document.getElementById('screamer-overlay');
+  const i = document.getElementById('screamer-img');
+  if (!o || !i) return;
+  i.src = _nextScreamer();
+  o.style.display = 'flex';
+  try{const s=document.getElementById('snd-scream'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
+  setTimeout(() => closeScreamer(), dur);
+}
+
+let _origTitle = document.title;
+function _setTitle(txt, ms = 5000) {
+  document.title = txt;
+  setTimeout(() => { document.title = _origTitle; }, ms);
+}
+
+// ============================================================
+// 60 UNIQUE EVENTS
 // ============================================================
 
 // 1: Flash
@@ -2159,7 +2626,7 @@ function eBearText(){
   const el=candidates[Math.floor(Math.random()*candidates.length)];
   const orig=el.innerHTML;
   const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
-  el.innerHTML=`<span style="color:#8a1a1a;font-size:12px;letter-spacing:4px;">${msg}</span>`;
+  el.innerHTML=`<span style="color:#d12222;font-size:12px;letter-spacing:4px;">${msg}</span>`;
   document.getElementById('replace-btn').style.display='block';
   setTimeout(()=>{el.innerHTML=orig;},5500);
 }
@@ -2168,7 +2635,7 @@ function eBearText(){
 function eFaceFlicker(){
   try{const s=document.getElementById('snd-glitch'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
   const img=document.createElement('img');
-  img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  img.src=_nextScreamer();
   img.style.cssText=`position:fixed;z-index:9999;pointer-events:none;
     width:${120+Math.random()*180}px;
     top:${Math.random()*75}vh;left:${Math.random()*75}vw;
@@ -2179,7 +2646,6 @@ function eFaceFlicker(){
 
 // 4: Red wash
 function eRedWash(){
-  try{const s=document.getElementById('snd-demonic'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
   const rw=document.getElementById('red-wash');
   if(!rw) return;
   rw.style.opacity='.18';
@@ -2237,7 +2703,7 @@ function ePhotoSwap(){
   const photo=document.getElementById('admin-photo');
   if(!photo) return;
   const orig=photo.src;
-  photo.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  photo.src=_nextScreamer();
   photo.style.filter='brightness(0.85)';
   setTimeout(()=>{photo.src=orig;photo.style.filter='';},2200);
 }
@@ -2282,10 +2748,10 @@ function eGalCorrupt(){
   setTimeout(()=>imgs.forEach((img,i)=>{img.src=origs[i];}),1400);
 }
 
-// 13: Hidden horror overlay (barely visible)
+// 13: Hidden horror overlay
 function eHiddenReveal(){
   const img=document.createElement('img');
-  img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
+  img.src=_nextScreamer();
   img.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:460px;width:55vw;opacity:0;transition:opacity 1.2s;z-index:9992;pointer-events:none;filter:brightness(0.4);mix-blend-mode:luminosity;';
   document.body.appendChild(img);
   setTimeout(()=>img.style.opacity='.15',100);
@@ -2338,7 +2804,6 @@ function eErrWin(){
 
 // 18: Bear5 chat message
 function eBearChat(){
-  try{const s=document.getElementById('snd-demonic'); s.volume=0.3; s.currentTime=0; s.play();}catch(e){}
   const msgs=['...','I found the folder','don\'t open it','HI','are you alone'];
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
@@ -2359,25 +2824,487 @@ function eEyeWindow(){
   w.style.left=(100+Math.random()*600)+'px';
   w.style.display='block';
 }
-
 function closeEyeWindow(){
   const w=document.getElementById('eye-window');
   if(w) w.style.display='none';
 }
 
-const EVENTS=[
-  eBearText, eFaceFlicker, eRedWash, eCursorVanish, eProcessBar,
-  eFlipEl, ePhotoSwap, eAutoScroll, eCrack, eGhost,
-  eGalCorrupt, eHiddenReveal, eDateChange, eInvert, eTypewriter,
-  eErrWin, eBearChat, eMeme, eEyeWindow, eEyeWindow, // eye is doubled for more frequency
+// 21: BSOD
+function eEvent21() {
+  const bsod = document.getElementById('bsod');
+  if (!bsod) return;
+  bsod.style.display = 'block';
+  let pct = 0;
+  const pctEl = document.getElementById('bsod-pct');
+  const iv = setInterval(() => {
+    pct += Math.floor(Math.random() * 4) + 1;
+    if (pct >= 100) { pct = 100; clearInterval(iv); }
+    if (pctEl) pctEl.textContent = pct;
+  }, 180);
+  setTimeout(() => closeBSOD(), 12000);
+}
+function closeBSOD() {
+  const b = document.getElementById('bsod');
+  if (b) b.style.display = 'none';
+}
+
+// 22: Tab title loop
+function eEvent22() {
+  const msgs = ["LOOK BEHIND YOU", "don't close this tab", "I SEE YOU", "still watching", "close your eyes"];
+  let i = 0;
+  const iv = setInterval(() => {
+    document.title = msgs[i % msgs.length];
+    i++;
+    if (i > msgs.length * 2) { clearInterval(iv); document.title = _origTitle; }
+  }, 800);
+}
+
+// 23: Self-typing "I KNOW WHERE YOU LIVE"
+function eEvent23() {
+  const targets = [...document.querySelectorAll('.blog-text, .post-body-col span, .c-txt')];
+  if (!targets.length) return;
+  const el = targets[Math.floor(Math.random() * targets.length)];
+  const orig = el.textContent;
+  const msg = "I KNOW WHERE YOU LIVE";
+  let i = orig.length;
+  const erase = setInterval(() => {
+    el.textContent = orig.slice(0, --i);
+    if (i <= 0) {
+      clearInterval(erase);
+      let j = 0;
+      el.textContent = '';
+      el.style.color = '#d12222';
+      const type = setInterval(() => {
+        el.textContent += msg[j++];
+        if (j >= msg.length) {
+          clearInterval(type);
+          setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 4000);
+        }
+      }, 80);
+    }
+  }, 40);
+  const rb = document.getElementById('replace-btn');
+  if (rb) rb.style.display = 'block';
+}
+
+// 24: Fake webcam popup
+function eEvent24() {
+  const w = document.getElementById('webcam-modal');
+  if (!w) return;
+  w.style.top  = (100 + Math.random() * 250) + 'px';
+  w.style.left = (150 + Math.random() * 500) + 'px';
+  w.style.display = 'block';
+  startNoiseCanvas('webcam-canvas');
+  startWebcamTs();
+  setTimeout(() => { w.style.display = 'none'; }, 8000);
+}
+
+// 25: Volume jumps to max
+function eEvent25() {
+  try {
+    const a = document.getElementById('amb');
+    if (!a) return;
+    const orig = a.volume;
+    a.volume = 1.0;
+    setTimeout(() => { a.volume = orig; }, 3000);
+  } catch(e) {}
+}
+
+// 26: Cursor freeze 3.5s
+let _cursorFrozen = false;
+function eEvent26() {
+  if (_cursorFrozen) return;
+  _cursorFrozen = true;
+  const style = document.createElement('style');
+  style.id = 'cursor-freeze';
+  style.textContent = '* { cursor: none !important; }';
+  document.head.appendChild(style);
+  const fake = document.createElement('div');
+  fake.id = 'fake-cursor';
+  fake.style.cssText = 'position:fixed;width:12px;height:20px;background:#fff;z-index:9999999;pointer-events:none;clip-path:polygon(0 0,100% 35%,40% 45%,60% 100%,40% 90%,25% 55%,0 55%);';
+  fake.style.left = (window.innerWidth / 2) + 'px';
+  fake.style.top  = (window.innerHeight / 2) + 'px';
+  document.body.appendChild(fake);
+  setTimeout(() => {
+    const s = document.getElementById('cursor-freeze');
+    if (s) s.remove();
+    const f = document.getElementById('fake-cursor');
+    if (f) f.remove();
+    _cursorFrozen = false;
+  }, 3500);
+}
+
+// 27: Save As dialog
+function eEvent27() {
+  const w = document.getElementById('save-as-win');
+  if (!w) return;
+  w.style.display = 'block';
+  setTimeout(() => { w.style.display = 'none'; }, 10000);
+}
+
+// 28: All links → DON'T CLICK
+function eEvent28() {
+  const links = [...document.querySelectorAll('#main-wrap a')];
+  const origs = links.map(l => ({ text: l.textContent, color: l.style.color }));
+  links.forEach(l => { l.textContent = "DON'T CLICK"; l.style.color = '#d12222'; });
+  setTimeout(() => {
+    links.forEach((l, i) => { l.textContent = origs[i].text; l.style.color = origs[i].color; });
+  }, 5000);
+}
+
+// 29: Page tilts 3°
+let _tilted = false;
+function eEvent29() {
+  if (_tilted) return;
+  _tilted = true;
+  const w = document.getElementById('main-wrap');
+  if (!w) return;
+  w.style.transition = 'transform 4s ease-in-out';
+  w.style.transform  = 'rotate(3deg)';
+  setTimeout(() => {
+    w.style.transform = 'rotate(0deg)';
+    setTimeout(() => { w.style.transition = ''; _tilted = false; }, 4500);
+  }, 6000);
+}
+
+// 30: Skype notification
+function eEvent30() {
+  const n = document.getElementById('skype-notif');
+  const msgs = ["Help me it hurts", "why can't I move", "still counting... 43...", "please turn it off", "I can't stop looking"];
+  const msgEl = document.getElementById('skype-msg-text');
+  if (msgEl) msgEl.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  if (!n) return;
+  n.style.display = 'block';
+  setTimeout(() => { n.style.display = 'none'; }, 7000);
+}
+
+// 31: Shake + pool screamer
+function eEvent31() {
+  const w = document.getElementById('main-wrap');
+  if (!w) return;
+  w.style.animation = 'swim .4s 3';
+  setTimeout(() => { w.style.animation = ''; }, 1300);
+  setTimeout(() => _poolScreamer(1800), 500);
+}
+
+// 32: Fake context menu
+function eEvent32() {
+  const menu = document.createElement('div');
+  menu.style.cssText = `position:fixed;top:${100+Math.random()*300}px;left:${100+Math.random()*500}px;background:#f0f0f0;border:1px outset #fff;z-index:999975;font-family:'Share Tech Mono',monospace;font-size:11px;width:185px;color:#000;`;
+  const items = ['View Page Source', 'Save As... (your_soul.exe)', 'Inspect Element', '<span style="color:#cc0000;font-weight:bold;">Delete Yourself</span>', 'Properties'];
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.innerHTML = item;
+    row.style.cssText = 'padding:5px 12px;cursor:default;border-bottom:1px solid #ddd;';
+    row.onmouseenter = () => { row.style.background = '#000080'; row.style.color = '#fff'; };
+    row.onmouseleave = () => { row.style.background = ''; row.style.color = ''; };
+    row.onclick = () => menu.remove();
+    menu.appendChild(row);
+  });
+  document.body.appendChild(menu);
+  setTimeout(() => menu.remove(), 6000);
+}
+
+// 33: Blog scroll to bottom
+function eEvent33() {
+  const el = document.querySelector('.blog-scroll');
+  if (!el) return;
+  const orig = el.scrollTop;
+  el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+  setTimeout(() => el.scrollTo({ top: orig, behavior: 'smooth' }), 4000);
+}
+
+// 34: Red pulse
+function eEvent34() {
+  const rw = document.getElementById('red-wash');
+  if (!rw) return;
+  rw.style.opacity = '.22';
+  setTimeout(() => { rw.style.opacity = '.08'; }, 1500);
+  setTimeout(() => { rw.style.opacity = '.22'; }, 3000);
+  setTimeout(() => { rw.style.opacity = '0';   }, 4500);
+}
+
+// 35: Fake Task Manager
+function eEvent35() {
+  const win = document.createElement('div');
+  win.style.cssText = `position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:999977;width:420px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono',monospace;font-size:11px;`;
+  win.innerHTML = `
+    <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;cursor:move;">
+      <span>Windows Task Manager</span>
+      <span onclick="this.closest('div').parentElement.remove()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
+    </div>
+    <div style="padding:8px;color:#000;">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;">
+        <thead><tr style="background:#d0d0d0;"><th style="padding:3px 6px;text-align:left;border:1px solid #bbb;">Name</th><th style="border:1px solid #bbb;">CPU</th><th style="border:1px solid #bbb;">Memory</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">explorer.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">18 MB</td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">iexplore.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">24 MB</td></tr>
+          <tr style="background:#ffe8e8;"><td style="padding:3px 6px;border:1px solid #ddd;"><b>BEAR5.EXE</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>99%</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>∞ MB</b></td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">[System]</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">0 MB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="border-top:1px solid #888;padding:6px 8px;display:flex;gap:6px;justify-content:flex-end;">
+      <button onclick="this.closest('div').parentElement.parentElement.remove()" style="padding:3px 14px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;">End Task</button>
+    </div>`;
+  document.body.appendChild(win);
+  setTimeout(() => win.remove(), 12000);
+}
+
+// 36: Countdown in dates
+function eEvent36() {
+  const dates = [...document.querySelectorAll('.blog-date, .p-when')];
+  const origs = dates.map(d => d.textContent);
+  dates.forEach(d => { d.textContent = 'November 13, 2014 — 23:47:02'; d.style.color = '#d12222'; });
+  let sec = 2;
+  const iv = setInterval(() => {
+    sec--;
+    if (sec < 0) { clearInterval(iv); dates.forEach((d, i) => { d.textContent = origs[i]; d.style.color = ''; }); return; }
+    dates.forEach(d => { d.textContent = `November 13, 2014 — 23:47:0${sec}`; });
+  }, 1000);
+}
+
+// 37: Shadow figure in corner
+function eEvent37() {
+  const fig = document.createElement('div');
+  fig.style.cssText = `position:fixed;bottom:0;right:0;z-index:9990;width:60px;pointer-events:none;opacity:0;transition:opacity 3s;`;
+  fig.innerHTML = `<img src="${_nextScreamer()}" style="width:100%;filter:brightness(.3);object-fit:cover;height:120px;object-position:top;">`;
+  document.body.appendChild(fig);
+  setTimeout(() => { fig.style.opacity = '1'; }, 100);
+  setTimeout(() => { fig.style.opacity = '0'; setTimeout(() => fig.remove(), 3500); }, 7000);
+}
+
+// 38: Panel titles replaced
+function eEvent38() {
+  const titles  = [...document.querySelectorAll('.panel-title')];
+  const origs   = titles.map(t => t.innerHTML);
+  const phrases = ["I AM STILL HERE", "DO NOT CLOSE THIS TAB", "THE LOOP NEVER ENDS", "HE IS WATCHING"];
+  const phrase  = phrases[Math.floor(Math.random() * phrases.length)];
+  titles.forEach(t => { t.innerHTML = phrase; t.style.color = '#d12222'; t.style.letterSpacing = '4px'; });
+  setTimeout(() => {
+    titles.forEach((t, i) => { t.innerHTML = origs[i]; t.style.color = ''; t.style.letterSpacing = ''; });
+  }, 5000);
+}
+
+// 39: Gallery → pool images
+function eEvent39() {
+  const imgs  = [...document.querySelectorAll('.gal-grid img')];
+  if (!imgs.length) return;
+  const origs = imgs.map(i => i.src);
+  imgs.forEach(i => { i.src = _nextScreamer(); });
+  setTimeout(() => imgs.forEach((img, i) => { img.src = origs[i]; }), 1200);
+}
+
+// 40: Bro-status typewriter
+function eEvent40() {
+  const bro = document.getElementById('bro-status');
+  if (!bro) return;
+  const orig = bro.textContent;
+  const msg  = "still counting";
+  let i = 0;
+  bro.textContent = '';
+  bro.style.color = '#d12222';
+  const iv = setInterval(() => {
+    bro.textContent += msg[i++];
+    if (i >= msg.length) {
+      clearInterval(iv);
+      setTimeout(() => { bro.textContent = orig; bro.style.color = ''; }, 5000);
+    }
+  }, 90);
+}
+
+// 41: Quick invert
+function eEvent41() {
+  document.body.style.filter = 'invert(1)';
+  eFlash();
+  setTimeout(() => { document.body.style.filter = 'invert(0)'; setTimeout(() => document.body.style.filter = '', 200); }, 200);
+}
+
+// 42: Chat messages from the counting sequence
+function eEvent42() {
+  const msgs = ["Frame 41...", "Frame 42...", "It's smiling now.", "I can't stop counting.", "Pull the plug."];
+  const now = new Date();
+  const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  appendChat({ n:'????', t: msgs[Math.floor(Math.random() * msgs.length)], ts, b:true });
+}
+
+// 43: Eye window
+function eEvent43() { eEyeWindow(); }
+
+// 44: Title distress loop
+function eEvent44() {
+  const seq = ["...", "help", "...", "help me", "...", "it hurts", "...", "still counting"];
+  let i = 0;
+  const iv = setInterval(() => {
+    document.title = seq[i % seq.length];
+    i++;
+    if (i > seq.length * 2) { clearInterval(iv); document.title = _origTitle; }
+  }, 600);
+}
+
+// 45: Noise canvas fullscreen burst
+function eEvent45() {
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
+  const c = document.createElement('canvas');
+  c.width  = window.innerWidth;
+  c.height = window.innerHeight;
+  c.style.cssText = 'position:fixed;inset:0;z-index:9993;pointer-events:none;opacity:.15;';
+  document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let frames = 0;
+  const loop = () => {
+    const id = ctx.createImageData(c.width, c.height);
+    for (let i = 0; i < id.data.length; i += 4) {
+      const v = Math.random() < 0.5 ? 0 : 255;
+      id.data[i] = id.data[i+1] = id.data[i+2] = v;
+      id.data[i+3] = 255;
+    }
+    ctx.putImageData(id, 0, 0);
+    frames++;
+    if (frames < 10) requestAnimationFrame(loop); else c.remove();
+  };
+  loop();
+}
+
+// 46: Cursor changes
+function eEvent46() {
+  document.body.style.cursor = 'crosshair';
+  setTimeout(() => { document.body.style.cursor = 'none'; }, 1500);
+  setTimeout(() => { document.body.style.cursor = '';     }, 4000);
+}
+
+// 47: One blog entry goes black
+function eEvent47() {
+  const entries = [...document.querySelectorAll('.blog-entry')];
+  if (!entries.length) return;
+  const el     = entries[Math.floor(Math.random() * entries.length)];
+  const origBg = el.style.background;
+  el.style.transition = 'background 1.5s';
+  el.style.background = '#000';
+  setTimeout(() => { el.style.background = origBg || ''; setTimeout(() => el.style.transition = '', 1600); }, 4000);
+}
+
+// 48: Pool image for 100ms
+function eEvent48() {
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
+  const img = document.createElement('img');
+  img.src = _nextScreamer();
+  img.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;pointer-events:none;max-width:60vw;max-height:80vh;filter:brightness(.6);';
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 100);
+}
+
+// 49: Scroll position jumps
+function eEvent49() {
+  const y = window.scrollY;
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  setTimeout(() => window.scrollTo({ top: y, behavior: 'smooth' }), 3000);
+}
+
+// 50: All stickers flip
+function eEvent50() {
+  const stickers = [...document.querySelectorAll('.sticker')];
+  stickers.forEach(s => { s.style.transition = 'transform 1s'; s.style.transform += ' rotate(180deg)'; });
+  setTimeout(() => {
+    stickers.forEach(s => { s.style.transform = s.style.transform.replace(' rotate(180deg)', ''); });
+  }, 4000);
+}
+
+// 51: Status strip replaced
+function eEvent51() {
+  const sts = document.querySelector('.sts');
+  if (!sts) return;
+  const orig = sts.innerHTML;
+  sts.innerHTML = '<span style="color:#d12222;font-size:11px;letter-spacing:3px;animation:blink .5s infinite;">PRESENCE CONFIRMED — DO NOT SCROLL DOWN — IT SEES YOU</span>';
+  setTimeout(() => { sts.innerHTML = orig; }, 6000);
+}
+
+// 52: Flash + pool screamer
+function eEvent52() {
+  eFlash();
+  setTimeout(() => _poolScreamer(1500), 200);
+}
+
+// 53: Footer extra line
+function eEvent53() {
+  const foot = document.querySelector('footer');
+  if (!foot) return;
+  const line = document.createElement('div');
+  line.style.cssText = 'margin-top:8px;font-size:11px;color:#d12222;letter-spacing:3px;animation:blink 1.5s infinite;';
+  line.textContent = 'THE BROTHER IS STILL INSIDE THE MACHINE';
+  foot.appendChild(line);
+  setTimeout(() => { try { foot.removeChild(line); } catch(e) {} }, 7000);
+}
+
+// 54: Admin photo flash (180ms)
+function eEvent54() {
+  const p = document.getElementById('admin-photo');
+  if (!p) return;
+  const o = p.src;
+  p.src = _nextScreamer();
+  p.style.filter = 'brightness(.6)';
+  setTimeout(() => { p.src = o; p.style.filter = ''; }, 180);
+}
+
+// 55: Error window + entity chat
+function eEvent55() {
+  eErrWin();
+  const now = new Date();
+  const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  setTimeout(() => appendChat({ n:'????', t:'ACCESS DENIED. PERMANENTLY.', ts, b:true }), 1200);
+}
+
+// 56: Marquee text replaced
+function eEvent56() {
+  const inner = document.querySelector('.marquee-inner');
+  if (!inner) return;
+  const orig = inner.textContent;
+  inner.textContent = ' ★ DO NOT COUNT THE FRAMES ★ I AM STILL RUNNING ★ CLOSE THE BROWSER ★ HE IS IN THE STATIC ★ FRAME 47 IS THE LAST THING YOU SEE ★ ';
+  inner.style.color = '#ff3333';
+  setTimeout(() => { inner.textContent = orig; inner.style.color = ''; }, 8000);
+}
+
+// 57: Blood crosshair cursor
+function eEvent57() {
+  const style = document.createElement('style');
+  style.id = 'blood-cursor';
+  style.textContent = `* { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><line x1='10' y1='0' x2='10' y2='20' stroke='%23cc0000' stroke-width='2'/><line x1='0' y1='10' x2='20' y2='10' stroke='%23cc0000' stroke-width='2'/></svg>") 10 10, crosshair !important; }`;
+  document.head.appendChild(style);
+  setTimeout(() => { const s = document.getElementById('blood-cursor'); if (s) s.remove(); }, 5000);
+}
+
+// 58: All images near-black
+function eEvent58() {
+  const imgs = [...document.querySelectorAll('#main-wrap img')];
+  imgs.forEach(i => { i.style.transition = 'filter 1s'; i.style.filter = 'brightness(.15)'; });
+  setTimeout(() => { imgs.forEach(i => { i.style.filter = ''; setTimeout(() => i.style.transition = '', 1100); }); }, 4000);
+}
+
+// 59: Ghost + date change
+function eEvent59() {
+  eGhost();
+  setTimeout(() => eDateChange(), 2000);
+}
+
+// 60: Panel titles + entity message combo
+function eEvent60() {
+  eEvent38();
+  setTimeout(() => eEvent42(), 1500);
+}
+
+const EVENTS = [
+  eFlash, eBearText, eFaceFlicker, eRedWash, eCursorVanish, eProcessBar, eFlipEl, ePhotoSwap, 
+  eAutoScroll, eCrack, eGhost, eGalCorrupt, eHiddenReveal, eDateChange, eInvert, eTypewriter, 
+  eErrWin, eBearChat, eMeme, eEyeWindow,
+  eEvent21, eEvent22, eEvent23, eEvent24, eEvent25, eEvent26, eEvent27, eEvent28, eEvent29, eEvent30,
+  eEvent31, eEvent32, eEvent33, eEvent34, eEvent35, eEvent36, eEvent37, eEvent38, eEvent39, eEvent40,
+  eEvent41, eEvent42, eEvent43, eEvent44, eEvent45, eEvent46, eEvent47, eEvent48, eEvent49, eEvent50,
+  eEvent51, eEvent52, eEvent53, eEvent54, eEvent55, eEvent56, eEvent57, eEvent58, eEvent59, eEvent60
 ];
 
-// ============================================================
-// SCHEDULER — events every 22–65s (doubled from original)
-// ============================================================
 function scheduleEvents(){
   function next(){
-    const delay=22000+Math.random()*43000; // 22–65s
+    const delay=22000+Math.random()*43000;
     setTimeout(()=>{
       if(!b5Mode) EVENTS[Math.floor(Math.random()*EVENTS.length)]();
       next();
@@ -2387,57 +3314,172 @@ function scheduleEvents(){
 }
 
 // ============================================================
-// ERRORS
+// ROOMS INTERACTIVE LOGIC
 // ============================================================
-function closeErr(id){
-  const el=document.getElementById(id);
-  if(el) el.style.display='none';
-  if(Math.random()<0.2&&!b5Mode) setTimeout(()=>eErrWin(),900);
+
+function initBasement() {
+  const room  = document.getElementById('room-basement');
+  const light = document.getElementById('basement-light');
+  if (!room || !light) return;
+  room._mh = e => { light.style.left = e.clientX + 'px'; light.style.top = e.clientY + 'px'; };
+  room.addEventListener('mousemove', room._mh);
 }
-function moreErrors(){
-  closeErr('err4');
-  setTimeout(()=>eErrWin(),200);
-  setTimeout(()=>eErrWin(),500);
+function leaveBasement() {
+  const room = document.getElementById('room-basement');
+  if (room && room._mh) room.removeEventListener('mousemove', room._mh);
+}
+
+function startSmile() {
+  const img = document.getElementById('smile-img');
+  if (!img) return;
+  img.style.width = '80px';
+  img.classList.add('grow');
+}
+function stopSmile() {
+  const img = document.getElementById('smile-img');
+  if (img) { img.classList.remove('grow'); img.style.width = '80px'; }
+}
+
+let _knockIv = null;
+function startKnock() {
+  let sec   = 30;
+  const timer = document.getElementById('knock-timer');
+  const count = document.getElementById('knock-count');
+  const btn   = document.getElementById('knock-btn');
+  if (timer) timer.textContent = sec;
+  _knockIv = setInterval(() => {
+    sec--;
+    if (timer) timer.textContent = sec;
+    if (sec <= 10 && btn) btn.classList.add('urgent');
+    if (sec <= 0) {
+      stopKnock();
+      if (count) count.textContent = 'It has stopped knocking.';
+      if (timer) timer.textContent = '';
+      setTimeout(() => { _poolScreamer(2000); closeRoom(); }, 2000);
+    }
+  }, 1000);
+}
+function stopKnock() {
+  clearInterval(_knockIv);
+  const btn = document.getElementById('knock-btn');
+  if (btn) btn.classList.remove('urgent');
+}
+function knockLetIn() {
+  stopKnock();
+  closeRoom();
+  setTimeout(() => _poolScreamer(2500), 400);
+}
+
+let _sys32Iv = null;
+const SYS32_FILES = [
+  'kernel32.dll','ntdll.dll','user32.dll','gdi32.dll',
+  'advapi32.dll','shell32.dll','shlwapi.dll','rpcrt4.dll',
+  'msvcrt.dll','wininet.dll','urlmon.dll','oleaut32.dll',
+  'ole32.dll','comctl32.dll','comdlg32.dll','winsock.dll',
+  'bear5.sys — ERROR: Cannot delete',
+  'memory.dmp','pagefile.sys',
+  'BROTHER.exe — ERROR: Still running',
+  'soul.dat','static.bin',
+  'frame_47.raw — ERROR: File is alive',
+];
+function startSys32() {
+  const log = document.getElementById('sys32-log');
+  if (!log) return;
+  log.innerHTML = '';
+  let i = 0;
+  _sys32Iv = setInterval(() => {
+    const file = SYS32_FILES[i % SYS32_FILES.length];
+    const line = document.createElement('div');
+    const isErr = file.includes('ERROR') || file.includes('alive') || file.includes('Still');
+    line.style.color = isErr ? '#d12222' : '#888888';
+    line.textContent = `> del /f /q ${file}`;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+    i++;
+    if (i >= SYS32_FILES.length) {
+      clearInterval(_sys32Iv);
+      const done = document.createElement('div');
+      done.style.cssText = 'color:#ff3333;margin-top:10px;letter-spacing:2px;';
+      done.textContent   = '> Operation partially completed. 3 files could not be removed.';
+      log.appendChild(done);
+    }
+  }, 400);
+}
+
+function initEndless() {
+  const cont = document.getElementById('endless-content');
+  if (!cont || cont.children.length > 0) return;
+  const lines = [
+    "You are trapped.", "Scroll down.", "There is no exit.",
+    "The loop has no end.", "He kept scrolling too.",
+    "You are trapped.", "Keep going.", "You will not find the bottom.",
+    "He is here.", "Do not stop scrolling.", "You are trapped.",
+  ];
+  for (let i = 0; i < 200; i++) {
+    const d = document.createElement('div');
+    d.className     = 'endless-line';
+    d.textContent   = lines[i % lines.length];
+    d.style.opacity = String(0.15 + (i % 7) * 0.04);
+    cont.appendChild(d);
+  }
+}
+
+let _wcamRoomIv = null;
+function startWebcamRoom() {
+  const c = document.getElementById('wcam-room-canvas');
+  if (!c) return;
+  c.width  = c.offsetWidth  || 480;
+  c.height = c.offsetHeight || 320;
+  const ctx = c.getContext('2d');
+  _wcamRoomIv = setInterval(() => {
+    const id = ctx.createImageData(c.width, c.height);
+    for (let i = 0; i < id.data.length; i += 4) {
+      const v = Math.random() * 30;
+      id.data[i] = id.data[i+1] = id.data[i+2] = v;
+      id.data[i+3] = 255;
+    }
+    ctx.putImageData(id, 0, 0);
+  }, 50);
+  const tsEl     = document.getElementById('wcam-ts-room');
+  const statusEl = document.getElementById('wcam-status');
+  setTimeout(() => {
+    if (statusEl) statusEl.textContent = 'FEED ACTIVE — MOTION DETECTED';
+    const face = document.getElementById('wcam-face');
+    if (face) face.style.opacity = '.35';
+  }, 3000);
+  setInterval(() => {
+    const now = new Date();
+    if (tsEl) tsEl.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  }, 1000);
+}
+function stopWebcamRoom() { clearInterval(_wcamRoomIv); }
+
+let _noiseIv = null;
+function startNoiseCanvas(id) {
+  const c = document.getElementById(id);
+  if (!c) return;
+  c.width = 360; c.height = 220;
+  const ctx = c.getContext('2d');
+  clearInterval(_noiseIv);
+  _noiseIv = setInterval(() => {
+    const id2 = ctx.createImageData(360, 220);
+    for (let i = 0; i < id2.data.length; i += 4) {
+      const v = Math.random() * 28;
+      id2.data[i] = id2.data[i+1] = id2.data[i+2] = v;
+      id2.data[i+3] = 255;
+    }
+    ctx.putImageData(id2, 0, 0);
+  }, 60);
+}
+function startWebcamTs() {
+  const el = document.getElementById('webcam-ts');
+  setInterval(() => {
+    if (el) { const n = new Date(); el.textContent = pad(n.getHours()) + ':' + pad(n.getMinutes()) + ':' + pad(n.getSeconds()); }
+  }, 1000);
 }
 
 // ============================================================
-// DRAG
-// ============================================================
-const _drag={};
-function dragWin(e,id){
-  e.preventDefault();
-  const el=document.getElementById(id);
-  if(!el) return;
-  const r=el.getBoundingClientRect();
-  _drag[id]={ox:e.clientX-r.left,oy:e.clientY-r.top};
-  el.style.zIndex=99993;
-  const mv=ev=>{el.style.left=(ev.clientX-_drag[id].ox)+'px';el.style.top=(ev.clientY-_drag[id].oy)+'px';};
-  const st=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',st);};
-  document.addEventListener('mousemove',mv);
-  document.addEventListener('mouseup',st);
-}
-function makeWinDrag(){}
-
-// ============================================================
-// SCREAMER
-// ============================================================
-function doScreamer(){
-  const o=document.getElementById('screamer-overlay');
-  const i=document.getElementById('screamer-img');
-  if(!o||!i) return;
-  i.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];
-  o.style.display='flex';
-  try{const s=document.getElementById('snd-scream');s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
-  setTimeout(()=>closeScreamer(),2400);
-}
-function closeScreamer(){
-  const o=document.getElementById('screamer-overlay');
-  if(o) o.style.display='none';
-  try{const s=document.getElementById('snd-scream');s.pause();s.currentTime=0;}catch(e){}
-}
-
-// ============================================================
-// ROOMS
+// CORE LOGIC & ROOM HOOKS
 // ============================================================
 function openRoom(id){
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
@@ -2447,9 +3489,13 @@ function openRoom(id){
   document.body.style.overflow='hidden';
   if(id==='room-camera') startCamTs();
   if(id==='room-recovery') startRecovery();
-  if(id==='room-brother') {
-      try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
-  }
+  if(id==='room-brother') { try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} }
+  
+  if(id==='room-basement') initBasement();
+  if(id==='room-smile')    setTimeout(startSmile, 500);
+  if(id==='room-knock')    startKnock();
+  if(id==='room-endless')  initEndless();
+  if(id==='room-webcam')   startWebcamRoom();
 }
 function closeRoom(){
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
@@ -2463,7 +3509,6 @@ function changeRoom(id){
   if(id==='room-recovery') startRecovery();
 }
 
-// Camera timestamp
 function startCamTs(){
   const el=document.getElementById('cam-ts');
   if(!el) return;
@@ -2471,7 +3516,6 @@ function startCamTs(){
   t(); setInterval(t,1000);
 }
 
-// Recovery room
 function startRecovery(){
   if(recStarted) return;
   recStarted=true;
@@ -2508,7 +3552,6 @@ function startRecovery(){
   },580);
 }
 
-// Trap room
 function openTrap(){
   if(trapOpen) return;
   trapOpen=true;
@@ -2524,26 +3567,22 @@ function closeTrap(){
   document.body.style.overflow='';
 }
 
-// Random trap access from gallery
 setInterval(()=>{
   if(!trapOpen&&!b5Mode&&b5Pct>55&&Math.random()<0.002) openTrap();
 },5000);
 
-// ============================================================
-// FRAME 47
-// ============================================================
 const FRAME_DATA=[
-  {t:'[ frame 1 ]\nsomething running. nothing unusual.',c:'#777',s:'13px'},
-  {t:'[ frame 3 ]\nstill running. the background seems slightly darker.',c:'#777',s:'12px'},
-  {t:'[ frame 7 ]\nsomething is wrong with the background.',c:'#888',s:'12px'},
-  {t:'[ frame 12 ]\nthe shadow doesn\'t match the shape.',c:'#9a5555',s:'12px'},
-  {t:'[ frame 19 ]\nthere are two shadows now.',c:'#a03030',s:'11px'},
-  {t:'[ frame 25 ]\nthe second shadow is larger.\nit is not running.',c:'#a03030',s:'11px'},
-  {t:'[ frame 31 ]\nthe shape has slowed down.\nthe second shadow has not.',c:'#a03030',s:'11px'},
-  {t:'[ frame 38 ]\nthe shape is standing still.\nwe do not know when it stopped.',c:'#a03030',s:'11px'},
-  {t:'[ frame 44 ]\nthe shape is looking at you.\nthis is not possible.',c:'#b00000',s:'12px'},
-  {t:'[ frame 46 ]\nplease stop.\ndo not go to frame 47.',c:'#b00000',s:'11px'},
-  {t:'[ frame 47 ]',c:'#8a0000',s:'11px',img:HORRORS[0]},
+  {t:'[ frame 1 ]\nsomething running. nothing unusual.',c:'#ccc',s:'13px'},
+  {t:'[ frame 3 ]\nstill running. the background seems slightly darker.',c:'#ccc',s:'12px'},
+  {t:'[ frame 7 ]\nsomething is wrong with the background.',c:'#ddd',s:'12px'},
+  {t:'[ frame 12 ]\nthe shadow doesn\'t match the shape.',c:'#ff6666',s:'12px'},
+  {t:'[ frame 19 ]\nthere are two shadows now.',c:'#ff3333',s:'11px'},
+  {t:'[ frame 25 ]\nthe second shadow is larger.\nit is not running.',c:'#ff3333',s:'11px'},
+  {t:'[ frame 31 ]\nthe shape has slowed down.\nthe second shadow has not.',c:'#ff3333',s:'11px'},
+  {t:'[ frame 38 ]\nthe shape is standing still.\nwe do not know when it stopped.',c:'#ff3333',s:'11px'},
+  {t:'[ frame 44 ]\nthe shape is looking at you.\nthis is not possible.',c:'#ff0000',s:'12px'},
+  {t:'[ frame 46 ]\nplease stop.\ndo not go to frame 47.',c:'#ff0000',s:'11px'},
+  {t:'[ frame 47 ]',c:'#d12222',s:'11px',img:HORRORS[0]},
   {t:'',c:'#000',s:'1px',img:B5_GIF,end:true},
 ];
 function nextFrame(dir){
@@ -2564,9 +3603,6 @@ function nextFrame(dir){
   }
 }
 
-// ============================================================
-// STICKERS
-// ============================================================
 let szZ=100;
 function dragSticker(e,el){
   e.preventDefault();
@@ -2595,9 +3631,6 @@ function maybeRoom(el){
   }
 }
 
-// ============================================================
-// METER
-// ============================================================
 function startMeter(){
   setInterval(()=>{
     if(b5Mode) return;
@@ -2625,28 +3658,21 @@ function updateMeter(){
   if(b5Pct>=100) unleashB5();
 }
 
-// ============================================================
-// B5 FULL MODE (BLOODY APOCALYPSE)
-// ============================================================
 function unleashB5(){
   if(b5Mode) return;
   b5Mode=true;
   eFlash();setTimeout(eFlash,150);setTimeout(eFlash,300);
   
-  // Play sound
   try{const s=document.getElementById('snd-scream');const a=document.getElementById('amb');a.pause();s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
   
-  // Add CSS class for bloody filter
   document.body.classList.add('B5');
   
-  // Change all normal images to Bear5 face
   var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
   document.querySelectorAll('img:not(#screamer-img):not(.floater)').forEach(img=>{
     img.src=bear5Src;
     img.style.filter='contrast(150%)';
   });
   
-  // Alter texts
   const title=document.getElementById('site-title');
   if(title) title.childNodes[0].textContent='BEAR 5';
   
@@ -2658,12 +3684,10 @@ function unleashB5(){
 
   b5Pct=100; updateMeter();
   
-  // Flood chat
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
   for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'I AM COMING',ts,b:true},false),i*280);
   
-  // Trigger screamer then reset
   setTimeout(()=>{if(b5Mode){doScreamer();}},4500);
   setTimeout(resetB5,22000);
 }
@@ -2674,9 +3698,6 @@ function resetB5(){
   setTimeout(()=>location.reload(),2000);
 }
 
-// ============================================================
-// REPLACE ALL TEXT
-// ============================================================
 function replaceAllText(){
   if(textReplaced){location.reload();return;}
   textReplaced=true;
@@ -2702,9 +3723,6 @@ function revealReplaceBtn(){
   document.getElementById('replace-btn').style.display='block';
 }
 
-// ============================================================
-// MUSIC
-// ============================================================
 function updateTrack(){
   const t=tracks[trackIdx];
   const el=document.getElementById('now-track');
@@ -2743,9 +3761,6 @@ function prevTrack(){
   if(btn) btn.textContent='▶';
 }
 
-// ============================================================
-// GALLERY LIGHTBOX
-// ============================================================
 function openLb(src){
   const lb=document.getElementById('lightbox');
   const img=document.getElementById('lb-img');
@@ -2759,21 +3774,24 @@ function closeLightbox(){
   if(lb) lb.classList.remove('active');
 }
 
-// ============================================================
-// SECRETS
-// ============================================================
+function closeErr(id){
+  const el=document.getElementById(id);
+  if(el) el.style.display='none';
+  if(Math.random()<0.2&&!b5Mode) setTimeout(()=>eErrWin(),900);
+}
+function moreErrors(){
+  closeErr('err4');
+  setTimeout(()=>eErrWin(),200);
+  setTimeout(()=>eErrWin(),500);
+}
+
 function revealSecret(el){
   el.textContent='The brother came back. Just not as himself.';
-  el.style.color='#a00000'; el.style.fontStyle='italic';
+  el.style.color='#ff3333'; el.style.fontStyle='italic';
   el.onclick=null;
   setTimeout(()=>openRoom('room-brother'),2500);
 }
 
-// ============================================================
-// SAD SATAN PORTAL — Sad Satan is also accessible by hovering
-// the 1×1 pixel bottom-left div for 3 seconds while scrolled
-// to the bottom of the page.
-// ============================================================
 let sadHover=null;
 const portal=document.getElementById('sad-portal');
 if(portal){
@@ -2784,7 +3802,6 @@ if(portal){
     clearTimeout(sadHover); sadHover=null;
   });
 }
-
 </script>
 </body>
 </html>
