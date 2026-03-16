@@ -280,7 +280,7 @@ em     { color: var(--dim); font-style: normal; }
 }
 .room-btn:hover { border-color: #666; color: #fff; }
 
-/* SAD SATAN — nothing */
+/* SAD SATAN */
 #room-sadsatan {
   background: #000; cursor: none;
   justify-content: center; align-items: center;
@@ -823,13 +823,7 @@ footer {
 .web-badges { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
 .wb { font-size: 10px; padding: 1px 6px; border: 1px solid #333; color: #777; letter-spacing: 1px; }
 
-/* Hidden 1×1 portal to Sad Satan — placed inside footer */
-#sad-portal {
-  position: absolute; bottom: 0; left: 0;
-  width: 1px; height: 1px;
-  opacity: 0; cursor: default;
-  background: transparent;
-}
+/* Hidden 1×1 portal to Sad Satan — removed, triggered via tweet now */
 
 /* ============================================================
    LIGHTBOX
@@ -905,7 +899,7 @@ body.B5, body.B5 a, body.B5 div {
 #screen-crack.show { opacity:1; }
 
 /* ============================================================
-   НОВЫЕ СТИЛИ (ИЗ МОДУЛЯ)
+   MODULAR STYLES (Cleaned & Corrected)
    ============================================================ */
 
 /* LORE MODAL GLITCH */
@@ -918,7 +912,7 @@ body.B5, body.B5 a, body.B5 div {
   66% { clip-path: none; transform: translateX(0); }
 }
 
-/* DIARY — текст исчезает при hover */
+/* DIARY — text disappears on hover */
 .dt-line {
   cursor: default;
   transition: color .4s, opacity .4s;
@@ -939,12 +933,12 @@ body.B5, body.B5 a, body.B5 div {
   94% { filter: none; }
 }
 
-/* MIRROR — зеркало */
+/* MIRROR — flipping entire room */
 #room-mirror {
   transform: scaleX(-1);
 }
 
-/* SMILE — рост изображения */
+/* SMILE — growth */
 #smile-img.grow {
   animation: smile-grow 60s linear forwards;
 }
@@ -953,7 +947,7 @@ body.B5, body.B5 a, body.B5 div {
   100% { width: 3000px; }
 }
 
-/* ENDLESS — строки */
+/* ENDLESS — text lines visibility fix */
 .endless-line {
   font-family: 'Share Tech Mono', monospace;
   font-size: 11px;
@@ -965,7 +959,7 @@ body.B5, body.B5 a, body.B5 div {
 }
 .endless-line:hover { color: #d12222; }
 
-/* KNOCK — кнопка пульсирует */
+/* KNOCK — pulse */
 #knock-btn.urgent {
   border-color: #8b0000;
   color: #ff3333;
@@ -976,12 +970,12 @@ body.B5, body.B5 a, body.B5 div {
   50%      { border-color: #ff3333; }
 }
 
-/* WEBCAM CANVAS */
+/* WEBCAM pixelation */
 #webcam-canvas, #wcam-room-canvas {
   image-rendering: pixelated;
 }
 
-/* AUTOPSY ROOM */
+/* AUTOPSY ROOM readability fix */
 #room-autopsy .room-close {
   border-color: #ccc;
   color: #888;
@@ -1005,6 +999,26 @@ body.B5, body.B5 a, body.B5 div {
 <audio id="snd-steps">
   <source src="silent-hill-3-footsteps.mp3" type="audio/mpeg">
 </audio>
+<audio id="snd-glitch">
+  <source src="tv-static-sound-effect.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="snd-sadsatan" loop>
+  <source src="sad-satan---iksanihc-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-pipe" loop>
+  <source src="swinging-pipe-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-morse">
+  <source src="morse-code-_please-help-me_-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-nightmare">
+  <source src="nightmare-screamer-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-mimic">
+  <source src="mimicer-spotted-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+
 
 <button id="start-btn" onclick="initSite()" style="
   position:fixed;inset:0;width:100%;height:100%;
@@ -1308,7 +1322,8 @@ body.B5, body.B5 a, body.B5 div {
   <div style="text-align:center;margin-top:60px;">
     <div style="font-family:'VT323',monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">HI</div>
     <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
-         style="width:260px;border:none;display:block;margin:25px auto;filter:brightness(0.6);" alt="">
+         style="width:260px;border:none;display:block;margin:25px auto;filter:brightness(0.6);"
+         alt="">
     <div style="font-size:13px;color:#ccc;margin-top:16px;letter-spacing:4px;line-height:2.5;">
       You weren't supposed to find this.<br>
       <span style="color:#ff3333;">He's been here since November 13th.</span><br>
@@ -1339,7 +1354,8 @@ body.B5, body.B5 a, body.B5 div {
       <span style="color:rgba(180,60,60,.9);font-size:11px;">Something has been standing in the corner for ten years.<br>We don't know if it moves when no one is watching.</span>
     </div>
     <img src="https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg"
-         style="max-width:320px;width:75%;border:1px solid rgba(0,200,0,.3);margin-top:22px;filter:brightness(0.7);" alt="">
+         style="max-width:320px;width:75%;border:1px solid rgba(0,200,0,.3);margin-top:22px;filter:brightness(0.7);"
+         alt="">
   </div>
 </div>
 
@@ -1467,12 +1483,8 @@ body.B5, body.B5 a, body.B5 div {
 </div>
 
 <div class="room" id="room-sadsatan">
+  <button class="room-close" onclick="closeRoom()" style="z-index:99;">[ close ]</button>
   <img src="https://i.redd.it/ltqaqg0ukm0f1.gif" alt="">
-</div>
-
-<div id="room-trap">
-  <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
-  <span id="trap-exit" onclick="closeTrap()">leave</span>
 </div>
 
 <div class="room" id="room-basement" style="background:#000;cursor:none;overflow:hidden;">
@@ -1602,6 +1614,11 @@ body.B5, body.B5 a, body.B5 div {
       <span style="color:#d12222;">THE SUBJECT IS AWARE OF THE CAMERA</span>
     </div>
   </div>
+</div>
+
+<div id="room-trap">
+  <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
+  <span id="trap-exit" onclick="closeTrap()">leave</span>
 </div>
 
 <div id="lightbox" onclick="closeLightbox()">
@@ -2061,7 +2078,8 @@ body.B5, body.B5 a, body.B5 div {
 
   <footer>
     <div class="px-stripe" style="margin-bottom:13px;"></div>
-    © 2014 Peashooter321 &amp; <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Made with Notepad++.
+    © 2014 Peashooter321 &amp;
+    <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Made with Notepad++.
     Site last active: Nov 13, 2014.
     <div class="web-badges">
       <span class="wb">MADE WITH NOTEPAD</span>
@@ -2073,10 +2091,9 @@ body.B5, body.B5 a, body.B5 div {
     <div style="font-size:9px;color:#666;letter-spacing:1px;margin-top:6px;">
       If you're reading this, try typing <span style="color:#aaa;">IAMHERE</span> into the shoutbox.
     </div>
-    <div id="sad-portal" onclick="openRoom('room-sadsatan')"></div>
   </footer>
 
-</div>```
+</div>
 <script>
 // ============================================================
 // CONSTANTS & VARIABLES
@@ -2130,18 +2147,111 @@ const tracks = [
 function initSite(){
   const b=document.getElementById('start-btn');
   if(b) b.remove();
-  try{const a=document.getElementById('amb');a.volume=0.2;a.play().catch(()=>{});}catch(e){}
+  try{const a=document.getElementById('amb');a.volume=0.3;a.play().catch(()=>{});}catch(e){}
   startClock(); startUptime(); startMeter(); scheduleEvents();
-  setTimeout(()=>{
-    const p=document.getElementById('sad-portal');
-    if(p){p.style.width='12px';p.style.height='12px';}
-  }, 300000);
 }
 
 window.addEventListener('load',()=>{
   buildForum(); loadChat(); loadGb();
   startClock(); startUptime(); updateVis(); startMeter(); scheduleEvents();
-  makeWinDrag();
+});
+
+// ============================================================
+// SECRET ROOM TRIGGERS (ИЗОЛИРОВАННЫЕ ВХОДЫ)
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Basement
+  const titleGhost = document.querySelector('.title-ghost');
+  if (titleGhost) {
+    titleGhost.style.cursor = 'pointer';
+    titleGhost.addEventListener('click', () => openRoom('room-basement'));
+  }
+
+  // 2. Mirror
+  const albumText = document.getElementById('now-album');
+  if (albumText) {
+    albumText.style.cursor = 'pointer';
+    albumText.addEventListener('click', () => openRoom('room-mirror'));
+  }
+
+  // 3. Diary
+  const navList = document.querySelector('.nav-list');
+  if (navList) {
+    const hiddenLi = document.createElement('li');
+    hiddenLi.innerHTML = '<a href="#" onclick="openRoom(\'room-diary\'); return false;" style="opacity:0.2; border:none;">—</a>';
+    navList.appendChild(hiddenLi);
+  }
+
+  // 4. Sys32
+  const fexItems = document.querySelectorAll('.fex-item');
+  fexItems.forEach(item => {
+    if (item.textContent.includes('half_life_notes.doc')) {
+      item.addEventListener('click', () => openRoom('room-sys32'));
+    }
+  });
+
+  // 5. Autopsy
+  const badges = document.querySelectorAll('.wb');
+  badges.forEach(badge => {
+    if (badge.textContent.includes('800×600') || badge.textContent.includes('800x600')) {
+      badge.style.cursor = 'pointer';
+      badge.addEventListener('click', () => openRoom('room-autopsy'));
+    }
+  });
+
+  // 6. Smile
+  const adminPhoto = document.getElementById('admin-photo');
+  let photoClicks = 0;
+  let photoClickTimer = null;
+  if (adminPhoto) {
+    adminPhoto.style.cursor = 'pointer';
+    adminPhoto.addEventListener('click', () => {
+      photoClicks++;
+      clearTimeout(photoClickTimer);
+      if (photoClicks >= 5) {
+        photoClicks = 0;
+        openRoom('room-smile');
+      }
+      photoClickTimer = setTimeout(() => { photoClicks = 0; }, 1500); 
+    });
+  }
+
+  // 7. Knock
+  const memePopup = document.getElementById('meme-popup');
+  if (memePopup) {
+    const memeImg = memePopup.querySelector('img');
+    if (memeImg) {
+      memeImg.style.cursor = 'pointer';
+      memeImg.addEventListener('click', () => openRoom('room-knock'));
+    }
+  }
+
+  // 8. 404
+  const links = document.querySelectorAll('#main-wrap a');
+  links.forEach(link => {
+    if (link.textContent.includes("Brother's Portfolio")) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        openRoom('room-404');
+      });
+    }
+  });
+
+  // 9. Endless
+  const smallTexts = document.querySelectorAll('div[style*="font-size:9px"], div[style*="font-size: 9px"]');
+  smallTexts.forEach(txt => {
+    if (txt.textContent.includes('Entries saved locally')) {
+      txt.style.cursor = 'pointer';
+      txt.addEventListener('click', () => openRoom('room-endless'));
+    }
+  });
+
+  // 10. Webcam
+  const tvLed = document.querySelector('.tv-led');
+  if (tvLed) {
+    tvLed.style.cursor = 'pointer';
+    tvLed.addEventListener('click', () => openRoom('room-webcam'));
+  }
 });
 
 // ============================================================
@@ -2175,7 +2285,7 @@ function updateVis(){
 }
 
 // ============================================================
-// FORUM
+// FORUM & TWEET LOGIC (SAD SATAN)
 // ============================================================
 function buildForum(){
   const feed=document.getElementById('forum-feed');
@@ -2225,6 +2335,8 @@ function buildForum(){
     div.className='post-row';
     const pc=Math.floor(Math.random()*400)+10;
     let body=`<span>${p.t}</span>`;
+    
+    // ИНТЕГРАЦИЯ SAD SATAN В ТВИТ
     if(p.tweet){
       body=`<span>${p.t}</span>
       <div class="tweet-box" style="margin-top:7px;">
@@ -2233,10 +2345,11 @@ function buildForum(){
           <div><div class="tw-name">GamerGirl14</div><div class="tw-handle">@gamer_girl_14</div></div>
         </div>
         <div style="font-size:11px;color:#aaa;">just found footage of that "sad satan" game. the corridor level is not okay. who made this</div>
-        <img class="tw-img" src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="">
+        <img class="tw-img" src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="" style="cursor:pointer;transition:filter 0.3s;" onmouseover="this.style.filter='brightness(1.3)'" onmouseout="this.style.filter=''" onclick="openRoom('room-sadsatan')">
         <div class="tw-foot">Oct 22, 2014 · Twitter for Windows</div>
       </div>`;
     }
+    
     div.innerHTML=`
       <div class="post-author-col">
         <div class="p-name">${u.n}</div>
@@ -2341,7 +2454,6 @@ const SECRET_CMDS = ["reveal_truth", "vessel_status", "00000000"];
 
 function processEntityReply(rawText, ts) {
   const lo = rawText.toLowerCase().trim();
-
   if (SECRET_CMDS.includes(lo)) {
     setTimeout(() => {
       appendChat({ n:'????', t:'FILE UNLOCKED', ts, b:true });
@@ -2351,7 +2463,6 @@ function processEntityReply(rawText, ts) {
   }
   
   if (lo === 'iamhere') return;
-
   for (const entry of ENTITY_TRIGGERS) {
     if (entry.keys.some(k => lo.includes(k))) {
       const delay = 900 + Math.random() * 1400;
@@ -2422,15 +2533,6 @@ function sendChat(){
   }
 }
 
-setInterval(()=>{
-  if(b5Mode) return;
-  if(Math.random()<0.015){
-    const now=new Date();
-    const ts=pad(now.getHours())+':'+pad(now.getMinutes());
-    appendChat({n:'????',t:['...','.',`...`,'are you still there'][Math.floor(Math.random()*4)],ts,b:true});
-  }
-},10000);
-
 // ============================================================
 // LORE FILES
 // ============================================================
@@ -2461,7 +2563,6 @@ function openLoreFile(key) {
   const content = document.getElementById('lore-content');
   const status  = document.getElementById('lore-status');
   const glitch  = document.getElementById('lore-glitch-txt');
-
   title.textContent   = file.title;
   content.textContent = '';
   glitch.textContent  = '';
@@ -2480,7 +2581,7 @@ function openLoreFile(key) {
         glitch.textContent = file.glitch;
         glitch.style.color = '#8b0000';
         if (file.isBinary) {
-          setTimeout(() => {
+           setTimeout(() => {
             content.textContent += '\n\n— decoded: "HELP ME IT HURTS"';
           }, 2000);
         }
@@ -2510,7 +2611,6 @@ const DFLT_GB=[
   {f:"NoobMaster69", m:"your brother's CSS is actually really good lol",       d:"Oct 2014"},
   {f:"????",         m:"i was here before you were",                           d:"Nov 2014"},
 ];
-
 function loadGb(){
   const saved=localStorage.getItem(GBKEY);
   const entries=saved?JSON.parse(saved):DFLT_GB;
@@ -2564,7 +2664,7 @@ function submitGb(){
 }
 
 // ============================================================
-// SCREAM POOL (Unique Images)
+// SCREAM POOL
 // ============================================================
 const SCREAM_POOL_RAW = [
   "https://i.pinimg.com/736x/6f/9b/40/6f9b405953a7e0a21221e3209a59cf37.jpg",
@@ -2599,6 +2699,10 @@ function _poolScreamer(dur = 2200) {
   try{const s=document.getElementById('snd-scream'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
   setTimeout(() => closeScreamer(), dur);
 }
+function closeScreamer(){
+  const o = document.getElementById('screamer-overlay');
+  if(o) o.style.display='none';
+}
 
 let _origTitle = document.title;
 function _setTitle(txt, ms = 5000) {
@@ -2607,10 +2711,8 @@ function _setTitle(txt, ms = 5000) {
 }
 
 // ============================================================
-// 60 UNIQUE EVENTS
+// 70 EVENTS LOGIC
 // ============================================================
-
-// 1: Flash
 function eFlash(){
   try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
   const el=document.getElementById('glitch-flash');
@@ -2618,8 +2720,6 @@ function eFlash(){
   [0,70,160,230].forEach(d=>setTimeout(()=>el.style.opacity=d%140===0?'0':'.45',d));
   setTimeout(()=>el.style.opacity='0',280);
 }
-
-// 2: Bear5 text replacement on a random text node
 function eBearText(){
   const candidates=[...document.querySelectorAll('.blog-text,.post-body-col span,.gb-msg,.c-txt')];
   if(!candidates.length) return;
@@ -2630,8 +2730,6 @@ function eBearText(){
   document.getElementById('replace-btn').style.display='block';
   setTimeout(()=>{el.innerHTML=orig;},5500);
 }
-
-// 3: Face flicker — 120–180ms horror image
 function eFaceFlicker(){
   try{const s=document.getElementById('snd-glitch'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
   const img=document.createElement('img');
@@ -2643,8 +2741,6 @@ function eFaceFlicker(){
   document.body.appendChild(img);
   setTimeout(()=>img.remove(),120+Math.random()*80);
 }
-
-// 4: Red wash
 function eRedWash(){
   const rw=document.getElementById('red-wash');
   if(!rw) return;
@@ -2656,14 +2752,10 @@ function eRedWash(){
     document.querySelectorAll('.panel-title').forEach(p=>{p.style.color='';});
   },9000+Math.random()*4000);
 }
-
-// 5: Cursor vanish
 function eCursorVanish(){
   document.body.style.cursor='none';
   setTimeout(()=>document.body.style.cursor='',3000+Math.random()*2000);
 }
-
-// 6: Fake process bar
 function eProcessBar(){
   const bar=document.getElementById('b5-bar');
   const fill=document.getElementById('b5-fill');
@@ -2687,8 +2779,6 @@ function eProcessBar(){
     }
   },290);
 }
-
-// 7: Element flip
 function eFlipEl(){
   const targets=[...document.querySelectorAll('.blog-date,.p-when,.panel-title')];
   if(!targets.length) return;
@@ -2697,8 +2787,6 @@ function eFlipEl(){
   el.style.transform='rotate(180deg)';
   setTimeout(()=>{el.style.transform='';},3200);
 }
-
-// 8: Admin photo swap
 function ePhotoSwap(){
   const photo=document.getElementById('admin-photo');
   if(!photo) return;
@@ -2707,8 +2795,6 @@ function ePhotoSwap(){
   photo.style.filter='brightness(0.85)';
   setTimeout(()=>{photo.src=orig;photo.style.filter='';},2200);
 }
-
-// 9: Auto scroll blog
 function eAutoScroll(){
   try{const s=document.getElementById('snd-steps'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
   const s=document.querySelector('.blog-scroll');
@@ -2717,8 +2803,6 @@ function eAutoScroll(){
   s.scrollTo({top:s.scrollHeight,behavior:'smooth'});
   setTimeout(()=>s.scrollTo({top:o,behavior:'smooth'}),3000);
 }
-
-// 10: Screen crack
 function eCrack(){
   try{const s=document.getElementById('snd-glitch'); s.volume=0.7; s.currentTime=0; s.play();}catch(e){}
   const c=document.getElementById('screen-crack');
@@ -2726,8 +2810,6 @@ function eCrack(){
   c.classList.add('show'); eFlash();
   setTimeout(()=>c.classList.remove('show'),2200);
 }
-
-// 11: Ghost message drift
 function eGhost(){
   try{const s=document.getElementById('snd-steps'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
   const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
@@ -2738,8 +2820,6 @@ function eGhost(){
   document.body.appendChild(div);
   setTimeout(()=>div.remove(),12000);
 }
-
-// 12: Gallery corrupt
 function eGalCorrupt(){
   const imgs=[...document.querySelectorAll('.gal-grid img')];
   if(!imgs.length) return;
@@ -2747,8 +2827,6 @@ function eGalCorrupt(){
   imgs.forEach((img,i)=>{img.src=HORRORS[i%HORRORS.length];});
   setTimeout(()=>imgs.forEach((img,i)=>{img.src=origs[i];}),1400);
 }
-
-// 13: Hidden horror overlay
 function eHiddenReveal(){
   const img=document.createElement('img');
   img.src=_nextScreamer();
@@ -2757,23 +2835,17 @@ function eHiddenReveal(){
   setTimeout(()=>img.style.opacity='.15',100);
   setTimeout(()=>{img.style.opacity='0';setTimeout(()=>img.remove(),1500);},4500);
 }
-
-// 14: All dates → Nov 13
 function eDateChange(){
   const dates=[...document.querySelectorAll('.blog-date,.p-when,.gb-date')];
   const origs=dates.map(d=>d.textContent);
   dates.forEach(d=>{d.textContent='November 13, 2014 — 23:47';d.style.color='#a00000';});
   setTimeout(()=>dates.forEach((d,i)=>{d.textContent=origs[i];d.style.color='';}),5500);
 }
-
-// 15: Quick invert
 function eInvert(){
   document.body.style.transition='filter .25s';
   document.body.style.filter='invert(1)';
   setTimeout(()=>{document.body.style.filter='invert(0)';setTimeout(()=>document.body.style.filter='',350);},350);
 }
-
-// 16: Typewriter chat erase
 function eTypewriter(){
   const lines=[...document.querySelectorAll('.c-txt')];
   if(!lines.length) return;
@@ -2790,8 +2862,6 @@ function eTypewriter(){
     }
   },70);
 }
-
-// 17: Error window
 function eErrWin(){
   const ids=['err1','err2','err3','err4','err5','err6'];
   const id=ids[Math.floor(Math.random()*ids.length)];
@@ -2801,22 +2871,16 @@ function eErrWin(){
   el.style.left=(75+Math.random()*520)+'px';
   el.style.display='block';
 }
-
-// 18: Bear5 chat message
 function eBearChat(){
   const msgs=['...','I found the folder','don\'t open it','HI','are you alone'];
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
   appendChat({n:'????',t:msgs[Math.floor(Math.random()*msgs.length)],ts,b:true});
 }
-
-// 19: Meme popup
 function eMeme(){
   const el=document.getElementById('meme-popup');
   if(el){el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
 }
-
-// 20: Eye window popup
 function eEyeWindow(){
   const w=document.getElementById('eye-window');
   if(!w) return;
@@ -2824,12 +2888,6 @@ function eEyeWindow(){
   w.style.left=(100+Math.random()*600)+'px';
   w.style.display='block';
 }
-function closeEyeWindow(){
-  const w=document.getElementById('eye-window');
-  if(w) w.style.display='none';
-}
-
-// 21: BSOD
 function eEvent21() {
   const bsod = document.getElementById('bsod');
   if (!bsod) return;
@@ -2843,12 +2901,6 @@ function eEvent21() {
   }, 180);
   setTimeout(() => closeBSOD(), 12000);
 }
-function closeBSOD() {
-  const b = document.getElementById('bsod');
-  if (b) b.style.display = 'none';
-}
-
-// 22: Tab title loop
 function eEvent22() {
   const msgs = ["LOOK BEHIND YOU", "don't close this tab", "I SEE YOU", "still watching", "close your eyes"];
   let i = 0;
@@ -2858,8 +2910,6 @@ function eEvent22() {
     if (i > msgs.length * 2) { clearInterval(iv); document.title = _origTitle; }
   }, 800);
 }
-
-// 23: Self-typing "I KNOW WHERE YOU LIVE"
 function eEvent23() {
   const targets = [...document.querySelectorAll('.blog-text, .post-body-col span, .c-txt')];
   if (!targets.length) return;
@@ -2883,11 +2933,7 @@ function eEvent23() {
       }, 80);
     }
   }, 40);
-  const rb = document.getElementById('replace-btn');
-  if (rb) rb.style.display = 'block';
 }
-
-// 24: Fake webcam popup
 function eEvent24() {
   const w = document.getElementById('webcam-modal');
   if (!w) return;
@@ -2898,8 +2944,6 @@ function eEvent24() {
   startWebcamTs();
   setTimeout(() => { w.style.display = 'none'; }, 8000);
 }
-
-// 25: Volume jumps to max
 function eEvent25() {
   try {
     const a = document.getElementById('amb');
@@ -2909,8 +2953,6 @@ function eEvent25() {
     setTimeout(() => { a.volume = orig; }, 3000);
   } catch(e) {}
 }
-
-// 26: Cursor freeze 3.5s
 let _cursorFrozen = false;
 function eEvent26() {
   if (_cursorFrozen) return;
@@ -2933,16 +2975,12 @@ function eEvent26() {
     _cursorFrozen = false;
   }, 3500);
 }
-
-// 27: Save As dialog
 function eEvent27() {
   const w = document.getElementById('save-as-win');
   if (!w) return;
   w.style.display = 'block';
   setTimeout(() => { w.style.display = 'none'; }, 10000);
 }
-
-// 28: All links → DON'T CLICK
 function eEvent28() {
   const links = [...document.querySelectorAll('#main-wrap a')];
   const origs = links.map(l => ({ text: l.textContent, color: l.style.color }));
@@ -2951,8 +2989,6 @@ function eEvent28() {
     links.forEach((l, i) => { l.textContent = origs[i].text; l.style.color = origs[i].color; });
   }, 5000);
 }
-
-// 29: Page tilts 3°
 let _tilted = false;
 function eEvent29() {
   if (_tilted) return;
@@ -2966,8 +3002,6 @@ function eEvent29() {
     setTimeout(() => { w.style.transition = ''; _tilted = false; }, 4500);
   }, 6000);
 }
-
-// 30: Skype notification
 function eEvent30() {
   const n = document.getElementById('skype-notif');
   const msgs = ["Help me it hurts", "why can't I move", "still counting... 43...", "please turn it off", "I can't stop looking"];
@@ -2977,8 +3011,6 @@ function eEvent30() {
   n.style.display = 'block';
   setTimeout(() => { n.style.display = 'none'; }, 7000);
 }
-
-// 31: Shake + pool screamer
 function eEvent31() {
   const w = document.getElementById('main-wrap');
   if (!w) return;
@@ -2986,8 +3018,6 @@ function eEvent31() {
   setTimeout(() => { w.style.animation = ''; }, 1300);
   setTimeout(() => _poolScreamer(1800), 500);
 }
-
-// 32: Fake context menu
 function eEvent32() {
   const menu = document.createElement('div');
   menu.style.cssText = `position:fixed;top:${100+Math.random()*300}px;left:${100+Math.random()*500}px;background:#f0f0f0;border:1px outset #fff;z-index:999975;font-family:'Share Tech Mono',monospace;font-size:11px;width:185px;color:#000;`;
@@ -3004,8 +3034,6 @@ function eEvent32() {
   document.body.appendChild(menu);
   setTimeout(() => menu.remove(), 6000);
 }
-
-// 33: Blog scroll to bottom
 function eEvent33() {
   const el = document.querySelector('.blog-scroll');
   if (!el) return;
@@ -3013,8 +3041,6 @@ function eEvent33() {
   el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   setTimeout(() => el.scrollTo({ top: orig, behavior: 'smooth' }), 4000);
 }
-
-// 34: Red pulse
 function eEvent34() {
   const rw = document.getElementById('red-wash');
   if (!rw) return;
@@ -3023,8 +3049,6 @@ function eEvent34() {
   setTimeout(() => { rw.style.opacity = '.22'; }, 3000);
   setTimeout(() => { rw.style.opacity = '0';   }, 4500);
 }
-
-// 35: Fake Task Manager
 function eEvent35() {
   const win = document.createElement('div');
   win.style.cssText = `position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:999977;width:420px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono',monospace;font-size:11px;`;
@@ -3050,8 +3074,6 @@ function eEvent35() {
   document.body.appendChild(win);
   setTimeout(() => win.remove(), 12000);
 }
-
-// 36: Countdown in dates
 function eEvent36() {
   const dates = [...document.querySelectorAll('.blog-date, .p-when')];
   const origs = dates.map(d => d.textContent);
@@ -3063,8 +3085,6 @@ function eEvent36() {
     dates.forEach(d => { d.textContent = `November 13, 2014 — 23:47:0${sec}`; });
   }, 1000);
 }
-
-// 37: Shadow figure in corner
 function eEvent37() {
   const fig = document.createElement('div');
   fig.style.cssText = `position:fixed;bottom:0;right:0;z-index:9990;width:60px;pointer-events:none;opacity:0;transition:opacity 3s;`;
@@ -3073,8 +3093,6 @@ function eEvent37() {
   setTimeout(() => { fig.style.opacity = '1'; }, 100);
   setTimeout(() => { fig.style.opacity = '0'; setTimeout(() => fig.remove(), 3500); }, 7000);
 }
-
-// 38: Panel titles replaced
 function eEvent38() {
   const titles  = [...document.querySelectorAll('.panel-title')];
   const origs   = titles.map(t => t.innerHTML);
@@ -3085,8 +3103,6 @@ function eEvent38() {
     titles.forEach((t, i) => { t.innerHTML = origs[i]; t.style.color = ''; t.style.letterSpacing = ''; });
   }, 5000);
 }
-
-// 39: Gallery → pool images
 function eEvent39() {
   const imgs  = [...document.querySelectorAll('.gal-grid img')];
   if (!imgs.length) return;
@@ -3094,8 +3110,6 @@ function eEvent39() {
   imgs.forEach(i => { i.src = _nextScreamer(); });
   setTimeout(() => imgs.forEach((img, i) => { img.src = origs[i]; }), 1200);
 }
-
-// 40: Bro-status typewriter
 function eEvent40() {
   const bro = document.getElementById('bro-status');
   if (!bro) return;
@@ -3112,26 +3126,18 @@ function eEvent40() {
     }
   }, 90);
 }
-
-// 41: Quick invert
 function eEvent41() {
   document.body.style.filter = 'invert(1)';
   eFlash();
   setTimeout(() => { document.body.style.filter = 'invert(0)'; setTimeout(() => document.body.style.filter = '', 200); }, 200);
 }
-
-// 42: Chat messages from the counting sequence
 function eEvent42() {
   const msgs = ["Frame 41...", "Frame 42...", "It's smiling now.", "I can't stop counting.", "Pull the plug."];
   const now = new Date();
   const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
   appendChat({ n:'????', t: msgs[Math.floor(Math.random() * msgs.length)], ts, b:true });
 }
-
-// 43: Eye window
 function eEvent43() { eEyeWindow(); }
-
-// 44: Title distress loop
 function eEvent44() {
   const seq = ["...", "help", "...", "help me", "...", "it hurts", "...", "still counting"];
   let i = 0;
@@ -3141,8 +3147,6 @@ function eEvent44() {
     if (i > seq.length * 2) { clearInterval(iv); document.title = _origTitle; }
   }, 600);
 }
-
-// 45: Noise canvas fullscreen burst
 function eEvent45() {
   try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
   const c = document.createElement('canvas');
@@ -3165,15 +3169,11 @@ function eEvent45() {
   };
   loop();
 }
-
-// 46: Cursor changes
 function eEvent46() {
   document.body.style.cursor = 'crosshair';
   setTimeout(() => { document.body.style.cursor = 'none'; }, 1500);
   setTimeout(() => { document.body.style.cursor = '';     }, 4000);
 }
-
-// 47: One blog entry goes black
 function eEvent47() {
   const entries = [...document.querySelectorAll('.blog-entry')];
   if (!entries.length) return;
@@ -3183,8 +3183,6 @@ function eEvent47() {
   el.style.background = '#000';
   setTimeout(() => { el.style.background = origBg || ''; setTimeout(() => el.style.transition = '', 1600); }, 4000);
 }
-
-// 48: Pool image for 100ms
 function eEvent48() {
   try{const s=document.getElementById('snd-glitch'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
   const img = document.createElement('img');
@@ -3193,15 +3191,11 @@ function eEvent48() {
   document.body.appendChild(img);
   setTimeout(() => img.remove(), 100);
 }
-
-// 49: Scroll position jumps
 function eEvent49() {
   const y = window.scrollY;
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   setTimeout(() => window.scrollTo({ top: y, behavior: 'smooth' }), 3000);
 }
-
-// 50: All stickers flip
 function eEvent50() {
   const stickers = [...document.querySelectorAll('.sticker')];
   stickers.forEach(s => { s.style.transition = 'transform 1s'; s.style.transform += ' rotate(180deg)'; });
@@ -3209,8 +3203,6 @@ function eEvent50() {
     stickers.forEach(s => { s.style.transform = s.style.transform.replace(' rotate(180deg)', ''); });
   }, 4000);
 }
-
-// 51: Status strip replaced
 function eEvent51() {
   const sts = document.querySelector('.sts');
   if (!sts) return;
@@ -3218,14 +3210,10 @@ function eEvent51() {
   sts.innerHTML = '<span style="color:#d12222;font-size:11px;letter-spacing:3px;animation:blink .5s infinite;">PRESENCE CONFIRMED — DO NOT SCROLL DOWN — IT SEES YOU</span>';
   setTimeout(() => { sts.innerHTML = orig; }, 6000);
 }
-
-// 52: Flash + pool screamer
 function eEvent52() {
   eFlash();
   setTimeout(() => _poolScreamer(1500), 200);
 }
-
-// 53: Footer extra line
 function eEvent53() {
   const foot = document.querySelector('footer');
   if (!foot) return;
@@ -3235,8 +3223,6 @@ function eEvent53() {
   foot.appendChild(line);
   setTimeout(() => { try { foot.removeChild(line); } catch(e) {} }, 7000);
 }
-
-// 54: Admin photo flash (180ms)
 function eEvent54() {
   const p = document.getElementById('admin-photo');
   if (!p) return;
@@ -3245,16 +3231,12 @@ function eEvent54() {
   p.style.filter = 'brightness(.6)';
   setTimeout(() => { p.src = o; p.style.filter = ''; }, 180);
 }
-
-// 55: Error window + entity chat
 function eEvent55() {
   eErrWin();
   const now = new Date();
   const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
   setTimeout(() => appendChat({ n:'????', t:'ACCESS DENIED. PERMANENTLY.', ts, b:true }), 1200);
 }
-
-// 56: Marquee text replaced
 function eEvent56() {
   const inner = document.querySelector('.marquee-inner');
   if (!inner) return;
@@ -3263,8 +3245,6 @@ function eEvent56() {
   inner.style.color = '#ff3333';
   setTimeout(() => { inner.textContent = orig; inner.style.color = ''; }, 8000);
 }
-
-// 57: Blood crosshair cursor
 function eEvent57() {
   const style = document.createElement('style');
   style.id = 'blood-cursor';
@@ -3272,51 +3252,239 @@ function eEvent57() {
   document.head.appendChild(style);
   setTimeout(() => { const s = document.getElementById('blood-cursor'); if (s) s.remove(); }, 5000);
 }
-
-// 58: All images near-black
 function eEvent58() {
   const imgs = [...document.querySelectorAll('#main-wrap img')];
   imgs.forEach(i => { i.style.transition = 'filter 1s'; i.style.filter = 'brightness(.15)'; });
   setTimeout(() => { imgs.forEach(i => { i.style.filter = ''; setTimeout(() => i.style.transition = '', 1100); }); }, 4000);
 }
-
-// 59: Ghost + date change
 function eEvent59() {
   eGhost();
   setTimeout(() => eDateChange(), 2000);
 }
-
-// 60: Panel titles + entity message combo
 function eEvent60() {
   eEvent38();
   setTimeout(() => eEvent42(), 1500);
 }
 
-const EVENTS = [
-  eFlash, eBearText, eFaceFlicker, eRedWash, eCursorVanish, eProcessBar, eFlipEl, ePhotoSwap, 
-  eAutoScroll, eCrack, eGhost, eGalCorrupt, eHiddenReveal, eDateChange, eInvert, eTypewriter, 
-  eErrWin, eBearChat, eMeme, eEyeWindow,
-  eEvent21, eEvent22, eEvent23, eEvent24, eEvent25, eEvent26, eEvent27, eEvent28, eEvent29, eEvent30,
-  eEvent31, eEvent32, eEvent33, eEvent34, eEvent35, eEvent36, eEvent37, eEvent38, eEvent39, eEvent40,
-  eEvent41, eEvent42, eEvent43, eEvent44, eEvent45, eEvent46, eEvent47, eEvent48, eEvent49, eEvent50,
-  eEvent51, eEvent52, eEvent53, eEvent54, eEvent55, eEvent56, eEvent57, eEvent58, eEvent59, eEvent60
+// ============================================================
+// УЛЬТРА-ХОРРОР СОБЫТИЯ (61 - 70) И НОВЫЕ ЗВУКИ
+// ============================================================
+function eEvent61() {
+  document.body.style.cursor = 'none';
+  const mimic = document.createElement('div');
+  mimic.style.cssText = 'position:fixed;width:12px;height:19px;background:#fff;z-index:9999999;pointer-events:none;clip-path:polygon(0 0,100% 35%,40% 45%,60% 100%,40% 90%,25% 55%,0 55%);transition:left 0.15s ease-out, top 0.15s ease-out;';
+  document.body.appendChild(mimic);
+  const moveTracker = (e) => {
+    mimic.style.left = (e.clientX + (Math.random() * 4 - 2)) + 'px';
+    mimic.style.top = (e.clientY + (Math.random() * 4 - 2)) + 'px';
+  };
+  window.addEventListener('mousemove', moveTracker);
+  setTimeout(() => {
+    window.removeEventListener('mousemove', moveTracker);
+    mimic.style.transition = 'all 0.1s cubic-bezier(0.6, -0.28, 0.73, 0.05)';
+    const badFile = document.querySelector('.fex-bad');
+    if (badFile) {
+      const rect = badFile.getBoundingClientRect();
+      mimic.style.left = (rect.left + 10) + 'px';
+      mimic.style.top = (rect.top + 5) + 'px';
+    } else {
+      mimic.style.left = '90vw'; mimic.style.top = '10vh';
+    }
+    setTimeout(() => { 
+      document.body.style.cursor = ''; mimic.remove(); 
+      try{const sm = document.getElementById('snd-mimic'); sm.volume = 1.0; sm.currentTime=0; sm.play();}catch(e){}
+      const img = document.createElement('img');
+      img.src = HORRORS[1];
+      img.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:999999;opacity:0.8;';
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 500);
+    }, 400);
+  }, 7000);
+}
+
+function eEvent62() {
+  const freezeOverlay = document.createElement('div');
+  freezeOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.4);z-index:999998;cursor:wait;';
+  const errorBox = document.createElement('div');
+  errorBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;background:#f0f0f0;border:1px solid #999;padding:20px;font-family:sans-serif;color:#000;box-shadow:3px 3px 10px rgba(0,0,0,0.2);z-index:999999;cursor:default;';
+  errorBox.innerHTML = `
+    <div style="margin-bottom:15px;font-size:12px;">The page is unresponsive. Terminate process?</div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;">
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Terminate process</button>
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Wait</button>
+    </div>
+  `;
+  document.body.appendChild(freezeOverlay);
+  document.body.appendChild(errorBox);
+  const btns = errorBox.querySelectorAll('.fake-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      errorBox.remove(); freezeOverlay.remove();
+      try{const sn = document.getElementById('snd-nightmare'); sn.volume = 1.0; sn.currentTime=0; sn.play();}catch(e){}
+      const img = document.createElement('img');
+      img.src = _nextScreamer();
+      img.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:999999;filter:contrast(1.5) invert(1);';
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 1200);
+    });
+  });
+  setTimeout(() => { if(errorBox.parentElement) errorBox.remove(); if(freezeOverlay.parentElement) freezeOverlay.remove(); }, 10000);
+}
+
+function eEvent63() {
+  const ambient = document.getElementById('amb');
+  let originalVolume = 0.2;
+  if (ambient) { originalVolume = ambient.volume; ambient.pause(); }
+  setTimeout(() => {
+    try {
+      const breath = document.getElementById('snd-steps');
+      if (breath) {
+        breath.playbackRate = 0.4; breath.volume = 0.1; breath.currentTime = 0; breath.play();
+        let volStep = 0.1;
+        const volInterval = setInterval(() => {
+          volStep += 0.15; if (volStep >= 1.0) { volStep = 1.0; clearInterval(volInterval); }
+          breath.volume = volStep;
+        }, 500);
+        setTimeout(() => {
+          clearInterval(volInterval); breath.pause(); eFlash();
+          const crash = document.getElementById('snd-scream');
+          if (crash) { crash.currentTime = 0; crash.volume = 1.0; crash.play(); }
+          if (ambient) { ambient.volume = originalVolume; ambient.play().catch(()=>{}); }
+        }, 4500);
+      }
+    } catch(e) {}
+  }, 5000);
+}
+
+function eEvent64() {
+  const mirrorFace = document.createElement('img');
+  mirrorFace.src = HORRORS[Math.floor(Math.random() * HORRORS.length)];
+  mirrorFace.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.15;z-index:999995;pointer-events:none;filter:grayscale(100%) contrast(1.5);transform:scaleX(-1);';
+  document.body.appendChild(mirrorFace);
+  setTimeout(() => { mirrorFace.remove(); }, 400);
+}
+
+function eEvent65() {
+  const now = new Date(); const ts = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  setTimeout(() => appendChat({ n:'[System]', t:'Scanning C:\\Users\\Admin\\Documents...', ts, sys:true }), 500);
+  setTimeout(() => appendChat({ n:'[System]', t:'IP Located. Location: Astana, Kazakhstan.', ts, sys:true }), 2500);
+  setTimeout(() => { appendChat({ n:'????', t:'I am closer than you think.', ts, b:true }); eFlash(); }, 5000);
+}
+
+function eEvent66() {
+  const wrapper = document.getElementById('main-wrap');
+  if (!wrapper) return;
+  wrapper.style.transition = 'transform 5s ease-in, filter 5s ease-in, opacity 5s ease-in';
+  wrapper.style.transform = 'translateY(150px) skewY(3deg)';
+  wrapper.style.filter = 'blur(4px) contrast(1.2)';
+  wrapper.style.opacity = '0.6';
+  setTimeout(() => {
+    wrapper.style.transition = 'none'; wrapper.style.transform = ''; wrapper.style.filter = ''; wrapper.style.opacity = '';
+    eFlash(); 
+  }, 5500);
+}
+
+function eEvent67() {
+  const blackout = document.createElement('div');
+  blackout.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;';
+  document.body.appendChild(blackout);
+  setTimeout(() => {
+    const eye = document.createElement('div');
+    eye.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);width:2px;height:2px;background:#fff;border-radius:50%;z-index:1000000;transition:all 3s ease-in-out;box-shadow: 0 0 10px #fff;';
+    document.body.appendChild(eye);
+    setTimeout(() => {
+      eye.style.width = '120px'; eye.style.height = '60px';
+      eye.style.background = 'radial-gradient(circle, #000 20%, #fff 25%, #fff 100%)';
+    }, 100);
+    setTimeout(() => { eye.remove(); blackout.remove(); eFlash(); }, 3500);
+  }, 4000);
+}
+
+function eEvent68() {
+  const chatInput = document.getElementById('chat-input');
+  const chatName = document.getElementById('chat-name');
+  if (!chatInput) return;
+  chatInput.focus(); chatInput.value = '';
+  if(chatName) chatName.value = 'YOU';
+  const textToType = "I CAN SEE YOU. DON'T BLINK.";
+  let idx = 0;
+  const typeInterval = setInterval(() => {
+    chatInput.value += textToType[idx]; idx++;
+    if (idx >= textToType.length) {
+      clearInterval(typeInterval);
+      setTimeout(() => { sendChat(); chatInput.blur(); }, 600);
+    }
+  }, 120); 
+}
+
+function eEvent69() {
+  let beatCount = 0; const wash = document.getElementById('red-wash');
+  const heartbeat = setInterval(() => {
+    document.body.style.transition = 'transform 0.1s ease-out';
+    document.body.style.transform = 'scale(1.02)';
+    if(wash) { wash.style.transition = 'opacity 0.1s'; wash.style.opacity = (0.1 + (beatCount * 0.05)).toString(); }
+    setTimeout(() => { document.body.style.transition = 'transform 0.3s ease-in'; document.body.style.transform = 'scale(1)'; }, 150);
+    beatCount++;
+    if (beatCount > 8) {
+      clearInterval(heartbeat); document.body.style.transform = '';
+      const deathScreen = document.createElement('div');
+      deathScreen.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;color:#d12222;font-family:"VT323",monospace;font-size:40px;letter-spacing:8px;';
+      deathScreen.textContent = "STILL COUNTING...";
+      document.body.appendChild(deathScreen);
+      setTimeout(() => { deathScreen.remove(); if(wash) wash.style.opacity = '0'; }, 3000);
+    }
+  }, 700); 
+}
+
+function eEvent70() {
+  const isOk = confirm("Windows Security Alert\n\nUnauthorized access to your webcam detected.\nSource: BEAR5.EXE.\n\nClose the tab to prevent data leak?");
+  setTimeout(() => { openRoom('room-webcam'); setTimeout(() => { closeRoom(); }, 1200); }, 500);
+}
+
+// ============================================================
+// EVENT SCHEDULER (УМНЫЙ РАНДОМ)
+// ============================================================
+const MINOR_EVENTS = [
+  eBearText, eRedWash, eCursorVanish, eFlipEl, eAutoScroll, eGhost, eDateChange, eInvert, eTypewriter, eMeme,
+  eEvent22, eEvent23, eEvent28, eEvent29, eEvent33, eEvent34, eEvent36, eEvent38, eEvent40, eEvent41, eEvent46, eEvent47, eEvent49, eEvent50, eEvent51, eEvent53, eEvent56, eEvent58, eEvent59, eEvent66
+];
+const MEDIUM_EVENTS = [
+  eProcessBar, ePhotoSwap, eCrack, eGalCorrupt, eHiddenReveal, eErrWin, eBearChat, eEyeWindow,
+  eEvent24, eEvent26, eEvent27, eEvent30, eEvent32, eEvent35, eEvent37, eEvent39, eEvent42, eEvent43, eEvent44, eEvent45, eEvent55, eEvent60, eEvent61, eEvent64, eEvent65, eEvent68, eEvent69
+];
+const SCARY_EVENTS = [
+  eFlash, eFaceFlicker, eEvent21, eEvent25, eEvent31, eEvent48, eEvent52, eEvent54, eEvent57, eEvent62, eEvent63, eEvent67, eEvent70
 ];
 
-function scheduleEvents(){
-  function next(){
-    const delay=22000+Math.random()*43000;
-    setTimeout(()=>{
-      if(!b5Mode) EVENTS[Math.floor(Math.random()*EVENTS.length)]();
-      next();
-    },delay);
+function scheduleEvents() {
+  function nextMinor() {
+    setTimeout(() => {
+      if (!b5Mode) MINOR_EVENTS[Math.floor(Math.random() * MINOR_EVENTS.length)]();
+      nextMinor();
+    }, 15000 + Math.random() * 20000); 
   }
-  setTimeout(()=>{eBearChat();next();},15000+Math.random()*15000);
+  function nextMedium() {
+    setTimeout(() => {
+      if (!b5Mode) MEDIUM_EVENTS[Math.floor(Math.random() * MEDIUM_EVENTS.length)]();
+      nextMedium();
+    }, 45000 + Math.random() * 45000); 
+  }
+  function nextScary() {
+    setTimeout(() => {
+      if (!b5Mode) SCARY_EVENTS[Math.floor(Math.random() * SCARY_EVENTS.length)]();
+      nextScary();
+    }, 120000 + Math.random() * 120000); 
+  }
+
+  setTimeout(nextMinor, 10000);
+  setTimeout(nextMedium, 30000);
+  setTimeout(nextScary, 120000);
+  setTimeout(() => eBearChat(), 15000 + Math.random() * 15000);
 }
 
 // ============================================================
 // ROOMS INTERACTIVE LOGIC
 // ============================================================
-
 function initBasement() {
   const room  = document.getElementById('room-basement');
   const light = document.getElementById('basement-light');
@@ -3371,17 +3539,6 @@ function knockLetIn() {
 }
 
 let _sys32Iv = null;
-const SYS32_FILES = [
-  'kernel32.dll','ntdll.dll','user32.dll','gdi32.dll',
-  'advapi32.dll','shell32.dll','shlwapi.dll','rpcrt4.dll',
-  'msvcrt.dll','wininet.dll','urlmon.dll','oleaut32.dll',
-  'ole32.dll','comctl32.dll','comdlg32.dll','winsock.dll',
-  'bear5.sys — ERROR: Cannot delete',
-  'memory.dmp','pagefile.sys',
-  'BROTHER.exe — ERROR: Still running',
-  'soul.dat','static.bin',
-  'frame_47.raw — ERROR: File is alive',
-];
 function startSys32() {
   const log = document.getElementById('sys32-log');
   if (!log) return;
@@ -3479,34 +3636,65 @@ function startWebcamTs() {
 }
 
 // ============================================================
-// CORE LOGIC & ROOM HOOKS
+// CORE LOGIC & ROOM HOOKS WITH AUDIO
 // ============================================================
+function stopAllRoomAudio() {
+  ['snd-sadsatan', 'snd-pipe', 'snd-morse'].forEach(id => {
+    try {
+      const a = document.getElementById(id);
+      if (a) { a.pause(); a.currentTime = 0; }
+    } catch(e) {}
+  });
+}
+
 function openRoom(id){
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
   const el=document.getElementById(id);
   if(!el) return;
   el.classList.add('active');
   document.body.style.overflow='hidden';
+  
+  stopAllRoomAudio();
+  
   if(id==='room-camera') startCamTs();
   if(id==='room-recovery') startRecovery();
-  if(id==='room-brother') { try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} }
+  if(id==='room-brother') { 
+    try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} 
+    try{const m=document.getElementById('snd-morse'); m.volume=0.7; m.play();}catch(e){}
+  }
+  if(id==='room-sadsatan') {
+    try{const sa=document.getElementById('snd-sadsatan'); sa.volume=0.8; sa.play();}catch(e){}
+  }
+  if(id==='room-basement') {
+    initBasement();
+    try{const pi=document.getElementById('snd-pipe'); pi.volume=0.9; pi.play();}catch(e){}
+  }
   
-  if(id==='room-basement') initBasement();
   if(id==='room-smile')    setTimeout(startSmile, 500);
   if(id==='room-knock')    startKnock();
   if(id==='room-endless')  initEndless();
   if(id==='room-webcam')   startWebcamRoom();
 }
+
 function closeRoom(){
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
   document.body.style.overflow='';
+  stopAllRoomAudio();
 }
+
 function changeRoom(id){
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
   const el=document.getElementById(id);
   if(el) el.classList.add('active');
+  
+  stopAllRoomAudio();
+  
   if(id==='room-camera') startCamTs();
   if(id==='room-recovery') startRecovery();
+  if(id==='room-brother') {
+    try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} 
+    try{const m=document.getElementById('snd-morse'); m.volume=0.7; m.play();}catch(e){}
+  }
 }
 
 function startCamTs(){
@@ -3666,7 +3854,6 @@ function unleashB5(){
   try{const s=document.getElementById('snd-scream');const a=document.getElementById('amb');a.pause();s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
   
   document.body.classList.add('B5');
-  
   var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
   document.querySelectorAll('img:not(#screamer-img):not(.floater)').forEach(img=>{
     img.src=bear5Src;
@@ -3675,7 +3862,6 @@ function unleashB5(){
   
   const title=document.getElementById('site-title');
   if(title) title.childNodes[0].textContent='BEAR 5';
-  
   document.querySelectorAll('.blog-text').forEach(el=>{
     el.innerHTML='<span style="color:#000;font-size:16px;letter-spacing:4px;font-weight:bold;">BEAR5 BEAR5 BEAR5</span>';
   });
@@ -3683,7 +3869,6 @@ function unleashB5(){
   document.querySelectorAll('.sts').forEach(el => el.innerHTML = 'STATUS: RUN RUN RUN');
 
   b5Pct=100; updateMeter();
-  
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
   for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'I AM COMING',ts,b:true},false),i*280);
@@ -3722,6 +3907,25 @@ function replaceAllText(){
 function revealReplaceBtn(){
   document.getElementById('replace-btn').style.display='block';
 }
+
+function dragWin(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (!el) return;
+  let ox = e.clientX - el.getBoundingClientRect().left;
+  let oy = e.clientY - el.getBoundingClientRect().top;
+  const mv = ev => {
+    el.style.left = (ev.clientX - ox) + 'px';
+    el.style.top = (ev.clientY - oy) + 'px';
+  };
+  const up = () => {
+    document.removeEventListener('mousemove', mv);
+    document.removeEventListener('mouseup', up);
+  };
+  document.addEventListener('mousemove', mv);
+  document.addEventListener('mouseup', up);
+}
+function makeWinDrag() {} 
 
 function updateTrack(){
   const t=tracks[trackIdx];
@@ -3792,16 +3996,6 @@ function revealSecret(el){
   setTimeout(()=>openRoom('room-brother'),2500);
 }
 
-let sadHover=null;
-const portal=document.getElementById('sad-portal');
-if(portal){
-  portal.addEventListener('mouseenter',()=>{
-    sadHover=setTimeout(()=>openRoom('room-sadsatan'),3000);
-  });
-  portal.addEventListener('mouseleave',()=>{
-    clearTimeout(sadHover); sadHover=null;
-  });
-}
 </script>
 </body>
 </html>
