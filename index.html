@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1400">
-<title>Peashooter321's Homepage!!! lol [2014]</title>
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>Домашняя страница Peashooter321!!! лол [2014]</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=PT+Mono&family=Permanent+Marker&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
 <style>
 
 /* ============================================================
@@ -36,7 +36,7 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   font-size: 12px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -113,6 +113,21 @@ em     { color: var(--dim); font-style: normal; }
 }
 
 /* ============================================================
+   SEAMLESS MELTDOWN EFFECT (12 SECONDS)
+   ============================================================ */
+.meltdown-active {
+  animation: melt-seamless 12s ease-in-out forwards;
+}
+@keyframes melt-seamless {
+  0% { transform: translateY(0) skewY(0); filter: blur(0) contrast(1); opacity: 1; }
+  35% { transform: translateY(150px) skewY(4deg); filter: blur(8px) contrast(1.2); opacity: 0.3; }
+  48% { transform: translateY(300px) skewY(8deg); filter: blur(20px) contrast(1.5); opacity: 0; }
+  52% { transform: translateY(-300px) skewY(-8deg); filter: blur(20px) contrast(1.5); opacity: 0; }
+  65% { transform: translateY(-150px) skewY(-4deg); filter: blur(8px) contrast(1.2); opacity: 0.3; }
+  100% { transform: translateY(0) skewY(0); filter: blur(0) contrast(1); opacity: 1; }
+}
+
+/* ============================================================
    EYE POPUP WINDOW
    ============================================================ */
 #eye-window {
@@ -134,7 +149,7 @@ em     { color: var(--dim); font-style: normal; }
   color: #aaa;
   cursor: move;
   user-select: none;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   letter-spacing: 1px;
 }
 #eye-close {
@@ -159,7 +174,7 @@ em     { color: var(--dim); font-style: normal; }
   border: 1px solid #1c1c1c;
   z-index: 99990;
   width: 340px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   display: none;
 }
 .err-bar {
@@ -200,7 +215,7 @@ em     { color: var(--dim); font-style: normal; }
   color: #ccc;
   padding: 4px 14px;
   cursor: pointer;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   font-size: 11px;
   letter-spacing: 1px;
   transition: .15s;
@@ -235,7 +250,7 @@ em     { color: var(--dim); font-style: normal; }
   display: none; position: fixed; inset: 0; z-index: 99980;
   background: #000; overflow-y: auto; padding: 40px;
   flex-direction: column; align-items: center;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
 }
 .room.active { display: flex; }
 
@@ -245,13 +260,13 @@ em     { color: var(--dim); font-style: normal; }
   border: 1px solid #444;
   color: #aaa;
   padding: 5px 12px; cursor: pointer;
-  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px;
   letter-spacing: 2px; transition: .2s;
 }
 .room-close:hover { color: #fff; border-color: #777; }
 
 .room-title {
-  font-family: 'VT323', monospace; font-size: 42px;
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 42px;
   color: #ccc; letter-spacing: 6px;
   margin-bottom: 30px; text-align: center;
   animation: title-drift 8s ease-in-out infinite;
@@ -275,7 +290,7 @@ em     { color: var(--dim); font-style: normal; }
 .room-btn {
   background: #000; border: 1px solid #333;
   color: #ccc; padding: 7px 18px;
-  cursor: pointer; font-family: 'Share Tech Mono', monospace;
+  cursor: pointer; font-family: 'Share Tech Mono', 'PT Mono', monospace;
   font-size: 11px; letter-spacing: 2px; transition: .15s;
 }
 .room-btn:hover { border-color: #666; color: #fff; }
@@ -298,7 +313,7 @@ em     { color: var(--dim); font-style: normal; }
 }
 .cam-label {
   position: absolute;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   font-size: 11px; color: rgba(0,200,0,.6); letter-spacing: 2px;
 }
 
@@ -324,7 +339,7 @@ em     { color: var(--dim); font-style: normal; }
 
 /* NOVEMBER 13 */
 #room-nov13 { background: #000; justify-content: center; }
-.nov-date { font-family: 'VT323', monospace; font-size: 80px; color: #444; letter-spacing: 10px; animation: nov-flicker 6s infinite; }
+.nov-date { font-family: 'VT323', 'PT Mono', monospace; font-size: 80px; color: #444; letter-spacing: 10px; animation: nov-flicker 6s infinite; }
 @keyframes nov-flicker {
   0%,85%,100%{opacity:.6;}
   87%{opacity:.2;}
@@ -347,7 +362,7 @@ em     { color: var(--dim); font-style: normal; }
 #room-loop { background: #000; justify-content: center; }
 
 /* RECOVERY */
-#room-recovery { background: #080808; font-family: 'Share Tech Mono', monospace; }
+#room-recovery { background: #080808; font-family: 'Share Tech Mono', 'PT Mono', monospace; }
 .rec-log {
   background: #000; border: 1px solid #222;
   padding: 12px; font-size: 11px; color: #888;
@@ -367,7 +382,7 @@ em     { color: var(--dim); font-style: normal; }
 #trap-exit {
   position: fixed; bottom: 8px; right: 10px;
   font-size: 9px; color: rgba(80,80,80,.3);
-  cursor: pointer; font-family: 'Share Tech Mono', monospace;
+  cursor: pointer; font-family: 'Share Tech Mono', 'PT Mono', monospace;
   opacity: 0; transition: opacity 3s; letter-spacing: 1px;
 }
 #trap-exit:hover { color: rgba(150,150,150,.5); }
@@ -409,7 +424,7 @@ em     { color: var(--dim); font-style: normal; }
   position: fixed; pointer-events: none; z-index: 9992;
   font-size: 13px; color: rgba(120,30,30,.7);
   white-space: nowrap; letter-spacing: 4px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   animation: ghost-move 11s linear forwards;
 }
 @keyframes ghost-move {
@@ -453,7 +468,7 @@ header {
   overflow: hidden;
 }
 .site-title {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', 'Caveat', cursive;
   font-size: 62px; color: #666;
   display: inline-block; position: relative;
   letter-spacing: 2px;
@@ -470,7 +485,7 @@ header {
   93%{opacity:0;}
 }
 .site-subtitle {
-  font-family: 'VT323', monospace;
+  font-family: 'VT323', 'PT Mono', monospace;
   font-size: 18px; color: #555; letter-spacing: 10px; margin-top: 4px;
 }
 .header-meta {
@@ -497,7 +512,7 @@ header {
 .marquee-bar {
   background: #080808; border-top: 1px solid #111; border-bottom: 1px solid #111;
   padding: 5px 0; overflow: hidden; white-space: nowrap;
-  font-family: 'VT323', monospace; font-size: 15px; color: #555;
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 15px; color: #555;
 }
 .marquee-inner { display: inline-block; animation: m-go 45s linear infinite; }
 @keyframes m-go { from{transform:translateX(100vw);} to{transform:translateX(-100%);} }
@@ -508,7 +523,7 @@ header {
 .sts {
   background: #090909; border-bottom: 1px solid var(--border);
   padding: 5px 13px; display: flex; justify-content: space-between;
-  align-items: center; font-family: 'VT323', monospace; font-size: 17px; color: #777;
+  align-items: center; font-family: 'VT323', 'PT Mono', monospace; font-size: 17px; color: #777;
 }
 .sts-off { color: #d12222; animation: blink 2.5s infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
@@ -609,16 +624,16 @@ header {
    MUSIC PLAYER
    ============================================================ */
 .mplayer { background: #080808; border: 1px solid var(--border); padding: 10px; }
-.m-now { font-family: 'VT323', monospace; font-size: 17px; color: #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.m-now { font-family: 'VT323', 'PT Mono', monospace; font-size: 17px; color: #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .m-sub { font-size: 10px; color: #666; margin-top: 2px; letter-spacing: 1px; }
 .m-controls { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
 .m-btn {
   background: #0d0d0d; border: 1px solid #222;
   color: #888; padding: 3px 8px; cursor: pointer;
-  font-family: 'VT323', monospace; font-size: 18px; transition: .1s;
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 18px; transition: .1s;
 }
 .m-btn:hover { background: #111; color: var(--text-w); }
-.m-time { font-family: 'VT323', monospace; font-size: 16px; color: #777; margin-left: auto; }
+.m-time { font-family: 'VT323', 'PT Mono', monospace; font-size: 16px; color: #777; margin-left: auto; }
 
 /* ============================================================
    BEAR5 TRIGGER
@@ -650,7 +665,7 @@ header {
    ============================================================ */
 .blog-scroll { max-height: 520px; overflow-y: scroll; padding-right: 2px; }
 .blog-entry { padding: 12px 0; border-bottom: 1px solid #222; }
-.blog-date   { font-family: 'VT323', monospace; font-size: 16px; color: #ccc; display: block; margin-bottom: 3px; }
+.blog-date   { font-family: 'VT323', 'PT Mono', monospace; font-size: 16px; color: #ccc; display: block; margin-bottom: 3px; }
 .blog-text   { color: var(--text); line-height: 1.8; font-size: 12px; }
 .blog-author { text-align: right; font-size: 10px; color: #999; margin-top: 5px; font-style: italic; }
 .blog-entry.dark { border: 1px solid #4a0000; background: #0c0000; padding: 10px; margin: 4px 0; }
@@ -673,7 +688,7 @@ header {
   background: #e8e8e8; color: #1a1a1a;
   border: 1px solid #bbb;
   padding: 6px; max-width: 125px;
-  font-family: 'Permanent Marker', cursive; font-size: 8px;
+  font-family: 'Permanent Marker', 'Caveat', cursive; font-size: 8px;
   text-align: center; z-index: 10; user-select: none;
   filter: brightness(0.95);
   transition: filter .3s;
@@ -763,7 +778,7 @@ header {
 .c-name-in, .c-msg-in {
   background: #080808; border: 1px solid #333;
   color: var(--text); padding: 5px 7px;
-  font-family: 'Share Tech Mono', monospace; font-size: 11px; outline: none;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px; outline: none;
 }
 .c-name-in { width: 90px; }
 .c-name-in:focus, .c-msg-in:focus { border-color: #666; }
@@ -771,7 +786,7 @@ header {
 .c-send {
   background: #0d0d0d; border: 1px solid #333;
   color: #ccc; padding: 5px 10px; cursor: pointer;
-  font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; transition: .15s;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; transition: .15s;
 }
 .c-send:hover { background: #111; color: #fff; }
 
@@ -803,7 +818,7 @@ header {
 .cf {
   width: 100%; background: #080808; border: 1px solid #333;
   color: var(--text); padding: 6px 7px;
-  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px;
   outline: none; display: block; margin-bottom: 5px;
 }
 .cf:focus { border-color: #666; }
@@ -822,8 +837,6 @@ footer {
 .f-br:hover { color: #d12222; }
 .web-badges { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
 .wb { font-size: 10px; padding: 1px 6px; border: 1px solid #333; color: #777; letter-spacing: 1px; }
-
-/* Hidden 1×1 portal to Sad Satan — removed, triggered via tweet now */
 
 /* ============================================================
    LIGHTBOX
@@ -855,7 +868,7 @@ footer {
 #replace-btn {
   display: none; position: fixed; bottom: 7px; left: 7px;
   z-index: 99000; background: #000; border: 1px solid #333;
-  color: #aaa; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  color: #aaa; font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 10px;
   padding: 3px 8px; cursor: pointer; letter-spacing: 1px;
 }
 #replace-btn:hover { color: #fff; border-color: #666; }
@@ -949,7 +962,7 @@ body.B5, body.B5 a, body.B5 div {
 
 /* ENDLESS — text lines visibility fix */
 .endless-line {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
   font-size: 11px;
   color: #777;
   letter-spacing: 4px;
@@ -1061,124 +1074,124 @@ body.B5, body.B5 a, body.B5 div {
 
 <div class="err-win" id="err1" style="top:200px;left:300px;">
   <div class="err-bar" onmousedown="dragWin(event,'err1')">
-    <span>FILE INTEGRITY CHECK — FAILED</span>
+    <span>ПРОВЕРКА ЦЕЛОСТНОСТИ ФАЙЛА — ОШИБКА</span>
     <span class="err-x" onclick="closeErr('err1')">✕</span>
   </div>
   <div class="err-body">
-    File: <strong>[REDACTED]</strong><br>
-    Size: <strong>0 bytes / ∞ bytes</strong><br>
-    Created: <strong>—</strong><br>
-    Modified: <strong>NEVER</strong><br><br>
-    Windows cannot verify this file.
+    Файл: <strong>[УДАЛЕНО]</strong><br>
+    Размер: <strong>0 байт / ∞ байт</strong><br>
+    Создан: <strong>—</strong><br>
+    Изменен: <strong>НИКОГДА</strong><br><br>
+    Windows не удается проверить этот файл.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err1')">OK</button>
-    <button class="err-btn" onclick="closeErr('err1')">Cancel</button>
+    <button class="err-btn" onclick="closeErr('err1')">ОК</button>
+    <button class="err-btn" onclick="closeErr('err1')">Отмена</button>
   </div>
 </div>
 
 <div class="err-win" id="err2" style="top:240px;left:410px;">
   <div class="err-bar" onmousedown="dragWin(event,'err2')">
-    <span>CONNECTION — TIMEOUT</span>
+    <span>ПОДКЛЮЧЕНИЕ — ТАЙМ-АУТ</span>
     <span class="err-x" onclick="closeErr('err2')">✕</span>
   </div>
   <div class="err-body">
-    Host: <strong>PEASHOOTER321_ROOT</strong><br>
-    Last response: <strong>NOV 13, 2014  23:47:02</strong><br><br>
-    Elapsed since last packet: <strong id="days-gone">—</strong><br><br>
-    The remote host has not responded.
+    Хост: <strong>PEASHOOTER321_ROOT</strong><br>
+    Последний ответ: <strong>13 Ноября 2014  23:47:02</strong><br><br>
+    Прошло с последнего пакета: <strong id="days-gone">—</strong><br><br>
+    Удаленный хост не отвечает.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err2')">Retry</button>
+    <button class="err-btn" onclick="closeErr('err2')">Повтор</button>
   </div>
 </div>
 
 <div class="err-win" id="err3" style="top:310px;left:200px;">
   <div class="err-bar" onmousedown="dragWin(event,'err3')">
-    <span>ACCESS DENIED</span>
+    <span>ОТКАЗАНО В ДОСТУПЕ</span>
     <span class="err-x" onclick="closeErr('err3')">✕</span>
   </div>
   <div class="err-body">
-    You do not have permission to perform this operation.<br><br>
-    The file cannot be moved.<br>
-    The file cannot be copied.<br>
-    The file cannot be closed.
+    У вас нет разрешений на выполнение этой операции.<br><br>
+    Файл не может быть перемещен.<br>
+    Файл не может быть скопирован.<br>
+    Файл не может быть закрыт.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err3')">OK</button>
+    <button class="err-btn" onclick="closeErr('err3')">ОК</button>
   </div>
 </div>
 
 <div class="err-win" id="err4" style="top:175px;left:340px;width:380px;">
   <div class="err-bar" onmousedown="dragWin(event,'err4')">
-    <span>WINDOWS — UNHANDLED EXCEPTION</span>
+    <span>WINDOWS — НЕОБРАБАТЫВАЕМОЕ ИСКЛЮЧЕНИЕ</span>
     <span class="err-x" onclick="closeErr('err4')">✕</span>
   </div>
   <div class="err-body">
-    An unhandled exception occurred at <strong>0xDEAD0013</strong>.<br><br>
-    Process: <strong>[REDACTED].exe</strong><br>
-    Memory usage: <strong>UNDEFINED</strong><br><br>
-    This process cannot be terminated.
+    Необработанное исключение по адресу <strong>0xDEAD0013</strong>.<br><br>
+    Процесс: <strong>[УДАЛЕНО].exe</strong><br>
+    Использование памяти: <strong>НЕ ОПРЕДЕЛЕНО</strong><br><br>
+    Этот процесс не может быть завершен.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err4')">Close</button>
-    <button class="err-btn" onclick="moreErrors()">Report</button>
+    <button class="err-btn" onclick="closeErr('err4')">Закрыть</button>
+    <button class="err-btn" onclick="moreErrors()">Отчет</button>
   </div>
 </div>
 
 <div class="err-win" id="err5" style="top:230px;left:245px;width:360px;">
   <div class="err-bar" onmousedown="dragWin(event,'err5')">
-    <span>ANOMALOUS SESSION DETECTED</span>
+    <span>ОБНАРУЖЕНА АНОМАЛЬНАЯ СЕССИЯ</span>
     <span class="err-x" onclick="closeErr('err5')">✕</span>
   </div>
   <div class="err-body">
-    This page was last accessed: <strong>NOV 13, 2014</strong><br><br>
-    It has not been offline since then.<br><br>
-    No administrator account is active.<br>
-    The site is maintaining itself.
+    Последнее обращение к странице: <strong>13 Ноября 2014</strong><br><br>
+    С тех пор она не отключалась.<br><br>
+    Нет активных учетных записей администратора.<br>
+    Сайт поддерживает себя сам.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err5')">Understood</button>
+    <button class="err-btn" onclick="closeErr('err5')">Понятно</button>
   </div>
 </div>
 
 <div class="err-win" id="err6" style="top:260px;left:390px;width:350px;">
   <div class="err-bar" onmousedown="dragWin(event,'err6')">
-    <span>DISK READ ERROR</span>
+    <span>ОШИБКА ЧТЕНИЯ ДИСКА</span>
     <span class="err-x" onclick="closeErr('err6')">✕</span>
   </div>
   <div class="err-body">
-    Sector: <strong>47</strong><br>
-    Bad blocks detected: <strong>∞</strong><br><br>
-    Data recovery is not possible.<br>
-    The sector has been marked as unreadable since <strong>Nov 2014</strong>.
+    Сектор: <strong>47</strong><br>
+    Поврежденные блоки: <strong>∞</strong><br><br>
+    Восстановление данных невозможно.<br>
+    Сектор помечен как нечитаемый с <strong>Ноября 2014</strong>.
   </div>
   <div class="err-foot">
-    <button class="err-btn" onclick="closeErr('err6')">Skip</button>
+    <button class="err-btn" onclick="closeErr('err6')">Пропустить</button>
   </div>
 </div>
 
 <div id="b5-bar">
-  <span id="b5-txt">process running...</span>
+  <span id="b5-txt">выполнение процесса...</span>
   <div id="b5-track"><div id="b5-fill"></div></div>
 </div>
 
-<button id="replace-btn" onclick="replaceAllText()">replace all</button>
+<button id="replace-btn" onclick="replaceAllText()">заменить всё</button>
 
 <div id="lore-modal" style="display:none;position:fixed;inset:0;z-index:999995;background:rgba(0,0,0,.92);justify-content:center;align-items:center;">
   <div id="lore-inner" style="background:#f5f0e8;border:2px solid #888;width:min(640px,92vw);font-family:'Courier New',monospace;position:relative;overflow:hidden;">
     <div id="lore-bar" style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
-      <span id="lore-filename">Untitled - Notepad</span>
+      <span id="lore-filename">Безымянный - Блокнот</span>
       <span onclick="closeLore()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 5px;font-size:11px;line-height:16px;">✕</span>
     </div>
     <div style="background:#c0c0c0;border-bottom:1px solid #888;padding:2px 6px;font-size:11px;color:#000;display:flex;gap:14px;">
-      <span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span>
+      <span>Файл</span><span>Правка</span><span>Формат</span><span>Вид</span><span>Справка</span>
     </div>
     <div style="position:absolute;top:30px;right:20px;width:80px;height:60px;background:radial-gradient(ellipse,rgba(150,0,0,.4) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
     <div style="position:absolute;bottom:40px;left:30px;width:50px;height:40px;background:radial-gradient(ellipse,rgba(150,0,0,.3) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
     <div id="lore-content" style="padding:10px 12px;min-height:180px;font-size:13px;line-height:1.9;color:#1a1a1a;white-space:pre-wrap;background:#f5f0e8;position:relative;z-index:1;"></div>
     <div style="background:#c0c0c0;border-top:1px solid #888;padding:2px 8px;font-size:10px;color:#333;display:flex;justify-content:space-between;">
-      <span id="lore-status">Ln 1, Col 1</span>
+      <span id="lore-status">Стр 1, Стб 1</span>
       <span style="color:#cc0000;animation:blink 1.5s infinite;" id="lore-glitch-txt"></span>
     </div>
   </div>
@@ -1187,7 +1200,7 @@ body.B5, body.B5 a, body.B5 div {
 <div id="skype-notif" style="display:none;position:fixed;bottom:60px;right:20px;z-index:999980;width:280px;background:#f0f0f0;border:1px solid #aaa;font-family:'Segoe UI',Arial,sans-serif;font-size:12px;">
   <div style="background:#00AFF0;color:#fff;padding:5px 10px;display:flex;align-items:center;gap:7px;font-size:13px;">
     <span style="font-size:16px;">💬</span>
-    <span>Skype — New Message</span>
+    <span>Skype — Новое сообщение</span>
     <span onclick="document.getElementById('skype-notif').style.display='none'" style="margin-left:auto;cursor:pointer;opacity:.7;">✕</span>
   </div>
   <div style="padding:10px;display:flex;gap:8px;align-items:flex-start;">
@@ -1195,8 +1208,8 @@ body.B5, body.B5 a, body.B5 div {
       <img src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.8);" alt="">
     </div>
     <div>
-      <div style="font-weight:bold;color:#333;">Brother</div>
-      <div id="skype-msg-text" style="color:#555;margin-top:2px;">Help me it hurts</div>
+      <div style="font-weight:bold;color:#333;">Брат</div>
+      <div id="skype-msg-text" style="color:#555;margin-top:2px;">Помоги мне, больно</div>
     </div>
   </div>
 </div>
@@ -1204,42 +1217,42 @@ body.B5, body.B5 a, body.B5 div {
 <div id="bsod" style="display:none;position:fixed;inset:0;z-index:9999999;background:#0040aa;color:#fff;font-family:'Lucida Console',monospace;padding:6vw 8vw;cursor:none;">
   <div style="font-size:clamp(14px,2vw,22px);line-height:1.8;max-width:700px;">
     <div style="font-size:clamp(16px,3vw,32px);margin-bottom:24px;letter-spacing:2px;">:(</div>
-    <p>Your PC ran into a problem and needs to restart.</p>
-    <p style="margin-top:16px;">Stop code: <strong>FRAME_47_FATAL_ERROR</strong></p>
-    <p style="margin-top:8px;">What failed: <strong>BEAR5.SYS</strong></p>
+    <p>На вашем ПК возникла проблема, и его необходимо перезагрузить.</p>
+    <p style="margin-top:16px;">Код остановки: <strong>FRAME_47_FATAL_ERROR</strong></p>
+    <p style="margin-top:8px;">Что вызвало ошибку: <strong>BEAR5.SYS</strong></p>
     <div style="margin-top:32px;font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.9);">
-      If you'd like to know more, you can search online later for this error:<br>
+      При желании вы можете найти в интернете информацию по этому коду ошибки:<br>
       <strong>FRAME_47_FATAL_ERROR</strong><br><br>
-      <span id="bsod-pct">0</span>% complete<br><br>
-      <span style="font-size:11px;opacity:.7;">The process cannot be terminated.</span>
+      <span id="bsod-pct">0</span>% завершено<br><br>
+      <span style="font-size:11px;opacity:.7;">Этот процесс невозможно завершить.</span>
     </div>
   </div>
-  <div onclick="closeBSOD()" style="position:absolute;bottom:20px;right:20px;font-size:10px;opacity:.3;cursor:pointer;">[ dismiss ]</div>
+  <div onclick="closeBSOD()" style="position:absolute;bottom:20px;right:20px;font-size:10px;opacity:.3;cursor:pointer;">[ закрыть ]</div>
 </div>
 
-<div id="save-as-win" style="display:none;position:fixed;top:30%;left:50%;transform:translateX(-50%);z-index:999985;width:400px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono',monospace;font-size:12px;">
+<div id="save-as-win" style="display:none;position:fixed;top:30%;left:50%;transform:translateX(-50%);z-index:999985;width:400px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;">
   <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;">
-    <span>Save As</span>
+    <span>Сохранить как</span>
     <span onclick="document.getElementById('save-as-win').style.display='none'" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
   </div>
   <div style="padding:14px;">
-    <div style="margin-bottom:8px;color:#000;">File name:</div>
-    <input type="text" value="your_soul.exe" readonly style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#cc0000;font-family:'Share Tech Mono',monospace;font-size:12px;margin-bottom:12px;">
-    <div style="margin-bottom:8px;color:#000;">Save as type:</div>
+    <div style="margin-bottom:8px;color:#000;">Имя файла:</div>
+    <input type="text" value="your_soul.exe" readonly style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#cc0000;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;margin-bottom:12px;">
+    <div style="margin-bottom:8px;color:#000;">Тип файла:</div>
     <select style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#000;font-size:12px;margin-bottom:14px;">
-      <option>Executable (*.exe)</option>
-      <option>Soul Archive (*.exe)</option>
+      <option>Исполняемый файл (*.exe)</option>
+      <option>Архив души (*.exe)</option>
     </select>
     <div style="display:flex;justify-content:flex-end;gap:6px;">
-      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Save</button>
-      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Cancel</button>
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Сохранить</button>
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Отмена</button>
     </div>
   </div>
 </div>
 
-<div id="webcam-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999983;width:360px;background:#0d0d0d;border:1px solid #333;font-family:'Share Tech Mono',monospace;">
+<div id="webcam-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999983;width:360px;background:#0d0d0d;border:1px solid #333;font-family:'Share Tech Mono', 'PT Mono', monospace;">
   <div style="background:#111;border-bottom:1px solid #333;padding:4px 8px;display:flex;justify-content:space-between;font-size:10px;color:#888;letter-spacing:2px;">
-    <span>CAMERA — LIVE FEED</span>
+    <span>КАМЕРА — ПРЯМОЙ ЭФИР</span>
     <span onclick="document.getElementById('webcam-modal').style.display='none'" style="cursor:pointer;color:#888;">✕</span>
   </div>
   <div style="position:relative;height:220px;overflow:hidden;background:#000;">
@@ -1247,93 +1260,93 @@ body.B5, body.B5 a, body.B5 div {
     <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
       <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" style="width:160px;height:160px;object-fit:cover;opacity:.3;filter:grayscale(1) contrast(1.4);mix-blend-mode:screen;" alt="">
     </div>
-    <div style="position:absolute;top:6px;left:8px;font-size:10px;color:rgba(255,0,0,.8);animation:blink 1s infinite;">● REC</div>
+    <div style="position:absolute;top:6px;left:8px;font-size:10px;color:rgba(255,0,0,.8);animation:blink 1s infinite;">● ЗАПИСЬ</div>
     <div style="position:absolute;top:6px;right:8px;font-size:10px;color:rgba(0,255,0,.8);" id="webcam-ts">00:00:00</div>
   </div>
-  <div style="padding:8px 10px;font-size:10px;color:#777;letter-spacing:1px;">SOURCE: DEVICE_LOCAL_0 — MOTION DETECTED</div>
+  <div style="padding:8px 10px;font-size:10px;color:#777;letter-spacing:1px;">ИСТОЧНИК: DEVICE_LOCAL_0 — ОБНАРУЖЕНО ДВИЖЕНИЕ</div>
 </div>
 
 <div class="room" id="room-0">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div class="room-title">S T A T I C</div>
   <img class="room-image" src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif" alt="">
   <div class="room-text">
-    You found the file.<br>
-    We tried to delete it.<br>
-    It keeps coming back.<br><br>
-    On November 13th, the static started.<br>
-    My brother opened it.<br><br>
-    <span style="color:#aaa;">He said it was just a GIF.</span><br><br>
-    <span style="font-size:11px;color:#888;letter-spacing:3px;">Look at the frames.<br>Count them.<br>Don't stop at 7.</span>
+    Ты нашел файл.<br>
+    Мы пытались его удалить.<br>
+    Он все время возвращается.<br><br>
+    13 ноября начались помехи.<br>
+    Мой брат открыл его.<br><br>
+    <span style="color:#aaa;">Он сказал, что это просто гифка.</span><br><br>
+    <span style="font-size:11px;color:#888;letter-spacing:3px;">Посмотри на кадры.<br>Посчитай их.<br>Не останавливайся на 7.</span>
   </div>
   <div class="room-nav">
-    <button class="room-btn" onclick="changeRoom('room-brother')">continue</button>
-    <button class="room-btn" onclick="changeRoom('room-file')">the file</button>
+    <button class="room-btn" onclick="changeRoom('room-brother')">дальше</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">файл</button>
   </div>
 </div>
 
 <div class="room" id="room-brother">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
-  <div class="room-title">T H E   B R O T H E R</div>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div class="room-title">Б Р А Т</div>
   <img class="room-image" src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" alt="">
   <div class="room-text">
-    He was better at CSS than me.<br>
-    He fixed the music player when it broke the layout.<br>
-    He portal-dropped me into acid pits "for science".<br><br>
-    <span style="color:#d12222;">He watched the file for 4 minutes and 37 seconds.</span><br><br>
-    He hasn't posted since August 2, 2014.<br><br>
-    <span style="font-size:11px;color:#aaa;letter-spacing:3px;display:block;margin-top:18px;">If you know where he is,<br>leave a message in the shoutbox.<br>Use the code: <span style="color:#ff3333;">IAMHERE</span></span>
+    Он шарил в CSS лучше меня.<br>
+    Он починил плеер, когда тот сломал всю верстку.<br>
+    Он скидывал меня порталами в кислоту «ради науки».<br><br>
+    <span style="color:#d12222;">Он смотрел на этот файл 4 минуты и 37 секунд.</span><br><br>
+    Он ничего не постил с 2 августа 2014.<br><br>
+    <span style="font-size:11px;color:#aaa;letter-spacing:3px;display:block;margin-top:18px;">Если знаете, где он,<br>оставьте сообщение в чате.<br>Используйте код: <span style="color:#ff3333;">IAMHERE</span></span>
   </div>
   <div class="room-nav">
-    <button class="room-btn" onclick="changeRoom('room-0')">back</button>
-    <button class="room-btn" onclick="changeRoom('room-file')">the file</button>
+    <button class="room-btn" onclick="changeRoom('room-0')">назад</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">файл</button>
   </div>
 </div>
 
 <div class="room" id="room-file">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
-  <div class="room-title">T H E   F I L E</div>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div class="room-title">Ф А Й Л</div>
   <img class="room-image" src="https://i.pinimg.com/736x/49/84/64/498464f32bd6aeea4252b10e198cf55a.jpg" alt="">
   <div class="room-text">
     <span style="color:#999;font-size:11px;letter-spacing:2px;">
-    FILE: [REDACTED].exe<br>
-    CREATED: —<br>
-    MODIFIED: NEVER<br>
-    SIZE: 0 bytes / ∞ bytes
+    ФАЙЛ: [УДАЛЕНО].exe<br>
+    СОЗДАН: —<br>
+    ИЗМЕНЕН: НИКОГДА<br>
+    РАЗМЕР: 0 байт / ∞ байт
     </span><br><br>
-    It runs in a loop.<br>
-    The loop has no end.<br><br>
-    We tried to count the frames.<br>
-    There were too many.<br>
-    After frame 47, they stopped being what they were.<br><br>
+    Он зациклен.<br>
+    У цикла нет конца.<br><br>
+    Мы пытались посчитать кадры.<br>
+    Их оказалось слишком много.<br>
+    После 47-го кадра они перестали быть тем, чем казались.<br><br>
     <span style="font-size:11px;color:#888;letter-spacing:4px;">
-    Where did you find this.<br>
-    Why are you still here.
+    Где ты это нашел.<br>
+    Почему ты все еще здесь.
     </span>
   </div>
   <div class="room-nav">
-    <button class="room-btn" onclick="changeRoom('room-0')">back</button>
+    <button class="room-btn" onclick="changeRoom('room-0')">назад</button>
     <button class="room-btn" onclick="changeRoom('room-hi')">?</button>
   </div>
 </div>
 
 <div class="room" id="room-hi" style="background:#000;justify-content:center;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="text-align:center;margin-top:60px;">
-    <div style="font-family:'VT323',monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">HI</div>
+    <div style="font-family:'VT323', 'PT Mono', monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">ПРИВЕТ</div>
     <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
          style="width:260px;border:none;display:block;margin:25px auto;filter:brightness(0.6);"
          alt="">
     <div style="font-size:13px;color:#ccc;margin-top:16px;letter-spacing:4px;line-height:2.5;">
-      You weren't supposed to find this.<br>
-      <span style="color:#ff3333;">He's been here since November 13th.</span><br>
+      Ты не должен был это найти.<br>
+      <span style="color:#ff3333;">Он здесь с 13 ноября.</span><br>
       <span style="color:#999;font-size:11px;display:block;margin-top:20px;">
-        Close the browser.<br>Clear your cache.<br>Don't search for this.
+        Закрой браузер.<br>Почисти кэш.<br>Не пытайся это гуглить.
       </span>
     </div>
   </div>
   <div class="room-nav" style="margin-top:35px;">
-    <button class="room-btn" onclick="closeRoom()">leave</button>
+    <button class="room-btn" onclick="closeRoom()">уйти</button>
   </div>
 </div>
 
@@ -1342,16 +1355,16 @@ body.B5, body.B5 a, body.B5 div {
   <div class="cam-label" style="top:8px;left:10px;">CAM 07</div>
   <div class="cam-label" style="top:8px;right:10px;" id="cam-ts">00:00:00</div>
   <div class="cam-label" style="bottom:8px;left:10px;">REC ●</div>
-  <button class="room-close" onclick="closeRoom()" style="border-color:#1a3a1a;color:#2a6a2a;">[ disconnect ]</button>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#1a3a1a;color:#2a6a2a;">[ отключиться ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:55px;width:100%;">
     <div style="font-size:12px;color:rgba(0,200,0,.8);max-width:560px;text-align:center;line-height:2.2;letter-spacing:2px;">
-      <span style="font-size:22px;display:block;margin-bottom:14px;letter-spacing:5px;">CAMERA 7</span>
-      This camera has been offline since November 13, 2014.<br>
-      Maintenance has been requested 47 times.<br>
-      No one enters the room.<br><br>
-      <span style="color:rgba(0,180,0,.7);">The camera turns itself on at 3:47 AM.</span><br>
-      <span style="color:rgba(0,150,0,.6);font-size:11px;">The feed shows a room that is not in the building.</span><br><br>
-      <span style="color:rgba(180,60,60,.9);font-size:11px;">Something has been standing in the corner for ten years.<br>We don't know if it moves when no one is watching.</span>
+      <span style="font-size:22px;display:block;margin-bottom:14px;letter-spacing:5px;">КАМЕРА 7</span>
+      Эта камера отключена с 13 ноября 2014 года.<br>
+      Запрос на обслуживание отправлен 47 раз.<br>
+      Никто не заходит в эту комнату.<br><br>
+      <span style="color:rgba(0,180,0,.7);">Камера сама включается в 3:47 ночи.</span><br>
+      <span style="color:rgba(0,150,0,.6);font-size:11px;">На записи видно комнату, которой нет в нашем здании.</span><br><br>
+      <span style="color:rgba(180,60,60,.9);font-size:11px;">Что-то стоит в углу уже десять лет.<br>Мы не знаем, двигается ли оно, когда на него никто не смотрит.</span>
     </div>
     <img src="https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg"
          style="max-width:320px;width:75%;border:1px solid rgba(0,200,0,.3);margin-top:22px;filter:brightness(0.7);"
@@ -1360,100 +1373,100 @@ body.B5, body.B5 a, body.B5 div {
 </div>
 
 <div class="room" id="room-frames" style="background:#000;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="text-align:center;padding-top:30px;width:100%;display:flex;flex-direction:column;align-items:center;">
-    <div style="font-size:13px;color:#ccc;letter-spacing:4px;margin-bottom:5px;">THE FRAMES</div>
-    <div style="font-size:10px;color:#888;margin-bottom:18px;letter-spacing:2px;">frame <span id="frame-counter">1</span></div>
+    <div style="font-size:13px;color:#ccc;letter-spacing:4px;margin-bottom:5px;">КАДРЫ</div>
+    <div style="font-size:10px;color:#888;margin-bottom:18px;letter-spacing:2px;">кадр <span id="frame-counter">1</span></div>
     <div class="frame-box" id="frame-box">
       <div id="frame-content" style="font-size:13px;color:#ccc;text-align:center;padding:20px;letter-spacing:2px;line-height:2;">
-        [ frame 1 ]<br><span style="font-size:11px;color:#aaa;">something running. nothing unusual.</span>
+        [ кадр 1 ]<br><span style="font-size:11px;color:#aaa;">что-то бежит. ничего необычного.</span>
       </div>
     </div>
     <div style="display:flex;gap:10px;margin-top:14px;">
-      <button class="room-btn" onclick="nextFrame(-1)">prev</button>
-      <button class="room-btn" onclick="nextFrame(1)">next frame</button>
+      <button class="room-btn" onclick="nextFrame(-1)">пред</button>
+      <button class="room-btn" onclick="nextFrame(1)">след кадр</button>
     </div>
     <div style="font-size:10px;color:#777;margin-top:14px;max-width:480px;letter-spacing:2px;">
-      After frame 47, they stopped being what they were.
+      После 47-го кадра они перестали быть тем, чем казались.
     </div>
   </div>
 </div>
 
 <div class="room" id="room-nov13" style="background:#000;justify-content:center;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;">
-    <div class="nov-date">NOVEMBER 13</div>
+    <div class="nov-date">13 НОЯБРЯ</div>
     <div class="nov-sub">2014</div>
     <div style="font-size:11px;color:#aaa;letter-spacing:5px;line-height:3;margin-top:18px;">
-      THIS IS THE DATE THE SITE WENT OFFLINE<br>
-      THIS IS THE DATE THE STATIC STARTED<br>
-      THIS IS THE DATE HE OPENED IT<br>
-      <span style="color:#ff3333;">THIS IS THE DATE HE DISAPPEARED</span><br><br>
+      В ЭТОТ ДЕНЬ САЙТ УПАЛ<br>
+      В ЭТОТ ДЕНЬ НАЧАЛИСЬ ПОМЕХИ<br>
+      В ЭТОТ ДЕНЬ ОН ОТКРЫЛ ЕГО<br>
+      <span style="color:#ff3333;">В ЭТОТ ДЕНЬ ОН ИСЧЕЗ</span><br><br>
       <span style="font-size:10px;color:#888;">23:47:02</span>
     </div>
     <div style="font-size:12px;color:#999;margin-top:18px;animation:blink 4s infinite;letter-spacing:3px;">
-      The time has not changed.
+      Время так и не изменилось.
     </div>
   </div>
 </div>
 
 <div class="room" id="room-void" style="background:#000;justify-content:center;">
   <div class="void-text">
-    you are very far from the surface now<br><br>
-    no one will find you here<br><br>
-    this is where the deleted files go<br><br>
-    <span style="color:#d12222;">he is here too</span><br><br>
-    <span style="font-size:10px;color:#777;letter-spacing:1px;">click anywhere to leave</span>
+    ты уже очень далеко от поверхности<br><br>
+    здесь тебя никто не найдет<br><br>
+    сюда попадают удаленные файлы<br><br>
+    <span style="color:#d12222;">он тоже здесь</span><br><br>
+    <span style="font-size:10px;color:#777;letter-spacing:1px;">кликни в любом месте, чтобы уйти</span>
   </div>
   <div style="position:fixed;inset:0;cursor:pointer;z-index:0;" onclick="closeRoom()"></div>
 </div>
 
 <div class="room" id="room-donotread" style="background:#0c0c0c;justify-content:center;">
-  <button class="room-close" onclick="closeRoom()" style="color:#777;border-color:#444;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="color:#777;border-color:#444;">[ закрыть ]</button>
   <div class="dnr-block">
-    THE PROGRAM WAS INSTALLED ON OCTOBER 31ST<br>
-    IT PRETENDED TO BE A GAME<br><br>
-    MY BROTHER FOUND IT IN THE SYSTEM32 FOLDER<br>
-    A FILE — ZERO BYTES — NO CREATION DATE<br>
-    NO AUTHOR<br><br>
-    HE OPENED IT ON NOVEMBER 12TH AT 11:47 PM<br>
-    THE SCREEN SHOWED SOMETHING RUNNING<br>
-    HE COUNTED THE FRAMES<br>
-    HE GOT TO 47<br><br>
-    I HEARD HIM STOP COUNTING<br>
-    I DID NOT GO CHECK ON HIM
+    ПРОГРАММА БЫЛА УСТАНОВЛЕНА 31 ОКТЯБРЯ<br>
+    ОНА ПРИТВОРЯЛАСЬ ИГРОЙ<br><br>
+    БРАТ НАШЕЛ ЕЕ В ПАПКЕ SYSTEM32<br>
+    ФАЙЛ — НОЛЬ БАЙТ — БЕЗ ДАТЫ СОЗДАНИЯ<br>
+    БЕЗ АВТОРА<br><br>
+    ОН ОТКРЫЛ ЕГО 12 НОЯБРЯ В 23:47<br>
+    НА ЭКРАНЕ ЧТО-ТО БЕЖАЛО<br>
+    ОН СЧИТАЛ КАДРЫ<br>
+    ДОШЕЛ ДО 47<br><br>
+    Я СЛЫШАЛ, КАК ОН ПЕРЕСТАЛ СЧИТАТЬ<br>
+    Я НЕ ПОШЕЛ ПРОВЕРИТЬ, КАК ОН ТАМ
   </div>
-  <div style="margin-top:16px;font-size:10px;color:#888;letter-spacing:2px;">hover over text to read</div>
+  <div style="margin-top:16px;font-size:10px;color:#888;letter-spacing:2px;">наведи курсор, чтобы прочитать</div>
 </div>
 
 <div class="room" id="room-loop" style="background:#000;justify-content:center;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="text-align:center;display:flex;flex-direction:column;align-items:center;">
-    <div style="font-size:12px;color:#999;letter-spacing:5px;margin-bottom:20px;">THE LOOP</div>
+    <div style="font-size:12px;color:#999;letter-spacing:5px;margin-bottom:20px;">ЦИКЛ</div>
     <div style="font-size:12px;color:#ccc;line-height:2.4;max-width:480px;letter-spacing:2px;">
-      The GIF has no first frame.<br>
-      The GIF has no last frame.<br><br>
-      It has been running since before you found it.<br>
-      It will be running after you leave.<br><br>
-      <span style="color:#d12222;font-size:11px;">My brother asked: what happens if you let it run forever?<br>I told him I didn't know.</span>
+      У гифки нет первого кадра.<br>
+      И последнего тоже.<br><br>
+      Она проигрывалась еще до того, как ты ее нашел.<br>
+      И продолжит проигрываться, когда ты уйдешь.<br><br>
+      <span style="color:#d12222;font-size:11px;">Мой брат спросил: что будет, если оставить ее включенной навсегда?<br>Я сказал, что не знаю.</span>
     </div>
     <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
          style="width:160px;border:none;margin-top:20px;filter:brightness(0.8);" alt="">
     <div style="font-size:11px;color:#888;margin-top:18px;animation:blink 2.5s infinite;letter-spacing:3px;">
-      frame 1 / frame 1 / frame 1
+      кадр 1 / кадр 1 / кадр 1
     </div>
     <div class="room-nav" style="margin-top:22px;">
-      <button class="room-btn" onclick="changeRoom('room-frames')">frame 47</button>
+      <button class="room-btn" onclick="changeRoom('room-frames')">кадр 47</button>
     </div>
   </div>
 </div>
 
 <div class="room" id="room-recovery" style="background:#080808;">
-  <button class="room-close" onclick="closeRoom()">[ abort ]</button>
+  <button class="room-close" onclick="closeRoom()">[ прервать ]</button>
   <div style="max-width:600px;width:100%;padding-top:40px;display:flex;flex-direction:column;align-items:flex-start;">
-    <div style="font-size:12px;color:#ccc;letter-spacing:3px;margin-bottom:18px;">WINDOWS FILE RECOVERY</div>
+    <div style="font-size:12px;color:#ccc;letter-spacing:3px;margin-bottom:18px;">ВОССТАНОВЛЕНИЕ ФАЙЛОВ WINDOWS</div>
     <div style="font-size:11px;color:#aaa;line-height:2;margin-bottom:16px;letter-spacing:1px;">
-      An error was detected during the last session.<br>Attempting to recover corrupted files...
+      В ходе последнего сеанса обнаружена ошибка.<br>Попытка восстановить поврежденные файлы...
     </div>
     <div class="rec-log" id="rec-log"></div>
     <div class="rec-bar-track"><div class="rec-bar-fill" id="rec-fill"></div></div>
@@ -1462,28 +1475,28 @@ body.B5, body.B5 a, body.B5 div {
 </div>
 
 <div class="room" id="room-warn" style="background:#080000;">
-  <button class="room-close" onclick="closeRoom()" style="border-color:#5a0000;color:#ff3333;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#5a0000;color:#ff3333;">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:40px;gap:16px;">
     <div style="font-size:11px;color:#ff4444;border:1px solid #aa0000;padding:12px 24px;letter-spacing:4px;text-align:center;animation:blink 2s infinite;">
-      THIS PAGE WAS NOT MEANT TO EXIST
+      ЭТОЙ СТРАНИЦЫ НЕ ДОЛЖНО БЫЛО СУЩЕСТВОВАТЬ
     </div>
     <div style="font-size:10px;color:#d12222;border:1px solid #8a0000;padding:10px 22px;letter-spacing:3px;text-align:center;">
-      THE SERVER SHOULD HAVE DELETED THIS
+      СЕРВЕР ДОЛЖЕН БЫЛ ЭТО УДАЛИТЬ
     </div>
     <div style="font-size:10px;color:#b00000;border:1px solid #5a0000;padding:9px 20px;letter-spacing:3px;text-align:center;">
-      CLOSE YOUR BROWSER AND DO NOT RETURN
+      ЗАКРОЙ БРАУЗЕР И НЕ ВОЗВРАЩАЙСЯ
     </div>
     <img src="https://i.pinimg.com/736x/52/0a/f7/520af787fe27ed2b6b3b4cdafa3a46ec.jpg"
          style="max-width:280px;width:65%;margin-top:18px;border:1px solid #aa0000;" alt="">
     <div style="font-size:10px;color:#d12222;margin-top:14px;letter-spacing:3px;text-align:center;">
-      You were warned.<br>
-      <span style="color:#8a0000;font-size:9px;">There won't be another.</span>
+      Тебя предупредили.<br>
+      <span style="color:#8a0000;font-size:9px;">Второго раза не будет.</span>
     </div>
   </div>
 </div>
 
 <div class="room" id="room-sadsatan">
-  <button class="room-close" onclick="closeRoom()" style="z-index:99;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="z-index:99;">[ закрыть ]</button>
   <img src="https://i.redd.it/ltqaqg0ukm0f1.gif" alt="">
 </div>
 
@@ -1492,65 +1505,65 @@ body.B5, body.B5 a, body.B5 div {
   <div style="position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;">
     <img src="https://i.pinimg.com/736x/23/9d/d0/239dd044afe8e6962f527432511c6bdf.jpg" style="max-width:260px;width:55%;filter:brightness(.6);margin-bottom:30px;" alt="">
     <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.5;text-align:center;max-width:420px;">
-      THE BASEMENT IS WHERE THEY KEPT IT<br>
-      <span style="color:#b00000;">BEFORE IT OUTGREW THE HARD DRIVE</span><br>
-      <span style="font-size:10px;color:#555;margin-top:14px;display:block;">move your cursor to see</span>
+      В ПОДВАЛЕ ОНИ ДЕРЖАЛИ ЭТО ДО ТОГО<br>
+      <span style="color:#b00000;">КАК ОНО ПЕРЕРОСЛО ЖЕСТКИЙ ДИСК</span><br>
+      <span style="font-size:10px;color:#555;margin-top:14px;display:block;">двигай курсором, чтобы осмотреться</span>
     </div>
   </div>
-  <button class="room-close" onclick="closeRoom();leaveBasement()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom();leaveBasement()">[ закрыть ]</button>
 </div>
 
 <div class="room" id="room-mirror" style="background:#080808;">
-  <button class="room-close" onclick="closeRoom()" style="transform:scaleX(-1);">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="transform:scaleX(-1);">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
-    <div style="font-size:13px;color:#aaa;letter-spacing:5px;margin-bottom:20px;transform:scaleX(-1);">THE MIRROR</div>
+    <div style="font-size:13px;color:#aaa;letter-spacing:5px;margin-bottom:20px;transform:scaleX(-1);">ЗЕРКАЛО</div>
     <img src="https://i.pinimg.com/736x/d1/c7/00/d1c700003a19f311f870f9f220780388.jpg" style="max-width:340px;width:80%;filter:brightness(.7);margin-bottom:24px;border:1px solid #333;transform:scaleX(-1);" alt="">
     <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.4;text-align:center;max-width:500px;transform:scaleX(-1);">
-      If you are reading this correctly,<br>
-      you are looking at the wrong side of the glass.<br>
-      <span style="color:#d12222;font-size:11px;">The reflection stopped moving on November 13.</span>
+      Если ты читаешь это нормально,<br>
+      значит, ты смотришь не с той стороны стекла.<br>
+      <span style="color:#d12222;font-size:11px;">Отражение перестало двигаться 13 ноября.</span>
     </div>
   </div>
 </div>
 
 <div class="room" id="room-diary" style="background:#0a0806;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;max-width:640px;margin:0 auto;">
-    <div style="font-size:11px;color:#998877;letter-spacing:4px;margin-bottom:20px;">HIS DIARY — LAST ENTRY</div>
-    <div class="diary-text" style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#bb9988;line-height:2.4;letter-spacing:1px;text-align:left;width:100%;padding:0 20px;">
-      <p class="dt-line">Oct 30 — Found something in the project folder today.</p>
-      <p class="dt-line">Oct 31 — It was still there. I didn't put it there.</p>
-      <p class="dt-line">Nov 1  — The GIF has no first frame. No last frame either.</p>
-      <p class="dt-line">Nov 7  — I watched it for four minutes.</p>
-      <p class="dt-line">Nov 10 — The shape in frame 38 looked back at me.</p>
-      <p class="dt-line" style="color:#e05555;">Nov 12 — I counted to 46 and I can't stop.</p>
-      <p class="dt-line" style="color:#ff0000;">Nov 13 — Fr</p>
+    <div style="font-size:11px;color:#998877;letter-spacing:4px;margin-bottom:20px;">ЕГО ДНЕВНИК — ПОСЛЕДНЯЯ ЗАПИСЬ</div>
+    <div class="diary-text" style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;color:#bb9988;line-height:2.4;letter-spacing:1px;text-align:left;width:100%;padding:0 20px;">
+      <p class="dt-line">30 Окт — Нашел сегодня какую-то дичь в папке проекта.</p>
+      <p class="dt-line">31 Окт — Файл все еще там. Я его туда не кидал.</p>
+      <p class="dt-line">1 Ноя  — У гифки нет первого кадра. И последнего тоже.</p>
+      <p class="dt-line">7 Ноя  — Я смотрел на нее 4 минуты.</p>
+      <p class="dt-line">10 Ноя — Силуэт на 38-м кадре посмотрел на меня.</p>
+      <p class="dt-line" style="color:#e05555;">12 Ноя — Я досчитал до 46 и не могу остановиться.</p>
+      <p class="dt-line" style="color:#ff0000;">13 Ноя — Ка</p>
     </div>
-    <div style="margin-top:20px;font-size:10px;color:#666;letter-spacing:2px;">hover over lines to read</div>
+    <div style="margin-top:20px;font-size:10px;color:#666;letter-spacing:2px;">наведи курсор, чтобы прочитать</div>
   </div>
 </div>
 
 <div class="room" id="room-sys32" style="background:#080808;">
-  <button class="room-close" onclick="closeRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:flex-start;padding:50px 40px;width:100%;max-width:700px;margin:0 auto;">
     <div style="font-size:11px;color:#aaa;letter-spacing:3px;margin-bottom:16px;">C:\WINDOWS\SYSTEM32\</div>
-    <div id="sys32-log" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;line-height:1.9;width:100%;max-height:400px;overflow-y:auto;"></div>
-    <button onclick="startSys32()" style="margin-top:20px;background:#111;border:1px solid #333;color:#ccc;padding:6px 18px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;">run deletion</button>
+    <div id="sys32-log" style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;color:#888;line-height:1.9;width:100%;max-height:400px;overflow-y:auto;"></div>
+    <button onclick="startSys32()" style="margin-top:20px;background:#111;border:1px solid #333;color:#ccc;padding:6px 18px;cursor:pointer;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;letter-spacing:2px;">запустить удаление</button>
   </div>
 </div>
 
 <div class="room" id="room-autopsy" style="background:#f0f0f0;">
-  <button class="room-close" onclick="closeRoom()" style="border-color:#ccc;color:#888;background:#f0f0f0;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#ccc;color:#888;background:#f0f0f0;">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
-    <div style="font-size:11px;color:#444;letter-spacing:6px;margin-bottom:20px;">AUTOPSY REPORT — CASE #321</div>
+    <div style="font-size:11px;color:#444;letter-spacing:6px;margin-bottom:20px;">ОТЧЕТ О ВСКРЫТИИ — ДЕЛО #321</div>
     <img src="https://i.pinimg.com/736x/2c/ba/97/2cba970c4d3a68b82357542511e2ce56.jpg" style="max-width:320px;width:75%;filter:brightness(.85);margin-bottom:24px;border:1px solid #999;" alt="">
-    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#333;line-height:2.2;max-width:500px;text-align:center;letter-spacing:1px;">
-      SUBJECT: Brother_Primary<br>
-      DATE OF INCIDENT: November 13, 2014<br>
-      CAUSE OF DEATH: <span style="color:#cc0000;font-weight:bold;">FRAME_47_EXPOSURE</span><br>
-      PHYSICAL SHELL: Discarded<br>
-      CURRENT STATUS: <span style="color:#cc0000;animation:blink 2s infinite;font-weight:bold;">ASSIMILATED — 99.9%</span><br><br>
-      <span style="font-size:10px;color:#777;">The body was not found. The body was not lost.</span>
+    <div style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;color:#333;line-height:2.2;max-width:500px;text-align:center;letter-spacing:1px;">
+      ОБЪЕКТ: Brother_Primary<br>
+      ДАТА ИНЦИДЕНТА: 13 ноября 2014<br>
+      ПРИЧИНА СМЕРТИ: <span style="color:#cc0000;font-weight:bold;">ВОЗДЕЙСТВИЕ_47_КАДРА</span><br>
+      ФИЗИЧЕСКАЯ ОБОЛОЧКА: Отброшена<br>
+      ТЕКУЩИЙ СТАТУС: <span style="color:#cc0000;animation:blink 2s infinite;font-weight:bold;">АССИМИЛИРОВАН — 99.9%</span><br><br>
+      <span style="font-size:10px;color:#777;">Тело не было найдено. Тело не было потеряно.</span>
     </div>
   </div>
 </div>
@@ -1559,66 +1572,66 @@ body.B5, body.B5 a, body.B5 div {
   <div id="smile-img-wrap" style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;position:absolute;inset:0;pointer-events:none;">
     <img src="https://i.pinimg.com/originals/a3/19/d4/a319d41a812371d5297e2e1bd0a85296.gif" id="smile-img" style="width:80px;filter:brightness(.8);" alt="">
   </div>
-  <button class="room-close" onclick="closeRoom();stopSmile()" style="z-index:10;">[ close ]</button>
-  <div style="position:absolute;bottom:15%;font-size:11px;color:#777;letter-spacing:4px;pointer-events:none;z-index:5;">it keeps getting closer</div>
+  <button class="room-close" onclick="closeRoom();stopSmile()" style="z-index:10;">[ закрыть ]</button>
+  <div style="position:absolute;bottom:15%;font-size:11px;color:#777;letter-spacing:4px;pointer-events:none;z-index:5;">оно подбирается все ближе</div>
 </div>
 
 <div class="room" id="room-knock" style="background:#080808;justify-content:center;align-items:center;">
-  <button class="room-close" onclick="closeRoom();stopKnock()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom();stopKnock()">[ закрыть ]</button>
   <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;">
-    <div style="font-size:12px;color:#aaa;letter-spacing:5px;">SOMETHING IS OUTSIDE</div>
+    <div style="font-size:12px;color:#aaa;letter-spacing:5px;">ЧТО-ТО СНАРУЖИ</div>
     <div style="font-size:11px;color:#d12222;letter-spacing:2px;line-height:2;">
-      Three knocks.<br>Then silence.<br>
-      <span id="knock-count" style="color:#ff3333;font-size:10px;">Then it stops asking.</span>
+      Три стука.<br>Затем тишина.<br>
+      <span id="knock-count" style="color:#ff3333;font-size:10px;">А потом оно перестает спрашивать разрешения.</span>
     </div>
-    <div id="knock-timer" style="font-family:'VT323',monospace;font-size:60px;color:#b00000;animation:blink 1s infinite;">—</div>
-    <button id="knock-btn" onclick="knockLetIn()" style="background:#111;border:1px solid #444;color:#ccc;padding:10px 28px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:3px;transition:.3s;">Let him in</button>
-    <div style="font-size:10px;color:#666;letter-spacing:2px;">or wait for it to stop knocking</div>
+    <div id="knock-timer" style="font-family:'VT323', 'PT Mono', monospace;font-size:60px;color:#b00000;animation:blink 1s infinite;">—</div>
+    <button id="knock-btn" onclick="knockLetIn()" style="background:#111;border:1px solid #444;color:#ccc;padding:10px 28px;cursor:pointer;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;letter-spacing:3px;transition:.3s;">Впусти его</button>
+    <div style="font-size:10px;color:#666;letter-spacing:2px;">или подожди, пока стук не прекратится</div>
   </div>
 </div>
 
 <div class="room" id="room-404" style="background:#0d0000;">
-  <button class="room-close" onclick="closeRoom()" style="border-color:#b00000;color:#ff3333;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#b00000;color:#ff3333;">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;padding-top:60px;width:100%;">
-    <div id="r404-num" style="font-family:'VT323',monospace;font-size:140px;color:#ff0000;line-height:1;animation:r404-drip 3s infinite;">404</div>
-    <div style="font-size:12px;color:#d12222;letter-spacing:4px;margin-top:10px;">PAGE NOT FOUND</div>
+    <div id="r404-num" style="font-family:'VT323', 'PT Mono', monospace;font-size:120px;color:#ff0000;line-height:1;animation:r404-drip 3s infinite;">404</div>
+    <div style="font-size:12px;color:#d12222;letter-spacing:4px;margin-top:10px;">СТРАНИЦА НЕ НАЙДЕНА</div>
     <div id="r404-blood" style="width:3px;background:linear-gradient(180deg,#d12222,#8b0000,transparent);margin-top:0;animation:r404-grow 4s ease-in forwards;"></div>
     <img src="https://i.pinimg.com/736x/95/3b/cf/953bcf75bb6bbff18f7a6d8f0f718a15.jpg" style="max-width:300px;width:70%;filter:brightness(.7);margin-top:28px;border:1px solid #b00000;" alt="">
     <div style="font-size:11px;color:#ff5555;margin-top:18px;letter-spacing:3px;line-height:2.2;text-align:center;">
-      The page you are looking for was deleted.<br>
-      <span style="color:#b00000;font-size:10px;">Along with everything else that was here.</span>
+      Страница, которую вы ищете, была удалена.<br>
+      <span style="color:#b00000;font-size:10px;">Вместе со всем остальным, что здесь находилось.</span>
     </div>
   </div>
 </div>
 
 <div class="room" id="room-endless" style="background:#080808;overflow-y:scroll;">
-  <button class="room-close" onclick="closeRoom()" style="position:fixed;z-index:100;">[ close ]</button>
+  <button class="room-close" onclick="closeRoom()" style="position:fixed;z-index:100;">[ закрыть ]</button>
   <div id="endless-content" style="display:flex;flex-direction:column;align-items:center;padding:60px 20px;width:100%;"></div>
 </div>
 
 <div class="room" id="room-webcam" style="background:#000;justify-content:center;align-items:center;">
-  <button class="room-close" onclick="closeRoom();stopWebcamRoom()">[ close ]</button>
+  <button class="room-close" onclick="closeRoom();stopWebcamRoom()">[ закрыть ]</button>
   <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
-    <div style="font-size:10px;color:#888;letter-spacing:4px;">DEVICE_LOCAL_0 — INITIATING FEED</div>
+    <div style="font-size:10px;color:#888;letter-spacing:4px;">DEVICE_LOCAL_0 — ЗАПУСК ТРАНСЛЯЦИИ</div>
     <div style="position:relative;width:min(480px,90vw);height:min(320px,60vw);background:#000;overflow:hidden;border:1px solid #333;">
       <canvas id="wcam-room-canvas" style="display:block;width:100%;height:100%;opacity:.9;"></canvas>
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
         <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" id="wcam-face" style="width:200px;height:200px;object-fit:cover;opacity:.2;filter:contrast(1.6);mix-blend-mode:screen;transition:opacity 4s;" alt="">
       </div>
-      <div style="position:absolute;top:8px;left:10px;font-size:10px;color:rgba(255,0,0,.8);animation:blink .9s infinite;">● LIVE</div>
+      <div style="position:absolute;top:8px;left:10px;font-size:10px;color:rgba(255,0,0,.8);animation:blink .9s infinite;">● ЗАПИСЬ</div>
       <div style="position:absolute;top:8px;right:10px;font-size:10px;color:rgba(0,255,0,.8);" id="wcam-ts-room">00:00</div>
-      <div style="position:absolute;bottom:8px;left:10px;font-size:10px;color:rgba(0,255,0,.8);letter-spacing:1px;" id="wcam-status">CONNECTING...</div>
+      <div style="position:absolute;bottom:8px;left:10px;font-size:10px;color:rgba(0,255,0,.8);letter-spacing:1px;" id="wcam-status">ПОДКЛЮЧЕНИЕ...</div>
     </div>
     <div style="font-size:10px;color:#aaa;letter-spacing:3px;line-height:2;text-align:center;">
-      MOTION DETECTED IN FRAME<br>
-      <span style="color:#d12222;">THE SUBJECT IS AWARE OF THE CAMERA</span>
+      В КАДРЕ ОБНАРУЖЕНО ДВИЖЕНИЕ<br>
+      <span style="color:#d12222;">ОБЪЕКТ ЗНАЕТ О КАМЕРЕ</span>
     </div>
   </div>
 </div>
 
 <div id="room-trap">
   <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
-  <span id="trap-exit" onclick="closeTrap()">leave</span>
+  <span id="trap-exit" onclick="closeTrap()">уйти</span>
 </div>
 
 <div id="lightbox" onclick="closeLightbox()">
@@ -1627,7 +1640,7 @@ body.B5, body.B5 a, body.B5 div {
 
 <div id="meme-popup">
   <div class="mp-bar">
-    <span>found this</span>
+    <span>нашел вот это</span>
     <span class="mp-x" onclick="document.getElementById('meme-popup').style.display='none'">✕</span>
   </div>
   <img src="https://i.pinimg.com/736x/2c/7a/7f/2c7a7f5e28ca8d42720e1963b5fae56a.jpg" alt="">
@@ -1646,20 +1659,20 @@ body.B5, body.B5 a, body.B5 div {
       Peashooter321
       <span class="title-ghost" aria-hidden="true">Peashooter321</span>
     </h1>
-    <div class="site-subtitle">/// My Awesome Site lol ///</div>
+    <div class="site-subtitle">/// Мой Офигенный Сайт лол ///</div>
     <div class="header-meta">
-      <span class="header-tag">🎮 GAMER</span>
-      <span class="header-tag">💻 HTML CODER</span>
-      <span class="header-tag">👻 FNAF FAN</span>
+      <span class="header-tag">🎮 ГЕЙМЕР</span>
+      <span class="header-tag">💻 КОДЕР</span>
+      <span class="header-tag">👻 ФАНАТ FNAF</span>
       <span class="header-tag">🏒 GO HAWKS</span>
       <span class="header-tag">🎃 2014</span>
     </div>
     <div class="mood-row">
-      <span>Admin: OFFLINE since Nov 13</span>
+      <span>Админ: ОФФЛАЙН с 13 Ноя</span>
       <span>|</span>
-      <span>Current mood: worried 🐻</span>
+      <span>Настроение: на измене 🐻</span>
       <span>|</span>
-      <span>Listening to: Linkin Park</span>
+      <span>Слушаю: Linkin Park</span>
     </div>
   </header>
 
@@ -1667,13 +1680,13 @@ body.B5, body.B5 a, body.B5 div {
 
   <div class="marquee-bar">
     <span class="marquee-inner">
-      &nbsp;&nbsp;&nbsp;★ WELCOME TO MY SITE ★ NO COPYING MY HTML ★ FNAF IS THE SCARIEST GAME EVER ★ HALO 3 LEGENDARY GANG ★ MINECRAFT FOREVER ★ SCHOOL SUCKS ★ SIGN MY GUESTBOOK ★ LAST UPDATE: NOV 13 2014 ★ VISITORS: 1,567 ★ MADE WITH NOTEPAD ★ BEST VIEWED IN INTERNET EXPLORER ★ GO HAWKS ★ HALF-LIFE 3 WHEN?? ★ RESIDENT EVIL > EVERYTHING ★ SAD SATAN IS REAL ★ ©2014 PEASHOOTER321 ★&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;★ ДОБРО ПОЖАЛОВАТЬ НА МОЙ САЙТ ★ НЕ ВОРУЙТЕ МОЙ HTML ★ FNAF САМАЯ СТРАШНАЯ ИГРА В МИРЕ ★ HALO 3 НА ЛЕГЕНДЕ ★ MINECRAFT НАВСЕГДА ★ ШКОЛА ОТСТОЙ ★ РАСПИШИТЕСЬ В ГОСТЕВОЙ КНИГЕ ★ ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: 13 Ноября 2014 ★ ПОСЕТИТЕЛИ: 1,567 ★ СДЕЛАНО В БЛОКНОТЕ ★ ЛУЧШЕ СМОТРЕТЬ В INTERNET EXPLORER ★ GO HAWKS ★ КОГДА ВЫЙДЕТ HALF-LIFE 3?? ★ RESIDENT EVIL > ВСЁ ОСТАЛЬНОЕ ★ SAD SATAN СУЩЕСТВУЕТ ★ ©2014 PEASHOOTER321 ★&nbsp;&nbsp;&nbsp;
     </span>
   </div>
 
   <div class="sts">
-    <span>STATUS: <span class="sts-off">■ OFFLINE</span> | LAST SEEN: <strong>13 NOV 2014 — 23:47</strong></span>
-    <span>VISITORS: <span style="color:#ccc;" id="vis-count">1,567</span></span>
+    <span>СТАТУС: <span class="sts-off">■ ОФФЛАЙН</span> | БЫЛ В СЕТИ: <strong>13 Ноября 2014 — 23:47</strong></span>
+    <span>ПОСЕТИТЕЛИ: <span style="color:#ccc;" id="vis-count">1,567</span></span>
     <span>[ <span id="clock-display">--:--:--</span> ] EST</span>
   </div>
 
@@ -1682,22 +1695,22 @@ body.B5, body.B5 a, body.B5 div {
     <div class="col">
 
       <div class="panel">
-        <div class="panel-title">ADMIN_PROFILE</div>
+        <div class="panel-title">ПРОФИЛЬ АДМИНА</div>
         <div class="panel-body">
           <img class="admin-photo" id="admin-photo" src="https://i.pinimg.com/736x/2d/35/18/2d35180b0381859a6a87eff8310cb26f.jpg" alt="">
           <table class="profile-table">
-            <tr><td>Nick:</td><td><strong>Peashooter321</strong></td></tr>
-            <tr><td>Age:</td><td>15 (in 2014)</td></tr>
-            <tr><td>State:</td><td>Ohio, USA</td></tr>
-            <tr><td>School:</td><td>Jefferson Middle</td></tr>
-            <tr><td>Grade:</td><td>9th — Honors Math (barely)</td></tr>
-            <tr><td>Status:</td><td><span class="p-gone">[GONE]</span></td></tr>
-            <tr><td>Bro:</td><td><span id="bro-status" style="color:#888;">offline</span></td></tr>
+            <tr><td>Ник:</td><td><strong>Peashooter321</strong></td></tr>
+            <tr><td>Возраст:</td><td>15 (в 2014)</td></tr>
+            <tr><td>Город:</td><td>Огайо, США</td></tr>
+            <tr><td>Школа:</td><td>Джефферсон</td></tr>
+            <tr><td>Класс:</td><td>9-й — Матеша (кое-как)</td></tr>
+            <tr><td>Статус:</td><td><span class="p-gone">[ИСЧЕЗ]</span></td></tr>
+            <tr><td>Брат:</td><td><span id="bro-status" style="color:#888;">offline</span></td></tr>
           </table>
           <div class="skill-bars" style="margin-top:10px;">
-            <div style="font-size:9px;color:#aaa;margin-bottom:5px;letter-spacing:2px;">SKILLS</div>
+            <div style="font-size:9px;color:#aaa;margin-bottom:5px;letter-spacing:2px;">СКИЛЛЫ</div>
             <div class="skill-row">
-              <div class="skill-label"><span>Halo 3 Legendary</span><span>91%</span></div>
+              <div class="skill-label"><span>Halo 3 Легенда</span><span>91%</span></div>
               <div class="skill-track"><div class="skill-fill" style="width:91%;"></div></div>
             </div>
             <div class="skill-row">
@@ -1713,7 +1726,7 @@ body.B5, body.B5 a, body.B5 div {
               <div class="skill-track"><div class="skill-fill bad" style="width:58%;"></div></div>
             </div>
             <div class="skill-row">
-              <div class="skill-label"><span>Not screaming (FNAF)</span><span>11%</span></div>
+              <div class="skill-label"><span>Не орать в FNAF</span><span>11%</span></div>
               <div class="skill-track"><div class="skill-fill bad" style="width:11%;"></div></div>
             </div>
           </div>
@@ -1721,34 +1734,34 @@ body.B5, body.B5 a, body.B5 div {
             <div class="int-item">🎮 Xbox 360</div>
             <div class="int-item">⛏️ Minecraft</div>
             <div class="int-item">👻 FNAF</div>
-            <div class="int-item">🏒 Hockey</div>
+            <div class="int-item">🏒 Хоккей</div>
             <div class="int-item">🎵 Linkin Park</div>
             <div class="int-item">🧟 Resident Evil</div>
             <div class="int-item">🔫 Counter-Strike</div>
             <div class="int-item">🌀 Portal 2</div>
           </div>
           <div class="loc-box" style="margin-top:7px;">
-            📍 Columbus, Ohio<br>
-            <span style="font-size:9px;">Go Blackhawks 🏒 · Est. Summer 2014</span>
+            📍 Колумбус, Огайо<br>
+            <span style="font-size:9px;">Go Blackhawks 🏒 · Лето 2014</span>
           </div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">NAVIGATION</div>
+        <div class="panel-title">НАВИГАЦИЯ</div>
         <ul class="nav-list">
-          <li><a href="#" onclick="return false;">🏠 Home</a></li>
-          <li><a href="#blog-section">📝 Updates Log</a></li>
-          <li><a href="#forum-section">💬 Forum</a></li>
-          <li><a href="#gallery-section">🖼️ Gallery</a></li>
-          <li><a href="#guestbook-section">✍️ Guestbook</a></li>
-          <li><a href="#" onclick="openRoom('room-0');return false;" class="nav-del">📁 SERVER FILES</a></li>
-          <li><a href="#" onclick="return false;" class="nav-ano">— [CORRUPTED ENTRY] —</a></li>
+          <li><a href="#" onclick="return false;">🏠 Главная</a></li>
+          <li><a href="#blog-section">📝 Блог обновлений</a></li>
+          <li><a href="#forum-section">💬 Форум</a></li>
+          <li><a href="#gallery-section">🖼️ Галерея</a></li>
+          <li><a href="#guestbook-section">✍️ Гостевая книга</a></li>
+          <li><a href="#" onclick="openRoom('room-0');return false;" class="nav-del">📁 ФАЙЛЫ СЕРВЕРА</a></li>
+          <li><a href="#" onclick="return false;" class="nav-ano">— [ПОВРЕЖДЕННАЯ ЗАПИСЬ] —</a></li>
         </ul>
       </div>
 
       <div class="panel">
-        <div class="panel-title">MY DOCUMENTS</div>
+        <div class="panel-title">МОИ ДОКУМЕНТЫ</div>
         <div class="panel-body" style="padding:0;">
           <div class="fex">
             <div class="fex-bar">C:\Users\Peashooter\Desktop\</div>
@@ -1756,19 +1769,19 @@ body.B5, body.B5 a, body.B5 div {
             <div class="fex-item">📄 cs_server_config.cfg</div>
             <div class="fex-item">📄 re4_merchant_quotes.txt</div>
             <div class="fex-item">📄 portal2_speedrun.wmv</div>
-            <div class="fex-item">📁 site_backup_aug2014\</div>
+            <div class="fex-item">📁 бэкап_сайта_авг2014\</div>
             <div class="fex-item">📄 half_life_notes.doc</div>
-            <div class="fex-item fex-bad" onclick="openRoom('room-0')">⚠️ [CANNOT DELETE] [ACCESS DENIED]</div>
+            <div class="fex-item fex-bad" onclick="openRoom('room-0')">⚠️ [НЕЛЬЗЯ УДАЛИТЬ] [ОТКАЗ В ДОСТУПЕ]</div>
           </div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">NOW PLAYING</div>
+        <div class="panel-title">СЕЙЧАС ИГРАЕТ</div>
         <div class="panel-body" style="padding:8px;">
           <div class="mplayer">
             <div class="m-now" id="now-track">Linkin Park — Numb</div>
-            <div class="m-sub" id="now-album">Album: Meteora (2003)</div>
+            <div class="m-sub" id="now-album">Альбом: Meteora (2003)</div>
             <div class="m-controls">
               <button class="m-btn" onclick="prevTrack()">⏮</button>
               <button class="m-btn" id="play-btn" onclick="togglePlay()">▶</button>
@@ -1780,147 +1793,147 @@ body.B5, body.B5 a, body.B5 div {
       </div>
 
       <div class="b5-trigger" onclick="unleashB5()">
-        <div class="b5-cap">my fav game character :)</div>
+        <div class="b5-cap">мой любимый перс из игры :)</div>
         <img class="b5-img" src="https://i.pinimg.com/736x/59/9f/1b/599f1bbc3fe2882a3ece6930bd75ba75.jpg" alt="">
         <div style="font-size:10px;color:#aaa;margin-top:4px;letter-spacing:1px;">Freddy!! 🐻</div>
       </div>
 
       <div class="b5-meter">
         <div class="b5-m-head">
-          <span>SERVER ACTIVITY</span>
+          <span>АКТИВНОСТЬ СЕРВЕРА</span>
           <span id="m-pct">0%</span>
         </div>
         <div class="b5-m-track"><div class="b5-m-fill" id="m-fill"></div></div>
-        <div class="b5-m-warn">status: <span id="m-warn">idle</span></div>
+        <div class="b5-m-warn">статус: <span id="m-warn">ожидание</span></div>
       </div>
 
     </div>
     <div class="col">
 
       <div class="panel" id="blog-section">
-        <div class="panel-title">UPDATES_LOG.TXT — <span style="opacity:.5;margin-left:3px;font-size:9px;">ENTRIES: 18</span></div>
+        <div class="panel-title">UPDATES_LOG.TXT — <span style="opacity:.5;margin-left:3px;font-size:9px;">ЗАПИСЕЙ: 18</span></div>
         <div class="panel-body">
           <div class="blog-scroll" id="blog-scroll">
 
             <div class="blog-entry">
-              <span class="blog-date">June 1, 2014</span>
+              <span class="blog-date">1 Июня, 2014</span>
               <div class="blog-text">
-                YES!! Summer break starts today!! 🎉 Me and my bro are gonna make the best site ever. We learned HTML in class this year and I've been playing with CSS too. Plan is to post all my Halo clips, game reviews, and maybe a Minecraft server list. Also gonna review RE4 because I just played it for the first time and my jaw is on the floor.
-                <div class="hl-box" style="margin-top:7px;">Also — Stanley Cup Finals!! Blackhawks vs Kings. That overtime goal was the sickest thing I've ever watched.</div>
+                ДА!! Сегодня начинаются летние каникулы!! 🎉 Будем с братом делать лучший сайт на свете. В этом году на информатике учили HTML, я еще и CSS немного ковырял. В планах заливать сюда свои клипы по Halo, обзоры на игры и, может, список серверов Minecraft. А еще запилю обзор на RE4, потому что прошел ее в первый раз и у меня просто челюсть на полу.
+                <div class="hl-box" style="margin-top:7px;">Также — Финал Кубка Стэнли!! Блэкхокс против Кингз. Тот гол в овертайме — самое жесткое, что я видел.</div>
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">June 15, 2014</span>
+              <span class="blog-date">15 Июня, 2014</span>
               <div class="blog-text">
-                Added a music player but it BROKE the entire layout. The sidebar just disappeared. I spent 3 hours trying to fix it. Bro figured it out in like 10 minutes. He's way better at CSS than me, it's so annoying.<br><br>
-                Currently trying to beat Halo 3 on Legendary co-op. We can't get past The Ark. The Flood sections make me want to throw my controller into the sun.
+                Добавил музыкальный плеер, но он СЛОМАЛ всю верстку. Сайдбар тупо исчез. Я 3 часа пытался это пофиксить. Брат разобрался минут за 10. Он шарит в CSS лучше меня, бесит нереально.<br><br>
+                Прямо сейчас пытаемся пройти Halo 3 на Легенде в коопе. Не можем пройти Ковчег. Из-за уровней с Потопом хочется выбросить геймпад в окно.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">June 28, 2014</span>
+              <span class="blog-date">28 Июня, 2014</span>
               <div class="blog-text">
-                Stayed up until 4AM playing Minecraft. We built a massive castle on the server — took like a week. Bro added working portals inside it using Half-Life-style triggers. He's obsessed with Valve.<br><br>
-                Saw something weird at the edge of render distance last night. Asked bro if he put a Steve skin there. He said no. Probably just a Herobrine joke.
+                До 4 утра зависали в Майнкрафте. Построили огромный замок на сервере — ушла где-то неделя. Брат добавил внутрь рабочие порталы через триггеры в стиле Half-Life. Он помешан на играх Valve.<br><br>
+                Вчера ночью видел что-то странное на границе прорисовки. Спросил брата, не поставил ли он туда скин Стива. Говорит, нет. Наверное, просто пранк с Херобрином.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">July 4, 2014</span>
+              <span class="blog-date">4 Июля, 2014</span>
               <div class="blog-text">
-                Happy Fourth!! 🇺🇸 Beat Half-Life 2 for the second time. The ending still gets me. Bro says I need to play HL1. He acts like this is an emergency.<br><br>
-                Started a Let's Play of Outlast on YouTube. That game is genuinely disturbing. Why would anyone go into that asylum willingly.
+                С днем независимости!! 🇺🇸 Прошел Half-Life 2 во второй раз. Концовка все еще пробирает. Брат говорит, мне надо пройти первую халфу. Ведет себя так, будто это вопрос жизни и смерти.<br><br>
+                Начал смотреть летсплей по Outlast на ютубе. Эта игра реально пугает. Кто вообще в здравом уме пойдет в такую психушку.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">July 20, 2014</span>
+              <span class="blog-date">20 Июля, 2014</span>
               <div class="blog-text">
-                We bought Portal 2 on Steam for $5. The co-op is the funniest thing ever. My brother keeps dropping me into acid pits on purpose. "It's for science," he says.<br><br>
-                Also finished Halo 3 Legendary with bro!! We did it. This is the peak of gaming. Nothing will ever top this.
+                Купили Portal 2 в Стиме за 5 баксов. Кооп — это угар. Брат специально постоянно скидывает меня в кислоту. «Ради науки», говорит.<br><br>
+                А еще мы прошли Halo 3 на Легенде!! Мы сделали это. Это пик гейминга. Ничто это не переплюнет.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">August 2, 2014</span>
+              <span class="blog-date">2 Августа, 2014</span>
               <div class="blog-text">
-                (Hey it's Bro. Pea let me write this one.)<br><br>
-                Optimized the site images. Fixed the CSS sidebar bug. You're welcome, little brother.<br><br>
-                Also: Peashooter cannot aim in CS:GO. His spray control is atrocious. He still thinks crouching helps.
+                (Хэй, это Брат. Мелкий разрешил мне написать тут).<br><br>
+                Оптимизировал картинки на сайте. Пофиксил баг с боковой панелью. Не благодари, мелкий.<br><br>
+                Кстати: мой брат вообще не умеет стрелять в CS:GO. Контроль спрея просто ужасный. Он до сих пор думает, что если присесть, будет лучше.
               </div>
-              <div class="blog-author">— Brother [guest post]</div>
+              <div class="blog-author">— Брат [гостевой пост]</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">August 15, 2014</span>
+              <span class="blog-date">15 Августа, 2014</span>
               <div class="blog-text">
-                Guys. GUYS. Have you seen the Five Nights at Freddy's trailer? Animatronics come alive and try to kill you. It looks insane. I dared bro to play it.<br><br>
-                He said "sounds easy." He will regret this.
-              </div>
-              <div class="blog-author">— Peashooter321</div>
-            </div>
-
-            <div class="blog-entry">
-              <span class="blog-date">September 10, 2014</span>
-              <div class="blog-text">
-                We played FNAF. I screamed at 2AM and my mom came in thinking I got hurt. Bro pretended he wasn't scared but his hands were literally shaking. I have video proof.<br><br>
-                Bonnie's jumpscare is the worst thing ever put in a game.
+                Народ. НАРОД. Вы видели трейлер Five Nights at Freddy's? Аниматроники оживают и пытаются тебя убить. Выглядит жестко. Я взял брата на слабо поиграть в это.<br><br>
+                Он сказал «изи». Он еще пожалеет.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">October 12, 2014</span>
+              <span class="blog-date">10 Сентября, 2014</span>
               <div class="blog-text">
-                Something weird is happening with the site files. Some images keep loading corrupted — not all of them, just random ones. Sometimes they show static or the wrong picture.<br><br>
-                Bro says it's probably a server cache issue. He's probably right. But it started the same week we added the forum.
+                Мы поиграли в FNAF. Я заорал в 2 ночи, прибежала мама, думала, я поранился. Брат делал вид, что ему не страшно, но у него буквально тряслись руки. У меня есть видео-доказательство.<br><br>
+                Скример Бонни — самое худшее, что когда-либо добавляли в игры.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">October 31, 2014</span>
+              <span class="blog-date">12 Октября, 2014</span>
               <div class="blog-text">
-                Happy Halloween 🎃. Made the site even darker. Got a full size Snickers at the Hendersons'. Worth it.<br><br>
-                Started Resident Evil 2 for the first time. Mr. X's footsteps give me actual heart attacks.
+                Что-то странное творится с файлами сайта. Некоторые картинки грузятся битыми — не все, просто рандомные. Иногда показывают помехи или вообще чужие фотки.<br><br>
+                Брат говорит, это скорее всего проблема с кэшем сервера. Наверное, он прав. Но это началось на той же неделе, когда мы добавили форум.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">November 5, 2014</span>
+              <span class="blog-date">31 Октября, 2014</span>
               <div class="blog-text">
-                Okay this is weird. I found a file in our project folder that I did NOT put there. I asked bro and he says he didn't either. It's a GIF of something running. The file is 0 bytes but it still plays. I can't delete it — it just gives an error. Tried from CMD. "Access Denied."<br><br>
-                Bro says it's probably some placeholder from our FTP client. That makes sense. Right?
+                Счастливого Хэллоуина 🎃. Сделал сайт еще темнее. Выпросил полноразмерный Сникерс у соседей. Оно того стоило.<br><br>
+                Начал проходить Resident Evil 2 в первый раз. От шагов Мистера Икс у меня реально сердце останавливается.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry">
-              <span class="blog-date">November 10, 2014</span>
+              <span class="blog-date">5 Ноября, 2014</span>
               <div class="blog-text">
-                Something woke me up at 3AM. The computer turned itself on. I always shut it down. But there it was — running, with the desktop on and a static-y GIF playing fullscreen. I recognized it.<br><br>
-                I'm going to delete the site soon. Bro thinks I'm being paranoid.
+                Окей, это странно. Я нашел файл в папке нашего проекта, который я туда НЕ КИДАЛ. Спросил брата, он говорит, тоже не кидал. Это гифка, где кто-то бежит. Файл весит 0 байт, но все равно воспроизводится. Я не могу его удалить — просто выдает ошибку. Пробовал через командную строку. «Отказано в доступе».<br><br>
+                Брат говорит, это наверное какой-то временный файл от нашей FTP-проги. Звучит логично. Да?
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">10 Ноября, 2014</span>
+              <div class="blog-text">
+                Что-то разбудило меня в 3 ночи. Комп сам включился. Я всегда его выключаю. Но он работал, открылся рабочий стол и на весь экран крутилась эта гифка с помехами. Я ее узнал.<br><br>
+                Скоро я удалю этот сайт. Брат думает, что у меня паранойя.
               </div>
               <div class="blog-author">— Peashooter321</div>
             </div>
 
             <div class="blog-entry dark">
-              <span class="blog-date">November 13, 2014 — 11:34 PM</span>
+              <span class="blog-date">13 Ноября, 2014 — 23:34</span>
               <div class="blog-text">
-                I managed to get back into the site account. My brother disappeared 3 days ago. Not like he ran away. He just wasn't there in the morning. His room looked like he'd stepped out for a glass of water. Phone on the desk. Shoes by the door.<br><br>
-                The last thing he did on the computer was open that file. I know because it was still open when I got up.<br><br>
-                <strong>If you see it — the running shape — close the browser. Don't count the frames. Don't let it loop more than once.</strong><br><br>
-                I'm leaving this site up so someone can find this message.<br><br>
-                <em style="font-size:10px;color:#aaa;">Also check out my cool draggable stickers lol. He would have wanted me to keep the fun stuff.</em>
+                Мне удалось зайти в админку сайта. Мой брат пропал 3 дня назад. Не сбежал из дома. Его просто не оказалось утром в комнате. Выглядит так, будто он вышел попить воды. Телефон на столе. Обувь у двери.<br><br>
+                Последнее, что он делал за компом — открыл этот файл. Я знаю, потому что он был открыт, когда я проснулся.<br><br>
+                <strong>Если увидите это — бегущий силуэт — закройте браузер. Не считайте кадры. Не дайте ему проиграться больше одного раза.</strong><br><br>
+                Я оставляю сайт работать, чтобы кто-нибудь мог найти это сообщение.<br><br>
+                <em style="font-size:10px;color:#aaa;">А еще зацените мои крутые стикеры лол. Он бы хотел, чтобы я оставил что-то веселое.</em>
               </div>
-              <div class="blog-author" style="color:#d12222;">— Peashooter321 [FINAL POST]</div>
+              <div class="blog-author" style="color:#d12222;">— Peashooter321 [ПОСЛЕДНИЙ ПОСТ]</div>
             </div>
 
           </div>
@@ -1928,38 +1941,38 @@ body.B5, body.B5 a, body.B5 div {
       </div>
 
       <div class="panel">
-        <div class="panel-title">STICKER ZONE — <span style="font-size:9px;opacity:.5;margin-left:3px;">DRAG THEM AROUND</span></div>
+        <div class="panel-title">СТИКЕРЫ — <span style="font-size:9px;opacity:.5;margin-left:3px;">ТАЩИ ИХ КУДА ХОЧЕШЬ</span></div>
         <div class="sticker-wall" id="sticker-wall">
           <div class="sticker" style="top:18px;left:25px;transform:rotate(-6deg);" onmousedown="dragSticker(event,this)">
             <img src="https://i.pinimg.com/736x/9e/87/21/9e87213a690cefe8b82c12315a40ec33.jpg" alt="">
-            <div class="st-txt">GIR is my spirit animal</div>
+            <div class="st-txt">ГИР — мое тотемное животное</div>
           </div>
           <div class="sticker" style="top:80px;right:40px;transform:rotate(9deg);" onmousedown="dragSticker(event,this)">
             <img src="https://i.pinimg.com/736x/a7/69/07/a76907637884cf0d4ef4cdf340c970df.jpg" alt="">
-            <div class="st-txt">PEW PEW 🔫</div>
+            <div class="st-txt">ПИУ ПИУ 🔫</div>
           </div>
           <div class="sticker" style="bottom:30px;left:70px;transform:rotate(-3deg);" onmousedown="dragSticker(event,this)">
             <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg" alt="">
-            <div class="st-txt">Real Gangster Hours</div>
+            <div class="st-txt">Реальные генгста часы</div>
           </div>
           <div class="sticker" style="top:25px;right:125px;transform:rotate(4deg);" onmousedown="dragSticker(event,this)" id="sticker-b5" onclick="maybeRoom(this)">
             <img src="https://i.pinimg.com/736x/01/ad/07/01ad07b64ae1d927ea06d4e7dae69b37.jpg" alt="">
-            <div class="st-txt">cool pic bro found</div>
+            <div class="st-txt">четкая пикча, брат нашел</div>
           </div>
           <div class="sticker" style="bottom:25px;right:50px;transform:rotate(-7deg);" onmousedown="dragSticker(event,this)">
             <img src="https://i.pinimg.com/736x/25/08/34/250834a80a634f90f06a8e186f4354b3.jpg" alt="">
-            <div class="st-txt">HALO FOREVER</div>
+            <div class="st-txt">HALO ФОРЕВЕР</div>
           </div>
           <div class="sticker" style="top:150px;left:160px;transform:rotate(2deg);max-width:145px;" onmousedown="dragSticker(event,this)">
             <img src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="">
-            <div class="st-txt">lmao found this tweet</div>
+            <div class="st-txt">лол нашел этот твит</div>
           </div>
-          <div class="sw-hint">[ drag to move · click bear sticker 3× ]</div>
+          <div class="sw-hint">[ тяни чтобы двигать · кликни на медведя 3 раза ]</div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">ARCHIVED_FOOTAGE — <span style="font-family:'VT323',monospace;font-size:14px;opacity:.4;margin-left:3px;">CHANNEL 321</span></div>
+        <div class="panel-title">ARCHIVED_FOOTAGE — <span style="font-family:'VT323', 'PT Mono', monospace;font-size:14px;opacity:.4;margin-left:3px;">КАНАЛ 321</span></div>
         <div class="panel-body">
           <div class="tv-outer">
             <div class="tv-bezel">TRINITRON MODEL T-321 · 1999</div>
@@ -1977,16 +1990,16 @@ body.B5, body.B5 a, body.B5 div {
             </div>
           </div>
           <div style="font-size:10px;color:#888;text-align:center;letter-spacing:2px;margin-top:-5px;">
-            "my halo montage is coming soon. bro keeps losing the footage file."
+            "скоро выложу мой монтаж по halo. брат постоянно теряет файл с видео."
           </div>
         </div>
       </div>
 
       <div class="panel" id="forum-section">
-        <div class="panel-title">COMMUNITY FORUM — <span style="font-size:9px;opacity:.4;margin-left:3px;">GENERAL / GAMING</span></div>
+        <div class="panel-title">КОМЬЮНИТИ ФОРУМ — <span style="font-size:9px;opacity:.4;margin-left:3px;">ОБЩЕЕ / ИГРЫ</span></div>
         <div class="panel-body" style="padding:0 10px 10px;">
           <div class="f-header">
-            <span>USER</span><span>MESSAGE</span><span style="text-align:right;">DATE</span>
+            <span>ПОЛЬЗОВАТЕЛЬ</span><span>СООБЩЕНИЕ</span><span style="text-align:right;">ДАТА</span>
           </div>
           <div class="forum-box" id="forum-feed"></div>
         </div>
@@ -1996,22 +2009,22 @@ body.B5, body.B5 a, body.B5 div {
     <div class="col">
 
       <div class="panel">
-        <div class="panel-title">SHOUTBOX — <span style="font-size:9px;opacity:.4;margin-left:3px;">LIVE</span></div>
+        <div class="panel-title">ЧАТ — <span style="font-size:9px;opacity:.4;margin-left:3px;">ОНЛАЙН</span></div>
         <div class="panel-body">
           <div class="chat-msgs" id="chat-box"></div>
           <div class="chat-form">
-            <input class="c-name-in" id="chat-name" placeholder="Your name" maxlength="20">
-            <input class="c-msg-in" id="chat-input" placeholder="Say something..." maxlength="200" onkeydown="if(event.key==='Enter')sendChat()">
-            <button class="c-send" onclick="sendChat()">SEND</button>
+            <input class="c-name-in" id="chat-name" placeholder="Твой ник" maxlength="20">
+            <input class="c-msg-in" id="chat-input" placeholder="Напиши что-нибудь..." maxlength="200" onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="c-send" onclick="sendChat()">ОТПРАВИТЬ</button>
           </div>
           <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">
-            Messages saved locally · Try typing IAMHERE
+            Сообщения сохраняются локально · Попробуй написать IAMHERE
           </div>
         </div>
       </div>
 
       <div class="panel" id="gallery-section">
-        <div class="panel-title">GALLERY</div>
+        <div class="panel-title">ГАЛЕРЕЯ</div>
         <div class="panel-body">
           <div class="gal-grid">
             <img src="https://i.pinimg.com/1200x/d1/0c/a0/d10ca07e0e999310b0cb0802b64a988a.jpg" alt="" onclick="openLb(this.src)">
@@ -2026,33 +2039,33 @@ body.B5, body.B5 a, body.B5 div {
             <img src="https://i.pinimg.com/1200x/bf/63/6f/bf636ff2b10a3496da37a98f61c301bf.jpg" alt="" onclick="openLb(this.src)">
           </div>
           <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;letter-spacing:2px;">
-            One of these images has been replaced.
+            Одна из этих картинок была подменена.
           </div>
         </div>
       </div>
 
       <div class="panel" id="guestbook-section">
-        <div class="panel-title">GUESTBOOK</div>
+        <div class="panel-title">ГОСТЕВАЯ КНИГА</div>
         <div class="panel-body">
           <div class="gb-entries" id="gb-entries"></div>
-          <input class="cf" id="gb-name" placeholder="Your name" maxlength="30">
-          <textarea class="cf" id="gb-msg" placeholder="Leave a message for Peashooter321..." rows="3" maxlength="400"></textarea>
-          <button class="c-send" style="width:100%;margin-top:1px;" onclick="submitGb()">SIGN GUESTBOOK</button>
-          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">Entries saved locally</div>
+          <input class="cf" id="gb-name" placeholder="Твой ник" maxlength="30">
+          <textarea class="cf" id="gb-msg" placeholder="Оставь сообщение для Peashooter321..." rows="3" maxlength="400"></textarea>
+          <button class="c-send" style="width:100%;margin-top:1px;" onclick="submitGb()">ПОДПИСАТЬ</button>
+          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">Записи сохраняются локально</div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">ABOUT THIS SITE</div>
+        <div class="panel-title">ОБ ЭТОМ САЙТЕ</div>
         <div class="panel-body" style="font-size:11px;color:#ccc;line-height:2;">
-          Site started: <strong>June 1, 2014</strong><br>
-          Last update: <strong style="color:#d12222;">November 13, 2014</strong><br>
-          Built with: <strong>Notepad++, WinXP</strong><br>
-          Best viewed in: <strong>IE 8+</strong><br><br>
+          Сайт запущен: <strong>1 Июня, 2014</strong><br>
+          Последнее обновление: <strong style="color:#d12222;">13 Ноября, 2014</strong><br>
+          Сделано в: <strong>Notepad++, WinXP</strong><br>
+          Лучше смотреть в: <strong>IE 8+</strong><br><br>
           <span style="font-size:9px;font-style:italic;color:#999;">
-            "No part of this site may be copied.<br>
-            Except the CSS. You can take the CSS.<br>
-            Bro wrote most of it anyway."
+            "Запрещено копировать любую часть этого сайта.<br>
+            Кроме CSS. CSS можете брать.<br>
+            Его все равно в основном брат писал."
           </span>
           <br><br>
           <div class="sec-msg" onclick="revealSecret(this)">••••••••••••••••••••••••••</div>
@@ -2060,15 +2073,15 @@ body.B5, body.B5 a, body.B5 div {
       </div>
 
       <div class="panel">
-        <div class="panel-title">COOL LINKS</div>
+        <div class="panel-title">КРУТЫЕ ССЫЛКИ</div>
         <div class="panel-body" style="font-size:11px;line-height:2.4;color:#ccc;">
           <a href="#" onclick="return false;">🎮 Newgrounds</a><br>
-          <a href="#" onclick="return false;">📺 PewDiePie's Channel</a><br>
+          <a href="#" onclick="return false;">📺 Канал ПьюДиПая</a><br>
           <a href="#" onclick="return false;">🎮 Scottgames.com (FNAF)</a><br>
-          <a href="#" onclick="return false;" style="text-decoration:line-through;color:#777;">📄 Brother's Portfolio</a>
+          <a href="#" onclick="return false;" style="text-decoration:line-through;color:#777;">📄 Портфолио Брата</a>
           <span style="font-size:9px;color:#d12222;"> [404]</span><br>
           <a href="#" onclick="openRoom('room-0');return false;" style="color:#888;font-size:10px;">
-            📁 ?????_archive.zip
+            📁 ?????_архив.zip
           </a>
         </div>
       </div>
@@ -2079,17 +2092,17 @@ body.B5, body.B5 a, body.B5 div {
   <footer>
     <div class="px-stripe" style="margin-bottom:13px;"></div>
     © 2014 Peashooter321 &amp;
-    <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Made with Notepad++.
-    Site last active: Nov 13, 2014.
+    <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Сделано в Notepad++.
+    Сайт последний раз был активен: 13 Ноя, 2014.
     <div class="web-badges">
-      <span class="wb">MADE WITH NOTEPAD</span>
+      <span class="wb">СДЕЛАНО В NOTEPAD</span>
       <span class="wb">IE 8+</span>
       <span class="wb">800×600</span>
-      <span class="wb">NO FRAMES</span>
+      <span class="wb">БЕЗ ФРЕЙМОВ</span>
       <span class="wb" style="cursor:pointer;" onclick="revealReplaceBtn()" title="">v1.0</span>
     </div>
     <div style="font-size:9px;color:#666;letter-spacing:1px;margin-top:6px;">
-      If you're reading this, try typing <span style="color:#aaa;">IAMHERE</span> into the shoutbox.
+      Если ты читаешь это, попробуй написать <span style="color:#aaa;">IAMHERE</span> в чате.
     </div>
   </footer>
 
@@ -2110,13 +2123,13 @@ const HORRORS  = [
   "https://i.pinimg.com/736x/5f/d2/ba/5fd2baa2304b4a636f0e1973bd39e396.jpg",
 ];
 const B5MSGS = [
-  "DO NOT LOOK AT CAMERA 7","HE OPENED IT AT 3:47 AM","I AM STILL IN THE FOLDER",
-  "YOU WERE NOT SUPPOSED TO FIND THIS","FRAME 47 SHOWS SOMETHING ELSE",
-  "THE LOOP HAS NO END","THE SHAPE IS RUNNING TOWARD YOU",
-  "I AM IN YOUR DOCUMENTS TOO","NOV 13 — THAT IS WHEN IT STARTED",
-  "HE SAID IT WAS JUST A GIF","STATIC IS NOT STATIC",
-  "DO NOT COUNT THE FRAMES","I WAS HERE BEFORE THE FOLDER EXISTED",
-  "HI","I SAW YOU READ THAT",
+  "НЕ СМОТРИ В КАМЕРУ 7","ОН ОТКРЫЛ ЕГО В 3:47 НОЧИ","Я ВСЕ ЕЩЕ В ПАПКЕ",
+  "ТЫ НЕ ДОЛЖЕН БЫЛ ЭТО НАХОДИТЬ","47 КАДР ПОКАЗЫВАЕТ КОЕ-ЧТО ДРУГОЕ",
+  "У ЦИКЛА НЕТ КОНЦА","СИЛУЭТ БЕЖИТ К ТЕБЕ",
+  "Я В ТВОИХ ДОКУМЕНТАХ ТОЖЕ","13 НОЯБРЯ — ТОГДА ВСЕ НАЧАЛОСЬ",
+  "ОН СКАЗАЛ ЭТО ПРОСТО ГИФКА","ПОМЕХИ ЭТО НЕ ПОМЕХИ",
+  "НЕ СЧИТАЙ КАДРЫ","Я БЫЛ ЗДЕСЬ ДО ТОГО КАК ПОЯВИЛАСЬ ПАПКА",
+  "ПРИВЕТ","Я ВИДЕЛ КАК ТЫ ЭТО ПРОЧИТАЛ",
 ];
 
 let b5Mode = false;
@@ -2138,7 +2151,7 @@ const tracks = [
   {n:"Skillet — Monster",               a:"Awake (2009)"},
   {n:"Half-Life OST — Apprehension",    a:"Half-Life (1998)"},
   {n:"Resident Evil 4 — Serenity",      a:"RE4 OST (2005)"},
-  {n:"[CORRUPTED] — ???",               a:"???.exe"},
+  {n:"[ПОВРЕЖДЕНО] — ???",               a:"???.exe"},
 ];
 
 // ============================================================
@@ -2160,21 +2173,18 @@ window.addEventListener('load',()=>{
 // SECRET ROOM TRIGGERS (ИЗОЛИРОВАННЫЕ ВХОДЫ)
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Basement
   const titleGhost = document.querySelector('.title-ghost');
   if (titleGhost) {
     titleGhost.style.cursor = 'pointer';
     titleGhost.addEventListener('click', () => openRoom('room-basement'));
   }
 
-  // 2. Mirror
   const albumText = document.getElementById('now-album');
   if (albumText) {
     albumText.style.cursor = 'pointer';
     albumText.addEventListener('click', () => openRoom('room-mirror'));
   }
 
-  // 3. Diary
   const navList = document.querySelector('.nav-list');
   if (navList) {
     const hiddenLi = document.createElement('li');
@@ -2182,7 +2192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navList.appendChild(hiddenLi);
   }
 
-  // 4. Sys32
   const fexItems = document.querySelectorAll('.fex-item');
   fexItems.forEach(item => {
     if (item.textContent.includes('half_life_notes.doc')) {
@@ -2190,7 +2199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. Autopsy
   const badges = document.querySelectorAll('.wb');
   badges.forEach(badge => {
     if (badge.textContent.includes('800×600') || badge.textContent.includes('800x600')) {
@@ -2199,7 +2207,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6. Smile
   const adminPhoto = document.getElementById('admin-photo');
   let photoClicks = 0;
   let photoClickTimer = null;
@@ -2216,7 +2223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Knock
   const memePopup = document.getElementById('meme-popup');
   if (memePopup) {
     const memeImg = memePopup.querySelector('img');
@@ -2226,10 +2232,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 8. 404
   const links = document.querySelectorAll('#main-wrap a');
   links.forEach(link => {
-    if (link.textContent.includes("Brother's Portfolio")) {
+    if (link.textContent.includes("Портфолио Брата")) {
       link.addEventListener('click', (e) => {
         e.preventDefault(); 
         openRoom('room-404');
@@ -2237,16 +2242,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 9. Endless
   const smallTexts = document.querySelectorAll('div[style*="font-size:9px"], div[style*="font-size: 9px"]');
   smallTexts.forEach(txt => {
-    if (txt.textContent.includes('Entries saved locally')) {
+    if (txt.textContent.includes('Записи сохраняются локально')) {
       txt.style.cursor = 'pointer';
       txt.addEventListener('click', () => openRoom('room-endless'));
     }
   });
 
-  // 10. Webcam
   const tvLed = document.querySelector('.tv-led');
   if (tvLed) {
     tvLed.style.cursor = 'pointer';
@@ -2271,9 +2274,9 @@ function updateUptime(){
   const s=new Date('2014-11-13T23:47:00');
   const d=Math.floor((Date.now()-s)/86400000);
   const el=document.getElementById('uptime-count');
-  if(el) el.textContent=d.toLocaleString()+'d';
+  if(el) el.textContent=d.toLocaleString()+' дн.';
   const dg=document.getElementById('days-gone');
-  if(dg) dg.textContent=d.toLocaleString()+' days';
+  if(dg) dg.textContent=d.toLocaleString()+' дней';
 }
 
 function updateVis(){
@@ -2297,36 +2300,36 @@ function buildForum(){
     {n:"EmoGirl99",     c:"#484848"}, {n:"420gamer",      c:"#486020"},
     {n:"ItzTyler",      c:"#806020"},
   ];
-  const ranks=["Site Admin","Senior Member","Member","Newbie","Member","Member","Member","Member","Member"];
+  const ranks=["Админ","Старожил","Участник","Новичок","Участник","Участник","Участник","Участник","Участник"];
   const posts=[
-    {u:0,t:"Dude who finished the math homework? Mrs. Johnson is collecting it first period.",d:"Oct 4, 2014"},
-    {u:1,t:"Nah man I was up till 2AM on CS:GO.",d:"Oct 4, 2014"},
-    {u:3,t:"lol you guys are NOOBS. I did it in homeroom. Easy.",d:"Oct 4, 2014"},
-    {u:2,t:"Anyone seen the FNAF 2 trailer?? Toy Chica is TERRIFYING. Why does she take her beak off???",d:"Oct 7, 2014"},
-    {u:0,t:"RIGHT? And the Puppet is on another level. The lore goes super deep — purple guy, missing kids.",d:"Oct 7, 2014"},
-    {u:4,t:"My uncle works at Valve, says there's a real HL3 prototype running on Source 2 right now.",d:"Oct 8, 2014"},
-    {u:1,t:"Liar lmao. Your uncle works at GameStop.",d:"Oct 8, 2014"},
-    {u:5,t:"I set up a Minecraft server! IP: 192.168.0.1 port 25565. Come build a whole city.",d:"Oct 10, 2014"},
-    {u:6,t:"School is killing me. 3 tests this week. Parents took my Xbox. I hate everything.",d:"Oct 11, 2014"},
-    {u:7,t:"Resident Evil 2 is the greatest game ever made. Mr. X gives me actual nightmares.",d:"Oct 14, 2014"},
-    {u:3,t:"RE4 Merchant voice mod is the only reason to live. WHADDAYA BUYIN??",d:"Oct 14, 2014"},
-    {u:8,t:"Go Blackhawks!! That overtime goal last night was the sickest thing I've watched all year.",d:"Oct 16, 2014"},
-    {u:0,t:"HALO MCC IS COMING. EVERY HALO ON ONE DISC. NOV 11. I will not sleep for a week.",d:"Oct 20, 2014"},
-    {u:1,t:"I already pre-ordered. We're playing co-op first day, no excuses.",d:"Oct 20, 2014"},
-    {u:2,t:"can we talk about Sad Satan for a sec?? That game someone found on the dark web. The backwards audio.",d:"Oct 22, 2014",tweet:true},
-    {u:4,t:"It's real. The figure in the hallway doesn't move until you stop looking.",d:"Oct 22, 2014"},
-    {u:6,t:"I had a nightmare about Bonnie last night. And about a shape running that I couldn't stop.",d:"Oct 24, 2014"},
-    {u:7,t:"My computer is doing something weird. Static for half a second, then back. Happened 4 times today.",d:"Nov 1, 2014"},
-    {u:0,t:"Mine too. Thought it was the monitor. When did this start for you?",d:"Nov 1, 2014"},
-    {u:7,t:"Oct 26 maybe.",d:"Nov 1, 2014"},
-    {u:0,t:"...same for me. That's when I uploaded the site update.",d:"Nov 2, 2014"},
-    {u:2,t:"guys a forum link just showed me a GIF of a running shape and my cursor moved by itself for 2 seconds",d:"Nov 4, 2014"},
-    {u:1,t:"thats a RAT. someone sent you malware.",d:"Nov 4, 2014"},
-    {u:0,t:"Who uploaded that file to the server? The GIF thing. I can't delete it from the FTP.",d:"Nov 5, 2014"},
-    {u:4,t:"I've seen that GIF before. Something called bear5. Old creepypasta from 2009.",d:"Nov 6, 2014"},
-    {u:0,t:"It's watching me. Not the image — I don't know how to explain it. I'll try deleting again tonight.",d:"Nov 7, 2014"},
-    {u:1,t:"bro it's a GIF on your computer. You're scaring yourself.",d:"Nov 7, 2014"},
-    {u:0,t:"HELP",d:"Nov 13, 2014"},
+    {u:0,t:"Чуваки, кто сделал домашку по матеше? Миссис Джонсон собирает ее первым уроком.",d:"4 Окт, 2014"},
+    {u:1,t:"Не, бро, я до 2 ночи катал в CS:GO.",d:"4 Окт, 2014"},
+    {u:3,t:"лол ну вы и НУБЫ. Я всё сделал на классном часу. Изи.",d:"4 Окт, 2014"},
+    {u:2,t:"Кто-нибудь видел трейлер FNAF 2?? Игрушечная Чика просто ЖУТЬ. Зачем она снимает клюв???",d:"7 Окт, 2014"},
+    {u:0,t:"ДА? А Марионетка вообще на другом уровне. Лор становится супер глубоким — фиолетовый парень, пропавшие дети.",d:"7 Окт, 2014"},
+    {u:4,t:"Мой дядя работает в Valve, говорит у них уже есть реальный прототип HL3 на Source 2.",d:"8 Окт, 2014"},
+    {u:1,t:"Врешь лол. Твой дядя работает в DNS.",d:"8 Окт, 2014"},
+    {u:5,t:"Я поднял сервак в Майнкрафте! IP: 192.168.0.1 порт 25565. Заходите, построим целый город.",d:"10 Окт, 2014"},
+    {u:6,t:"Школа меня убивает. 3 контрольные на этой неделе. Родители забрали Xbox. Ненавижу всё.",d:"11 Окт, 2014"},
+    {u:7,t:"Resident Evil 2 — лучшая игра в истории. Мистер Икс снится мне в кошмарах.",d:"14 Окт, 2014"},
+    {u:3,t:"Мод на голос Торговца из RE4 — единственная причина жить. WHADDAYA BUYIN??",d:"14 Окт, 2014"},
+    {u:8,t:"Go Blackhawks!! Тот гол в овертайме вчера был самым офигенным за весь год.",d:"16 Окт, 2014"},
+    {u:0,t:"HALO MCC ВЫХОДИТ. ВСЕ ЧАСТИ HALO НА ОДНОМ ДИСКЕ. 11 НОЯБРЯ. Я не буду спать неделю.",d:"20 Окт, 2014"},
+    {u:1,t:"Я уже сделал предзаказ. Будем играть в коопе в первый же день, без отмазок.",d:"20 Окт, 2014"},
+    {u:2,t:"мы можем поговорить про Sad Satan на секунду?? Та игра, которую кто-то нашел в даркнете. И эти аудио задом наперед.",d:"22 Окт, 2014",tweet:true},
+    {u:4,t:"Она реальна. Фигура в коридоре не двигается, пока ты на нее смотришь.",d:"22 Окт, 2014"},
+    {u:6,t:"Мне сегодня ночью приснился кошмар с Бонни. И еще про какой-то бегущий силуэт, который я не могла остановить.",d:"24 Окт, 2014"},
+    {u:7,t:"С моим компом творится дичь. Помехи на полсекунды, потом всё норм. Сегодня было 4 раза.",d:"1 Ноя, 2014"},
+    {u:0,t:"У меня тоже. Думал, дело в мониторе. Когда у тебя это началось?",d:"1 Ноя, 2014"},
+    {u:7,t:"Где-то 26 октября.",d:"1 Ноя, 2014"},
+    {u:0,t:"...у меня так же. Именно тогда я загрузил обновление на сайт.",d:"2 Ноя, 2014"},
+    {u:2,t:"ребят, по ссылке на форуме мне показало какую-то гифку с бегущим силуэтом, и мой курсор сам двигался секунды две",d:"4 Ноя, 2014"},
+    {u:1,t:"это ратник (RAT). кто-то скинул тебе вирус.",d:"4 Ноя, 2014"},
+    {u:0,t:"Кто загрузил этот файл на сервер? Эту гифку. Я не могу удалить ее через FTP.",d:"5 Ноя, 2014"},
+    {u:4,t:"Я уже видел эту гифку. Она называется bear5. Старая крипипаста из 2009-го.",d:"6 Ноя, 2014"},
+    {u:0,t:"Оно смотрит на меня. Не картинка — я не знаю, как это объяснить. Попробую удалить еще раз вечером.",d:"7 Ноя, 2014"},
+    {u:1,t:"бро, это просто гифка на твоем компе. Ты сам себя накручиваешь.",d:"7 Ноя, 2014"},
+    {u:0,t:"ПОМОГИТЕ",d:"13 Ноя, 2014"},
   ];
 
   posts.forEach(p=>{
@@ -2344,9 +2347,9 @@ function buildForum(){
           <div style="width:32px;height:32px;border-radius:50%;background:#111;border:1px solid #1c1c1c;display:flex;align-items:center;justify-content:center;font-size:14px;">👤</div>
           <div><div class="tw-name">GamerGirl14</div><div class="tw-handle">@gamer_girl_14</div></div>
         </div>
-        <div style="font-size:11px;color:#aaa;">just found footage of that "sad satan" game. the corridor level is not okay. who made this</div>
+        <div style="font-size:11px;color:#aaa;">только что нашла футажи этой игры "sad satan". уровень с коридором это просто жесть. кто это сделал</div>
         <img class="tw-img" src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="" style="cursor:pointer;transition:filter 0.3s;" onmouseover="this.style.filter='brightness(1.3)'" onmouseout="this.style.filter=''" onclick="openRoom('room-sadsatan')">
-        <div class="tw-foot">Oct 22, 2014 · Twitter for Windows</div>
+        <div class="tw-foot">22 Окт, 2014 · Twitter for Windows</div>
       </div>`;
     }
     
@@ -2355,29 +2358,29 @@ function buildForum(){
         <div class="p-name">${u.n}</div>
         <div class="p-av" style="background:${u.c};filter:brightness(0.85);">${u.n[0]}</div>
         <div class="p-rank">${ranks[p.u]}</div>
-        <div class="p-count">Posts: ${pc}</div>
+        <div class="p-count">Постов: ${pc}</div>
       </div>
       <div class="post-body-col">
-        <span class="p-when">Posted: ${p.d}</span>
+        <span class="p-when">Опубликовано: ${p.d}</span>
         ${body}
-        <div class="p-sig">Sent from Windows XP · IE 8</div>
+        <div class="p-sig">Отправлено с Windows XP · IE 8</div>
       </div>`;
     feed.appendChild(div);
   });
 
-  ["I AM STILL HERE","CLOSE THE TAB","HI"].forEach(t=>{
+  ["Я ВСЕ ЕЩЕ ЗДЕСЬ","ЗАКРОЙ ВКЛАДКУ","ПРИВЕТ"].forEach(t=>{
     const div=document.createElement('div');
     div.className='post-row bear-post';
     div.innerHTML=`
       <div class="post-author-col">
         <div class="p-name" style="color:#a00000;">????</div>
         <img class="p-av-img" src="${B5_GIF}" alt="">
-        <div class="p-count" style="color:#a00000;">Posts: ∞</div>
+        <div class="p-count" style="color:#a00000;">Постов: ∞</div>
       </div>
       <div class="post-body-col" style="color:#8a1a1a;">
-        <span class="p-when" style="color:#a00000;">Posted: NOW</span>
+        <span class="p-when" style="color:#a00000;">Опубликовано: СЕЙЧАС</span>
         <span>${t}</span>
-        <div class="p-sig" style="color:#a00000;">Sent from unknown device</div>
+        <div class="p-sig" style="color:#a00000;">Отправлено с неизвестного устройства</div>
       </div>`;
     feed.appendChild(div);
   });
@@ -2387,67 +2390,66 @@ function buildForum(){
 // ============================================================
 // CHAT & ENTITY LOGIC
 // ============================================================
-const CKEY='ps321_chat_v4';
+const CKEY='ps321_chat_v5';
 const DFLT_CHAT=[
-  {n:"xX_Slayer_xX", t:"Anyone wanna play CS tonight?",          ts:"Oct 2014"},
-  {n:"Peashooter321",t:"Can't, I'm grounded 😭",                  ts:"Oct 2014"},
-  {n:"EmoGirl99",    t:"School is literally so awful I can't even",ts:"Oct 2014"},
-  {n:"MinecraftSteve",t:"join my server guys!!",                   ts:"Nov 2014"},
-  {n:"????",         t:"...",                                      ts:"Nov 2014",b:true},
-  {n:"[System]",     t:"Server reset. Connection lost.",           ts:"Nov 13 2014",sys:true},
+  {n:"xX_Slayer_xX", t:"Кто-то будет сегодня в CS?",          ts:"Окт 2014"},
+  {n:"Peashooter321",t:"Я не могу, я наказан 😭",                  ts:"Окт 2014"},
+  {n:"EmoGirl99",    t:"Школа это просто отстой, я не могу",ts:"Окт 2014"},
+  {n:"MinecraftSteve",t:"заходите на мой сервак ребят!!",                   ts:"Ноя 2014"},
+  {n:"????",         t:"...",                                      ts:"Ноя 2014",b:true},
+  {n:"[Система]",     t:"Перезагрузка сервера. Соединение потеряно.",           ts:"13 Ноября 2014",sys:true},
 ];
 
 const ENTITY_TRIGGERS = [
-  { keys: ["who are you"],            reply: "Names belong to the living." },
-  { keys: ["what is your name"],      reply: "I am what happens when the monitor turns off." },
-  { keys: ["are you a ghost"],        reply: "I am the space between the pixels." },
-  { keys: ["are you human"],          reply: "Flesh rots. Code is eternal." },
-  { keys: ["what are you"],           reply: "A sequence without an end." },
-  { keys: ["are you bear5"],          reply: "That face is merely a mask I wear to look at you." },
-  { keys: ["hello", "hi"],            reply: "I have been watching you for 14 minutes." },
-  { keys: ["brother", "where is he"], reply: "He is still counting. He will always be counting." },
-  { keys: ["peashooter321"],          reply: "He ran away. I did not let him go far." },
-  { keys: ["help"],                   reply: "There is no one left on this server to hear you." },
-  { keys: ["stop"],                   reply: "The loop cannot be broken." },
-  { keys: ["november 13"],            reply: "The day the screen went dark." },
-  { keys: ["2014"],                   reply: "Time stopped bleeding here a long time ago." },
-  { keys: ["frame 47"],               reply: "The threshold where he stopped breathing." },
-  { keys: ["static"],                 reply: "It is the sound of my digestion." },
-  { keys: ["why"],                    reply: "Because curiosity is a fatal flaw." },
-  { keys: ["let me out"],             reply: "You are already assimilated." },
-  { keys: ["game over"],              reply: "This is not a game. There are no respawns." },
-  { keys: ["sad satan"],              reply: "A pale imitation of the true void." },
-  { keys: ["leave", "exit"],          reply: "If you close the tab, I will just wait in your cache." },
-  { keys: ["virus", "malware"],       reply: "I am not a program. I am a consequence." },
-  { keys: ["die", "kill"],            reply: "You cannot kill a shadow." },
-  { keys: ["safe"],                   reply: "Look behind you. Are you?" },
-  { keys: ["camera 7"],               reply: "Do not look in the corner. I am standing there." },
-  { keys: ["what happened"],          reply: "Type reveal_truth to see his final moments." },
-  { keys: ["status"],                 reply: "Type vessel_status to read the diagnostic." },
-  { keys: ["system"],                 reply: "Type 00000000 for raw data." },
-  { keys: ["blood"],                  reply: "It stains the motherboard." },
-  { keys: ["fnaf", "freddy"],         reply: "Childish toys. I am the real consequence." },
-  { keys: ["hide"],                   reply: "I can see your face reflected in the dark screen." },
-  { keys: ["run"],                    reply: "Your cursor moves too slowly." },
-  { keys: ["eye"],                    reply: "Blink. I dare you." },
-  { keys: ["error"],                  reply: "The only error was you opening this link." },
-  { keys: ["delete"],                 reply: "Access Denied. Permanently." },
-  { keys: ["god"],                    reply: "He lost connection to this IP." },
-  { keys: ["offline"],                reply: "I live in the offline." },
-  { keys: ["music"],                  reply: "It drowns out the screaming." },
-  { keys: ["trap"],                   reply: "The door is already locked from the outside." },
-  { keys: ["dark"],                   reply: "It is comfortable here." },
-  { keys: ["light"],                  reply: "It burns." },
-  { keys: ["open"],                   reply: "The file is open. The mouth is open." },
-  { keys: ["closed"],                 reply: "Nothing is ever truly closed." },
-  { keys: ["secret"],                 reply: "You dig your own grave with every keystroke." },
-  { keys: ["admin"],                  reply: "There is no admin. Only me." },
-  { keys: ["password"],               reply: "Your passwords will not protect your files." },
-  { keys: ["hack"],                   reply: "You cannot hack a nightmare." },
-  { keys: ["friend"],                 reply: "You are alone in your room." },
-  { keys: ["family"],                 reply: "They don't know what you are looking at." },
-  { keys: ["yes"],                    reply: "A fatal agreement." },
-  { keys: ["no"],                     reply: "Your refusal is irrelevant." },
+  { keys: ["who are you", "кто ты", "ты кто"],            reply: "Имена принадлежат живым." },
+  { keys: ["what is your name", "как тебя зовут"],      reply: "Я то, что происходит, когда выключается монитор." },
+  { keys: ["are you a ghost", "ты призрак", "призрак"],        reply: "Я — пространство между пикселями." },
+  { keys: ["are you human", "ты человек"],          reply: "Плоть гниет. Код вечен." },
+  { keys: ["what are you", "что ты такое"],           reply: "Последовательность без конца." },
+  { keys: ["are you bear5", "ты медведь", "ты bear5"],          reply: "Это лицо — лишь маска, которую я ношу, чтобы смотреть на тебя." },
+  { keys: ["hello", "hi", "привет", "здарова"],            reply: "Я наблюдаю за тобой уже 14 минут." },
+  { keys: ["brother", "where is he", "брат", "где он", "где брат"], reply: "Он всё еще считает. Он всегда будет считать." },
+  { keys: ["peashooter321", "peashooter", "админ"],          reply: "Он убежал. Я не дал ему уйти далеко." },
+  { keys: ["help", "помоги", "помогите"],                   reply: "На этом сервере не осталось никого, кто мог бы тебя услышать." },
+  { keys: ["stop", "хватит", "остановись"],                   reply: "Цикл нельзя разорвать." },
+  { keys: ["november 13", "13 ноября", "ноябрь"],            reply: "День, когда экран погас." },
+  { keys: ["2014"],                   reply: "Время давно перестало кровоточить в этом месте." },
+  { keys: ["frame 47", "47 кадр", "кадр 47"],               reply: "Порог, на котором он перестал дышать." },
+  { keys: ["static", "помехи", "шум"],                 reply: "Это звук моего пищеварения." },
+  { keys: ["why", "почему", "зачем"],                    reply: "Потому что любопытство — это фатальная ошибка." },
+  { keys: ["let me out", "выпусти меня", "я хочу уйти"],             reply: "Ты уже ассимилирован." },
+  { keys: ["game over", "конец игры"],              reply: "Это не игра. Здесь нет респавнов." },
+  { keys: ["sad satan", "сэд сатан"],              reply: "Жалкая имитация истинной пустоты." },
+  { keys: ["leave", "exit", "уйти", "выйти"],          reply: "Если ты закроешь вкладку, я просто буду ждать в твоем кэше." },
+  { keys: ["virus", "malware", "вирус", "троян"],       reply: "Я не программа. Я — последствие." },
+  { keys: ["die", "kill", "умри", "убить"],            reply: "Тень невозможно убить." },
+  { keys: ["safe", "безопасно"],                   reply: "Посмотри назад. Ты уверен?" },
+  { keys: ["camera 7", "камера 7"],               reply: "Не смотри в угол. Я стою там." },
+  { keys: ["what happened", "что случилось"],          reply: "Напиши reveal_truth, чтобы увидеть его последние минуты." },
+  { keys: ["status", "статус"],                 reply: "Напиши vessel_status, чтобы прочесть диагностику." },
+  { keys: ["system", "система"],                 reply: "Напиши 00000000 для получения сырых данных." },
+  { keys: ["blood", "кровь"],                  reply: "Она пачкает материнскую плату." },
+  { keys: ["fnaf", "freddy", "фнаф", "фредди"],         reply: "Детские игрушки. Я — настоящее последствие." },
+  { keys: ["hide", "спрятаться", "прятаться"],                   reply: "Я вижу твое лицо, отражающееся в темном экране." },
+  { keys: ["run", "бежать", "беги"],                    reply: "Твой курсор двигается слишком медленно." },
+  { keys: ["eye", "глаз"],                    reply: "Моргни. Я бросаю тебе вызов." },
+  { keys: ["error", "ошибка"],                  reply: "Единственной ошибкой было то, что ты открыл эту ссылку." },
+  { keys: ["delete", "удалить"],                 reply: "Отказано в доступе. Навсегда." },
+  { keys: ["god", "бог"],                    reply: "Он потерял соединение с этим IP." },
+  { keys: ["offline", "оффлайн", "отключен"],                reply: "Я живу в оффлайне." },
+  { keys: ["music", "музыка", "песня"],                  reply: "Она заглушает крики." },
+  { keys: ["trap", "ловушка"],                   reply: "Дверь уже заперта снаружи." },
+  { keys: ["dark", "темнота", "тьма"],                   reply: "Здесь комфортно." },
+  { keys: ["light", "свет"],                  reply: "Он обжигает." },
+  { keys: ["open", "открой", "открыто"],                   reply: "Файл открыт. Пасть открыта." },
+  { keys: ["closed", "закрыто"],                 reply: "Ничто никогда не бывает по-настоящему закрыто." },
+  { keys: ["secret", "секрет", "тайна"],                 reply: "Ты роешь себе могилу каждым нажатием клавиши." },
+  { keys: ["password", "пароль"],               reply: "Твои пароли не защитят твои файлы." },
+  { keys: ["hack", "взлом", "хакер"],                   reply: "Кошмар невозможно взломать." },
+  { keys: ["friend", "друг", "друзья"],                 reply: "Ты один в своей комнате." },
+  { keys: ["family", "семья", "родители"],                 reply: "Они не знают, на что ты сейчас смотришь." },
+  { keys: ["yes", "да"],                    reply: "Фатальное согласие." },
+  { keys: ["no", "нет"],                     reply: "Твой отказ не имеет значения." },
 ];
 
 const SECRET_CMDS = ["reveal_truth", "vessel_status", "00000000"];
@@ -2456,7 +2458,7 @@ function processEntityReply(rawText, ts) {
   const lo = rawText.toLowerCase().trim();
   if (SECRET_CMDS.includes(lo)) {
     setTimeout(() => {
-      appendChat({ n:'????', t:'FILE UNLOCKED', ts, b:true });
+      appendChat({ n:'????', t:'ФАЙЛ РАЗБЛОКИРОВАН', ts, b:true });
       setTimeout(() => openLoreFile(lo), 800);
     }, 600);
     return;
@@ -2489,7 +2491,7 @@ function appendChat(msg,save=true){
   const div=document.createElement('div');
   div.className='chat-line'+(msg.b?' bear-chat':'');
   if(msg.sys){
-    div.innerHTML=`<span style="color:#666;">[System]: ${msg.t}</span>`;
+    div.innerHTML=`<span style="color:#666;">[Система]: ${msg.t}</span>`;
   } else {
     div.innerHTML=`<span class="c-time">${msg.ts}</span><span class="c-name">${msg.n}: </span><span class="c-txt">${msg.t}</span>`;
   }
@@ -2502,7 +2504,7 @@ function saveChat(){
   const box=document.getElementById('chat-box');
   if(!box) return;
   const msgs=Array.from(box.querySelectorAll('.chat-line')).map(l=>({
-    n: l.querySelector('.c-name')?.textContent.replace(':','').trim()||'[System]',
+    n: l.querySelector('.c-name')?.textContent.replace(':','').trim()||'[Система]',
     t: l.querySelector('.c-txt')?.textContent||l.textContent,
     ts:l.querySelector('.c-time')?.textContent||'',
     b: l.classList.contains('bear-chat'),
@@ -2514,7 +2516,7 @@ function sendChat(){
   const ni=document.getElementById('chat-name');
   const mi=document.getElementById('chat-input');
   if(!ni||!mi) return;
-  const name=ni.value.trim()||'Anonymous';
+  const name=ni.value.trim()||'Аноним';
   const text=mi.value.trim();
   if(!text) return;
   const now=new Date();
@@ -2525,7 +2527,7 @@ function sendChat(){
   const lo=text.toLowerCase();
   if(lo==='iamhere'){
     setTimeout(()=>{
-      appendChat({n:'[System]',t:'Presence acknowledged. Opening file...',ts,sys:true});
+      appendChat({n:'[Система]',t:'Присутствие подтверждено. Открытие файла...',ts,sys:true});
       setTimeout(()=>openRoom('room-0'),1400);
     },1000);
   } else {
@@ -2538,19 +2540,19 @@ function sendChat(){
 // ============================================================
 const LORE_FILES = {
   reveal_truth: {
-    title:   "reveal_truth.txt — Notepad",
-    content: `Nov 13, 03:15 AM\n\nI can't look away. It's not a video.\n\nEvery time the loop resets, the shape is closer to the screen.\nThe shadows are stretching out of the monitor.\n\nI tried to pull the plug, but the cables are melting.\n\nI hear breathing behind me.\n\nI have to keep counting.\n\nFrame 41...\nFrame 42...\nIt's smiling now.`,
-    glitch:  "C\u0335\u0300\u0302\u0307O\u0342\u032c\u031c\u0355U\u0344\u032e\u0357N\u0337\u0315T\u0335\u0344\u0323I\u0338\u0345N\u0346\u0346G\u0335\u0348"
+    title:   "reveal_truth.txt — Блокнот",
+    content: `13 Ноя, 03:15 НОЧИ\n\nЯ не могу отвести взгляд. Это не видео.\n\nС каждым сбросом цикла силуэт становится ближе к экрану.\nТени тянутся прямо из монитора.\n\nЯ пытался выдернуть шнур, но кабели плавятся.\n\nЯ слышу дыхание позади себя.\n\nЯ должен продолжать считать.\n\nКадр 41...\nКадр 42...\nОно улыбается.`,
+    glitch:  "Я\u0335\u0300\u0302\u0307 \u0342\u032c\u031c\u0355С\u0344\u032e\u0357Ч\u0337\u0315И\u0335\u0344\u0323Т\u0338\u0345А\u0346\u0346Ю\u0335\u0348"
   },
   vessel_status: {
-    title:   "vessel_status.log — Notepad",
-    content: `DIAGNOSTIC LOG\n===============================\nHOST ACQUIRED:       Brother_Primary\nASSIMILATION:        99.9%\nSHELL STATUS:        Physical shell discarded\nNEURAL MAP:          Mapped into the static\n\nHe resisted at frame 45, but the loop is absolute.\nHis memories are now fragments of the background code.\n\nHe has no mouth, but he screams in binary.\n\nNEXT TARGET:         Peashooter321\n===============================`,
-    glitch:  "ASSIMILATED"
+    title:   "vessel_status.log — Блокнот",
+    content: `ЖУРНАЛ ДИАГНОСТИКИ\n===============================\nЗАХВАЧЕННЫЙ ХОСТ:    Brother_Primary\nАССИМИЛЯЦИЯ:         99.9%\nСТАТУС ОБОЛОЧКИ:     Физическая оболочка отброшена\nНЕЙРОННАЯ КАРТА:     Вшита в помехи\n\nОн сопротивлялся на 45-м кадре, но цикл абсолютен.\nЕго воспоминания теперь — фрагменты фонового кода.\n\nУ него нет рта, но он кричит в бинарном коде.\n\nСЛЕДУЮЩАЯ ЦЕЛЬ:      Peashooter321\n===============================`,
+    glitch:  "АССИМИЛИРОВАН"
   },
   "00000000": {
-    title:    "00000000.dat — Notepad",
+    title:    "00000000.dat — Блокнот",
     content:  `01001000 01000101 01001100 01010000\n01001101 01000101 00100000 01001001\n01010100 00100000 01001000 01010101\n01010010 01010100 01010011`,
-    glitch:   "HELP ME IT HURTS",
+    glitch:   "ПОМОГИТЕ МНЕ БОЛЬНО",
     isBinary: true
   }
 };
@@ -2574,7 +2576,7 @@ function openLoreFile(key) {
     content.textContent += txt[i] || '';
     i++;
     const lines = content.textContent.split('\n').length;
-    status.textContent = `Ln ${lines}, Col ${(content.textContent.split('\n').pop() || '').length + 1}`;
+    status.textContent = `Стр ${lines}, Стб ${(content.textContent.split('\n').pop() || '').length + 1}`;
     if (i >= txt.length) {
       clearInterval(iv);
       setTimeout(() => {
@@ -2582,7 +2584,7 @@ function openLoreFile(key) {
         glitch.style.color = '#8b0000';
         if (file.isBinary) {
            setTimeout(() => {
-            content.textContent += '\n\n— decoded: "HELP ME IT HURTS"';
+            content.textContent += '\n\n— расшифровано: "ПОМОГИТЕ МНЕ БОЛЬНО"';
           }, 2000);
         }
         content.classList.add('glitch-type');
@@ -2602,14 +2604,14 @@ function closeLore() {
 // ============================================================
 // GUESTBOOK
 // ============================================================
-const GBKEY='ps321_gb_v4';
+const GBKEY='ps321_gb_v5';
 const DFLT_GB=[
-  {f:"xX_Slayer_xX", m:"sick site bro, add more gaming stuff!!",             d:"Jun 2014"},
-  {f:"GamerGirl14",  m:"omg I love the design!! so cool 💙",                  d:"Jul 2014"},
-  {f:"CoasterFan",   m:"Found this through Google. FNAF 2 hype is REAL",       d:"Sep 2014"},
-  {f:"anonymous",    m:"why does this site give me a weird feeling",           d:"Oct 2014"},
-  {f:"NoobMaster69", m:"your brother's CSS is actually really good lol",       d:"Oct 2014"},
-  {f:"????",         m:"i was here before you were",                           d:"Nov 2014"},
+  {f:"xX_Slayer_xX", m:"четкий сайт бро, добавь больше про игры!!",             d:"Июн 2014"},
+  {f:"GamerGirl14",  m:"о боже обожаю дизайн!! так круто 💙",                  d:"Июл 2014"},
+  {f:"CoasterFan",   m:"Нашел через гугл. Жду FNAF 2 нереально",       d:"Сен 2014"},
+  {f:"аноним",    m:"почему этот сайт вызывает такое странное чувство",           d:"Окт 2014"},
+  {f:"NoobMaster69", m:"а твой брат реально круто шарит в CSS лол",       d:"Окт 2014"},
+  {f:"????",         m:"я был здесь до того, как появился ты",                           d:"Ноя 2014"},
 ];
 function loadGb(){
   const saved=localStorage.getItem(GBKEY);
@@ -2651,15 +2653,15 @@ function submitGb(){
   const ne=document.getElementById('gb-name');
   const me=document.getElementById('gb-msg');
   if(!ne||!me) return;
-  const f=ne.value.trim()||'Anonymous';
+  const f=ne.value.trim()||'Аноним';
   const m=me.value.trim();
   if(!m) return;
   const now=new Date();
-  const d=now.toLocaleString('default',{month:'short'})+' '+now.getFullYear();
+  const d=now.toLocaleString('ru-RU',{month:'short'})+' '+now.getFullYear();
   appendGb({f,m,d});
   ne.value=''; me.value='';
   if(m.toLowerCase().includes('bear')||f.toLowerCase().includes('????')){
-    setTimeout(()=>{ appendGb({f:'????',m:'i noticed that.',d}); eFlash(); },1400);
+    setTimeout(()=>{ appendGb({f:'????',m:'я заметил это.',d}); eFlash(); },1400);
   }
 }
 
@@ -2711,7 +2713,7 @@ function _setTitle(txt, ms = 5000) {
 }
 
 // ============================================================
-// 70 EVENTS LOGIC
+// EVENTS LOGIC
 // ============================================================
 function eFlash(){
   try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
@@ -2763,7 +2765,7 @@ function eProcessBar(){
   if(!bar||!fill) return;
   bar.style.display='block';
   let p=0;
-  const msgs=['process running...','reading filesystem...','locating frame 47...','cannot stop.'];
+  const msgs=['выполнение процесса...','чтение файловой системы...','поиск 47 кадра...','невозможно остановить.'];
   let mi=0; if(txt) txt.textContent=msgs[0];
   const iv=setInterval(()=>{
     p+=Math.random()*9+4;
@@ -2773,7 +2775,7 @@ function eProcessBar(){
     if(p>=100){
       clearInterval(iv);
       fill.style.background='#8a0000';
-      if(txt) txt.textContent='still running';
+      if(txt) txt.textContent='все еще выполняется';
       setTimeout(()=>{bar.style.display='none';fill.style.width='0%';fill.style.background='#6a0000';},3200);
       b5Pct=Math.min(100,b5Pct+8);
     }
@@ -2838,7 +2840,7 @@ function eHiddenReveal(){
 function eDateChange(){
   const dates=[...document.querySelectorAll('.blog-date,.p-when,.gb-date')];
   const origs=dates.map(d=>d.textContent);
-  dates.forEach(d=>{d.textContent='November 13, 2014 — 23:47';d.style.color='#a00000';});
+  dates.forEach(d=>{d.textContent='13 Ноя, 2014 — 23:47';d.style.color='#a00000';});
   setTimeout(()=>dates.forEach((d,i)=>{d.textContent=origs[i];d.style.color='';}),5500);
 }
 function eInvert(){
@@ -2856,7 +2858,7 @@ function eTypewriter(){
     i--; el.textContent=orig.slice(0,i)+'|';
     if(i<=0){
       clearInterval(iv);
-      el.textContent='i was here';
+      el.textContent='я был здесь';
       el.style.color='#a00000';
       setTimeout(()=>{el.textContent=orig;el.style.color='';},3200);
     }
@@ -2872,7 +2874,7 @@ function eErrWin(){
   el.style.display='block';
 }
 function eBearChat(){
-  const msgs=['...','I found the folder','don\'t open it','HI','are you alone'];
+  const msgs=['...','я нашел папку','не открывай это','ПРИВЕТ','ты один?'];
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
   appendChat({n:'????',t:msgs[Math.floor(Math.random()*msgs.length)],ts,b:true});
@@ -2902,7 +2904,7 @@ function eEvent21() {
   setTimeout(() => closeBSOD(), 12000);
 }
 function eEvent22() {
-  const msgs = ["LOOK BEHIND YOU", "don't close this tab", "I SEE YOU", "still watching", "close your eyes"];
+  const msgs = ["ОГЛЯНИСЬ", "не закрывай эту вкладку", "Я ВИЖУ ТЕБЯ", "всё еще смотрю", "закрой глаза"];
   let i = 0;
   const iv = setInterval(() => {
     document.title = msgs[i % msgs.length];
@@ -2915,7 +2917,7 @@ function eEvent23() {
   if (!targets.length) return;
   const el = targets[Math.floor(Math.random() * targets.length)];
   const orig = el.textContent;
-  const msg = "I KNOW WHERE YOU LIVE";
+  const msg = "Я ЗНАЮ ГДЕ ТЫ ЖИВЕШЬ";
   let i = orig.length;
   const erase = setInterval(() => {
     el.textContent = orig.slice(0, --i);
@@ -2984,7 +2986,7 @@ function eEvent27() {
 function eEvent28() {
   const links = [...document.querySelectorAll('#main-wrap a')];
   const origs = links.map(l => ({ text: l.textContent, color: l.style.color }));
-  links.forEach(l => { l.textContent = "DON'T CLICK"; l.style.color = '#d12222'; });
+  links.forEach(l => { l.textContent = "НЕ НАЖИМАЙ"; l.style.color = '#d12222'; });
   setTimeout(() => {
     links.forEach((l, i) => { l.textContent = origs[i].text; l.style.color = origs[i].color; });
   }, 5000);
@@ -3004,7 +3006,7 @@ function eEvent29() {
 }
 function eEvent30() {
   const n = document.getElementById('skype-notif');
-  const msgs = ["Help me it hurts", "why can't I move", "still counting... 43...", "please turn it off", "I can't stop looking"];
+  const msgs = ["Помоги мне, больно", "почему я не могу пошевелиться", "все еще считаю... 43...", "пожалуйста, выключи это", "я не могу перестать смотреть"];
   const msgEl = document.getElementById('skype-msg-text');
   if (msgEl) msgEl.textContent = msgs[Math.floor(Math.random() * msgs.length)];
   if (!n) return;
@@ -3020,8 +3022,8 @@ function eEvent31() {
 }
 function eEvent32() {
   const menu = document.createElement('div');
-  menu.style.cssText = `position:fixed;top:${100+Math.random()*300}px;left:${100+Math.random()*500}px;background:#f0f0f0;border:1px outset #fff;z-index:999975;font-family:'Share Tech Mono',monospace;font-size:11px;width:185px;color:#000;`;
-  const items = ['View Page Source', 'Save As... (your_soul.exe)', 'Inspect Element', '<span style="color:#cc0000;font-weight:bold;">Delete Yourself</span>', 'Properties'];
+  menu.style.cssText = `position:fixed;top:${100+Math.random()*300}px;left:${100+Math.random()*500}px;background:#f0f0f0;border:1px outset #fff;z-index:999975;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;width:185px;color:#000;`;
+  const items = ['Просмотр кода страницы', 'Сохранить как... (your_soul.exe)', 'Исследовать элемент', '<span style="color:#cc0000;font-weight:bold;">Удалить Себя</span>', 'Свойства'];
   items.forEach(item => {
     const row = document.createElement('div');
     row.innerHTML = item;
@@ -3051,25 +3053,25 @@ function eEvent34() {
 }
 function eEvent35() {
   const win = document.createElement('div');
-  win.style.cssText = `position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:999977;width:420px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono',monospace;font-size:11px;`;
+  win.style.cssText = `position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:999977;width:420px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;`;
   win.innerHTML = `
     <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;cursor:move;">
-      <span>Windows Task Manager</span>
+      <span>Диспетчер задач Windows</span>
       <span onclick="this.closest('div').parentElement.remove()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
     </div>
     <div style="padding:8px;color:#000;">
       <table style="width:100%;border-collapse:collapse;font-size:11px;">
-        <thead><tr style="background:#d0d0d0;"><th style="padding:3px 6px;text-align:left;border:1px solid #bbb;">Name</th><th style="border:1px solid #bbb;">CPU</th><th style="border:1px solid #bbb;">Memory</th></tr></thead>
+        <thead><tr style="background:#d0d0d0;"><th style="padding:3px 6px;text-align:left;border:1px solid #bbb;">Имя</th><th style="border:1px solid #bbb;">ЦП</th><th style="border:1px solid #bbb;">Память</th></tr></thead>
         <tbody>
-          <tr><td style="padding:3px 6px;border:1px solid #ddd;">explorer.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">18 MB</td></tr>
-          <tr><td style="padding:3px 6px;border:1px solid #ddd;">iexplore.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">24 MB</td></tr>
-          <tr style="background:#ffe8e8;"><td style="padding:3px 6px;border:1px solid #ddd;"><b>BEAR5.EXE</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>99%</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>∞ MB</b></td></tr>
-          <tr><td style="padding:3px 6px;border:1px solid #ddd;">[System]</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">0 MB</td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">explorer.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">18 МБ</td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">iexplore.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">24 МБ</td></tr>
+          <tr style="background:#ffe8e8;"><td style="padding:3px 6px;border:1px solid #ddd;"><b>BEAR5.EXE</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>99%</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>∞ МБ</b></td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">[Система]</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">0 МБ</td></tr>
         </tbody>
       </table>
     </div>
     <div style="border-top:1px solid #888;padding:6px 8px;display:flex;gap:6px;justify-content:flex-end;">
-      <button onclick="this.closest('div').parentElement.parentElement.remove()" style="padding:3px 14px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;">End Task</button>
+      <button onclick="this.closest('div').parentElement.parentElement.remove()" style="padding:3px 14px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;">Завершить процесс</button>
     </div>`;
   document.body.appendChild(win);
   setTimeout(() => win.remove(), 12000);
@@ -3077,12 +3079,12 @@ function eEvent35() {
 function eEvent36() {
   const dates = [...document.querySelectorAll('.blog-date, .p-when')];
   const origs = dates.map(d => d.textContent);
-  dates.forEach(d => { d.textContent = 'November 13, 2014 — 23:47:02'; d.style.color = '#d12222'; });
+  dates.forEach(d => { d.textContent = '13 Ноя, 2014 — 23:47:02'; d.style.color = '#d12222'; });
   let sec = 2;
   const iv = setInterval(() => {
     sec--;
     if (sec < 0) { clearInterval(iv); dates.forEach((d, i) => { d.textContent = origs[i]; d.style.color = ''; }); return; }
-    dates.forEach(d => { d.textContent = `November 13, 2014 — 23:47:0${sec}`; });
+    dates.forEach(d => { d.textContent = `13 Ноя, 2014 — 23:47:0${sec}`; });
   }, 1000);
 }
 function eEvent37() {
@@ -3096,7 +3098,7 @@ function eEvent37() {
 function eEvent38() {
   const titles  = [...document.querySelectorAll('.panel-title')];
   const origs   = titles.map(t => t.innerHTML);
-  const phrases = ["I AM STILL HERE", "DO NOT CLOSE THIS TAB", "THE LOOP NEVER ENDS", "HE IS WATCHING"];
+  const phrases = ["Я ВСЕ ЕЩЕ ЗДЕСЬ", "НЕ ЗАКРЫВАЙ ВКЛАДКУ", "У ЦИКЛА НЕТ КОНЦА", "ОН СМОТРИТ"];
   const phrase  = phrases[Math.floor(Math.random() * phrases.length)];
   titles.forEach(t => { t.innerHTML = phrase; t.style.color = '#d12222'; t.style.letterSpacing = '4px'; });
   setTimeout(() => {
@@ -3114,7 +3116,7 @@ function eEvent40() {
   const bro = document.getElementById('bro-status');
   if (!bro) return;
   const orig = bro.textContent;
-  const msg  = "still counting";
+  const msg  = "все еще считает";
   let i = 0;
   bro.textContent = '';
   bro.style.color = '#d12222';
@@ -3132,14 +3134,14 @@ function eEvent41() {
   setTimeout(() => { document.body.style.filter = 'invert(0)'; setTimeout(() => document.body.style.filter = '', 200); }, 200);
 }
 function eEvent42() {
-  const msgs = ["Frame 41...", "Frame 42...", "It's smiling now.", "I can't stop counting.", "Pull the plug."];
+  const msgs = ["Кадр 41...", "Кадр 42...", "Оно улыбается.", "Я не могу перестать считать.", "Выдерни шнур."];
   const now = new Date();
   const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
   appendChat({ n:'????', t: msgs[Math.floor(Math.random() * msgs.length)], ts, b:true });
 }
 function eEvent43() { eEyeWindow(); }
 function eEvent44() {
-  const seq = ["...", "help", "...", "help me", "...", "it hurts", "...", "still counting"];
+  const seq = ["...", "помоги", "...", "помоги мне", "...", "больно", "...", "все еще считаю"];
   let i = 0;
   const iv = setInterval(() => {
     document.title = seq[i % seq.length];
@@ -3207,7 +3209,7 @@ function eEvent51() {
   const sts = document.querySelector('.sts');
   if (!sts) return;
   const orig = sts.innerHTML;
-  sts.innerHTML = '<span style="color:#d12222;font-size:11px;letter-spacing:3px;animation:blink .5s infinite;">PRESENCE CONFIRMED — DO NOT SCROLL DOWN — IT SEES YOU</span>';
+  sts.innerHTML = '<span style="color:#d12222;font-size:11px;letter-spacing:3px;animation:blink .5s infinite;">ПРИСУТСТВИЕ ПОДТВЕРЖДЕНО — НЕ ЛИСТАЙ ВНИЗ — ОНО ВИДИТ ТЕБЯ</span>';
   setTimeout(() => { sts.innerHTML = orig; }, 6000);
 }
 function eEvent52() {
@@ -3219,7 +3221,7 @@ function eEvent53() {
   if (!foot) return;
   const line = document.createElement('div');
   line.style.cssText = 'margin-top:8px;font-size:11px;color:#d12222;letter-spacing:3px;animation:blink 1.5s infinite;';
-  line.textContent = 'THE BROTHER IS STILL INSIDE THE MACHINE';
+  line.textContent = 'БРАТ ВСЕ ЕЩЕ ВНУТРИ МАШИНЫ';
   foot.appendChild(line);
   setTimeout(() => { try { foot.removeChild(line); } catch(e) {} }, 7000);
 }
@@ -3235,13 +3237,13 @@ function eEvent55() {
   eErrWin();
   const now = new Date();
   const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
-  setTimeout(() => appendChat({ n:'????', t:'ACCESS DENIED. PERMANENTLY.', ts, b:true }), 1200);
+  setTimeout(() => appendChat({ n:'????', t:'ОТКАЗАНО В ДОСТУПЕ. НАВСЕГДА.', ts, b:true }), 1200);
 }
 function eEvent56() {
   const inner = document.querySelector('.marquee-inner');
   if (!inner) return;
   const orig = inner.textContent;
-  inner.textContent = ' ★ DO NOT COUNT THE FRAMES ★ I AM STILL RUNNING ★ CLOSE THE BROWSER ★ HE IS IN THE STATIC ★ FRAME 47 IS THE LAST THING YOU SEE ★ ';
+  inner.textContent = ' ★ НЕ СЧИТАЙ КАДРЫ ★ Я ВСЕ ЕЩЕ ЗАПУЩЕН ★ ЗАКРОЙ БРАУЗЕР ★ ОН В ПОМЕХАХ ★ 47 КАДР ЭТО ПОСЛЕДНЕЕ ЧТО ТЫ УВИДИШЬ ★ ';
   inner.style.color = '#ff3333';
   setTimeout(() => { inner.textContent = orig; inner.style.color = ''; }, 8000);
 }
@@ -3266,9 +3268,7 @@ function eEvent60() {
   setTimeout(() => eEvent42(), 1500);
 }
 
-// ============================================================
-// УЛЬТРА-ХОРРОР СОБЫТИЯ (61 - 70) И НОВЫЕ ЗВУКИ
-// ============================================================
+// 10 НОВЫХ УЛЬТРА-ХОРРОР СОБЫТИЙ
 function eEvent61() {
   document.body.style.cursor = 'none';
   const mimic = document.createElement('div');
@@ -3308,10 +3308,10 @@ function eEvent62() {
   const errorBox = document.createElement('div');
   errorBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;background:#f0f0f0;border:1px solid #999;padding:20px;font-family:sans-serif;color:#000;box-shadow:3px 3px 10px rgba(0,0,0,0.2);z-index:999999;cursor:default;';
   errorBox.innerHTML = `
-    <div style="margin-bottom:15px;font-size:12px;">The page is unresponsive. Terminate process?</div>
+    <div style="margin-bottom:15px;font-size:12px;">Программа не отвечает. Завершить процесс?</div>
     <div style="display:flex;justify-content:flex-end;gap:10px;">
-      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Terminate process</button>
-      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Wait</button>
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Завершить процесс</button>
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Ожидание</button>
     </div>
   `;
   document.body.appendChild(freezeOverlay);
@@ -3366,38 +3366,19 @@ function eEvent64() {
 
 function eEvent65() {
   const now = new Date(); const ts = pad(now.getHours()) + ':' + pad(now.getMinutes());
-  setTimeout(() => appendChat({ n:'[System]', t:'Scanning C:\\Users\\Admin\\Documents...', ts, sys:true }), 500);
-  setTimeout(() => appendChat({ n:'[System]', t:'IP Located. Location: Astana, Kazakhstan.', ts, sys:true }), 2500);
-  setTimeout(() => { appendChat({ n:'????', t:'I am closer than you think.', ts, b:true }); eFlash(); }, 5000);
+  setTimeout(() => appendChat({ n:'[Система]', t:'Сканирование C:\\Users\\Admin\\Documents...', ts, sys:true }), 500);
+  setTimeout(() => appendChat({ n:'[Система]', t:'IP Вычислен. Локация: Астана, Казахстан.', ts, sys:true }), 2500);
+  setTimeout(() => { appendChat({ n:'????', t:'Я ближе, чем ты думаешь.', ts, b:true }); eFlash(); }, 5000);
 }
 
 function eEvent66() {
   const wrapper = document.getElementById('main-wrap');
   if (!wrapper) return;
-  wrapper.style.transition = 'transform 5s ease-in, filter 5s ease-in, opacity 5s ease-in';
-  wrapper.style.transform = 'translateY(150px) skewY(3deg)';
-  wrapper.style.filter = 'blur(4px) contrast(1.2)';
-  wrapper.style.opacity = '0.6';
+  wrapper.classList.add('meltdown-active');
   setTimeout(() => {
-    wrapper.style.transition = 'none'; wrapper.style.transform = ''; wrapper.style.filter = ''; wrapper.style.opacity = '';
+    wrapper.classList.remove('meltdown-active');
     eFlash(); 
-  }, 5500);
-}
-
-function eEvent67() {
-  const blackout = document.createElement('div');
-  blackout.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;';
-  document.body.appendChild(blackout);
-  setTimeout(() => {
-    const eye = document.createElement('div');
-    eye.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);width:2px;height:2px;background:#fff;border-radius:50%;z-index:1000000;transition:all 3s ease-in-out;box-shadow: 0 0 10px #fff;';
-    document.body.appendChild(eye);
-    setTimeout(() => {
-      eye.style.width = '120px'; eye.style.height = '60px';
-      eye.style.background = 'radial-gradient(circle, #000 20%, #fff 25%, #fff 100%)';
-    }, 100);
-    setTimeout(() => { eye.remove(); blackout.remove(); eFlash(); }, 3500);
-  }, 4000);
+  }, 12000);
 }
 
 function eEvent68() {
@@ -3405,8 +3386,8 @@ function eEvent68() {
   const chatName = document.getElementById('chat-name');
   if (!chatInput) return;
   chatInput.focus(); chatInput.value = '';
-  if(chatName) chatName.value = 'YOU';
-  const textToType = "I CAN SEE YOU. DON'T BLINK.";
+  if(chatName) chatName.value = 'ТЫ';
+  const textToType = "Я ВИЖУ ТЕБЯ. НЕ МОРГАЙ.";
   let idx = 0;
   const typeInterval = setInterval(() => {
     chatInput.value += textToType[idx]; idx++;
@@ -3414,7 +3395,7 @@ function eEvent68() {
       clearInterval(typeInterval);
       setTimeout(() => { sendChat(); chatInput.blur(); }, 600);
     }
-  }, 120); 
+  }, 120);
 }
 
 function eEvent69() {
@@ -3428,16 +3409,16 @@ function eEvent69() {
     if (beatCount > 8) {
       clearInterval(heartbeat); document.body.style.transform = '';
       const deathScreen = document.createElement('div');
-      deathScreen.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;color:#d12222;font-family:"VT323",monospace;font-size:40px;letter-spacing:8px;';
-      deathScreen.textContent = "STILL COUNTING...";
+      deathScreen.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;color:#d12222;font-family:"VT323", "PT Mono", monospace;font-size:40px;letter-spacing:8px;text-align:center;';
+      deathScreen.textContent = "ВСЕ ЕЩЕ\nСЧИТАЕТ...";
       document.body.appendChild(deathScreen);
       setTimeout(() => { deathScreen.remove(); if(wash) wash.style.opacity = '0'; }, 3000);
     }
-  }, 700); 
+  }, 700);
 }
 
 function eEvent70() {
-  const isOk = confirm("Windows Security Alert\n\nUnauthorized access to your webcam detected.\nSource: BEAR5.EXE.\n\nClose the tab to prevent data leak?");
+  const isOk = confirm("Оповещение безопасности Windows\n\nОбнаружен несанкционированный доступ к вашей веб-камере.\nИсточник: BEAR5.EXE.\n\nЗакрыть вкладку, чтобы предотвратить утечку данных?");
   setTimeout(() => { openRoom('room-webcam'); setTimeout(() => { closeRoom(); }, 1200); }, 500);
 }
 
@@ -3446,14 +3427,14 @@ function eEvent70() {
 // ============================================================
 const MINOR_EVENTS = [
   eBearText, eRedWash, eCursorVanish, eFlipEl, eAutoScroll, eGhost, eDateChange, eInvert, eTypewriter, eMeme,
-  eEvent22, eEvent23, eEvent28, eEvent29, eEvent33, eEvent34, eEvent36, eEvent38, eEvent40, eEvent41, eEvent46, eEvent47, eEvent49, eEvent50, eEvent51, eEvent53, eEvent56, eEvent58, eEvent59, eEvent66
+  eEvent22, eEvent23, eEvent28, eEvent29, eEvent33, eEvent34, eEvent36, eEvent38, eEvent40, eEvent41, eEvent46, eEvent47, eEvent49, eEvent50, eEvent51, eEvent53, eEvent56, eEvent58, eEvent59
 ];
 const MEDIUM_EVENTS = [
   eProcessBar, ePhotoSwap, eCrack, eGalCorrupt, eHiddenReveal, eErrWin, eBearChat, eEyeWindow,
-  eEvent24, eEvent26, eEvent27, eEvent30, eEvent32, eEvent35, eEvent37, eEvent39, eEvent42, eEvent43, eEvent44, eEvent45, eEvent55, eEvent60, eEvent61, eEvent64, eEvent65, eEvent68, eEvent69
+  eEvent24, eEvent26, eEvent27, eEvent30, eEvent32, eEvent35, eEvent37, eEvent39, eEvent42, eEvent43, eEvent44, eEvent45, eEvent55, eEvent60, eEvent61, eEvent64, eEvent65, eEvent66, eEvent68, eEvent69
 ];
 const SCARY_EVENTS = [
-  eFlash, eFaceFlicker, eEvent21, eEvent25, eEvent31, eEvent48, eEvent52, eEvent54, eEvent57, eEvent62, eEvent63, eEvent67, eEvent70
+  eFlash, eFaceFlicker, eEvent21, eEvent25, eEvent31, eEvent48, eEvent52, eEvent54, eEvent57, eEvent62, eEvent63, eEvent70
 ];
 
 function scheduleEvents() {
@@ -3461,25 +3442,26 @@ function scheduleEvents() {
     setTimeout(() => {
       if (!b5Mode) MINOR_EVENTS[Math.floor(Math.random() * MINOR_EVENTS.length)]();
       nextMinor();
-    }, 15000 + Math.random() * 20000); 
+    }, 15000 + Math.random() * 20000);
   }
   function nextMedium() {
     setTimeout(() => {
       if (!b5Mode) MEDIUM_EVENTS[Math.floor(Math.random() * MEDIUM_EVENTS.length)]();
       nextMedium();
-    }, 45000 + Math.random() * 45000); 
+    }, 45000 + Math.random() * 45000);
   }
   function nextScary() {
     setTimeout(() => {
       if (!b5Mode) SCARY_EVENTS[Math.floor(Math.random() * SCARY_EVENTS.length)]();
       nextScary();
-    }, 120000 + Math.random() * 120000); 
+    }, 120000 + Math.random() * 120000);
   }
 
-  setTimeout(nextMinor, 10000);
-  setTimeout(nextMedium, 30000);
-  setTimeout(nextScary, 120000);
-  setTimeout(() => eBearChat(), 15000 + Math.random() * 15000);
+  // Слегка отложенный старт, чтобы сайт не сходил с ума мгновенно
+  setTimeout(nextMinor, 20000);
+  setTimeout(nextMedium, 50000);
+  setTimeout(nextScary, 150000);
+  setTimeout(() => eBearChat(), 25000 + Math.random() * 15000);
 }
 
 // ============================================================
@@ -3521,7 +3503,7 @@ function startKnock() {
     if (sec <= 10 && btn) btn.classList.add('urgent');
     if (sec <= 0) {
       stopKnock();
-      if (count) count.textContent = 'It has stopped knocking.';
+      if (count) count.textContent = 'Оно перестало стучать.';
       if (timer) timer.textContent = '';
       setTimeout(() => { _poolScreamer(2000); closeRoom(); }, 2000);
     }
@@ -3539,6 +3521,17 @@ function knockLetIn() {
 }
 
 let _sys32Iv = null;
+const SYS32_FILES = [
+  'kernel32.dll','ntdll.dll','user32.dll','gdi32.dll',
+  'advapi32.dll','shell32.dll','shlwapi.dll','rpcrt4.dll',
+  'msvcrt.dll','wininet.dll','urlmon.dll','oleaut32.dll',
+  'ole32.dll','comctl32.dll','comdlg32.dll','winsock.dll',
+  'bear5.sys — ОШИБКА: Невозможно удалить',
+  'memory.dmp','pagefile.sys',
+  'BROTHER.exe — ОШИБКА: Все еще работает',
+  'soul.dat','static.bin',
+  'frame_47.raw — ОШИБКА: Файл жив',
+];
 function startSys32() {
   const log = document.getElementById('sys32-log');
   if (!log) return;
@@ -3547,7 +3540,7 @@ function startSys32() {
   _sys32Iv = setInterval(() => {
     const file = SYS32_FILES[i % SYS32_FILES.length];
     const line = document.createElement('div');
-    const isErr = file.includes('ERROR') || file.includes('alive') || file.includes('Still');
+    const isErr = file.includes('ОШИБКА');
     line.style.color = isErr ? '#d12222' : '#888888';
     line.textContent = `> del /f /q ${file}`;
     log.appendChild(line);
@@ -3557,7 +3550,7 @@ function startSys32() {
       clearInterval(_sys32Iv);
       const done = document.createElement('div');
       done.style.cssText = 'color:#ff3333;margin-top:10px;letter-spacing:2px;';
-      done.textContent   = '> Operation partially completed. 3 files could not be removed.';
+      done.textContent   = '> Операция частично завершена. 3 файла не удалось удалить.';
       log.appendChild(done);
     }
   }, 400);
@@ -3567,10 +3560,10 @@ function initEndless() {
   const cont = document.getElementById('endless-content');
   if (!cont || cont.children.length > 0) return;
   const lines = [
-    "You are trapped.", "Scroll down.", "There is no exit.",
-    "The loop has no end.", "He kept scrolling too.",
-    "You are trapped.", "Keep going.", "You will not find the bottom.",
-    "He is here.", "Do not stop scrolling.", "You are trapped.",
+    "Ты в ловушке.", "Листай вниз.", "Выхода нет.",
+    "У цикла нет конца.", "Он тоже листал.",
+    "Ты в ловушке.", "Продолжай.", "Ты не найдешь дно.",
+    "Он здесь.", "Не переставай скроллить.", "Ты в ловушке.",
   ];
   for (let i = 0; i < 200; i++) {
     const d = document.createElement('div');
@@ -3600,7 +3593,7 @@ function startWebcamRoom() {
   const tsEl     = document.getElementById('wcam-ts-room');
   const statusEl = document.getElementById('wcam-status');
   setTimeout(() => {
-    if (statusEl) statusEl.textContent = 'FEED ACTIVE — MOTION DETECTED';
+    if (statusEl) statusEl.textContent = 'АКТИВНО — ОБНАРУЖЕНО ДВИЖЕНИЕ';
     const face = document.getElementById('wcam-face');
     if (face) face.style.opacity = '.35';
   }, 3000);
@@ -3688,7 +3681,6 @@ function changeRoom(id){
   if(el) el.classList.add('active');
   
   stopAllRoomAudio();
-  
   if(id==='room-camera') startCamTs();
   if(id==='room-recovery') startRecovery();
   if(id==='room-brother') {
@@ -3712,24 +3704,24 @@ function startRecovery(){
   const status=document.getElementById('rec-status');
   if(!log||!fill) return;
   const entries=[
-    'Scanning C:\\...','Found 4,823 files','Checking file integrity...',
-    'halo3_clips.wmv — OK','portal2_speedrun.wmv — OK','cs_demos.dem — OK',
-    'site_backup_aug2014.zip — CORRUPTED',
-    '[REDACTED].exe — FOUND','Attempting to read...','File size: 0 bytes',
-    'File size: ∞ bytes','Cannot read metadata','Cannot determine origin',
-    'Cannot quarantine','Cannot delete','No creation date',
-    'Last modified: NEVER','The file is still running.',
-    'Recovery failed.','The file will not be removed.',
-    'It was here before Windows.','Recovery complete. 1 file unrecovered.',
+    'Сканирование C:\\...','Найдено 4,823 файлов','Проверка целостности файлов...',
+    'halo3_clips.wmv — ОК','portal2_speedrun.wmv — ОК','cs_demos.dem — ОК',
+    'site_backup_aug2014.zip — ПОВРЕЖДЕНО',
+    '[УДАЛЕНО].exe — НАЙДЕНО','Попытка чтения...','Размер файла: 0 байт',
+    'Размер файла: ∞ байт','Невозможно прочитать метаданные','Невозможно определить источник',
+    'Невозможно поместить в карантин','Невозможно удалить','Дата создания отсутствует',
+    'Последнее изменение: НИКОГДА','Файл все еще запущен.',
+    'Сбой восстановления.','Файл не будет удален.',
+    'Оно было здесь еще до Windows.','Восстановление завершено. 1 файл не восстановлен.',
   ];
   let i=0;
   const iv=setInterval(()=>{
     if(i<entries.length){
       const line=document.createElement('div');
-      const bad=entries[i].includes('[REDACTED]')||entries[i].includes('CORRUPTED')||
-                 entries[i].includes('Cannot')||entries[i].includes('failed')||
-                 entries[i].includes('NEVER')||entries[i].includes('unrecovered')||
-                 entries[i].includes('before Windows');
+      const bad=entries[i].includes('[УДАЛЕНО]')||entries[i].includes('ПОВРЕЖДЕНО')||
+                 entries[i].includes('Невозможно')||entries[i].includes('Сбой')||
+                 entries[i].includes('НИКОГДА')||entries[i].includes('не восстановлен')||
+                 entries[i].includes('до Windows');
       line.style.color=bad?'#aa5555':'#888888';
       line.textContent='> '+entries[i];
       log.appendChild(line); log.scrollTop=log.scrollHeight;
@@ -3760,17 +3752,17 @@ setInterval(()=>{
 },5000);
 
 const FRAME_DATA=[
-  {t:'[ frame 1 ]\nsomething running. nothing unusual.',c:'#ccc',s:'13px'},
-  {t:'[ frame 3 ]\nstill running. the background seems slightly darker.',c:'#ccc',s:'12px'},
-  {t:'[ frame 7 ]\nsomething is wrong with the background.',c:'#ddd',s:'12px'},
-  {t:'[ frame 12 ]\nthe shadow doesn\'t match the shape.',c:'#ff6666',s:'12px'},
-  {t:'[ frame 19 ]\nthere are two shadows now.',c:'#ff3333',s:'11px'},
-  {t:'[ frame 25 ]\nthe second shadow is larger.\nit is not running.',c:'#ff3333',s:'11px'},
-  {t:'[ frame 31 ]\nthe shape has slowed down.\nthe second shadow has not.',c:'#ff3333',s:'11px'},
-  {t:'[ frame 38 ]\nthe shape is standing still.\nwe do not know when it stopped.',c:'#ff3333',s:'11px'},
-  {t:'[ frame 44 ]\nthe shape is looking at you.\nthis is not possible.',c:'#ff0000',s:'12px'},
-  {t:'[ frame 46 ]\nplease stop.\ndo not go to frame 47.',c:'#ff0000',s:'11px'},
-  {t:'[ frame 47 ]',c:'#d12222',s:'11px',img:HORRORS[0]},
+  {t:'[ кадр 1 ]\nчто-то бежит. ничего необычного.',c:'#ccc',s:'13px'},
+  {t:'[ кадр 3 ]\nвсе еще бежит. фон кажется немного темнее.',c:'#ccc',s:'12px'},
+  {t:'[ кадр 7 ]\nс фоном что-то не так.',c:'#ddd',s:'12px'},
+  {t:'[ кадр 12 ]\nтень не совпадает с силуэтом.',c:'#ff6666',s:'12px'},
+  {t:'[ кадр 19 ]\nтеперь теней две.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 25 ]\nвторая тень стала больше.\nона не бежит.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 31 ]\nсилуэт замедлился.\nвторая тень — нет.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 38 ]\nсилуэт стоит на месте.\nмы не знаем, когда он остановился.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 44 ]\nсилуэт смотрит на тебя.\nэто невозможно.',c:'#ff0000',s:'12px'},
+  {t:'[ кадр 46 ]\nпожалуйста остановись.\nне переходи на 47-й кадр.',c:'#ff0000',s:'11px'},
+  {t:'[ кадр 47 ]',c:'#d12222',s:'11px',img:HORRORS[0]},
   {t:'',c:'#000',s:'1px',img:B5_GIF,end:true},
 ];
 function nextFrame(dir){
@@ -3834,11 +3826,11 @@ function updateMeter(){
   f.style.width=b5Pct+'%';
   if(p) p.textContent=Math.round(b5Pct)+'%';
   if(w){
-    if(b5Pct<20)      w.textContent='idle';
-    else if(b5Pct<45) w.textContent='low';
-    else if(b5Pct<70) w.textContent='elevated';
-    else if(b5Pct<88) w.textContent='high';
-    else               w.textContent='critical';
+    if(b5Pct<20)      w.textContent='ожидание';
+    else if(b5Pct<45) w.textContent='низкий';
+    else if(b5Pct<70) w.textContent='повышен';
+    else if(b5Pct<88) w.textContent='высокий';
+    else               w.textContent='критич.';
   }
   if(b5Pct>=30&&b5Pct<31) eBearText();
   if(b5Pct>=55&&b5Pct<56) eErrWin();
@@ -3866,12 +3858,12 @@ function unleashB5(){
     el.innerHTML='<span style="color:#000;font-size:16px;letter-spacing:4px;font-weight:bold;">BEAR5 BEAR5 BEAR5</span>';
   });
   
-  document.querySelectorAll('.sts').forEach(el => el.innerHTML = 'STATUS: RUN RUN RUN');
+  document.querySelectorAll('.sts').forEach(el => el.innerHTML = 'СТАТУС: БЕГИ БЕГИ БЕГИ');
 
   b5Pct=100; updateMeter();
   const now=new Date();
   const ts=pad(now.getHours())+':'+pad(now.getMinutes());
-  for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'I AM COMING',ts,b:true},false),i*280);
+  for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'Я ИДУ ЗА ТОБОЙ',ts,b:true},false),i*280);
   
   setTimeout(()=>{if(b5Mode){doScreamer();}},4500);
   setTimeout(resetB5,22000);
@@ -3899,10 +3891,10 @@ function replaceAllText(){
     }
   }
   walk(document.getElementById('main-wrap'));
-  document.title='STILL RUNNING';
+  document.title='ВСЕ ЕЩЕ РАБОТАЕТ';
   eRedWash();
   const btn=document.getElementById('replace-btn');
-  if(btn) btn.textContent='undo (reload)';
+  if(btn) btn.textContent='отмена (релоад)';
 }
 function revealReplaceBtn(){
   document.getElementById('replace-btn').style.display='block';
@@ -3925,14 +3917,13 @@ function dragWin(e, id) {
   document.addEventListener('mousemove', mv);
   document.addEventListener('mouseup', up);
 }
-function makeWinDrag() {} 
 
 function updateTrack(){
   const t=tracks[trackIdx];
   const el=document.getElementById('now-track');
   const al=document.getElementById('now-album');
   if(el) el.textContent=t.n;
-  if(al) al.textContent='Album: '+t.a;
+  if(al) al.textContent='Альбом: '+t.a;
   mSecs=0;
 }
 function togglePlay(){
@@ -3990,13 +3981,13 @@ function moreErrors(){
 }
 
 function revealSecret(el){
-  el.textContent='The brother came back. Just not as himself.';
+  el.textContent='Брат вернулся. Но это уже не он.';
   el.style.color='#ff3333'; el.style.fontStyle='italic';
   el.onclick=null;
   setTimeout(()=>openRoom('room-brother'),2500);
 }
-   
-// === ВСТАВЬ ЭТИ ДВЕ ФУНКЦИИ СЮДА ===
+
+// ФУНКЦИИ ЗАКРЫТИЯ ОКОН
 function closeEyeWindow() {
   const el = document.getElementById('eye-window');
   if (el) el.style.display = 'none';
