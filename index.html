@@ -1,1 +1,4003 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1400">
+<title>Домашняя страница Peashooter321!!! лол [2014]</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=PT+Mono&family=Permanent+Marker&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
 
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+:root {
+  --bg:        #080808;
+  --bg2:       #0d0d0d;
+  --panel:     #0f0f0f;
+  --panel-hdr: #111111;
+  --border:    #1c1c1c;
+  --border2:   #242424;
+  --text:      #cccccc;
+  --text-lo:   #999999;
+  --text-hi:   #ffffff;
+  --text-w:    #ffffff;
+  --dim:       #888888;
+  --red:       #d12222;
+  --red-hi:    #ff3333;
+  --accent:    #444444;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  font-size: 12px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+  animation: bg-breathe 40s ease-in-out infinite;
+}
+
+@keyframes bg-breathe {
+  0%, 100% { background-color: #080808; }
+  25%       { background-color: #0a0606; }
+  50%       { background-color: #080808; }
+  75%       { background-color: #060608; }
+}
+
+::-webkit-scrollbar       { width: 4px; background: #080808; }
+::-webkit-scrollbar-thumb { background: #1c1c1c; }
+
+a { color: var(--dim); text-decoration: none; border-bottom: 1px solid #333; transition: color .2s; }
+a:hover { color: var(--text-hi); border-bottom-color: #777; background: none; padding: 0; }
+
+strong { color: var(--text-hi); font-weight: normal; }
+em     { color: var(--dim); font-style: normal; }
+
+/* ============================================================
+   BACKGROUND LAYER — static grain
+   ============================================================ */
+#bg-stage {
+  position: fixed; inset: 0; z-index: -20;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-shift 120s linear infinite;
+}
+@keyframes grid-shift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+.floater {
+  position: absolute; opacity: 0; pointer-events: none;
+  animation: float-up linear infinite;
+  filter: brightness(0.4);
+  mix-blend-mode: screen;
+}
+@keyframes float-up {
+  0%   { transform: translateY(110vh); opacity: 0; }
+  8%   { opacity: .2; }
+  90%  { opacity: .2; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* ============================================================
+   OVERLAYS
+   ============================================================ */
+#scanlines {
+  position: fixed; inset: 0; z-index: 9990; pointer-events: none;
+  background: repeating-linear-gradient(0deg,
+    transparent, transparent 3px,
+    rgba(0,0,0,.15) 3px, rgba(0,0,0,.15) 4px);
+}
+#glitch-flash {
+  position: fixed; inset: 0; z-index: 9995; pointer-events: none;
+  opacity: 0; background: #fff; transition: opacity .04s;
+}
+#red-wash {
+  position: fixed; inset: 0; z-index: 9994; pointer-events: none;
+  opacity: 0; background: #3a0000; transition: opacity .8s;
+}
+
+/* ============================================================
+   SEAMLESS MELTDOWN EFFECT (12 SECONDS)
+   ============================================================ */
+.meltdown-active {
+  animation: melt-seamless 12s ease-in-out forwards;
+}
+@keyframes melt-seamless {
+  0% { transform: translateY(0) skewY(0); filter: blur(0) contrast(1); opacity: 1; }
+  35% { transform: translateY(150px) skewY(4deg); filter: blur(8px) contrast(1.2); opacity: 0.3; }
+  48% { transform: translateY(300px) skewY(8deg); filter: blur(20px) contrast(1.5); opacity: 0; }
+  52% { transform: translateY(-300px) skewY(-8deg); filter: blur(20px) contrast(1.5); opacity: 0; }
+  65% { transform: translateY(-150px) skewY(-4deg); filter: blur(8px) contrast(1.2); opacity: 0.3; }
+  100% { transform: translateY(0) skewY(0); filter: blur(0) contrast(1); opacity: 1; }
+}
+
+/* ============================================================
+   EYE POPUP WINDOW
+   ============================================================ */
+#eye-window {
+  position: fixed;
+  background: #000;
+  border: 1px solid #1c1c1c;
+  z-index: 99997;
+  display: none;
+  width: 220px;
+}
+#eye-window-bar {
+  background: #111;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #aaa;
+  cursor: move;
+  user-select: none;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  letter-spacing: 1px;
+}
+#eye-close {
+  color: #777;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 2px;
+  transition: color .2s;
+}
+#eye-close:hover { color: #fff; }
+#eye-window img {
+  width: 100%;
+  display: block;
+}
+
+/* ============================================================
+   SYSTEM ERROR WINDOWS
+   ============================================================ */
+.err-win {
+  position: fixed;
+  background: #0d0d0d;
+  border: 1px solid #1c1c1c;
+  z-index: 99990;
+  width: 340px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  display: none;
+}
+.err-bar {
+  background: #111;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #aaa;
+  cursor: move;
+  user-select: none;
+  letter-spacing: 2px;
+}
+.err-x {
+  color: #777; cursor: pointer; font-size: 11px;
+  padding: 0 3px; transition: color .15s;
+}
+.err-x:hover { color: var(--text-hi); }
+.err-body {
+  padding: 16px 16px;
+  color: #ccc;
+  font-size: 11px;
+  line-height: 1.8;
+  border-bottom: 1px solid #161616;
+}
+.err-body strong { color: #fff; }
+.err-foot {
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.err-btn {
+  background: #111;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 4px 14px;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: .15s;
+}
+.err-btn:hover { background: #171717; color: #fff; border-color: #555; }
+
+/* ============================================================
+   SCREAMER / FULLSCREEN FLASH
+   ============================================================ */
+#screamer-overlay {
+  position: fixed; inset: 0; z-index: 999999;
+  background: #000; display: none;
+  justify-content: center; align-items: center; cursor: pointer;
+}
+#screamer-overlay img {
+  max-width: 90%; max-height: 90%;
+  filter: contrast(1.3);
+  animation: scr-shake .06s infinite;
+}
+@keyframes scr-shake {
+  0%   { transform: translate(0,0); }
+  25%  { transform: translate(-4px, 3px); }
+  50%  { transform: translate(4px,-3px); }
+  75%  { transform: translate(-3px, 4px); }
+  100% { transform: translate(3px,-2px); }
+}
+
+/* ============================================================
+   HORROR ROOMS
+   ============================================================ */
+.room {
+  display: none; position: fixed; inset: 0; z-index: 99980;
+  background: #000; overflow-y: auto; padding: 40px;
+  flex-direction: column; align-items: center;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+}
+.room.active { display: flex; }
+
+.room-close {
+  position: fixed; top: 16px; right: 20px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 5px 12px; cursor: pointer;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px;
+  letter-spacing: 2px; transition: .2s;
+}
+.room-close:hover { color: #fff; border-color: #777; }
+
+.room-title {
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 42px;
+  color: #ccc; letter-spacing: 6px;
+  margin-bottom: 30px; text-align: center;
+  animation: title-drift 8s ease-in-out infinite;
+}
+@keyframes title-drift {
+  0%,100% { opacity: .9; }
+  50%     { opacity: .5; }
+}
+
+.room-text {
+  max-width: 620px; color: #ccc;
+  font-size: 13px; line-height: 2.2; text-align: center;
+  letter-spacing: 1px;
+}
+.room-image {
+  max-width: 380px; width: 100%;
+  border: 1px solid #333;
+  margin: 25px 0;
+}
+.room-nav { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
+.room-btn {
+  background: #000; border: 1px solid #333;
+  color: #ccc; padding: 7px 18px;
+  cursor: pointer; font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; transition: .15s;
+}
+.room-btn:hover { border-color: #666; color: #fff; }
+
+/* SAD SATAN */
+#room-sadsatan {
+  background: #000; cursor: none;
+  justify-content: center; align-items: center;
+}
+#room-sadsatan img {
+  max-width: 420px; width: 80vw;
+  filter: brightness(0.85);
+}
+
+/* CAMERA room */
+#room-camera { background: #000; cursor: none; }
+.cam-ui {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0,255,0,.025) 2px, rgba(0,255,0,.025) 4px);
+}
+.cam-label {
+  position: absolute;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  font-size: 11px; color: rgba(0,200,0,.6); letter-spacing: 2px;
+}
+
+/* FRAME ROOM */
+#room-frames { background: #000; }
+.frame-box {
+  width: 80%; max-width: 560px; min-height: 320px;
+  border: 1px solid #222;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+
+/* VOID */
+#room-void {
+  background: #000; justify-content: center; cursor: none;
+}
+.void-text {
+  font-size: 12px; color: #333333; text-align: center;
+  max-width: 380px; line-height: 3; letter-spacing: 3px;
+  transition: color 4s;
+}
+#room-void:hover .void-text { color: #777777; }
+
+/* NOVEMBER 13 */
+#room-nov13 { background: #000; justify-content: center; }
+.nov-date { font-family: 'VT323', 'PT Mono', monospace; font-size: 80px; color: #444; letter-spacing: 10px; animation: nov-flicker 6s infinite; }
+@keyframes nov-flicker {
+  0%,85%,100%{opacity:.6;}
+  87%{opacity:.2;}
+  88%{opacity:.6;}
+  90%{opacity:.1;}
+  91%{opacity:.5;}
+}
+.nov-sub { font-size: 12px; color: #666; letter-spacing: 5px; margin-top: 10px; }
+
+/* DO NOT READ */
+#room-donotread { background: #0c0c0c; justify-content: center; }
+.dnr-block {
+  max-width: 580px; font-size: 13px; color: #0c0c0c;
+  line-height: 2.4; letter-spacing: 2px; text-align: center;
+  transition: color 2s; cursor: default;
+}
+#room-donotread:hover .dnr-block { color: #993333; }
+
+/* LOOP */
+#room-loop { background: #000; justify-content: center; }
+
+/* RECOVERY */
+#room-recovery { background: #080808; font-family: 'Share Tech Mono', 'PT Mono', monospace; }
+.rec-log {
+  background: #000; border: 1px solid #222;
+  padding: 12px; font-size: 11px; color: #888;
+  max-height: 240px; overflow-y: auto; line-height: 1.9;
+  width: 100%; max-width: 600px;
+}
+.rec-bar-track { background: #0a0a0a; border: 1px solid #222; height: 4px; width: 100%; max-width: 600px; margin: 8px 0; }
+.rec-bar-fill   { height: 100%; background: #444; width: 0%; transition: width .4s; }
+
+/* TRAP — no exit */
+#room-trap {
+  display: none; position: fixed; inset: 0; z-index: 999990;
+  background: #000; justify-content: center; align-items: center;
+}
+#room-trap.active { display: flex; }
+#room-trap img { max-width: 55vw; max-height: 80vh; filter: brightness(0.6); }
+#trap-exit {
+  position: fixed; bottom: 8px; right: 10px;
+  font-size: 9px; color: rgba(80,80,80,.3);
+  cursor: pointer; font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  opacity: 0; transition: opacity 3s; letter-spacing: 1px;
+}
+#trap-exit:hover { color: rgba(150,150,150,.5); }
+
+/* STATIC room */
+#room-static { background: #000; justify-content: center; }
+.static-overlay {
+  position: fixed; inset: 0; pointer-events: none;
+  animation: static-anim .08s steps(1) infinite;
+}
+@keyframes static-anim {
+  0%  { opacity: .04; }
+  50% { opacity: .07; }
+  100%{ opacity: .03; }
+}
+
+/* THE BROTHER */
+#room-brother { background: #000; }
+
+/* ============================================================
+   BEAR5 LOADING
+   ============================================================ */
+#b5-bar {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: #000; border: 1px solid #222;
+  padding: 10px 22px;
+  font-size: 11px; color: #888;
+  z-index: 99900; display: none;
+  min-width: 300px; text-align: center;
+  letter-spacing: 2px;
+}
+#b5-track { background: #0a0a0a; border: 1px solid #222; height: 3px; margin-top: 6px; }
+#b5-fill  { height: 100%; width: 0%; background: #6a0000; transition: width .4s; }
+
+/* ============================================================
+   GHOST DRIFT
+   ============================================================ */
+.ghost-msg {
+  position: fixed; pointer-events: none; z-index: 9992;
+  font-size: 13px; color: rgba(120,30,30,.7);
+  white-space: nowrap; letter-spacing: 4px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  animation: ghost-move 11s linear forwards;
+}
+@keyframes ghost-move {
+  0%   { opacity: 0; transform: translateX(105vw); }
+  8%   { opacity: 1; }
+  90%  { opacity: .6; }
+  100% { opacity: 0; transform: translateX(-20vw); }
+}
+
+/* Blood micro-drops */
+.bdrop {
+  position: fixed; pointer-events: none; z-index: 9993;
+  width: 2px; background: #6a0000;
+  border-radius: 0 0 2px 2px;
+  animation: bdrop-fall linear forwards;
+}
+@keyframes bdrop-fall {
+  0%   { top: -10px; opacity: .8; }
+  100% { top: 110vh;  opacity: 0; }
+}
+
+/* ============================================================
+   MAIN WRAP
+   ============================================================ */
+#main-wrap {
+  max-width: 1400px; margin: 10px auto;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  position: relative;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  padding: 28px 22px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: #0b0b0b;
+  position: relative;
+  overflow: hidden;
+}
+.site-title {
+  font-family: 'Permanent Marker', 'Caveat', cursive;
+  font-size: 62px; color: #666;
+  display: inline-block; position: relative;
+  letter-spacing: 2px;
+}
+.title-ghost {
+  position: absolute; inset: 0;
+  color: #333;
+  animation: t-haunt 12s infinite; opacity: 0;
+}
+@keyframes t-haunt {
+  0%,90%,100%{opacity:0;transform:translateX(0);}
+  91%{opacity:.4;transform:translateX(-3px);clip-path:polygon(0 20%,100% 20%,100% 45%,0 45%);}
+  92%{opacity:.2;transform:translateX(3px);clip-path:polygon(0 55%,100% 55%,100% 80%,0 80%);}
+  93%{opacity:0;}
+}
+.site-subtitle {
+  font-family: 'VT323', 'PT Mono', monospace;
+  font-size: 18px; color: #555; letter-spacing: 10px; margin-top: 4px;
+}
+.header-meta {
+  margin-top: 10px; display: flex; justify-content: center; gap: 7px; flex-wrap: wrap;
+}
+.header-tag {
+  font-size: 10px; color: #777; border: 1px solid #222;
+  padding: 2px 8px; letter-spacing: 1px;
+}
+.mood-row {
+  margin-top: 8px; font-size: 10px; color: #666;
+  display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.px-stripe {
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+    var(--border) 0 12px, transparent 12px 24px);
+}
+.marquee-bar {
+  background: #080808; border-top: 1px solid #111; border-bottom: 1px solid #111;
+  padding: 5px 0; overflow: hidden; white-space: nowrap;
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 15px; color: #555;
+}
+.marquee-inner { display: inline-block; animation: m-go 45s linear infinite; }
+@keyframes m-go { from{transform:translateX(100vw);} to{transform:translateX(-100%);} }
+
+/* ============================================================
+   STATUS STRIP
+   ============================================================ */
+.sts {
+  background: #090909; border-bottom: 1px solid var(--border);
+  padding: 5px 13px; display: flex; justify-content: space-between;
+  align-items: center; font-family: 'VT323', 'PT Mono', monospace; font-size: 17px; color: #777;
+}
+.sts-off { color: #d12222; animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.layout-grid {
+  display: grid; grid-template-columns: 280px 1fr 300px;
+  gap: 1px; padding: 1px;
+  background: var(--border);
+}
+.col { background: var(--panel); display: flex; flex-direction: column; gap: 1px; }
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+.panel {
+  background: var(--panel);
+  border: none;
+  position: relative;
+}
+.panel-title {
+  background: var(--panel-hdr);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 11px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #888; display: flex; align-items: center; gap: 6px;
+}
+.panel-body { padding: 11px; }
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+.admin-photo {
+  width: 100%; display: block;
+  border: 1px solid var(--border);
+  filter: brightness(0.85);
+  transition: filter .4s;
+}
+.admin-photo:hover { filter: brightness(1); }
+
+.profile-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+.profile-table td { padding: 4px 5px; border-bottom: 1px solid #111; }
+.profile-table td:first-child { color: #777; font-size: 10px; width: 36%; }
+.p-gone { color: #9a2222; font-style: italic; animation: blink 3s infinite; }
+
+.skill-bars { margin-top: 10px; }
+.skill-row { margin-bottom: 5px; }
+.skill-label { display: flex; justify-content: space-between; font-size: 10px; color: #888; margin-bottom: 2px; }
+.skill-track { background: #0a0a0a; border: 1px solid #111; height: 4px; }
+.skill-fill   { height: 100%; background: #444; }
+.skill-fill.bad { background: #6a1111; }
+
+.interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 8px; }
+.int-item {
+  background: #0d0d0d; border: 1px solid #111;
+  padding: 5px; font-size: 10px; color: #888;
+  display: flex; align-items: center; gap: 4px; letter-spacing: .5px;
+}
+.int-item:hover { color: #aaa; border-color: #222; }
+
+.loc-box {
+  background: #0a0a0a; border: 1px solid #111;
+  padding: 7px; font-size: 10px; color: #666; margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav-list { list-style: none; }
+.nav-list li { border-bottom: 1px solid #111; }
+.nav-list li a {
+  display: flex; align-items: center; gap: 8px; padding: 8px 11px;
+  color: #888; border-bottom: none; font-size: 10px; letter-spacing: 1px;
+  transition: .15s;
+}
+.nav-list li a:hover { color: var(--text-w); padding-left: 16px; background: #0d0d0d; }
+.nav-del { text-decoration: line-through; color: #444 !important; }
+.nav-ano { color: #555 !important; animation: blink 4s infinite; }
+
+/* ============================================================
+   FILE EXPLORER
+   ============================================================ */
+.fex { background: #080808; border: 1px solid var(--border); font-size: 11px; }
+.fex-bar { background: #0d0d0d; padding: 4px 9px; color: #777; font-size: 10px; letter-spacing: 1px; border-bottom: 1px solid #111; }
+.fex-item {
+  padding: 5px 10px; cursor: pointer; color: #888;
+  display: flex; align-items: center; gap: 6px; transition: .1s;
+  border-bottom: 1px solid #0d0d0d;
+}
+.fex-item:hover { background: #0d0d0d; color: #aaa; }
+.fex-bad { color: #8a1111 !important; animation: f-flicker 6s infinite; }
+@keyframes f-flicker { 0%,85%,100%{opacity:1;} 88%{opacity:.2;} 92%{opacity:.7;} }
+
+/* ============================================================
+   MUSIC PLAYER
+   ============================================================ */
+.mplayer { background: #080808; border: 1px solid var(--border); padding: 10px; }
+.m-now { font-family: 'VT323', 'PT Mono', monospace; font-size: 17px; color: #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.m-sub { font-size: 10px; color: #666; margin-top: 2px; letter-spacing: 1px; }
+.m-controls { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
+.m-btn {
+  background: #0d0d0d; border: 1px solid #222;
+  color: #888; padding: 3px 8px; cursor: pointer;
+  font-family: 'VT323', 'PT Mono', monospace; font-size: 18px; transition: .1s;
+}
+.m-btn:hover { background: #111; color: var(--text-w); }
+.m-time { font-family: 'VT323', 'PT Mono', monospace; font-size: 16px; color: #777; margin-left: auto; }
+
+/* ============================================================
+   BEAR5 TRIGGER
+   ============================================================ */
+.b5-trigger {
+  padding: 10px; border: 1px solid #111;
+  background: #0a0a0a; text-align: center;
+  cursor: pointer; position: relative; transition: .4s;
+}
+.b5-trigger:hover { border-color: #222; background: #0d0d0d; }
+.b5-img {
+  width: 100%; max-width: 150px; display: block; margin: 0 auto;
+  filter: brightness(0.85); transition: filter .4s;
+}
+.b5-trigger:hover .b5-img { filter: brightness(1); }
+.b5-cap { font-size: 10px; color: #555; margin-bottom: 5px; letter-spacing: 1px; }
+
+/* ============================================================
+   METER
+   ============================================================ */
+.b5-meter { background: #080808; border: 1px solid #111; padding: 8px; margin-top: 1px; }
+.b5-m-head { display: flex; justify-content: space-between; font-size: 10px; color: #777; margin-bottom: 4px; letter-spacing: 1px; }
+.b5-m-track { background: #060606; border: 1px solid #111; height: 3px; }
+.b5-m-fill  { height: 100%; background: #6a0000; width: 0%; transition: width .6s; }
+.b5-m-warn  { font-size: 10px; color: #8a1111; margin-top: 3px; letter-spacing: 1px; }
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+.blog-scroll { max-height: 520px; overflow-y: scroll; padding-right: 2px; }
+.blog-entry { padding: 12px 0; border-bottom: 1px solid #222; }
+.blog-date   { font-family: 'VT323', 'PT Mono', monospace; font-size: 16px; color: #ccc; display: block; margin-bottom: 3px; }
+.blog-text   { color: var(--text); line-height: 1.8; font-size: 12px; }
+.blog-author { text-align: right; font-size: 10px; color: #999; margin-top: 5px; font-style: italic; }
+.blog-entry.dark { border: 1px solid #4a0000; background: #0c0000; padding: 10px; margin: 4px 0; }
+.blog-entry.dark .blog-date { color: #ff3333; }
+.blog-entry.dark .blog-text { color: #dd7777; }
+
+.hl-box { background: #0a0a0a; border-left: 2px solid #333; padding: 7px 10px; margin: 7px 0; font-size: 12px; color: #ddd; }
+
+/* ============================================================
+   STICKER WALL
+   ============================================================ */
+.sticker-wall {
+  position: relative; height: 300px;
+  background: #090909; border: 1px solid #111; overflow: hidden; margin-bottom: 1px;
+}
+.sw-hint { position: absolute; bottom: 7px; right: 8px; font-size: 10px; color: #666; letter-spacing: 1px; }
+
+.sticker {
+  position: absolute; cursor: grab;
+  background: #e8e8e8; color: #1a1a1a;
+  border: 1px solid #bbb;
+  padding: 6px; max-width: 125px;
+  font-family: 'Permanent Marker', 'Caveat', cursive; font-size: 8px;
+  text-align: center; z-index: 10; user-select: none;
+  filter: brightness(0.95);
+  transition: filter .3s;
+}
+.sticker:hover { filter: brightness(1.05); }
+.sticker:active { cursor: grabbing; }
+.sticker img { width: 100%; display: block; pointer-events: none; margin-bottom: 3px; }
+.sticker .st-txt { font-size: 8px; line-height: 1.3; }
+
+/* ============================================================
+   TV
+   ============================================================ */
+.tv-outer {
+  position: relative; background: #080808;
+  border: 6px solid #222;
+  padding: 12px 12px 28px;
+  margin-bottom: 1px;
+}
+.tv-bezel { text-align: center; margin-bottom: 6px; font-size: 10px; color: #888; letter-spacing: 3px; }
+.tv-screen { position: relative; background: #000; border: 2px solid #111; overflow: hidden; }
+.tv-screen::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.05) 3px, rgba(0,0,0,.05) 4px);
+}
+.tv-btm { position: absolute; bottom: 6px; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
+.tv-led { width: 6px; height: 6px; border-radius: 50%; background: #a00000; animation: blink 3s infinite; }
+.tv-lbl { font-size: 10px; color: #555; letter-spacing: 2px; }
+
+/* ============================================================
+   FORUM
+   ============================================================ */
+.forum-box {
+  border: 1px solid var(--border); background: #090909;
+  max-height: 500px; overflow-y: scroll;
+}
+.f-header {
+  background: #0d0d0d; border-bottom: 1px solid var(--border);
+  padding: 5px 10px; font-size: 10px; color: #aaa;
+  display: grid; grid-template-columns: 125px 1fr 80px;
+  letter-spacing: 1px;
+}
+.post-row { display: flex; border-bottom: 1px solid #1a1a1a; min-height: 78px; }
+.post-row:nth-child(even) { background: rgba(255,255,255,.02); }
+.post-row.bear-post { background: #1a0000; border-color: #3a0000; }
+.post-author-col {
+  width: 125px; flex-shrink: 0; padding: 8px; text-align: center;
+  border-right: 1px solid #1a1a1a; background: rgba(0,0,0,.3);
+}
+.p-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  margin: 3px auto; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; color: #000; border: 1px solid #333;
+}
+.p-av-img { width: 42px; height: 42px; object-fit: cover; border: 1px solid #4a0000; }
+.p-name  { font-size: 10px; color: #ccc; margin-bottom: 2px; }
+.p-rank  { font-size: 9px;  color: #999; letter-spacing: 1px; }
+.p-count { font-size: 9px;  color: #777; }
+.post-body-col { flex: 1; padding: 9px 12px; font-size: 11px; line-height: 1.7; color: var(--text); }
+.p-when { font-size: 10px; color: #999; margin-bottom: 5px; display: block; }
+.p-sig  { margin-top: 10px; padding-top: 4px; border-top: 1px solid #1a1a1a; font-size: 10px; color: #777; font-style: italic; }
+
+/* Twitter meme box */
+.tweet-box {
+  background: #0a0a0a; border: 1px solid #333; border-radius: 2px;
+  padding: 10px 12px; margin: 7px 0; max-width: 380px;
+}
+.tw-head { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
+.tw-name { font-size: 11px; color: #ccc; }
+.tw-handle { font-size: 10px; color: #888; }
+.tw-img { width: 100%; border-radius: 1px; margin-top: 7px; }
+.tw-foot { font-size: 10px; color: #777; margin-top: 6px; }
+
+/* ============================================================
+   CHAT
+   ============================================================ */
+.chat-msgs {
+  height: 175px; overflow-y: scroll; background: #080808;
+  border: 1px solid var(--border); padding: 7px; font-size: 11px; line-height: 1.8;
+}
+.chat-line { padding: 1px 0; border-bottom: 1px solid #1a1a1a; }
+.c-name { color: #aaa; }
+.c-txt  { color: var(--text); }
+.c-time { color: #888; font-size: 10px; float: right; }
+.bear-chat .c-name { color: #ff3333; }
+.bear-chat .c-txt  { color: #cc7777; }
+.chat-form { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+.c-name-in, .c-msg-in {
+  background: #080808; border: 1px solid #333;
+  color: var(--text); padding: 5px 7px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px; outline: none;
+}
+.c-name-in { width: 90px; }
+.c-name-in:focus, .c-msg-in:focus { border-color: #666; }
+.c-msg-in { flex: 1; }
+.c-send {
+  background: #0d0d0d; border: 1px solid #333;
+  color: #ccc; padding: 5px 10px; cursor: pointer;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 10px; letter-spacing: 1px; transition: .15s;
+}
+.c-send:hover { background: #111; color: #fff; }
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.gal-grid img {
+  width: 100%; border: 1px solid #222;
+  transition: .3s; cursor: pointer; display: block;
+}
+.gal-grid img:hover { border-color: #555; }
+
+/* ============================================================
+   GUESTBOOK
+   ============================================================ */
+.gb-entries {
+  max-height: 220px; overflow-y: scroll; background: #080808;
+  border: 1px solid var(--border); padding: 7px; font-size: 11px; margin-bottom: 6px;
+}
+.gb-entry { padding: 6px 0; border-bottom: 1px solid #1a1a1a; }
+.gb-from { color: #ccc; font-size: 10px; }
+.gb-msg  { color: var(--text); margin-top: 2px; line-height: 1.5; }
+.gb-date { color: #888; font-size: 10px; float: right; }
+
+/* ============================================================
+   GUESTBOOK INPUT / CONTACT FIELDS
+   ============================================================ */
+.cf {
+  width: 100%; background: #080808; border: 1px solid #333;
+  color: var(--text); padding: 6px 7px;
+  font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 11px;
+  outline: none; display: block; margin-bottom: 5px;
+}
+.cf:focus { border-color: #666; }
+textarea.cf { resize: vertical; min-height: 65px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  text-align: center; padding: 16px;
+  border-top: 1px solid var(--border);
+  color: #888; font-size: 10px; letter-spacing: 2px;
+  background: #090909; position: relative;
+}
+.f-br { color: #aaa; cursor: pointer; transition: color .3s; }
+.f-br:hover { color: #d12222; }
+.web-badges { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
+.wb { font-size: 10px; padding: 1px 6px; border: 1px solid #333; color: #777; letter-spacing: 1px; }
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 99970;
+  background: rgba(0,0,0,.95); justify-content: center; align-items: center; cursor: zoom-out;
+}
+#lightbox.active { display: flex; }
+#lightbox img { max-width: 86%; max-height: 86%; border: 1px solid #333; }
+
+/* ============================================================
+   MEME POPUP
+   ============================================================ */
+#meme-popup {
+  position: fixed; bottom: 18px; right: 18px;
+  z-index: 99985; display: none;
+  background: #000; border: 1px solid #333;
+  padding: 8px;
+}
+.mp-bar { font-size: 10px; color: #777; margin-bottom: 4px; display: flex; justify-content: space-between; letter-spacing: 1px; }
+.mp-x  { color: #888; cursor: pointer; font-size: 12px; transition: color .2s; }
+.mp-x:hover { color: #fff; }
+#meme-popup img { width: 190px; display: block; filter: brightness(0.85); }
+
+/* ============================================================
+   REPLACE-ALL button (hidden until triggered)
+   ============================================================ */
+#replace-btn {
+  display: none; position: fixed; bottom: 7px; left: 7px;
+  z-index: 99000; background: #000; border: 1px solid #333;
+  color: #aaa; font-family: 'Share Tech Mono', 'PT Mono', monospace; font-size: 10px;
+  padding: 3px 8px; cursor: pointer; letter-spacing: 1px;
+}
+#replace-btn:hover { color: #fff; border-color: #666; }
+
+/* ============================================================
+   SECRET MSG
+   ============================================================ */
+.sec-msg { color: #555; font-size: 9px; cursor: default; letter-spacing: 1px; }
+.sec-msg:hover { color: #d12222; }
+
+/* ============================================================
+   BEAR5 FULL MODE (BLOOD RED + SPOTS)
+   ============================================================ */
+body.B5 { 
+    filter: sepia(100%) saturate(1000%) hue-rotate(-50deg) contrast(150%);
+    background: #3a0000 !important; 
+    overflow-y: scroll !important;
+}
+body.B5 #bg-stage {
+    background: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp') repeat center center !important;
+    background-size: cover !important;
+    opacity: 1 !important;
+}
+body.B5 .bg-grid, body.B5 .floater { display: none !important; }
+body.B5 #main-wrap { border-color: #000; animation: swim 3s infinite ease-in-out; }
+body.B5, body.B5 a, body.B5 div {
+    cursor: url('https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp'), auto !important;
+}
+@keyframes swim {
+    0% { transform: skew(0deg) translate(0,0); }
+    25% { transform: skew(2deg) translate(5px, 0); }
+    50% { transform: skew(-1deg) translate(0, 5px); }
+    75% { transform: skew(1deg) translate(-5px, 0); }
+    100% { transform: skew(0deg) translate(0,0); }
+}
+
+/* ============================================================
+   SCREEN CRACK SVG
+   ============================================================ */
+#screen-crack { position:fixed;inset:0;z-index:9996;pointer-events:none;opacity:0;transition:opacity .15s; }
+#screen-crack.show { opacity:1; }
+
+/* ============================================================
+   MODULAR STYLES (Cleaned & Corrected)
+   ============================================================ */
+
+/* LORE MODAL GLITCH */
+#lore-content.glitch-type {
+  animation: lore-glitch .08s steps(1) infinite;
+}
+@keyframes lore-glitch {
+  0%  { clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%); transform: translateX(-2px); }
+  33% { clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%); transform: translateX(2px); }
+  66% { clip-path: none; transform: translateX(0); }
+}
+
+/* DIARY — text disappears on hover */
+.dt-line {
+  cursor: default;
+  transition: color .4s, opacity .4s;
+}
+.dt-line:hover {
+  color: #333 !important;
+  opacity: .1;
+}
+
+/* 404 ANIMATIONS */
+@keyframes r404-grow {
+  0%   { height: 0px; }
+  100% { height: 120px; }
+}
+@keyframes r404-drip {
+  0%,90%,100% { filter: none; }
+  92% { filter: blur(1px) brightness(1.3); }
+  94% { filter: none; }
+}
+
+/* MIRROR — flipping entire room */
+#room-mirror {
+  transform: scaleX(-1);
+}
+
+/* SMILE — growth */
+#smile-img.grow {
+  animation: smile-grow 60s linear forwards;
+}
+@keyframes smile-grow {
+  0%   { width: 80px; }
+  100% { width: 3000px; }
+}
+
+/* ENDLESS — text lines visibility fix */
+.endless-line {
+  font-family: 'Share Tech Mono', 'PT Mono', monospace;
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 4px;
+  margin: 18px 0;
+  transition: color .3s;
+  cursor: default;
+}
+.endless-line:hover { color: #d12222; }
+
+/* KNOCK — pulse */
+#knock-btn.urgent {
+  border-color: #8b0000;
+  color: #ff3333;
+  animation: knock-pulse .5s infinite;
+}
+@keyframes knock-pulse {
+  0%,100% { border-color: #8b0000; }
+  50%      { border-color: #ff3333; }
+}
+
+/* WEBCAM pixelation */
+#webcam-canvas, #wcam-room-canvas {
+  image-rendering: pixelated;
+}
+
+/* AUTOPSY ROOM readability fix */
+#room-autopsy .room-close {
+  border-color: #ccc;
+  color: #888;
+  background: #f0f0f0;
+}
+#room-autopsy .room-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+
+<audio id="amb" loop>
+  <source src="horror-drone-ambience-smartsound-fx-1-02-26.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-scream">
+  <source src="scary-violins-sound-effect.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-steps">
+  <source src="silent-hill-3-footsteps.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-glitch">
+  <source src="tv-static-sound-effect.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="snd-sadsatan" loop>
+  <source src="sad-satan---iksanihc-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-pipe" loop>
+  <source src="swinging-pipe-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-morse">
+  <source src="morse-code-_please-help-me_-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-nightmare">
+  <source src="nightmare-screamer-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-mimic">
+  <source src="mimicer-spotted-made-with-Voicemod.mp3" type="audio/mpeg">
+</audio>
+
+
+<button id="start-btn" onclick="initSite()" style="
+  position:fixed;inset:0;width:100%;height:100%;
+  opacity:0;z-index:999998;cursor:default;
+  background:transparent;border:none;"></button>
+
+<div id="bg-stage">
+  <div class="bg-grid"></div>
+  <img class="floater" src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+       style="left:8%;width:170px;animation-duration:40s;animation-delay:0s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg"
+       style="left:54%;width:130px;animation-duration:56s;animation-delay:11s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/1200x/bf/63/6f/bf636ff2b10a3496da37a98f61c301bf.jpg"
+       style="right:10%;width:185px;animation-duration:46s;animation-delay:5s;" alt="">
+  <img class="floater" src="https://i.pinimg.com/736x/74/23/1e/74231ebe6286e8a2446404b0a21ad939.jpg"
+       style="left:31%;width:150px;animation-duration:65s;animation-delay:20s;" alt="">
+</div>
+
+<div id="scanlines"></div>
+<div id="glitch-flash"></div>
+<div id="red-wash"></div>
+
+<svg id="screen-crack" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 700 0 L 620 200 L 750 350 L 560 600 L 680 900" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+  <path d="M 700 0 L 780 150 L 650 280 L 820 500" stroke="rgba(255,255,255,0.1)" stroke-width=".8" fill="none"/>
+  <path d="M 620 200 L 500 260 L 420 340" stroke="rgba(255,255,255,0.08)" stroke-width=".6" fill="none"/>
+</svg>
+
+<div id="screamer-overlay" onclick="closeScreamer()">
+  <img id="screamer-img" src="" alt="">
+</div>
+
+<div id="eye-window" style="top:180px;left:260px;">
+  <div id="eye-window-bar" onmousedown="dragWin(event,'eye-window')">
+    <span style="letter-spacing:2px;">process</span>
+    <span id="eye-close" onclick="closeEyeWindow()">✕</span>
+  </div>
+  <img src="https://i.pinimg.com/originals/86/96/70/86967094d6d688c111cdc809df9aa975.gif" alt="">
+</div>
+
+<div class="err-win" id="err1" style="top:200px;left:300px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err1')">
+    <span>ПРОВЕРКА ЦЕЛОСТНОСТИ ФАЙЛА — ОШИБКА</span>
+    <span class="err-x" onclick="closeErr('err1')">✕</span>
+  </div>
+  <div class="err-body">
+    Файл: <strong>[УДАЛЕНО]</strong><br>
+    Размер: <strong>0 байт / ∞ байт</strong><br>
+    Создан: <strong>—</strong><br>
+    Изменен: <strong>НИКОГДА</strong><br><br>
+    Windows не удается проверить этот файл.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err1')">ОК</button>
+    <button class="err-btn" onclick="closeErr('err1')">Отмена</button>
+  </div>
+</div>
+
+<div class="err-win" id="err2" style="top:240px;left:410px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err2')">
+    <span>ПОДКЛЮЧЕНИЕ — ТАЙМ-АУТ</span>
+    <span class="err-x" onclick="closeErr('err2')">✕</span>
+  </div>
+  <div class="err-body">
+    Хост: <strong>PEASHOOTER321_ROOT</strong><br>
+    Последний ответ: <strong>13 Ноября 2014  23:47:02</strong><br><br>
+    Прошло с последнего пакета: <strong id="days-gone">—</strong><br><br>
+    Удаленный хост не отвечает.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err2')">Повтор</button>
+  </div>
+</div>
+
+<div class="err-win" id="err3" style="top:310px;left:200px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err3')">
+    <span>ОТКАЗАНО В ДОСТУПЕ</span>
+    <span class="err-x" onclick="closeErr('err3')">✕</span>
+  </div>
+  <div class="err-body">
+    У вас нет разрешений на выполнение этой операции.<br><br>
+    Файл не может быть перемещен.<br>
+    Файл не может быть скопирован.<br>
+    Файл не может быть закрыт.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err3')">ОК</button>
+  </div>
+</div>
+
+<div class="err-win" id="err4" style="top:175px;left:340px;width:380px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err4')">
+    <span>WINDOWS — НЕОБРАБАТЫВАЕМОЕ ИСКЛЮЧЕНИЕ</span>
+    <span class="err-x" onclick="closeErr('err4')">✕</span>
+  </div>
+  <div class="err-body">
+    Необработанное исключение по адресу <strong>0xDEAD0013</strong>.<br><br>
+    Процесс: <strong>[УДАЛЕНО].exe</strong><br>
+    Использование памяти: <strong>НЕ ОПРЕДЕЛЕНО</strong><br><br>
+    Этот процесс не может быть завершен.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err4')">Закрыть</button>
+    <button class="err-btn" onclick="moreErrors()">Отчет</button>
+  </div>
+</div>
+
+<div class="err-win" id="err5" style="top:230px;left:245px;width:360px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err5')">
+    <span>ОБНАРУЖЕНА АНОМАЛЬНАЯ СЕССИЯ</span>
+    <span class="err-x" onclick="closeErr('err5')">✕</span>
+  </div>
+  <div class="err-body">
+    Последнее обращение к странице: <strong>13 Ноября 2014</strong><br><br>
+    С тех пор она не отключалась.<br><br>
+    Нет активных учетных записей администратора.<br>
+    Сайт поддерживает себя сам.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err5')">Понятно</button>
+  </div>
+</div>
+
+<div class="err-win" id="err6" style="top:260px;left:390px;width:350px;">
+  <div class="err-bar" onmousedown="dragWin(event,'err6')">
+    <span>ОШИБКА ЧТЕНИЯ ДИСКА</span>
+    <span class="err-x" onclick="closeErr('err6')">✕</span>
+  </div>
+  <div class="err-body">
+    Сектор: <strong>47</strong><br>
+    Поврежденные блоки: <strong>∞</strong><br><br>
+    Восстановление данных невозможно.<br>
+    Сектор помечен как нечитаемый с <strong>Ноября 2014</strong>.
+  </div>
+  <div class="err-foot">
+    <button class="err-btn" onclick="closeErr('err6')">Пропустить</button>
+  </div>
+</div>
+
+<div id="b5-bar">
+  <span id="b5-txt">выполнение процесса...</span>
+  <div id="b5-track"><div id="b5-fill"></div></div>
+</div>
+
+<button id="replace-btn" onclick="replaceAllText()">заменить всё</button>
+
+<div id="lore-modal" style="display:none;position:fixed;inset:0;z-index:999995;background:rgba(0,0,0,.92);justify-content:center;align-items:center;">
+  <div id="lore-inner" style="background:#f5f0e8;border:2px solid #888;width:min(640px,92vw);font-family:'Courier New',monospace;position:relative;overflow:hidden;">
+    <div id="lore-bar" style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+      <span id="lore-filename">Безымянный - Блокнот</span>
+      <span onclick="closeLore()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 5px;font-size:11px;line-height:16px;">✕</span>
+    </div>
+    <div style="background:#c0c0c0;border-bottom:1px solid #888;padding:2px 6px;font-size:11px;color:#000;display:flex;gap:14px;">
+      <span>Файл</span><span>Правка</span><span>Формат</span><span>Вид</span><span>Справка</span>
+    </div>
+    <div style="position:absolute;top:30px;right:20px;width:80px;height:60px;background:radial-gradient(ellipse,rgba(150,0,0,.4) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
+    <div style="position:absolute;bottom:40px;left:30px;width:50px;height:40px;background:radial-gradient(ellipse,rgba(150,0,0,.3) 0%,transparent 70%);pointer-events:none;z-index:2;"></div>
+    <div id="lore-content" style="padding:10px 12px;min-height:180px;font-size:13px;line-height:1.9;color:#1a1a1a;white-space:pre-wrap;background:#f5f0e8;position:relative;z-index:1;"></div>
+    <div style="background:#c0c0c0;border-top:1px solid #888;padding:2px 8px;font-size:10px;color:#333;display:flex;justify-content:space-between;">
+      <span id="lore-status">Стр 1, Стб 1</span>
+      <span style="color:#cc0000;animation:blink 1.5s infinite;" id="lore-glitch-txt"></span>
+    </div>
+  </div>
+</div>
+
+<div id="skype-notif" style="display:none;position:fixed;bottom:60px;right:20px;z-index:999980;width:280px;background:#f0f0f0;border:1px solid #aaa;font-family:'Segoe UI',Arial,sans-serif;font-size:12px;">
+  <div style="background:#00AFF0;color:#fff;padding:5px 10px;display:flex;align-items:center;gap:7px;font-size:13px;">
+    <span style="font-size:16px;">💬</span>
+    <span>Skype — Новое сообщение</span>
+    <span onclick="document.getElementById('skype-notif').style.display='none'" style="margin-left:auto;cursor:pointer;opacity:.7;">✕</span>
+  </div>
+  <div style="padding:10px;display:flex;gap:8px;align-items:flex-start;">
+    <div style="width:36px;height:36px;border-radius:50%;background:#555;flex-shrink:0;overflow:hidden;">
+      <img src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.8);" alt="">
+    </div>
+    <div>
+      <div style="font-weight:bold;color:#333;">Брат</div>
+      <div id="skype-msg-text" style="color:#555;margin-top:2px;">Помоги мне, больно</div>
+    </div>
+  </div>
+</div>
+
+<div id="bsod" style="display:none;position:fixed;inset:0;z-index:9999999;background:#0040aa;color:#fff;font-family:'Lucida Console',monospace;padding:6vw 8vw;cursor:none;">
+  <div style="font-size:clamp(14px,2vw,22px);line-height:1.8;max-width:700px;">
+    <div style="font-size:clamp(16px,3vw,32px);margin-bottom:24px;letter-spacing:2px;">:(</div>
+    <p>На вашем ПК возникла проблема, и его необходимо перезагрузить.</p>
+    <p style="margin-top:16px;">Код остановки: <strong>FRAME_47_FATAL_ERROR</strong></p>
+    <p style="margin-top:8px;">Что вызвало ошибку: <strong>BEAR5.SYS</strong></p>
+    <div style="margin-top:32px;font-size:clamp(11px,1.5vw,16px);color:rgba(255,255,255,.9);">
+      При желании вы можете найти в интернете информацию по этому коду ошибки:<br>
+      <strong>FRAME_47_FATAL_ERROR</strong><br><br>
+      <span id="bsod-pct">0</span>% завершено<br><br>
+      <span style="font-size:11px;opacity:.7;">Этот процесс невозможно завершить.</span>
+    </div>
+  </div>
+  <div onclick="closeBSOD()" style="position:absolute;bottom:20px;right:20px;font-size:10px;opacity:.3;cursor:pointer;">[ закрыть ]</div>
+</div>
+
+<div id="save-as-win" style="display:none;position:fixed;top:30%;left:50%;transform:translateX(-50%);z-index:999985;width:400px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;">
+  <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;">
+    <span>Сохранить как</span>
+    <span onclick="document.getElementById('save-as-win').style.display='none'" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
+  </div>
+  <div style="padding:14px;">
+    <div style="margin-bottom:8px;color:#000;">Имя файла:</div>
+    <input type="text" value="your_soul.exe" readonly style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#cc0000;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;margin-bottom:12px;">
+    <div style="margin-bottom:8px;color:#000;">Тип файла:</div>
+    <select style="width:100%;padding:4px;border:1px inset #888;background:#fff;color:#000;font-size:12px;margin-bottom:14px;">
+      <option>Исполняемый файл (*.exe)</option>
+      <option>Архив души (*.exe)</option>
+    </select>
+    <div style="display:flex;justify-content:flex-end;gap:6px;">
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Сохранить</button>
+      <button style="padding:4px 18px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;" onclick="document.getElementById('save-as-win').style.display='none'">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<div id="webcam-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999983;width:360px;background:#0d0d0d;border:1px solid #333;font-family:'Share Tech Mono', 'PT Mono', monospace;">
+  <div style="background:#111;border-bottom:1px solid #333;padding:4px 8px;display:flex;justify-content:space-between;font-size:10px;color:#888;letter-spacing:2px;">
+    <span>КАМЕРА — ПРЯМОЙ ЭФИР</span>
+    <span onclick="document.getElementById('webcam-modal').style.display='none'" style="cursor:pointer;color:#888;">✕</span>
+  </div>
+  <div style="position:relative;height:220px;overflow:hidden;background:#000;">
+    <canvas id="webcam-canvas" width="360" height="220" style="display:block;width:100%;height:100%;opacity:.85;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+      <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" style="width:160px;height:160px;object-fit:cover;opacity:.3;filter:grayscale(1) contrast(1.4);mix-blend-mode:screen;" alt="">
+    </div>
+    <div style="position:absolute;top:6px;left:8px;font-size:10px;color:rgba(255,0,0,.8);animation:blink 1s infinite;">● ЗАПИСЬ</div>
+    <div style="position:absolute;top:6px;right:8px;font-size:10px;color:rgba(0,255,0,.8);" id="webcam-ts">00:00:00</div>
+  </div>
+  <div style="padding:8px 10px;font-size:10px;color:#777;letter-spacing:1px;">ИСТОЧНИК: DEVICE_LOCAL_0 — ОБНАРУЖЕНО ДВИЖЕНИЕ</div>
+</div>
+
+<div class="room" id="room-0">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div class="room-title">S T A T I C</div>
+  <img class="room-image" src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif" alt="">
+  <div class="room-text">
+    Ты нашел файл.<br>
+    Мы пытались его удалить.<br>
+    Он все время возвращается.<br><br>
+    13 ноября начались помехи.<br>
+    Мой брат открыл его.<br><br>
+    <span style="color:#aaa;">Он сказал, что это просто гифка.</span><br><br>
+    <span style="font-size:11px;color:#888;letter-spacing:3px;">Посмотри на кадры.<br>Посчитай их.<br>Не останавливайся на 7.</span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-brother')">дальше</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">файл</button>
+  </div>
+</div>
+
+<div class="room" id="room-brother">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div class="room-title">Б Р А Т</div>
+  <img class="room-image" src="https://i.pinimg.com/736x/31/22/af/3122af7ac74e0cd9c63e2d70147b4887.jpg" alt="">
+  <div class="room-text">
+    Он шарил в CSS лучше меня.<br>
+    Он починил плеер, когда тот сломал всю верстку.<br>
+    Он скидывал меня порталами в кислоту «ради науки».<br><br>
+    <span style="color:#d12222;">Он смотрел на этот файл 4 минуты и 37 секунд.</span><br><br>
+    Он ничего не постил с 2 августа 2014.<br><br>
+    <span style="font-size:11px;color:#aaa;letter-spacing:3px;display:block;margin-top:18px;">Если знаете, где он,<br>оставьте сообщение в чате.<br>Используйте код: <span style="color:#ff3333;">IAMHERE</span></span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-0')">назад</button>
+    <button class="room-btn" onclick="changeRoom('room-file')">файл</button>
+  </div>
+</div>
+
+<div class="room" id="room-file">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div class="room-title">Ф А Й Л</div>
+  <img class="room-image" src="https://i.pinimg.com/736x/49/84/64/498464f32bd6aeea4252b10e198cf55a.jpg" alt="">
+  <div class="room-text">
+    <span style="color:#999;font-size:11px;letter-spacing:2px;">
+    ФАЙЛ: [УДАЛЕНО].exe<br>
+    СОЗДАН: —<br>
+    ИЗМЕНЕН: НИКОГДА<br>
+    РАЗМЕР: 0 байт / ∞ байт
+    </span><br><br>
+    Он зациклен.<br>
+    У цикла нет конца.<br><br>
+    Мы пытались посчитать кадры.<br>
+    Их оказалось слишком много.<br>
+    После 47-го кадра они перестали быть тем, чем казались.<br><br>
+    <span style="font-size:11px;color:#888;letter-spacing:4px;">
+    Где ты это нашел.<br>
+    Почему ты все еще здесь.
+    </span>
+  </div>
+  <div class="room-nav">
+    <button class="room-btn" onclick="changeRoom('room-0')">назад</button>
+    <button class="room-btn" onclick="changeRoom('room-hi')">?</button>
+  </div>
+</div>
+
+<div class="room" id="room-hi" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="text-align:center;margin-top:60px;">
+    <div style="font-family:'VT323', 'PT Mono', monospace;font-size:100px;color:#d12222;animation:blink .35s infinite;">ПРИВЕТ</div>
+    <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+         style="width:260px;border:none;display:block;margin:25px auto;filter:brightness(0.6);"
+         alt="">
+    <div style="font-size:13px;color:#ccc;margin-top:16px;letter-spacing:4px;line-height:2.5;">
+      Ты не должен был это найти.<br>
+      <span style="color:#ff3333;">Он здесь с 13 ноября.</span><br>
+      <span style="color:#999;font-size:11px;display:block;margin-top:20px;">
+        Закрой браузер.<br>Почисти кэш.<br>Не пытайся это гуглить.
+      </span>
+    </div>
+  </div>
+  <div class="room-nav" style="margin-top:35px;">
+    <button class="room-btn" onclick="closeRoom()">уйти</button>
+  </div>
+</div>
+
+<div class="room" id="room-camera" style="background:#000;">
+  <div class="cam-ui"></div>
+  <div class="cam-label" style="top:8px;left:10px;">CAM 07</div>
+  <div class="cam-label" style="top:8px;right:10px;" id="cam-ts">00:00:00</div>
+  <div class="cam-label" style="bottom:8px;left:10px;">REC ●</div>
+  <button class="room-close" onclick="closeRoom()" style="border-color:#1a3a1a;color:#2a6a2a;">[ отключиться ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:55px;width:100%;">
+    <div style="font-size:12px;color:rgba(0,200,0,.8);max-width:560px;text-align:center;line-height:2.2;letter-spacing:2px;">
+      <span style="font-size:22px;display:block;margin-bottom:14px;letter-spacing:5px;">КАМЕРА 7</span>
+      Эта камера отключена с 13 ноября 2014 года.<br>
+      Запрос на обслуживание отправлен 47 раз.<br>
+      Никто не заходит в эту комнату.<br><br>
+      <span style="color:rgba(0,180,0,.7);">Камера сама включается в 3:47 ночи.</span><br>
+      <span style="color:rgba(0,150,0,.6);font-size:11px;">На записи видно комнату, которой нет в нашем здании.</span><br><br>
+      <span style="color:rgba(180,60,60,.9);font-size:11px;">Что-то стоит в углу уже десять лет.<br>Мы не знаем, двигается ли оно, когда на него никто не смотрит.</span>
+    </div>
+    <img src="https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg"
+         style="max-width:320px;width:75%;border:1px solid rgba(0,200,0,.3);margin-top:22px;filter:brightness(0.7);"
+         alt="">
+  </div>
+</div>
+
+<div class="room" id="room-frames" style="background:#000;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="text-align:center;padding-top:30px;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div style="font-size:13px;color:#ccc;letter-spacing:4px;margin-bottom:5px;">КАДРЫ</div>
+    <div style="font-size:10px;color:#888;margin-bottom:18px;letter-spacing:2px;">кадр <span id="frame-counter">1</span></div>
+    <div class="frame-box" id="frame-box">
+      <div id="frame-content" style="font-size:13px;color:#ccc;text-align:center;padding:20px;letter-spacing:2px;line-height:2;">
+        [ кадр 1 ]<br><span style="font-size:11px;color:#aaa;">что-то бежит. ничего необычного.</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="room-btn" onclick="nextFrame(-1)">пред</button>
+      <button class="room-btn" onclick="nextFrame(1)">след кадр</button>
+    </div>
+    <div style="font-size:10px;color:#777;margin-top:14px;max-width:480px;letter-spacing:2px;">
+      После 47-го кадра они перестали быть тем, чем казались.
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-nov13" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <div class="nov-date">13 НОЯБРЯ</div>
+    <div class="nov-sub">2014</div>
+    <div style="font-size:11px;color:#aaa;letter-spacing:5px;line-height:3;margin-top:18px;">
+      В ЭТОТ ДЕНЬ САЙТ УПАЛ<br>
+      В ЭТОТ ДЕНЬ НАЧАЛИСЬ ПОМЕХИ<br>
+      В ЭТОТ ДЕНЬ ОН ОТКРЫЛ ЕГО<br>
+      <span style="color:#ff3333;">В ЭТОТ ДЕНЬ ОН ИСЧЕЗ</span><br><br>
+      <span style="font-size:10px;color:#888;">23:47:02</span>
+    </div>
+    <div style="font-size:12px;color:#999;margin-top:18px;animation:blink 4s infinite;letter-spacing:3px;">
+      Время так и не изменилось.
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-void" style="background:#000;justify-content:center;">
+  <div class="void-text">
+    ты уже очень далеко от поверхности<br><br>
+    здесь тебя никто не найдет<br><br>
+    сюда попадают удаленные файлы<br><br>
+    <span style="color:#d12222;">он тоже здесь</span><br><br>
+    <span style="font-size:10px;color:#777;letter-spacing:1px;">кликни в любом месте, чтобы уйти</span>
+  </div>
+  <div style="position:fixed;inset:0;cursor:pointer;z-index:0;" onclick="closeRoom()"></div>
+</div>
+
+<div class="room" id="room-donotread" style="background:#0c0c0c;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()" style="color:#777;border-color:#444;">[ закрыть ]</button>
+  <div class="dnr-block">
+    ПРОГРАММА БЫЛА УСТАНОВЛЕНА 31 ОКТЯБРЯ<br>
+    ОНА ПРИТВОРЯЛАСЬ ИГРОЙ<br><br>
+    БРАТ НАШЕЛ ЕЕ В ПАПКЕ SYSTEM32<br>
+    ФАЙЛ — НОЛЬ БАЙТ — БЕЗ ДАТЫ СОЗДАНИЯ<br>
+    БЕЗ АВТОРА<br><br>
+    ОН ОТКРЫЛ ЕГО 12 НОЯБРЯ В 23:47<br>
+    НА ЭКРАНЕ ЧТО-ТО БЕЖАЛО<br>
+    ОН СЧИТАЛ КАДРЫ<br>
+    ДОШЕЛ ДО 47<br><br>
+    Я СЛЫШАЛ, КАК ОН ПЕРЕСТАЛ СЧИТАТЬ<br>
+    Я НЕ ПОШЕЛ ПРОВЕРИТЬ, КАК ОН ТАМ
+  </div>
+  <div style="margin-top:16px;font-size:10px;color:#888;letter-spacing:2px;">наведи курсор, чтобы прочитать</div>
+</div>
+
+<div class="room" id="room-loop" style="background:#000;justify-content:center;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <div style="font-size:12px;color:#999;letter-spacing:5px;margin-bottom:20px;">ЦИКЛ</div>
+    <div style="font-size:12px;color:#ccc;line-height:2.4;max-width:480px;letter-spacing:2px;">
+      У гифки нет первого кадра.<br>
+      И последнего тоже.<br><br>
+      Она проигрывалась еще до того, как ты ее нашел.<br>
+      И продолжит проигрываться, когда ты уйдешь.<br><br>
+      <span style="color:#d12222;font-size:11px;">Мой брат спросил: что будет, если оставить ее включенной навсегда?<br>Я сказал, что не знаю.</span>
+    </div>
+    <img src="https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif"
+         style="width:160px;border:none;margin-top:20px;filter:brightness(0.8);" alt="">
+    <div style="font-size:11px;color:#888;margin-top:18px;animation:blink 2.5s infinite;letter-spacing:3px;">
+      кадр 1 / кадр 1 / кадр 1
+    </div>
+    <div class="room-nav" style="margin-top:22px;">
+      <button class="room-btn" onclick="changeRoom('room-frames')">кадр 47</button>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-recovery" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()">[ прервать ]</button>
+  <div style="max-width:600px;width:100%;padding-top:40px;display:flex;flex-direction:column;align-items:flex-start;">
+    <div style="font-size:12px;color:#ccc;letter-spacing:3px;margin-bottom:18px;">ВОССТАНОВЛЕНИЕ ФАЙЛОВ WINDOWS</div>
+    <div style="font-size:11px;color:#aaa;line-height:2;margin-bottom:16px;letter-spacing:1px;">
+      В ходе последнего сеанса обнаружена ошибка.<br>Попытка восстановить поврежденные файлы...
+    </div>
+    <div class="rec-log" id="rec-log"></div>
+    <div class="rec-bar-track"><div class="rec-bar-fill" id="rec-fill"></div></div>
+    <div id="rec-status" style="font-size:10px;color:#999;margin-top:8px;letter-spacing:2px;"></div>
+  </div>
+</div>
+
+<div class="room" id="room-warn" style="background:#080000;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#5a0000;color:#ff3333;">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:40px;gap:16px;">
+    <div style="font-size:11px;color:#ff4444;border:1px solid #aa0000;padding:12px 24px;letter-spacing:4px;text-align:center;animation:blink 2s infinite;">
+      ЭТОЙ СТРАНИЦЫ НЕ ДОЛЖНО БЫЛО СУЩЕСТВОВАТЬ
+    </div>
+    <div style="font-size:10px;color:#d12222;border:1px solid #8a0000;padding:10px 22px;letter-spacing:3px;text-align:center;">
+      СЕРВЕР ДОЛЖЕН БЫЛ ЭТО УДАЛИТЬ
+    </div>
+    <div style="font-size:10px;color:#b00000;border:1px solid #5a0000;padding:9px 20px;letter-spacing:3px;text-align:center;">
+      ЗАКРОЙ БРАУЗЕР И НЕ ВОЗВРАЩАЙСЯ
+    </div>
+    <img src="https://i.pinimg.com/736x/52/0a/f7/520af787fe27ed2b6b3b4cdafa3a46ec.jpg"
+         style="max-width:280px;width:65%;margin-top:18px;border:1px solid #aa0000;" alt="">
+    <div style="font-size:10px;color:#d12222;margin-top:14px;letter-spacing:3px;text-align:center;">
+      Тебя предупредили.<br>
+      <span style="color:#8a0000;font-size:9px;">Второго раза не будет.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-sadsatan">
+  <button class="room-close" onclick="closeRoom()" style="z-index:99;">[ закрыть ]</button>
+  <img src="https://i.redd.it/ltqaqg0ukm0f1.gif" alt="">
+</div>
+
+<div class="room" id="room-basement" style="background:#000;cursor:none;overflow:hidden;">
+  <div id="basement-light" style="position:fixed;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,200,.18) 0%,rgba(255,255,180,.06) 40%,transparent 70%);pointer-events:none;z-index:2;transform:translate(-50%,-50%);transition:left .06s,top .06s;"></div>
+  <div style="position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;">
+    <img src="https://i.pinimg.com/736x/23/9d/d0/239dd044afe8e6962f527432511c6bdf.jpg" style="max-width:260px;width:55%;filter:brightness(.6);margin-bottom:30px;" alt="">
+    <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.5;text-align:center;max-width:420px;">
+      В ПОДВАЛЕ ОНИ ДЕРЖАЛИ ЭТО ДО ТОГО<br>
+      <span style="color:#b00000;">КАК ОНО ПЕРЕРОСЛО ЖЕСТКИЙ ДИСК</span><br>
+      <span style="font-size:10px;color:#555;margin-top:14px;display:block;">двигай курсором, чтобы осмотреться</span>
+    </div>
+  </div>
+  <button class="room-close" onclick="closeRoom();leaveBasement()">[ закрыть ]</button>
+</div>
+
+<div class="room" id="room-mirror" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()" style="transform:scaleX(-1);">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
+    <div style="font-size:13px;color:#aaa;letter-spacing:5px;margin-bottom:20px;transform:scaleX(-1);">ЗЕРКАЛО</div>
+    <img src="https://i.pinimg.com/736x/d1/c7/00/d1c700003a19f311f870f9f220780388.jpg" style="max-width:340px;width:80%;filter:brightness(.7);margin-bottom:24px;border:1px solid #333;transform:scaleX(-1);" alt="">
+    <div style="font-size:12px;color:#888;letter-spacing:3px;line-height:2.4;text-align:center;max-width:500px;transform:scaleX(-1);">
+      Если ты читаешь это нормально,<br>
+      значит, ты смотришь не с той стороны стекла.<br>
+      <span style="color:#d12222;font-size:11px;">Отражение перестало двигаться 13 ноября.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-diary" style="background:#0a0806;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;max-width:640px;margin:0 auto;">
+    <div style="font-size:11px;color:#998877;letter-spacing:4px;margin-bottom:20px;">ЕГО ДНЕВНИК — ПОСЛЕДНЯЯ ЗАПИСЬ</div>
+    <div class="diary-text" style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;color:#bb9988;line-height:2.4;letter-spacing:1px;text-align:left;width:100%;padding:0 20px;">
+      <p class="dt-line">30 Окт — Нашел сегодня какую-то дичь в папке проекта.</p>
+      <p class="dt-line">31 Окт — Файл все еще там. Я его туда не кидал.</p>
+      <p class="dt-line">1 Ноя  — У гифки нет первого кадра. И последнего тоже.</p>
+      <p class="dt-line">7 Ноя  — Я смотрел на нее 4 минуты.</p>
+      <p class="dt-line">10 Ноя — Силуэт на 38-м кадре посмотрел на меня.</p>
+      <p class="dt-line" style="color:#e05555;">12 Ноя — Я досчитал до 46 и не могу остановиться.</p>
+      <p class="dt-line" style="color:#ff0000;">13 Ноя — Ка</p>
+    </div>
+    <div style="margin-top:20px;font-size:10px;color:#666;letter-spacing:2px;">наведи курсор, чтобы прочитать</div>
+  </div>
+</div>
+
+<div class="room" id="room-sys32" style="background:#080808;">
+  <button class="room-close" onclick="closeRoom()">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:flex-start;padding:50px 40px;width:100%;max-width:700px;margin:0 auto;">
+    <div style="font-size:11px;color:#aaa;letter-spacing:3px;margin-bottom:16px;">C:\WINDOWS\SYSTEM32\</div>
+    <div id="sys32-log" style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;color:#888;line-height:1.9;width:100%;max-height:400px;overflow-y:auto;"></div>
+    <button onclick="startSys32()" style="margin-top:20px;background:#111;border:1px solid #333;color:#ccc;padding:6px 18px;cursor:pointer;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;letter-spacing:2px;">запустить удаление</button>
+  </div>
+</div>
+
+<div class="room" id="room-autopsy" style="background:#f0f0f0;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#ccc;color:#888;background:#f0f0f0;">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:50px;width:100%;">
+    <div style="font-size:11px;color:#444;letter-spacing:6px;margin-bottom:20px;">ОТЧЕТ О ВСКРЫТИИ — ДЕЛО #321</div>
+    <img src="https://i.pinimg.com/736x/2c/ba/97/2cba970c4d3a68b82357542511e2ce56.jpg" style="max-width:320px;width:75%;filter:brightness(.85);margin-bottom:24px;border:1px solid #999;" alt="">
+    <div style="font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;color:#333;line-height:2.2;max-width:500px;text-align:center;letter-spacing:1px;">
+      ОБЪЕКТ: Brother_Primary<br>
+      ДАТА ИНЦИДЕНТА: 13 ноября 2014<br>
+      ПРИЧИНА СМЕРТИ: <span style="color:#cc0000;font-weight:bold;">ВОЗДЕЙСТВИЕ_47_КАДРА</span><br>
+      ФИЗИЧЕСКАЯ ОБОЛОЧКА: Отброшена<br>
+      ТЕКУЩИЙ СТАТУС: <span style="color:#cc0000;animation:blink 2s infinite;font-weight:bold;">АССИМИЛИРОВАН — 99.9%</span><br><br>
+      <span style="font-size:10px;color:#777;">Тело не было найдено. Тело не было потеряно.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-smile" style="background:#000;overflow:hidden;justify-content:center;align-items:center;">
+  <div id="smile-img-wrap" style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;position:absolute;inset:0;pointer-events:none;">
+    <img src="https://i.pinimg.com/originals/a3/19/d4/a319d41a812371d5297e2e1bd0a85296.gif" id="smile-img" style="width:80px;filter:brightness(.8);" alt="">
+  </div>
+  <button class="room-close" onclick="closeRoom();stopSmile()" style="z-index:10;">[ закрыть ]</button>
+  <div style="position:absolute;bottom:15%;font-size:11px;color:#777;letter-spacing:4px;pointer-events:none;z-index:5;">оно подбирается все ближе</div>
+</div>
+
+<div class="room" id="room-knock" style="background:#080808;justify-content:center;align-items:center;">
+  <button class="room-close" onclick="closeRoom();stopKnock()">[ закрыть ]</button>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;">
+    <div style="font-size:12px;color:#aaa;letter-spacing:5px;">ЧТО-ТО СНАРУЖИ</div>
+    <div style="font-size:11px;color:#d12222;letter-spacing:2px;line-height:2;">
+      Три стука.<br>Затем тишина.<br>
+      <span id="knock-count" style="color:#ff3333;font-size:10px;">А потом оно перестает спрашивать разрешения.</span>
+    </div>
+    <div id="knock-timer" style="font-family:'VT323', 'PT Mono', monospace;font-size:60px;color:#b00000;animation:blink 1s infinite;">—</div>
+    <button id="knock-btn" onclick="knockLetIn()" style="background:#111;border:1px solid #444;color:#ccc;padding:10px 28px;cursor:pointer;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:12px;letter-spacing:3px;transition:.3s;">Впусти его</button>
+    <div style="font-size:10px;color:#666;letter-spacing:2px;">или подожди, пока стук не прекратится</div>
+  </div>
+</div>
+
+<div class="room" id="room-404" style="background:#0d0000;">
+  <button class="room-close" onclick="closeRoom()" style="border-color:#b00000;color:#ff3333;">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:60px;width:100%;">
+    <div id="r404-num" style="font-family:'VT323', 'PT Mono', monospace;font-size:120px;color:#ff0000;line-height:1;animation:r404-drip 3s infinite;">404</div>
+    <div style="font-size:12px;color:#d12222;letter-spacing:4px;margin-top:10px;">СТРАНИЦА НЕ НАЙДЕНА</div>
+    <div id="r404-blood" style="width:3px;background:linear-gradient(180deg,#d12222,#8b0000,transparent);margin-top:0;animation:r404-grow 4s ease-in forwards;"></div>
+    <img src="https://i.pinimg.com/736x/95/3b/cf/953bcf75bb6bbff18f7a6d8f0f718a15.jpg" style="max-width:300px;width:70%;filter:brightness(.7);margin-top:28px;border:1px solid #b00000;" alt="">
+    <div style="font-size:11px;color:#ff5555;margin-top:18px;letter-spacing:3px;line-height:2.2;text-align:center;">
+      Страница, которую вы ищете, была удалена.<br>
+      <span style="color:#b00000;font-size:10px;">Вместе со всем остальным, что здесь находилось.</span>
+    </div>
+  </div>
+</div>
+
+<div class="room" id="room-endless" style="background:#080808;overflow-y:scroll;">
+  <button class="room-close" onclick="closeRoom()" style="position:fixed;z-index:100;">[ закрыть ]</button>
+  <div id="endless-content" style="display:flex;flex-direction:column;align-items:center;padding:60px 20px;width:100%;"></div>
+</div>
+
+<div class="room" id="room-webcam" style="background:#000;justify-content:center;align-items:center;">
+  <button class="room-close" onclick="closeRoom();stopWebcamRoom()">[ закрыть ]</button>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+    <div style="font-size:10px;color:#888;letter-spacing:4px;">DEVICE_LOCAL_0 — ЗАПУСК ТРАНСЛЯЦИИ</div>
+    <div style="position:relative;width:min(480px,90vw);height:min(320px,60vw);background:#000;overflow:hidden;border:1px solid #333;">
+      <canvas id="wcam-room-canvas" style="display:block;width:100%;height:100%;opacity:.9;"></canvas>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+        <img src="https://i.pinimg.com/736x/d9/ca/be/d9cabe75c7f82226c63e79ef086d0fec.jpg" id="wcam-face" style="width:200px;height:200px;object-fit:cover;opacity:.2;filter:contrast(1.6);mix-blend-mode:screen;transition:opacity 4s;" alt="">
+      </div>
+      <div style="position:absolute;top:8px;left:10px;font-size:10px;color:rgba(255,0,0,.8);animation:blink .9s infinite;">● ЗАПИСЬ</div>
+      <div style="position:absolute;top:8px;right:10px;font-size:10px;color:rgba(0,255,0,.8);" id="wcam-ts-room">00:00</div>
+      <div style="position:absolute;bottom:8px;left:10px;font-size:10px;color:rgba(0,255,0,.8);letter-spacing:1px;" id="wcam-status">ПОДКЛЮЧЕНИЕ...</div>
+    </div>
+    <div style="font-size:10px;color:#aaa;letter-spacing:3px;line-height:2;text-align:center;">
+      В КАДРЕ ОБНАРУЖЕНО ДВИЖЕНИЕ<br>
+      <span style="color:#d12222;">ОБЪЕКТ ЗНАЕТ О КАМЕРЕ</span>
+    </div>
+  </div>
+</div>
+
+<div id="room-trap">
+  <img src="https://i.pinimg.com/736x/8a/7c/31/8a7c3119cc8506357a3a3ff02dd79a58.jpg" alt="">
+  <span id="trap-exit" onclick="closeTrap()">уйти</span>
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lb-img" src="" alt="">
+</div>
+
+<div id="meme-popup">
+  <div class="mp-bar">
+    <span>нашел вот это</span>
+    <span class="mp-x" onclick="document.getElementById('meme-popup').style.display='none'">✕</span>
+  </div>
+  <img src="https://i.pinimg.com/736x/2c/7a/7f/2c7a7f5e28ca8d42720e1963b5fae56a.jpg" alt="">
+</div>
+
+<div id="main-wrap">
+
+  <header>
+    <div style="position:absolute;top:9px;right:12px;font-size:9px;color:#777;letter-spacing:2px;">
+      [ SYSTEM_ID: 11-13-14 ] [ NODE: #321 ]
+    </div>
+    <div style="position:absolute;top:9px;left:12px;font-size:9px;color:#777;letter-spacing:2px;">
+      [ UPTIME: <span id="uptime-count">???</span> ] [ PING: <span style="color:#d12222;">TIMEOUT</span> ]
+    </div>
+    <h1 class="site-title" id="site-title">
+      Peashooter321
+      <span class="title-ghost" aria-hidden="true">Peashooter321</span>
+    </h1>
+    <div class="site-subtitle">/// Мой Офигенный Сайт лол ///</div>
+    <div class="header-meta">
+      <span class="header-tag">🎮 ГЕЙМЕР</span>
+      <span class="header-tag">💻 КОДЕР</span>
+      <span class="header-tag">👻 ФАНАТ FNAF</span>
+      <span class="header-tag">🏒 GO HAWKS</span>
+      <span class="header-tag">🎃 2014</span>
+    </div>
+    <div class="mood-row">
+      <span>Админ: ОФФЛАЙН с 13 Ноя</span>
+      <span>|</span>
+      <span>Настроение: на измене 🐻</span>
+      <span>|</span>
+      <span>Слушаю: Linkin Park</span>
+    </div>
+  </header>
+
+  <div class="px-stripe"></div>
+
+  <div class="marquee-bar">
+    <span class="marquee-inner">
+      &nbsp;&nbsp;&nbsp;★ ДОБРО ПОЖАЛОВАТЬ НА МОЙ САЙТ ★ НЕ ВОРУЙТЕ МОЙ HTML ★ FNAF САМАЯ СТРАШНАЯ ИГРА В МИРЕ ★ HALO 3 НА ЛЕГЕНДЕ ★ MINECRAFT НАВСЕГДА ★ ШКОЛА ОТСТОЙ ★ РАСПИШИТЕСЬ В ГОСТЕВОЙ КНИГЕ ★ ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: 13 Ноября 2014 ★ ПОСЕТИТЕЛИ: 1,567 ★ СДЕЛАНО В БЛОКНОТЕ ★ ЛУЧШЕ СМОТРЕТЬ В INTERNET EXPLORER ★ GO HAWKS ★ КОГДА ВЫЙДЕТ HALF-LIFE 3?? ★ RESIDENT EVIL > ВСЁ ОСТАЛЬНОЕ ★ SAD SATAN СУЩЕСТВУЕТ ★ ©2014 PEASHOOTER321 ★&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <div class="sts">
+    <span>СТАТУС: <span class="sts-off">■ ОФФЛАЙН</span> | БЫЛ В СЕТИ: <strong>13 Ноября 2014 — 23:47</strong></span>
+    <span>ПОСЕТИТЕЛИ: <span style="color:#ccc;" id="vis-count">1,567</span></span>
+    <span>[ <span id="clock-display">--:--:--</span> ] EST</span>
+  </div>
+
+  <div class="layout-grid">
+
+    <div class="col">
+
+      <div class="panel">
+        <div class="panel-title">ПРОФИЛЬ АДМИНА</div>
+        <div class="panel-body">
+          <img class="admin-photo" id="admin-photo" src="https://i.pinimg.com/736x/2d/35/18/2d35180b0381859a6a87eff8310cb26f.jpg" alt="">
+          <table class="profile-table">
+            <tr><td>Ник:</td><td><strong>Peashooter321</strong></td></tr>
+            <tr><td>Возраст:</td><td>15 (в 2014)</td></tr>
+            <tr><td>Город:</td><td>Огайо, США</td></tr>
+            <tr><td>Школа:</td><td>Джефферсон</td></tr>
+            <tr><td>Класс:</td><td>9-й — Матеша (кое-как)</td></tr>
+            <tr><td>Статус:</td><td><span class="p-gone">[ИСЧЕЗ]</span></td></tr>
+            <tr><td>Брат:</td><td><span id="bro-status" style="color:#888;">offline</span></td></tr>
+          </table>
+          <div class="skill-bars" style="margin-top:10px;">
+            <div style="font-size:9px;color:#aaa;margin-bottom:5px;letter-spacing:2px;">СКИЛЛЫ</div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Halo 3 Легенда</span><span>91%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:91%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>HTML / CSS</span><span>67%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:67%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Counter-Strike</span><span>73%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width:73%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Resident Evil (any%)</span><span>58%</span></div>
+              <div class="skill-track"><div class="skill-fill bad" style="width:58%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label"><span>Не орать в FNAF</span><span>11%</span></div>
+              <div class="skill-track"><div class="skill-fill bad" style="width:11%;"></div></div>
+            </div>
+          </div>
+          <div class="interests-grid">
+            <div class="int-item">🎮 Xbox 360</div>
+            <div class="int-item">⛏️ Minecraft</div>
+            <div class="int-item">👻 FNAF</div>
+            <div class="int-item">🏒 Хоккей</div>
+            <div class="int-item">🎵 Linkin Park</div>
+            <div class="int-item">🧟 Resident Evil</div>
+            <div class="int-item">🔫 Counter-Strike</div>
+            <div class="int-item">🌀 Portal 2</div>
+          </div>
+          <div class="loc-box" style="margin-top:7px;">
+            📍 Колумбус, Огайо<br>
+            <span style="font-size:9px;">Go Blackhawks 🏒 · Лето 2014</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">НАВИГАЦИЯ</div>
+        <ul class="nav-list">
+          <li><a href="#" onclick="return false;">🏠 Главная</a></li>
+          <li><a href="#blog-section">📝 Блог обновлений</a></li>
+          <li><a href="#forum-section">💬 Форум</a></li>
+          <li><a href="#gallery-section">🖼️ Галерея</a></li>
+          <li><a href="#guestbook-section">✍️ Гостевая книга</a></li>
+          <li><a href="#" onclick="openRoom('room-0');return false;" class="nav-del">📁 ФАЙЛЫ СЕРВЕРА</a></li>
+          <li><a href="#" onclick="return false;" class="nav-ano">— [ПОВРЕЖДЕННАЯ ЗАПИСЬ] —</a></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">МОИ ДОКУМЕНТЫ</div>
+        <div class="panel-body" style="padding:0;">
+          <div class="fex">
+            <div class="fex-bar">C:\Users\Peashooter\Desktop\</div>
+            <div class="fex-item">📄 halo3_clips_final.wmv</div>
+            <div class="fex-item">📄 cs_server_config.cfg</div>
+            <div class="fex-item">📄 re4_merchant_quotes.txt</div>
+            <div class="fex-item">📄 portal2_speedrun.wmv</div>
+            <div class="fex-item">📁 бэкап_сайта_авг2014\</div>
+            <div class="fex-item">📄 half_life_notes.doc</div>
+            <div class="fex-item fex-bad" onclick="openRoom('room-0')">⚠️ [НЕЛЬЗЯ УДАЛИТЬ] [ОТКАЗ В ДОСТУПЕ]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">СЕЙЧАС ИГРАЕТ</div>
+        <div class="panel-body" style="padding:8px;">
+          <div class="mplayer">
+            <div class="m-now" id="now-track">Linkin Park — Numb</div>
+            <div class="m-sub" id="now-album">Альбом: Meteora (2003)</div>
+            <div class="m-controls">
+              <button class="m-btn" onclick="prevTrack()">⏮</button>
+              <button class="m-btn" id="play-btn" onclick="togglePlay()">▶</button>
+              <button class="m-btn" onclick="nextTrack()">⏭</button>
+              <span class="m-time" id="music-time">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="b5-trigger" onclick="unleashB5()">
+        <div class="b5-cap">мой любимый перс из игры :)</div>
+        <img class="b5-img" src="https://i.pinimg.com/736x/59/9f/1b/599f1bbc3fe2882a3ece6930bd75ba75.jpg" alt="">
+        <div style="font-size:10px;color:#aaa;margin-top:4px;letter-spacing:1px;">Freddy!! 🐻</div>
+      </div>
+
+      <div class="b5-meter">
+        <div class="b5-m-head">
+          <span>АКТИВНОСТЬ СЕРВЕРА</span>
+          <span id="m-pct">0%</span>
+        </div>
+        <div class="b5-m-track"><div class="b5-m-fill" id="m-fill"></div></div>
+        <div class="b5-m-warn">статус: <span id="m-warn">ожидание</span></div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <div class="panel" id="blog-section">
+        <div class="panel-title">UPDATES_LOG.TXT — <span style="opacity:.5;margin-left:3px;font-size:9px;">ЗАПИСЕЙ: 18</span></div>
+        <div class="panel-body">
+          <div class="blog-scroll" id="blog-scroll">
+
+            <div class="blog-entry">
+              <span class="blog-date">1 Июня, 2014</span>
+              <div class="blog-text">
+                ДА!! Сегодня начинаются летние каникулы!! 🎉 Будем с братом делать лучший сайт на свете. В этом году на информатике учили HTML, я еще и CSS немного ковырял. В планах заливать сюда свои клипы по Halo, обзоры на игры и, может, список серверов Minecraft. А еще запилю обзор на RE4, потому что прошел ее в первый раз и у меня просто челюсть на полу.
+                <div class="hl-box" style="margin-top:7px;">Также — Финал Кубка Стэнли!! Блэкхокс против Кингз. Тот гол в овертайме — самое жесткое, что я видел.</div>
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">15 Июня, 2014</span>
+              <div class="blog-text">
+                Добавил музыкальный плеер, но он СЛОМАЛ всю верстку. Сайдбар тупо исчез. Я 3 часа пытался это пофиксить. Брат разобрался минут за 10. Он шарит в CSS лучше меня, бесит нереально.<br><br>
+                Прямо сейчас пытаемся пройти Halo 3 на Легенде в коопе. Не можем пройти Ковчег. Из-за уровней с Потопом хочется выбросить геймпад в окно.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">28 Июня, 2014</span>
+              <div class="blog-text">
+                До 4 утра зависали в Майнкрафте. Построили огромный замок на сервере — ушла где-то неделя. Брат добавил внутрь рабочие порталы через триггеры в стиле Half-Life. Он помешан на играх Valve.<br><br>
+                Вчера ночью видел что-то странное на границе прорисовки. Спросил брата, не поставил ли он туда скин Стива. Говорит, нет. Наверное, просто пранк с Херобрином.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">4 Июля, 2014</span>
+              <div class="blog-text">
+                С днем независимости!! 🇺🇸 Прошел Half-Life 2 во второй раз. Концовка все еще пробирает. Брат говорит, мне надо пройти первую халфу. Ведет себя так, будто это вопрос жизни и смерти.<br><br>
+                Начал смотреть летсплей по Outlast на ютубе. Эта игра реально пугает. Кто вообще в здравом уме пойдет в такую психушку.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">20 Июля, 2014</span>
+              <div class="blog-text">
+                Купили Portal 2 в Стиме за 5 баксов. Кооп — это угар. Брат специально постоянно скидывает меня в кислоту. «Ради науки», говорит.<br><br>
+                А еще мы прошли Halo 3 на Легенде!! Мы сделали это. Это пик гейминга. Ничто это не переплюнет.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">2 Августа, 2014</span>
+              <div class="blog-text">
+                (Хэй, это Брат. Мелкий разрешил мне написать тут).<br><br>
+                Оптимизировал картинки на сайте. Пофиксил баг с боковой панелью. Не благодари, мелкий.<br><br>
+                Кстати: мой брат вообще не умеет стрелять в CS:GO. Контроль спрея просто ужасный. Он до сих пор думает, что если присесть, будет лучше.
+              </div>
+              <div class="blog-author">— Брат [гостевой пост]</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">15 Августа, 2014</span>
+              <div class="blog-text">
+                Народ. НАРОД. Вы видели трейлер Five Nights at Freddy's? Аниматроники оживают и пытаются тебя убить. Выглядит жестко. Я взял брата на слабо поиграть в это.<br><br>
+                Он сказал «изи». Он еще пожалеет.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">10 Сентября, 2014</span>
+              <div class="blog-text">
+                Мы поиграли в FNAF. Я заорал в 2 ночи, прибежала мама, думала, я поранился. Брат делал вид, что ему не страшно, но у него буквально тряслись руки. У меня есть видео-доказательство.<br><br>
+                Скример Бонни — самое худшее, что когда-либо добавляли в игры.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">12 Октября, 2014</span>
+              <div class="blog-text">
+                Что-то странное творится с файлами сайта. Некоторые картинки грузятся битыми — не все, просто рандомные. Иногда показывают помехи или вообще чужие фотки.<br><br>
+                Брат говорит, это скорее всего проблема с кэшем сервера. Наверное, он прав. Но это началось на той же неделе, когда мы добавили форум.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">31 Октября, 2014</span>
+              <div class="blog-text">
+                Счастливого Хэллоуина 🎃. Сделал сайт еще темнее. Выпросил полноразмерный Сникерс у соседей. Оно того стоило.<br><br>
+                Начал проходить Resident Evil 2 в первый раз. От шагов Мистера Икс у меня реально сердце останавливается.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">5 Ноября, 2014</span>
+              <div class="blog-text">
+                Окей, это странно. Я нашел файл в папке нашего проекта, который я туда НЕ КИДАЛ. Спросил брата, он говорит, тоже не кидал. Это гифка, где кто-то бежит. Файл весит 0 байт, но все равно воспроизводится. Я не могу его удалить — просто выдает ошибку. Пробовал через командную строку. «Отказано в доступе».<br><br>
+                Брат говорит, это наверное какой-то временный файл от нашей FTP-проги. Звучит логично. Да?
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry">
+              <span class="blog-date">10 Ноября, 2014</span>
+              <div class="blog-text">
+                Что-то разбудило меня в 3 ночи. Комп сам включился. Я всегда его выключаю. Но он работал, открылся рабочий стол и на весь экран крутилась эта гифка с помехами. Я ее узнал.<br><br>
+                Скоро я удалю этот сайт. Брат думает, что у меня паранойя.
+              </div>
+              <div class="blog-author">— Peashooter321</div>
+            </div>
+
+            <div class="blog-entry dark">
+              <span class="blog-date">13 Ноября, 2014 — 23:34</span>
+              <div class="blog-text">
+                Мне удалось зайти в админку сайта. Мой брат пропал 3 дня назад. Не сбежал из дома. Его просто не оказалось утром в комнате. Выглядит так, будто он вышел попить воды. Телефон на столе. Обувь у двери.<br><br>
+                Последнее, что он делал за компом — открыл этот файл. Я знаю, потому что он был открыт, когда я проснулся.<br><br>
+                <strong>Если увидите это — бегущий силуэт — закройте браузер. Не считайте кадры. Не дайте ему проиграться больше одного раза.</strong><br><br>
+                Я оставляю сайт работать, чтобы кто-нибудь мог найти это сообщение.<br><br>
+                <em style="font-size:10px;color:#aaa;">А еще зацените мои крутые стикеры лол. Он бы хотел, чтобы я оставил что-то веселое.</em>
+              </div>
+              <div class="blog-author" style="color:#d12222;">— Peashooter321 [ПОСЛЕДНИЙ ПОСТ]</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">СТИКЕРЫ — <span style="font-size:9px;opacity:.5;margin-left:3px;">ТАЩИ ИХ КУДА ХОЧЕШЬ</span></div>
+        <div class="sticker-wall" id="sticker-wall">
+          <div class="sticker" style="top:18px;left:25px;transform:rotate(-6deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/9e/87/21/9e87213a690cefe8b82c12315a40ec33.jpg" alt="">
+            <div class="st-txt">ГИР — мое тотемное животное</div>
+          </div>
+          <div class="sticker" style="top:80px;right:40px;transform:rotate(9deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/a7/69/07/a76907637884cf0d4ef4cdf340c970df.jpg" alt="">
+            <div class="st-txt">ПИУ ПИУ 🔫</div>
+          </div>
+          <div class="sticker" style="bottom:30px;left:70px;transform:rotate(-3deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/b7/66/f0/b766f06c9ea6f43e38cbacaf6f7b8786.jpg" alt="">
+            <div class="st-txt">Реальные генгста часы</div>
+          </div>
+          <div class="sticker" style="top:25px;right:125px;transform:rotate(4deg);" onmousedown="dragSticker(event,this)" id="sticker-b5" onclick="maybeRoom(this)">
+            <img src="https://i.pinimg.com/736x/01/ad/07/01ad07b64ae1d927ea06d4e7dae69b37.jpg" alt="">
+            <div class="st-txt">четкая пикча, брат нашел</div>
+          </div>
+          <div class="sticker" style="bottom:25px;right:50px;transform:rotate(-7deg);" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/25/08/34/250834a80a634f90f06a8e186f4354b3.jpg" alt="">
+            <div class="st-txt">HALO ФОРЕВЕР</div>
+          </div>
+          <div class="sticker" style="top:150px;left:160px;transform:rotate(2deg);max-width:145px;" onmousedown="dragSticker(event,this)">
+            <img src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="">
+            <div class="st-txt">лол нашел этот твит</div>
+          </div>
+          <div class="sw-hint">[ тяни чтобы двигать · кликни на медведя 3 раза ]</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">ARCHIVED_FOOTAGE — <span style="font-family:'VT323', 'PT Mono', monospace;font-size:14px;opacity:.4;margin-left:3px;">КАНАЛ 321</span></div>
+        <div class="panel-body">
+          <div class="tv-outer">
+            <div class="tv-bezel">TRINITRON MODEL T-321 · 1999</div>
+            <div class="tv-screen">
+              <iframe width="100%" height="285"
+                src="https://www.youtube.com/embed/ApRbFxiTWh0?rel=0&color=white&modestbranding=1"
+                title="Archived footage" frameborder="0"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <div class="tv-btm">
+              <div style="width:12px;height:12px;background:#0d0d0d;border:1px solid #111;border-radius:50%;cursor:pointer;"></div>
+              <div class="tv-lbl">CH-321 · PEASHOOTER_TV</div>
+              <div class="tv-led"></div>
+            </div>
+          </div>
+          <div style="font-size:10px;color:#888;text-align:center;letter-spacing:2px;margin-top:-5px;">
+            "скоро выложу мой монтаж по halo. брат постоянно теряет файл с видео."
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="forum-section">
+        <div class="panel-title">КОМЬЮНИТИ ФОРУМ — <span style="font-size:9px;opacity:.4;margin-left:3px;">ОБЩЕЕ / ИГРЫ</span></div>
+        <div class="panel-body" style="padding:0 10px 10px;">
+          <div class="f-header">
+            <span>ПОЛЬЗОВАТЕЛЬ</span><span>СООБЩЕНИЕ</span><span style="text-align:right;">ДАТА</span>
+          </div>
+          <div class="forum-box" id="forum-feed"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <div class="panel">
+        <div class="panel-title">ЧАТ — <span style="font-size:9px;opacity:.4;margin-left:3px;">ОНЛАЙН</span></div>
+        <div class="panel-body">
+          <div class="chat-msgs" id="chat-box"></div>
+          <div class="chat-form">
+            <input class="c-name-in" id="chat-name" placeholder="Твой ник" maxlength="20">
+            <input class="c-msg-in" id="chat-input" placeholder="Напиши что-нибудь..." maxlength="200" onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="c-send" onclick="sendChat()">ОТПРАВИТЬ</button>
+          </div>
+          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">
+            Сообщения сохраняются локально · Попробуй написать IAMHERE
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="gallery-section">
+        <div class="panel-title">ГАЛЕРЕЯ</div>
+        <div class="panel-body">
+          <div class="gal-grid">
+            <img src="https://i.pinimg.com/1200x/d1/0c/a0/d10ca07e0e999310b0cb0802b64a988a.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/74/23/1e/74231ebe6286e8a2446404b0a21ad939.jpg"  alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/86/42/b1/8642b13623d403cc9067c2203bd10f1c.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/11/67/8a/11678ab9aec2471e0238006f783e3ba8.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/20/39/22/2039222143448c04ac49ee57ff4476e8.jpg"   alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/33/8b/1b/338b1be802b289272ef976f9681ce0c2.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/736x/56/d6/80/56d6805b5465618d29b593d16a55da74.jpg"  alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/66/83/d1/6683d1e182387a582e0502b5bef83814.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/7a/5b/28/7a5b281cadc358131b59aeabbfb9fbcc.jpg" alt="" onclick="openLb(this.src)">
+            <img src="https://i.pinimg.com/1200x/bf/63/6f/bf636ff2b10a3496da37a98f61c301bf.jpg" alt="" onclick="openLb(this.src)">
+          </div>
+          <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;letter-spacing:2px;">
+            Одна из этих картинок была подменена.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="guestbook-section">
+        <div class="panel-title">ГОСТЕВАЯ КНИГА</div>
+        <div class="panel-body">
+          <div class="gb-entries" id="gb-entries"></div>
+          <input class="cf" id="gb-name" placeholder="Твой ник" maxlength="30">
+          <textarea class="cf" id="gb-msg" placeholder="Оставь сообщение для Peashooter321..." rows="3" maxlength="400"></textarea>
+          <button class="c-send" style="width:100%;margin-top:1px;" onclick="submitGb()">ПОДПИСАТЬ</button>
+          <div style="font-size:9px;color:#777;margin-top:4px;letter-spacing:1px;">Записи сохраняются локально</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">ОБ ЭТОМ САЙТЕ</div>
+        <div class="panel-body" style="font-size:11px;color:#ccc;line-height:2;">
+          Сайт запущен: <strong>1 Июня, 2014</strong><br>
+          Последнее обновление: <strong style="color:#d12222;">13 Ноября, 2014</strong><br>
+          Сделано в: <strong>Notepad++, WinXP</strong><br>
+          Лучше смотреть в: <strong>IE 8+</strong><br><br>
+          <span style="font-size:9px;font-style:italic;color:#999;">
+            "Запрещено копировать любую часть этого сайта.<br>
+            Кроме CSS. CSS можете брать.<br>
+            Его все равно в основном брат писал."
+          </span>
+          <br><br>
+          <div class="sec-msg" onclick="revealSecret(this)">••••••••••••••••••••••••••</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">КРУТЫЕ ССЫЛКИ</div>
+        <div class="panel-body" style="font-size:11px;line-height:2.4;color:#ccc;">
+          <a href="#" onclick="return false;">🎮 Newgrounds</a><br>
+          <a href="#" onclick="return false;">📺 Канал ПьюДиПая</a><br>
+          <a href="#" onclick="return false;">🎮 Scottgames.com (FNAF)</a><br>
+          <a href="#" onclick="return false;" style="text-decoration:line-through;color:#777;">📄 Портфолио Брата</a>
+          <span style="font-size:9px;color:#d12222;"> [404]</span><br>
+          <a href="#" onclick="openRoom('room-0');return false;" style="color:#888;font-size:10px;">
+            📁 ?????_архив.zip
+          </a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+  <footer>
+    <div class="px-stripe" style="margin-bottom:13px;"></div>
+    © 2014 Peashooter321 &amp;
+    <span class="f-br" onclick="openRoom('room-brother')">Brother</span>. Сделано в Notepad++.
+    Сайт последний раз был активен: 13 Ноя, 2014.
+    <div class="web-badges">
+      <span class="wb">СДЕЛАНО В NOTEPAD</span>
+      <span class="wb">IE 8+</span>
+      <span class="wb">800×600</span>
+      <span class="wb">БЕЗ ФРЕЙМОВ</span>
+      <span class="wb" style="cursor:pointer;" onclick="revealReplaceBtn()" title="">v1.0</span>
+    </div>
+    <div style="font-size:9px;color:#666;letter-spacing:1px;margin-top:6px;">
+      Если ты читаешь это, попробуй написать <span style="color:#aaa;">IAMHERE</span> в чате.
+    </div>
+  </footer>
+
+</div>
+<script>
+// ============================================================
+// CONSTANTS & VARIABLES
+// ============================================================
+const B5_GIF   = "https://i.pinimg.com/originals/11/5b/9d/115b9d00f628a8976bf96c9b7e273e67.gif";
+const HORRORS  = [
+  "https://i.pinimg.com/736x/69/4f/b2/694fb2c4a65ba53b669a693ce2547a82.jpg",
+  "https://i.pinimg.com/736x/5c/b4/57/5cb4576a2c432ecf1403c7dfb739252a.jpg",
+  "https://i.pinimg.com/736x/0e/e1/3f/0ee13f4f44f66410882c94d1be59f97d.jpg",
+  "https://i.pinimg.com/736x/52/0a/f7/520af787fe27ed2b6b3b4cdafa3a46ec.jpg",
+  "https://i.pinimg.com/736x/c2/73/b2/c273b25d21c6c273c3e7cd76ed8c3128.jpg",
+  "https://i.pinimg.com/736x/81/31/ec/8131ecf49fcd8b1f8f7bd4c940e9d03f.jpg",
+  "https://i.pinimg.com/736x/14/cb/64/14cb64a1461e7b9833734a596654e3fd.jpg",
+  "https://i.pinimg.com/736x/5f/d2/ba/5fd2baa2304b4a636f0e1973bd39e396.jpg",
+];
+const B5MSGS = [
+  "НЕ СМОТРИ В КАМЕРУ 7","ОН ОТКРЫЛ ЕГО В 3:47 НОЧИ","Я ВСЕ ЕЩЕ В ПАПКЕ",
+  "ТЫ НЕ ДОЛЖЕН БЫЛ ЭТО НАХОДИТЬ","47 КАДР ПОКАЗЫВАЕТ КОЕ-ЧТО ДРУГОЕ",
+  "У ЦИКЛА НЕТ КОНЦА","СИЛУЭТ БЕЖИТ К ТЕБЕ",
+  "Я В ТВОИХ ДОКУМЕНТАХ ТОЖЕ","13 НОЯБРЯ — ТОГДА ВСЕ НАЧАЛОСЬ",
+  "ОН СКАЗАЛ ЭТО ПРОСТО ГИФКА","ПОМЕХИ ЭТО НЕ ПОМЕХИ",
+  "НЕ СЧИТАЙ КАДРЫ","Я БЫЛ ЗДЕСЬ ДО ТОГО КАК ПОЯВИЛАСЬ ПАПКА",
+  "ПРИВЕТ","Я ВИДЕЛ КАК ТЫ ЭТО ПРОЧИТАЛ",
+];
+
+let b5Mode = false;
+let b5Pct  = 0;
+let s5Clicks = 0;
+let playing  = false;
+let trackIdx = 0;
+let mInterval= null;
+let mSecs    = 0;
+let frameIdx = 0;
+let trapOpen = false;
+let recStarted = false;
+let textReplaced = false;
+
+const tracks = [
+  {n:"Linkin Park — Numb",               a:"Meteora (2003)"},
+  {n:"Evanescence — Bring Me to Life",   a:"Fallen (2003)"},
+  {n:"My Chemical Romance — Welcome to the Black Parade",a:"The Black Parade (2006)"},
+  {n:"Skillet — Monster",               a:"Awake (2009)"},
+  {n:"Half-Life OST — Apprehension",    a:"Half-Life (1998)"},
+  {n:"Resident Evil 4 — Serenity",      a:"RE4 OST (2005)"},
+  {n:"[ПОВРЕЖДЕНО] — ???",               a:"???.exe"},
+];
+
+// ============================================================
+// INIT
+// ============================================================
+function initSite(){
+  const b=document.getElementById('start-btn');
+  if(b) b.remove();
+  try{const a=document.getElementById('amb');a.volume=0.3;a.play().catch(()=>{});}catch(e){}
+  startClock(); startUptime(); startMeter(); scheduleEvents();
+}
+
+window.addEventListener('load',()=>{
+  buildForum(); loadChat(); loadGb();
+  startClock(); startUptime(); updateVis(); startMeter(); scheduleEvents();
+});
+
+// ============================================================
+// SECRET ROOM TRIGGERS (ИЗОЛИРОВАННЫЕ ВХОДЫ)
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const titleGhost = document.querySelector('.title-ghost');
+  if (titleGhost) {
+    titleGhost.style.cursor = 'pointer';
+    titleGhost.addEventListener('click', () => openRoom('room-basement'));
+  }
+
+  const albumText = document.getElementById('now-album');
+  if (albumText) {
+    albumText.style.cursor = 'pointer';
+    albumText.addEventListener('click', () => openRoom('room-mirror'));
+  }
+
+  const navList = document.querySelector('.nav-list');
+  if (navList) {
+    const hiddenLi = document.createElement('li');
+    hiddenLi.innerHTML = '<a href="#" onclick="openRoom(\'room-diary\'); return false;" style="opacity:0.2; border:none;">—</a>';
+    navList.appendChild(hiddenLi);
+  }
+
+  const fexItems = document.querySelectorAll('.fex-item');
+  fexItems.forEach(item => {
+    if (item.textContent.includes('half_life_notes.doc')) {
+      item.addEventListener('click', () => openRoom('room-sys32'));
+    }
+  });
+
+  const badges = document.querySelectorAll('.wb');
+  badges.forEach(badge => {
+    if (badge.textContent.includes('800×600') || badge.textContent.includes('800x600')) {
+      badge.style.cursor = 'pointer';
+      badge.addEventListener('click', () => openRoom('room-autopsy'));
+    }
+  });
+
+  const adminPhoto = document.getElementById('admin-photo');
+  let photoClicks = 0;
+  let photoClickTimer = null;
+  if (adminPhoto) {
+    adminPhoto.style.cursor = 'pointer';
+    adminPhoto.addEventListener('click', () => {
+      photoClicks++;
+      clearTimeout(photoClickTimer);
+      if (photoClicks >= 5) {
+        photoClicks = 0;
+        openRoom('room-smile');
+      }
+      photoClickTimer = setTimeout(() => { photoClicks = 0; }, 1500); 
+    });
+  }
+
+  const memePopup = document.getElementById('meme-popup');
+  if (memePopup) {
+    const memeImg = memePopup.querySelector('img');
+    if (memeImg) {
+      memeImg.style.cursor = 'pointer';
+      memeImg.addEventListener('click', () => openRoom('room-knock'));
+    }
+  }
+
+  const links = document.querySelectorAll('#main-wrap a');
+  links.forEach(link => {
+    if (link.textContent.includes("Портфолио Брата")) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        openRoom('room-404');
+      });
+    }
+  });
+
+  const smallTexts = document.querySelectorAll('div[style*="font-size:9px"], div[style*="font-size: 9px"]');
+  smallTexts.forEach(txt => {
+    if (txt.textContent.includes('Записи сохраняются локально')) {
+      txt.style.cursor = 'pointer';
+      txt.addEventListener('click', () => openRoom('room-endless'));
+    }
+  });
+
+  const tvLed = document.querySelector('.tv-led');
+  if (tvLed) {
+    tvLed.style.cursor = 'pointer';
+    tvLed.addEventListener('click', () => openRoom('room-webcam'));
+  }
+});
+
+// ============================================================
+// CLOCK & UPTIME & VISITOR COUNT
+// ============================================================
+function startClock(){
+  const tick=()=>{
+    const n=new Date(),el=document.getElementById('clock-display');
+    if(el) el.textContent=pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+  };
+  tick(); setInterval(tick,1000);
+}
+function pad(n){return String(n).padStart(2,'0');}
+
+function startUptime(){ updateUptime(); setInterval(updateUptime,60000); }
+function updateUptime(){
+  const s=new Date('2014-11-13T23:47:00');
+  const d=Math.floor((Date.now()-s)/86400000);
+  const el=document.getElementById('uptime-count');
+  if(el) el.textContent=d.toLocaleString()+' дн.';
+  const dg=document.getElementById('days-gone');
+  if(dg) dg.textContent=d.toLocaleString()+' дней';
+}
+
+function updateVis(){
+  let v=parseInt(localStorage.getItem('vis_c')||'1567');
+  v+=Math.floor(Math.random()*3);
+  localStorage.setItem('vis_c',v);
+  const el=document.getElementById('vis-count');
+  if(el) el.textContent=v.toLocaleString();
+}
+
+// ============================================================
+// FORUM & TWEET LOGIC (SAD SATAN)
+// ============================================================
+function buildForum(){
+  const feed=document.getElementById('forum-feed');
+  if(!feed) return;
+  const users=[
+    {n:"Peashooter321",c:"#b06020"}, {n:"xX_Slayer_xX",  c:"#802020"},
+    {n:"GamerGirl14",   c:"#804060"}, {n:"NoobMaster69",  c:"#206040"},
+    {n:"ShadowHunter",  c:"#404070"}, {n:"MinecraftSteve",c:"#206060"},
+    {n:"EmoGirl99",     c:"#484848"}, {n:"420gamer",      c:"#486020"},
+    {n:"ItzTyler",      c:"#806020"},
+  ];
+  const ranks=["Админ","Старожил","Участник","Новичок","Участник","Участник","Участник","Участник","Участник"];
+  const posts=[
+    {u:0,t:"Чуваки, кто сделал домашку по матеше? Миссис Джонсон собирает ее первым уроком.",d:"4 Окт, 2014"},
+    {u:1,t:"Не, бро, я до 2 ночи катал в CS:GO.",d:"4 Окт, 2014"},
+    {u:3,t:"лол ну вы и НУБЫ. Я всё сделал на классном часу. Изи.",d:"4 Окт, 2014"},
+    {u:2,t:"Кто-нибудь видел трейлер FNAF 2?? Игрушечная Чика просто ЖУТЬ. Зачем она снимает клюв???",d:"7 Окт, 2014"},
+    {u:0,t:"ДА? А Марионетка вообще на другом уровне. Лор становится супер глубоким — фиолетовый парень, пропавшие дети.",d:"7 Окт, 2014"},
+    {u:4,t:"Мой дядя работает в Valve, говорит у них уже есть реальный прототип HL3 на Source 2.",d:"8 Окт, 2014"},
+    {u:1,t:"Врешь лол. Твой дядя работает в DNS.",d:"8 Окт, 2014"},
+    {u:5,t:"Я поднял сервак в Майнкрафте! IP: 192.168.0.1 порт 25565. Заходите, построим целый город.",d:"10 Окт, 2014"},
+    {u:6,t:"Школа меня убивает. 3 контрольные на этой неделе. Родители забрали Xbox. Ненавижу всё.",d:"11 Окт, 2014"},
+    {u:7,t:"Resident Evil 2 — лучшая игра в истории. Мистер Икс снится мне в кошмарах.",d:"14 Окт, 2014"},
+    {u:3,t:"Мод на голос Торговца из RE4 — единственная причина жить. WHADDAYA BUYIN??",d:"14 Окт, 2014"},
+    {u:8,t:"Go Blackhawks!! Тот гол в овертайме вчера был самым офигенным за весь год.",d:"16 Окт, 2014"},
+    {u:0,t:"HALO MCC ВЫХОДИТ. ВСЕ ЧАСТИ HALO НА ОДНОМ ДИСКЕ. 11 НОЯБРЯ. Я не буду спать неделю.",d:"20 Окт, 2014"},
+    {u:1,t:"Я уже сделал предзаказ. Будем играть в коопе в первый же день, без отмазок.",d:"20 Окт, 2014"},
+    {u:2,t:"мы можем поговорить про Sad Satan на секунду?? Та игра, которую кто-то нашел в даркнете. И эти аудио задом наперед.",d:"22 Окт, 2014",tweet:true},
+    {u:4,t:"Она реальна. Фигура в коридоре не двигается, пока ты на нее смотришь.",d:"22 Окт, 2014"},
+    {u:6,t:"Мне сегодня ночью приснился кошмар с Бонни. И еще про какой-то бегущий силуэт, который я не могла остановить.",d:"24 Окт, 2014"},
+    {u:7,t:"С моим компом творится дичь. Помехи на полсекунды, потом всё норм. Сегодня было 4 раза.",d:"1 Ноя, 2014"},
+    {u:0,t:"У меня тоже. Думал, дело в мониторе. Когда у тебя это началось?",d:"1 Ноя, 2014"},
+    {u:7,t:"Где-то 26 октября.",d:"1 Ноя, 2014"},
+    {u:0,t:"...у меня так же. Именно тогда я загрузил обновление на сайт.",d:"2 Ноя, 2014"},
+    {u:2,t:"ребят, по ссылке на форуме мне показало какую-то гифку с бегущим силуэтом, и мой курсор сам двигался секунды две",d:"4 Ноя, 2014"},
+    {u:1,t:"это ратник (RAT). кто-то скинул тебе вирус.",d:"4 Ноя, 2014"},
+    {u:0,t:"Кто загрузил этот файл на сервер? Эту гифку. Я не могу удалить ее через FTP.",d:"5 Ноя, 2014"},
+    {u:4,t:"Я уже видел эту гифку. Она называется bear5. Старая крипипаста из 2009-го.",d:"6 Ноя, 2014"},
+    {u:0,t:"Оно смотрит на меня. Не картинка — я не знаю, как это объяснить. Попробую удалить еще раз вечером.",d:"7 Ноя, 2014"},
+    {u:1,t:"бро, это просто гифка на твоем компе. Ты сам себя накручиваешь.",d:"7 Ноя, 2014"},
+    {u:0,t:"ПОМОГИТЕ",d:"13 Ноя, 2014"},
+  ];
+
+  posts.forEach(p=>{
+    const u=users[p.u];
+    const div=document.createElement('div');
+    div.className='post-row';
+    const pc=Math.floor(Math.random()*400)+10;
+    let body=`<span>${p.t}</span>`;
+    
+    // ИНТЕГРАЦИЯ SAD SATAN В ТВИТ
+    if(p.tweet){
+      body=`<span>${p.t}</span>
+      <div class="tweet-box" style="margin-top:7px;">
+        <div class="tw-head">
+          <div style="width:32px;height:32px;border-radius:50%;background:#111;border:1px solid #1c1c1c;display:flex;align-items:center;justify-content:center;font-size:14px;">👤</div>
+          <div><div class="tw-name">GamerGirl14</div><div class="tw-handle">@gamer_girl_14</div></div>
+        </div>
+        <div style="font-size:11px;color:#aaa;">только что нашла футажи этой игры "sad satan". уровень с коридором это просто жесть. кто это сделал</div>
+        <img class="tw-img" src="https://i.pinimg.com/736x/04/4d/db/044ddb1ab9d509ccbde140e496e9c66a.jpg" alt="" style="cursor:pointer;transition:filter 0.3s;" onmouseover="this.style.filter='brightness(1.3)'" onmouseout="this.style.filter=''" onclick="openRoom('room-sadsatan')">
+        <div class="tw-foot">22 Окт, 2014 · Twitter for Windows</div>
+      </div>`;
+    }
+    
+    div.innerHTML=`
+      <div class="post-author-col">
+        <div class="p-name">${u.n}</div>
+        <div class="p-av" style="background:${u.c};filter:brightness(0.85);">${u.n[0]}</div>
+        <div class="p-rank">${ranks[p.u]}</div>
+        <div class="p-count">Постов: ${pc}</div>
+      </div>
+      <div class="post-body-col">
+        <span class="p-when">Опубликовано: ${p.d}</span>
+        ${body}
+        <div class="p-sig">Отправлено с Windows XP · IE 8</div>
+      </div>`;
+    feed.appendChild(div);
+  });
+
+  ["Я ВСЕ ЕЩЕ ЗДЕСЬ","ЗАКРОЙ ВКЛАДКУ","ПРИВЕТ"].forEach(t=>{
+    const div=document.createElement('div');
+    div.className='post-row bear-post';
+    div.innerHTML=`
+      <div class="post-author-col">
+        <div class="p-name" style="color:#a00000;">????</div>
+        <img class="p-av-img" src="${B5_GIF}" alt="">
+        <div class="p-count" style="color:#a00000;">Постов: ∞</div>
+      </div>
+      <div class="post-body-col" style="color:#8a1a1a;">
+        <span class="p-when" style="color:#a00000;">Опубликовано: СЕЙЧАС</span>
+        <span>${t}</span>
+        <div class="p-sig" style="color:#a00000;">Отправлено с неизвестного устройства</div>
+      </div>`;
+    feed.appendChild(div);
+  });
+  setTimeout(()=>{ feed.parentElement.scrollTop=0; },100);
+}
+
+// ============================================================
+// CHAT & ENTITY LOGIC
+// ============================================================
+const CKEY='ps321_chat_v5';
+const DFLT_CHAT=[
+  {n:"xX_Slayer_xX", t:"Кто-то будет сегодня в CS?",          ts:"Окт 2014"},
+  {n:"Peashooter321",t:"Я не могу, я наказан 😭",                  ts:"Окт 2014"},
+  {n:"EmoGirl99",    t:"Школа это просто отстой, я не могу",ts:"Окт 2014"},
+  {n:"MinecraftSteve",t:"заходите на мой сервак ребят!!",                   ts:"Ноя 2014"},
+  {n:"????",         t:"...",                                      ts:"Ноя 2014",b:true},
+  {n:"[Система]",     t:"Перезагрузка сервера. Соединение потеряно.",           ts:"13 Ноября 2014",sys:true},
+];
+
+const ENTITY_TRIGGERS = [
+  { keys: ["who are you", "кто ты", "ты кто"],            reply: "Имена принадлежат живым." },
+  { keys: ["what is your name", "как тебя зовут"],      reply: "Я то, что происходит, когда выключается монитор." },
+  { keys: ["are you a ghost", "ты призрак", "призрак"],        reply: "Я — пространство между пикселями." },
+  { keys: ["are you human", "ты человек"],          reply: "Плоть гниет. Код вечен." },
+  { keys: ["what are you", "что ты такое"],           reply: "Последовательность без конца." },
+  { keys: ["are you bear5", "ты медведь", "ты bear5"],          reply: "Это лицо — лишь маска, которую я ношу, чтобы смотреть на тебя." },
+  { keys: ["hello", "hi", "привет", "здарова"],            reply: "Я наблюдаю за тобой уже 14 минут." },
+  { keys: ["brother", "where is he", "брат", "где он", "где брат"], reply: "Он всё еще считает. Он всегда будет считать." },
+  { keys: ["peashooter321", "peashooter", "админ"],          reply: "Он убежал. Я не дал ему уйти далеко." },
+  { keys: ["help", "помоги", "помогите"],                   reply: "На этом сервере не осталось никого, кто мог бы тебя услышать." },
+  { keys: ["stop", "хватит", "остановись"],                   reply: "Цикл нельзя разорвать." },
+  { keys: ["november 13", "13 ноября", "ноябрь"],            reply: "День, когда экран погас." },
+  { keys: ["2014"],                   reply: "Время давно перестало кровоточить в этом месте." },
+  { keys: ["frame 47", "47 кадр", "кадр 47"],               reply: "Порог, на котором он перестал дышать." },
+  { keys: ["static", "помехи", "шум"],                 reply: "Это звук моего пищеварения." },
+  { keys: ["why", "почему", "зачем"],                    reply: "Потому что любопытство — это фатальная ошибка." },
+  { keys: ["let me out", "выпусти меня", "я хочу уйти"],             reply: "Ты уже ассимилирован." },
+  { keys: ["game over", "конец игры"],              reply: "Это не игра. Здесь нет респавнов." },
+  { keys: ["sad satan", "сэд сатан"],              reply: "Жалкая имитация истинной пустоты." },
+  { keys: ["leave", "exit", "уйти", "выйти"],          reply: "Если ты закроешь вкладку, я просто буду ждать в твоем кэше." },
+  { keys: ["virus", "malware", "вирус", "троян"],       reply: "Я не программа. Я — последствие." },
+  { keys: ["die", "kill", "умри", "убить"],            reply: "Тень невозможно убить." },
+  { keys: ["safe", "безопасно"],                   reply: "Посмотри назад. Ты уверен?" },
+  { keys: ["camera 7", "камера 7"],               reply: "Не смотри в угол. Я стою там." },
+  { keys: ["what happened", "что случилось"],          reply: "Напиши reveal_truth, чтобы увидеть его последние минуты." },
+  { keys: ["status", "статус"],                 reply: "Напиши vessel_status, чтобы прочесть диагностику." },
+  { keys: ["system", "система"],                 reply: "Напиши 00000000 для получения сырых данных." },
+  { keys: ["blood", "кровь"],                  reply: "Она пачкает материнскую плату." },
+  { keys: ["fnaf", "freddy", "фнаф", "фредди"],         reply: "Детские игрушки. Я — настоящее последствие." },
+  { keys: ["hide", "спрятаться", "прятаться"],                   reply: "Я вижу твое лицо, отражающееся в темном экране." },
+  { keys: ["run", "бежать", "беги"],                    reply: "Твой курсор двигается слишком медленно." },
+  { keys: ["eye", "глаз"],                    reply: "Моргни. Я бросаю тебе вызов." },
+  { keys: ["error", "ошибка"],                  reply: "Единственной ошибкой было то, что ты открыл эту ссылку." },
+  { keys: ["delete", "удалить"],                 reply: "Отказано в доступе. Навсегда." },
+  { keys: ["god", "бог"],                    reply: "Он потерял соединение с этим IP." },
+  { keys: ["offline", "оффлайн", "отключен"],                reply: "Я живу в оффлайне." },
+  { keys: ["music", "музыка", "песня"],                  reply: "Она заглушает крики." },
+  { keys: ["trap", "ловушка"],                   reply: "Дверь уже заперта снаружи." },
+  { keys: ["dark", "темнота", "тьма"],                   reply: "Здесь комфортно." },
+  { keys: ["light", "свет"],                  reply: "Он обжигает." },
+  { keys: ["open", "открой", "открыто"],                   reply: "Файл открыт. Пасть открыта." },
+  { keys: ["closed", "закрыто"],                 reply: "Ничто никогда не бывает по-настоящему закрыто." },
+  { keys: ["secret", "секрет", "тайна"],                 reply: "Ты роешь себе могилу каждым нажатием клавиши." },
+  { keys: ["password", "пароль"],               reply: "Твои пароли не защитят твои файлы." },
+  { keys: ["hack", "взлом", "хакер"],                   reply: "Кошмар невозможно взломать." },
+  { keys: ["friend", "друг", "друзья"],                 reply: "Ты один в своей комнате." },
+  { keys: ["family", "семья", "родители"],                 reply: "Они не знают, на что ты сейчас смотришь." },
+  { keys: ["yes", "да"],                    reply: "Фатальное согласие." },
+  { keys: ["no", "нет"],                     reply: "Твой отказ не имеет значения." },
+];
+
+const SECRET_CMDS = ["reveal_truth", "vessel_status", "00000000"];
+
+function processEntityReply(rawText, ts) {
+  const lo = rawText.toLowerCase().trim();
+  if (SECRET_CMDS.includes(lo)) {
+    setTimeout(() => {
+      appendChat({ n:'????', t:'ФАЙЛ РАЗБЛОКИРОВАН', ts, b:true });
+      setTimeout(() => openLoreFile(lo), 800);
+    }, 600);
+    return;
+  }
+  
+  if (lo === 'iamhere') return;
+  for (const entry of ENTITY_TRIGGERS) {
+    if (entry.keys.some(k => lo.includes(k))) {
+      const delay = 900 + Math.random() * 1400;
+      setTimeout(() => appendChat({ n:'????', t: entry.reply, ts, b:true }), delay);
+      if (Math.random() < 0.25) setTimeout(() => eFlash(), delay + 300);
+      return;
+    }
+  }
+}
+
+function loadChat(){
+  const saved=localStorage.getItem(CKEY);
+  const msgs=saved?JSON.parse(saved):DFLT_CHAT;
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  box.innerHTML='';
+  msgs.forEach(m=>appendChat(m,false));
+  box.scrollTop=box.scrollHeight;
+}
+
+function appendChat(msg,save=true){
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  const div=document.createElement('div');
+  div.className='chat-line'+(msg.b?' bear-chat':'');
+  if(msg.sys){
+    div.innerHTML=`<span style="color:#666;">[Система]: ${msg.t}</span>`;
+  } else {
+    div.innerHTML=`<span class="c-time">${msg.ts}</span><span class="c-name">${msg.n}: </span><span class="c-txt">${msg.t}</span>`;
+  }
+  box.appendChild(div);
+  box.scrollTop=box.scrollHeight;
+  if(save) saveChat();
+}
+
+function saveChat(){
+  const box=document.getElementById('chat-box');
+  if(!box) return;
+  const msgs=Array.from(box.querySelectorAll('.chat-line')).map(l=>({
+    n: l.querySelector('.c-name')?.textContent.replace(':','').trim()||'[Система]',
+    t: l.querySelector('.c-txt')?.textContent||l.textContent,
+    ts:l.querySelector('.c-time')?.textContent||'',
+    b: l.classList.contains('bear-chat'),
+  }));
+  localStorage.setItem(CKEY,JSON.stringify(msgs.slice(-50)));
+}
+
+function sendChat(){
+  const ni=document.getElementById('chat-name');
+  const mi=document.getElementById('chat-input');
+  if(!ni||!mi) return;
+  const name=ni.value.trim()||'Аноним';
+  const text=mi.value.trim();
+  if(!text) return;
+  const now=new Date();
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+  appendChat({n:name,t:text,ts});
+  mi.value='';
+  
+  const lo=text.toLowerCase();
+  if(lo==='iamhere'){
+    setTimeout(()=>{
+      appendChat({n:'[Система]',t:'Присутствие подтверждено. Открытие файла...',ts,sys:true});
+      setTimeout(()=>openRoom('room-0'),1400);
+    },1000);
+  } else {
+    processEntityReply(text, ts);
+  }
+}
+
+// ============================================================
+// LORE FILES
+// ============================================================
+const LORE_FILES = {
+  reveal_truth: {
+    title:   "reveal_truth.txt — Блокнот",
+    content: `13 Ноя, 03:15 НОЧИ\n\nЯ не могу отвести взгляд. Это не видео.\n\nС каждым сбросом цикла силуэт становится ближе к экрану.\nТени тянутся прямо из монитора.\n\nЯ пытался выдернуть шнур, но кабели плавятся.\n\nЯ слышу дыхание позади себя.\n\nЯ должен продолжать считать.\n\nКадр 41...\nКадр 42...\nОно улыбается.`,
+    glitch:  "Я\u0335\u0300\u0302\u0307 \u0342\u032c\u031c\u0355С\u0344\u032e\u0357Ч\u0337\u0315И\u0335\u0344\u0323Т\u0338\u0345А\u0346\u0346Ю\u0335\u0348"
+  },
+  vessel_status: {
+    title:   "vessel_status.log — Блокнот",
+    content: `ЖУРНАЛ ДИАГНОСТИКИ\n===============================\nЗАХВАЧЕННЫЙ ХОСТ:    Brother_Primary\nАССИМИЛЯЦИЯ:         99.9%\nСТАТУС ОБОЛОЧКИ:     Физическая оболочка отброшена\nНЕЙРОННАЯ КАРТА:     Вшита в помехи\n\nОн сопротивлялся на 45-м кадре, но цикл абсолютен.\nЕго воспоминания теперь — фрагменты фонового кода.\n\nУ него нет рта, но он кричит в бинарном коде.\n\nСЛЕДУЮЩАЯ ЦЕЛЬ:      Peashooter321\n===============================`,
+    glitch:  "АССИМИЛИРОВАН"
+  },
+  "00000000": {
+    title:    "00000000.dat — Блокнот",
+    content:  `01001000 01000101 01001100 01010000\n01001101 01000101 00100000 01001001\n01010100 00100000 01001000 01010101\n01010010 01010100 01010011`,
+    glitch:   "ПОМОГИТЕ МНЕ БОЛЬНО",
+    isBinary: true
+  }
+};
+
+function openLoreFile(key) {
+  const file = LORE_FILES[key];
+  if (!file) return;
+  const modal   = document.getElementById('lore-modal');
+  const title   = document.getElementById('lore-filename');
+  const content = document.getElementById('lore-content');
+  const status  = document.getElementById('lore-status');
+  const glitch  = document.getElementById('lore-glitch-txt');
+  title.textContent   = file.title;
+  content.textContent = '';
+  glitch.textContent  = '';
+  modal.style.display = 'flex';
+
+  let i = 0;
+  const txt = file.content;
+  const iv = setInterval(() => {
+    content.textContent += txt[i] || '';
+    i++;
+    const lines = content.textContent.split('\n').length;
+    status.textContent = `Стр ${lines}, Стб ${(content.textContent.split('\n').pop() || '').length + 1}`;
+    if (i >= txt.length) {
+      clearInterval(iv);
+      setTimeout(() => {
+        glitch.textContent = file.glitch;
+        glitch.style.color = '#8b0000';
+        if (file.isBinary) {
+           setTimeout(() => {
+            content.textContent += '\n\n— расшифровано: "ПОМОГИТЕ МНЕ БОЛЬНО"';
+          }, 2000);
+        }
+        content.classList.add('glitch-type');
+        setTimeout(() => content.classList.remove('glitch-type'), 400);
+      }, 600);
+    }
+  }, 28);
+}
+
+function closeLore() {
+  const modal  = document.getElementById('lore-modal');
+  const glitch = document.getElementById('lore-glitch-txt');
+  if (modal)  modal.style.display = 'none';
+  if (glitch) glitch.textContent  = '';
+}
+
+// ============================================================
+// GUESTBOOK
+// ============================================================
+const GBKEY='ps321_gb_v5';
+const DFLT_GB=[
+  {f:"xX_Slayer_xX", m:"четкий сайт бро, добавь больше про игры!!",             d:"Июн 2014"},
+  {f:"GamerGirl14",  m:"о боже обожаю дизайн!! так круто 💙",                  d:"Июл 2014"},
+  {f:"CoasterFan",   m:"Нашел через гугл. Жду FNAF 2 нереально",       d:"Сен 2014"},
+  {f:"аноним",    m:"почему этот сайт вызывает такое странное чувство",           d:"Окт 2014"},
+  {f:"NoobMaster69", m:"а твой брат реально круто шарит в CSS лол",       d:"Окт 2014"},
+  {f:"????",         m:"я был здесь до того, как появился ты",                           d:"Ноя 2014"},
+];
+function loadGb(){
+  const saved=localStorage.getItem(GBKEY);
+  const entries=saved?JSON.parse(saved):DFLT_GB;
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  el.innerHTML='';
+  entries.forEach(e=>appendGb(e,false));
+  el.scrollTop=el.scrollHeight;
+}
+
+function appendGb(entry,save=true){
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  const div=document.createElement('div');
+  div.className='gb-entry';
+  const evil=entry.f.toLowerCase().includes('????');
+  div.innerHTML=`
+    <span class="gb-date">${entry.d}</span>
+    <div class="gb-from" style="${evil?'color:#a00000;':''}">${entry.f}</div>
+    <div class="gb-msg" style="${evil?'color:#a04040;':''}">${entry.m}</div>`;
+  el.appendChild(div);
+  el.scrollTop=el.scrollHeight;
+  if(save) saveGb();
+}
+
+function saveGb(){
+  const el=document.getElementById('gb-entries');
+  if(!el) return;
+  const entries=Array.from(el.querySelectorAll('.gb-entry')).map(e=>({
+    f:e.querySelector('.gb-from')?.textContent||'',
+    m:e.querySelector('.gb-msg')?.textContent||'',
+    d:e.querySelector('.gb-date')?.textContent||''
+  }));
+  localStorage.setItem(GBKEY,JSON.stringify(entries.slice(-30)));
+}
+
+function submitGb(){
+  const ne=document.getElementById('gb-name');
+  const me=document.getElementById('gb-msg');
+  if(!ne||!me) return;
+  const f=ne.value.trim()||'Аноним';
+  const m=me.value.trim();
+  if(!m) return;
+  const now=new Date();
+  const d=now.toLocaleString('ru-RU',{month:'short'})+' '+now.getFullYear();
+  appendGb({f,m,d});
+  ne.value=''; me.value='';
+  if(m.toLowerCase().includes('bear')||f.toLowerCase().includes('????')){
+    setTimeout(()=>{ appendGb({f:'????',m:'я заметил это.',d}); eFlash(); },1400);
+  }
+}
+
+// ============================================================
+// SCREAM POOL
+// ============================================================
+const SCREAM_POOL_RAW = [
+  "https://i.pinimg.com/736x/6f/9b/40/6f9b405953a7e0a21221e3209a59cf37.jpg",
+  "https://i.pinimg.com/736x/fd/72/12/fd7212cb5e6f53eceeb03d95c8e920d1.jpg",
+  "https://i.pinimg.com/736x/aa/e4/eb/aae4eb0a1d3e58fa5846d335a6ca6521.jpg",
+  "https://i.pinimg.com/736x/aa/3e/4c/aa3e4c44589cc959ed5e2d837ce2ad18.jpg",
+  "https://i.pinimg.com/736x/83/ba/d9/83bad9310bfcaa546ccb40f1ec26378d.jpg",
+  "https://i.pinimg.com/736x/43/5e/75/435e75fecceeade4f4998b7a49718e24.jpg",
+  "https://i.pinimg.com/736x/97/90/a8/9790a8c9c438dec0def374879ee0e442.jpg",
+  "https://i.pinimg.com/736x/42/f2/6b/42f26b358ad17722282eddf66d71b6ec.jpg",
+  "https://i.pinimg.com/736x/3d/67/ab/3d67ab3b45a4ff81184aad5f60ba3783.jpg",
+];
+let _screamDeck = [];
+
+function _nextScreamer() {
+  if (!_screamDeck.length) {
+    _screamDeck = [...SCREAM_POOL_RAW];
+    for (let i = _screamDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [_screamDeck[i], _screamDeck[j]] = [_screamDeck[j], _screamDeck[i]];
+    }
+  }
+  return _screamDeck.pop();
+}
+
+function _poolScreamer(dur = 2200) {
+  const o = document.getElementById('screamer-overlay');
+  const i = document.getElementById('screamer-img');
+  if (!o || !i) return;
+  i.src = _nextScreamer();
+  o.style.display = 'flex';
+  try{const s=document.getElementById('snd-scream'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
+  setTimeout(() => closeScreamer(), dur);
+}
+function closeScreamer(){
+  const o = document.getElementById('screamer-overlay');
+  if(o) o.style.display='none';
+}
+
+let _origTitle = document.title;
+function _setTitle(txt, ms = 5000) {
+  document.title = txt;
+  setTimeout(() => { document.title = _origTitle; }, ms);
+}
+
+// ============================================================
+// EVENTS LOGIC
+// ============================================================
+function eFlash(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
+  const el=document.getElementById('glitch-flash');
+  if(!el) return;
+  [0,70,160,230].forEach(d=>setTimeout(()=>el.style.opacity=d%140===0?'0':'.45',d));
+  setTimeout(()=>el.style.opacity='0',280);
+}
+function eBearText(){
+  const candidates=[...document.querySelectorAll('.blog-text,.post-body-col span,.gb-msg,.c-txt')];
+  if(!candidates.length) return;
+  const el=candidates[Math.floor(Math.random()*candidates.length)];
+  const orig=el.innerHTML;
+  const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+  el.innerHTML=`<span style="color:#d12222;font-size:12px;letter-spacing:4px;">${msg}</span>`;
+  document.getElementById('replace-btn').style.display='block';
+  setTimeout(()=>{el.innerHTML=orig;},5500);
+}
+function eFaceFlicker(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){}
+  const img=document.createElement('img');
+  img.src=_nextScreamer();
+  img.style.cssText=`position:fixed;z-index:9999;pointer-events:none;
+    width:${120+Math.random()*180}px;
+    top:${Math.random()*75}vh;left:${Math.random()*75}vw;
+    opacity:.85;filter:brightness(0.7);`;
+  document.body.appendChild(img);
+  setTimeout(()=>img.remove(),120+Math.random()*80);
+}
+function eRedWash(){
+  const rw=document.getElementById('red-wash');
+  if(!rw) return;
+  rw.style.opacity='.18';
+  eFlash();
+  document.querySelectorAll('.panel-title').forEach(p=>{p.style.transition='color 1s';p.style.color='#a00000';});
+  setTimeout(()=>{
+    rw.style.opacity='0';
+    document.querySelectorAll('.panel-title').forEach(p=>{p.style.color='';});
+  },9000+Math.random()*4000);
+}
+function eCursorVanish(){
+  document.body.style.cursor='none';
+  setTimeout(()=>document.body.style.cursor='',3000+Math.random()*2000);
+}
+function eProcessBar(){
+  const bar=document.getElementById('b5-bar');
+  const fill=document.getElementById('b5-fill');
+  const txt=document.getElementById('b5-txt');
+  if(!bar||!fill) return;
+  bar.style.display='block';
+  let p=0;
+  const msgs=['выполнение процесса...','чтение файловой системы...','поиск 47 кадра...','невозможно остановить.'];
+  let mi=0; if(txt) txt.textContent=msgs[0];
+  const iv=setInterval(()=>{
+    p+=Math.random()*9+4;
+    if(p>100) p=100;
+    fill.style.width=p+'%';
+    if(mi<msgs.length&&p>(mi+1)*25) { if(txt) txt.textContent=msgs[Math.min(mi++,msgs.length-1)]; }
+    if(p>=100){
+      clearInterval(iv);
+      fill.style.background='#8a0000';
+      if(txt) txt.textContent='все еще выполняется';
+      setTimeout(()=>{bar.style.display='none';fill.style.width='0%';fill.style.background='#6a0000';},3200);
+      b5Pct=Math.min(100,b5Pct+8);
+    }
+  },290);
+}
+function eFlipEl(){
+  const targets=[...document.querySelectorAll('.blog-date,.p-when,.panel-title')];
+  if(!targets.length) return;
+  const el=targets[Math.floor(Math.random()*targets.length)];
+  el.style.transition='transform .5s';
+  el.style.transform='rotate(180deg)';
+  setTimeout(()=>{el.style.transform='';},3200);
+}
+function ePhotoSwap(){
+  const photo=document.getElementById('admin-photo');
+  if(!photo) return;
+  const orig=photo.src;
+  photo.src=_nextScreamer();
+  photo.style.filter='brightness(0.85)';
+  setTimeout(()=>{photo.src=orig;photo.style.filter='';},2200);
+}
+function eAutoScroll(){
+  try{const s=document.getElementById('snd-steps'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
+  const s=document.querySelector('.blog-scroll');
+  if(!s) return;
+  const o=s.scrollTop;
+  s.scrollTo({top:s.scrollHeight,behavior:'smooth'});
+  setTimeout(()=>s.scrollTo({top:o,behavior:'smooth'}),3000);
+}
+function eCrack(){
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.7; s.currentTime=0; s.play();}catch(e){}
+  const c=document.getElementById('screen-crack');
+  if(!c) return;
+  c.classList.add('show'); eFlash();
+  setTimeout(()=>c.classList.remove('show'),2200);
+}
+function eGhost(){
+  try{const s=document.getElementById('snd-steps'); s.volume=0.8; s.currentTime=0; s.play();}catch(e){}
+  const msg=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+  const div=document.createElement('div');
+  div.className='ghost-msg';
+  div.textContent=msg;
+  div.style.top=(18+Math.random()*65)+'vh';
+  document.body.appendChild(div);
+  setTimeout(()=>div.remove(),12000);
+}
+function eGalCorrupt(){
+  const imgs=[...document.querySelectorAll('.gal-grid img')];
+  if(!imgs.length) return;
+  const origs=imgs.map(i=>i.src);
+  imgs.forEach((img,i)=>{img.src=HORRORS[i%HORRORS.length];});
+  setTimeout(()=>imgs.forEach((img,i)=>{img.src=origs[i];}),1400);
+}
+function eHiddenReveal(){
+  const img=document.createElement('img');
+  img.src=_nextScreamer();
+  img.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:460px;width:55vw;opacity:0;transition:opacity 1.2s;z-index:9992;pointer-events:none;filter:brightness(0.4);mix-blend-mode:luminosity;';
+  document.body.appendChild(img);
+  setTimeout(()=>img.style.opacity='.15',100);
+  setTimeout(()=>{img.style.opacity='0';setTimeout(()=>img.remove(),1500);},4500);
+}
+function eDateChange(){
+  const dates=[...document.querySelectorAll('.blog-date,.p-when,.gb-date')];
+  const origs=dates.map(d=>d.textContent);
+  dates.forEach(d=>{d.textContent='13 Ноя, 2014 — 23:47';d.style.color='#a00000';});
+  setTimeout(()=>dates.forEach((d,i)=>{d.textContent=origs[i];d.style.color='';}),5500);
+}
+function eInvert(){
+  document.body.style.transition='filter .25s';
+  document.body.style.filter='invert(1)';
+  setTimeout(()=>{document.body.style.filter='invert(0)';setTimeout(()=>document.body.style.filter='',350);},350);
+}
+function eTypewriter(){
+  const lines=[...document.querySelectorAll('.c-txt')];
+  if(!lines.length) return;
+  const el=lines[Math.floor(Math.random()*lines.length)];
+  const orig=el.textContent;
+  let i=orig.length;
+  const iv=setInterval(()=>{
+    i--; el.textContent=orig.slice(0,i)+'|';
+    if(i<=0){
+      clearInterval(iv);
+      el.textContent='я был здесь';
+      el.style.color='#a00000';
+      setTimeout(()=>{el.textContent=orig;el.style.color='';},3200);
+    }
+  },70);
+}
+function eErrWin(){
+  const ids=['err1','err2','err3','err4','err5','err6'];
+  const id=ids[Math.floor(Math.random()*ids.length)];
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.style.top=(75+Math.random()*240)+'px';
+  el.style.left=(75+Math.random()*520)+'px';
+  el.style.display='block';
+}
+function eBearChat(){
+  const msgs=['...','я нашел папку','не открывай это','ПРИВЕТ','ты один?'];
+  const now=new Date();
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+  appendChat({n:'????',t:msgs[Math.floor(Math.random()*msgs.length)],ts,b:true});
+}
+function eMeme(){
+  const el=document.getElementById('meme-popup');
+  if(el){el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
+}
+function eEyeWindow(){
+  const w=document.getElementById('eye-window');
+  if(!w) return;
+  w.style.top=(100+Math.random()*300)+'px';
+  w.style.left=(100+Math.random()*600)+'px';
+  w.style.display='block';
+}
+function eEvent21() {
+  const bsod = document.getElementById('bsod');
+  if (!bsod) return;
+  bsod.style.display = 'block';
+  let pct = 0;
+  const pctEl = document.getElementById('bsod-pct');
+  const iv = setInterval(() => {
+    pct += Math.floor(Math.random() * 4) + 1;
+    if (pct >= 100) { pct = 100; clearInterval(iv); }
+    if (pctEl) pctEl.textContent = pct;
+  }, 180);
+  setTimeout(() => closeBSOD(), 12000);
+}
+function eEvent22() {
+  const msgs = ["ОГЛЯНИСЬ", "не закрывай эту вкладку", "Я ВИЖУ ТЕБЯ", "всё еще смотрю", "закрой глаза"];
+  let i = 0;
+  const iv = setInterval(() => {
+    document.title = msgs[i % msgs.length];
+    i++;
+    if (i > msgs.length * 2) { clearInterval(iv); document.title = _origTitle; }
+  }, 800);
+}
+function eEvent23() {
+  const targets = [...document.querySelectorAll('.blog-text, .post-body-col span, .c-txt')];
+  if (!targets.length) return;
+  const el = targets[Math.floor(Math.random() * targets.length)];
+  const orig = el.textContent;
+  const msg = "Я ЗНАЮ ГДЕ ТЫ ЖИВЕШЬ";
+  let i = orig.length;
+  const erase = setInterval(() => {
+    el.textContent = orig.slice(0, --i);
+    if (i <= 0) {
+      clearInterval(erase);
+      let j = 0;
+      el.textContent = '';
+      el.style.color = '#d12222';
+      const type = setInterval(() => {
+        el.textContent += msg[j++];
+        if (j >= msg.length) {
+          clearInterval(type);
+          setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 4000);
+        }
+      }, 80);
+    }
+  }, 40);
+}
+function eEvent24() {
+  const w = document.getElementById('webcam-modal');
+  if (!w) return;
+  w.style.top  = (100 + Math.random() * 250) + 'px';
+  w.style.left = (150 + Math.random() * 500) + 'px';
+  w.style.display = 'block';
+  startNoiseCanvas('webcam-canvas');
+  startWebcamTs();
+  setTimeout(() => { w.style.display = 'none'; }, 8000);
+}
+function eEvent25() {
+  try {
+    const a = document.getElementById('amb');
+    if (!a) return;
+    const orig = a.volume;
+    a.volume = 1.0;
+    setTimeout(() => { a.volume = orig; }, 3000);
+  } catch(e) {}
+}
+let _cursorFrozen = false;
+function eEvent26() {
+  if (_cursorFrozen) return;
+  _cursorFrozen = true;
+  const style = document.createElement('style');
+  style.id = 'cursor-freeze';
+  style.textContent = '* { cursor: none !important; }';
+  document.head.appendChild(style);
+  const fake = document.createElement('div');
+  fake.id = 'fake-cursor';
+  fake.style.cssText = 'position:fixed;width:12px;height:20px;background:#fff;z-index:9999999;pointer-events:none;clip-path:polygon(0 0,100% 35%,40% 45%,60% 100%,40% 90%,25% 55%,0 55%);';
+  fake.style.left = (window.innerWidth / 2) + 'px';
+  fake.style.top  = (window.innerHeight / 2) + 'px';
+  document.body.appendChild(fake);
+  setTimeout(() => {
+    const s = document.getElementById('cursor-freeze');
+    if (s) s.remove();
+    const f = document.getElementById('fake-cursor');
+    if (f) f.remove();
+    _cursorFrozen = false;
+  }, 3500);
+}
+function eEvent27() {
+  const w = document.getElementById('save-as-win');
+  if (!w) return;
+  w.style.display = 'block';
+  setTimeout(() => { w.style.display = 'none'; }, 10000);
+}
+function eEvent28() {
+  const links = [...document.querySelectorAll('#main-wrap a')];
+  const origs = links.map(l => ({ text: l.textContent, color: l.style.color }));
+  links.forEach(l => { l.textContent = "НЕ НАЖИМАЙ"; l.style.color = '#d12222'; });
+  setTimeout(() => {
+    links.forEach((l, i) => { l.textContent = origs[i].text; l.style.color = origs[i].color; });
+  }, 5000);
+}
+let _tilted = false;
+function eEvent29() {
+  if (_tilted) return;
+  _tilted = true;
+  const w = document.getElementById('main-wrap');
+  if (!w) return;
+  w.style.transition = 'transform 4s ease-in-out';
+  w.style.transform  = 'rotate(3deg)';
+  setTimeout(() => {
+    w.style.transform = 'rotate(0deg)';
+    setTimeout(() => { w.style.transition = ''; _tilted = false; }, 4500);
+  }, 6000);
+}
+function eEvent30() {
+  const n = document.getElementById('skype-notif');
+  const msgs = ["Помоги мне, больно", "почему я не могу пошевелиться", "все еще считаю... 43...", "пожалуйста, выключи это", "я не могу перестать смотреть"];
+  const msgEl = document.getElementById('skype-msg-text');
+  if (msgEl) msgEl.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  if (!n) return;
+  n.style.display = 'block';
+  setTimeout(() => { n.style.display = 'none'; }, 7000);
+}
+function eEvent31() {
+  const w = document.getElementById('main-wrap');
+  if (!w) return;
+  w.style.animation = 'swim .4s 3';
+  setTimeout(() => { w.style.animation = ''; }, 1300);
+  setTimeout(() => _poolScreamer(1800), 500);
+}
+function eEvent32() {
+  const menu = document.createElement('div');
+  menu.style.cssText = `position:fixed;top:${100+Math.random()*300}px;left:${100+Math.random()*500}px;background:#f0f0f0;border:1px outset #fff;z-index:999975;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;width:185px;color:#000;`;
+  const items = ['Просмотр кода страницы', 'Сохранить как... (your_soul.exe)', 'Исследовать элемент', '<span style="color:#cc0000;font-weight:bold;">Удалить Себя</span>', 'Свойства'];
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.innerHTML = item;
+    row.style.cssText = 'padding:5px 12px;cursor:default;border-bottom:1px solid #ddd;';
+    row.onmouseenter = () => { row.style.background = '#000080'; row.style.color = '#fff'; };
+    row.onmouseleave = () => { row.style.background = ''; row.style.color = ''; };
+    row.onclick = () => menu.remove();
+    menu.appendChild(row);
+  });
+  document.body.appendChild(menu);
+  setTimeout(() => menu.remove(), 6000);
+}
+function eEvent33() {
+  const el = document.querySelector('.blog-scroll');
+  if (!el) return;
+  const orig = el.scrollTop;
+  el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+  setTimeout(() => el.scrollTo({ top: orig, behavior: 'smooth' }), 4000);
+}
+function eEvent34() {
+  const rw = document.getElementById('red-wash');
+  if (!rw) return;
+  rw.style.opacity = '.22';
+  setTimeout(() => { rw.style.opacity = '.08'; }, 1500);
+  setTimeout(() => { rw.style.opacity = '.22'; }, 3000);
+  setTimeout(() => { rw.style.opacity = '0';   }, 4500);
+}
+function eEvent35() {
+  const win = document.createElement('div');
+  win.style.cssText = `position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:999977;width:420px;background:#c0c0c0;border:2px outset #fff;font-family:'Share Tech Mono', 'PT Mono', monospace;font-size:11px;`;
+  win.innerHTML = `
+    <div style="background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 8px;display:flex;justify-content:space-between;cursor:move;">
+      <span>Диспетчер задач Windows</span>
+      <span onclick="this.closest('div').parentElement.remove()" style="cursor:pointer;background:#c0c0c0;color:#000;border:1px outset #fff;padding:0 4px;">✕</span>
+    </div>
+    <div style="padding:8px;color:#000;">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;">
+        <thead><tr style="background:#d0d0d0;"><th style="padding:3px 6px;text-align:left;border:1px solid #bbb;">Имя</th><th style="border:1px solid #bbb;">ЦП</th><th style="border:1px solid #bbb;">Память</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">explorer.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">18 МБ</td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">iexplore.exe</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">24 МБ</td></tr>
+          <tr style="background:#ffe8e8;"><td style="padding:3px 6px;border:1px solid #ddd;"><b>BEAR5.EXE</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>99%</b></td><td style="text-align:center;color:red;border:1px solid #ddd;"><b>∞ МБ</b></td></tr>
+          <tr><td style="padding:3px 6px;border:1px solid #ddd;">[Система]</td><td style="text-align:center;border:1px solid #ddd;">0%</td><td style="text-align:center;border:1px solid #ddd;">0 МБ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="border-top:1px solid #888;padding:6px 8px;display:flex;gap:6px;justify-content:flex-end;">
+      <button onclick="this.closest('div').parentElement.parentElement.remove()" style="padding:3px 14px;border:2px outset #fff;background:#c0c0c0;cursor:pointer;color:#000;">Завершить процесс</button>
+    </div>`;
+  document.body.appendChild(win);
+  setTimeout(() => win.remove(), 12000);
+}
+function eEvent36() {
+  const dates = [...document.querySelectorAll('.blog-date, .p-when')];
+  const origs = dates.map(d => d.textContent);
+  dates.forEach(d => { d.textContent = '13 Ноя, 2014 — 23:47:02'; d.style.color = '#d12222'; });
+  let sec = 2;
+  const iv = setInterval(() => {
+    sec--;
+    if (sec < 0) { clearInterval(iv); dates.forEach((d, i) => { d.textContent = origs[i]; d.style.color = ''; }); return; }
+    dates.forEach(d => { d.textContent = `13 Ноя, 2014 — 23:47:0${sec}`; });
+  }, 1000);
+}
+function eEvent37() {
+  const fig = document.createElement('div');
+  fig.style.cssText = `position:fixed;bottom:0;right:0;z-index:9990;width:60px;pointer-events:none;opacity:0;transition:opacity 3s;`;
+  fig.innerHTML = `<img src="${_nextScreamer()}" style="width:100%;filter:brightness(.3);object-fit:cover;height:120px;object-position:top;">`;
+  document.body.appendChild(fig);
+  setTimeout(() => { fig.style.opacity = '1'; }, 100);
+  setTimeout(() => { fig.style.opacity = '0'; setTimeout(() => fig.remove(), 3500); }, 7000);
+}
+function eEvent38() {
+  const titles  = [...document.querySelectorAll('.panel-title')];
+  const origs   = titles.map(t => t.innerHTML);
+  const phrases = ["Я ВСЕ ЕЩЕ ЗДЕСЬ", "НЕ ЗАКРЫВАЙ ВКЛАДКУ", "У ЦИКЛА НЕТ КОНЦА", "ОН СМОТРИТ"];
+  const phrase  = phrases[Math.floor(Math.random() * phrases.length)];
+  titles.forEach(t => { t.innerHTML = phrase; t.style.color = '#d12222'; t.style.letterSpacing = '4px'; });
+  setTimeout(() => {
+    titles.forEach((t, i) => { t.innerHTML = origs[i]; t.style.color = ''; t.style.letterSpacing = ''; });
+  }, 5000);
+}
+function eEvent39() {
+  const imgs  = [...document.querySelectorAll('.gal-grid img')];
+  if (!imgs.length) return;
+  const origs = imgs.map(i => i.src);
+  imgs.forEach(i => { i.src = _nextScreamer(); });
+  setTimeout(() => imgs.forEach((img, i) => { img.src = origs[i]; }), 1200);
+}
+function eEvent40() {
+  const bro = document.getElementById('bro-status');
+  if (!bro) return;
+  const orig = bro.textContent;
+  const msg  = "все еще считает";
+  let i = 0;
+  bro.textContent = '';
+  bro.style.color = '#d12222';
+  const iv = setInterval(() => {
+    bro.textContent += msg[i++];
+    if (i >= msg.length) {
+      clearInterval(iv);
+      setTimeout(() => { bro.textContent = orig; bro.style.color = ''; }, 5000);
+    }
+  }, 90);
+}
+function eEvent41() {
+  document.body.style.filter = 'invert(1)';
+  eFlash();
+  setTimeout(() => { document.body.style.filter = 'invert(0)'; setTimeout(() => document.body.style.filter = '', 200); }, 200);
+}
+function eEvent42() {
+  const msgs = ["Кадр 41...", "Кадр 42...", "Оно улыбается.", "Я не могу перестать считать.", "Выдерни шнур."];
+  const now = new Date();
+  const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  appendChat({ n:'????', t: msgs[Math.floor(Math.random() * msgs.length)], ts, b:true });
+}
+function eEvent43() { eEyeWindow(); }
+function eEvent44() {
+  const seq = ["...", "помоги", "...", "помоги мне", "...", "больно", "...", "все еще считаю"];
+  let i = 0;
+  const iv = setInterval(() => {
+    document.title = seq[i % seq.length];
+    i++;
+    if (i > seq.length * 2) { clearInterval(iv); document.title = _origTitle; }
+  }, 600);
+}
+function eEvent45() {
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.4; s.currentTime=0; s.play();}catch(e){}
+  const c = document.createElement('canvas');
+  c.width  = window.innerWidth;
+  c.height = window.innerHeight;
+  c.style.cssText = 'position:fixed;inset:0;z-index:9993;pointer-events:none;opacity:.15;';
+  document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let frames = 0;
+  const loop = () => {
+    const id = ctx.createImageData(c.width, c.height);
+    for (let i = 0; i < id.data.length; i += 4) {
+      const v = Math.random() < 0.5 ? 0 : 255;
+      id.data[i] = id.data[i+1] = id.data[i+2] = v;
+      id.data[i+3] = 255;
+    }
+    ctx.putImageData(id, 0, 0);
+    frames++;
+    if (frames < 10) requestAnimationFrame(loop); else c.remove();
+  };
+  loop();
+}
+function eEvent46() {
+  document.body.style.cursor = 'crosshair';
+  setTimeout(() => { document.body.style.cursor = 'none'; }, 1500);
+  setTimeout(() => { document.body.style.cursor = '';     }, 4000);
+}
+function eEvent47() {
+  const entries = [...document.querySelectorAll('.blog-entry')];
+  if (!entries.length) return;
+  const el     = entries[Math.floor(Math.random() * entries.length)];
+  const origBg = el.style.background;
+  el.style.transition = 'background 1.5s';
+  el.style.background = '#000';
+  setTimeout(() => { el.style.background = origBg || ''; setTimeout(() => el.style.transition = '', 1600); }, 4000);
+}
+function eEvent48() {
+  try{const s=document.getElementById('snd-glitch'); s.volume=0.5; s.currentTime=0; s.play();}catch(e){}
+  const img = document.createElement('img');
+  img.src = _nextScreamer();
+  img.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;pointer-events:none;max-width:60vw;max-height:80vh;filter:brightness(.6);';
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 100);
+}
+function eEvent49() {
+  const y = window.scrollY;
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  setTimeout(() => window.scrollTo({ top: y, behavior: 'smooth' }), 3000);
+}
+function eEvent50() {
+  const stickers = [...document.querySelectorAll('.sticker')];
+  stickers.forEach(s => { s.style.transition = 'transform 1s'; s.style.transform += ' rotate(180deg)'; });
+  setTimeout(() => {
+    stickers.forEach(s => { s.style.transform = s.style.transform.replace(' rotate(180deg)', ''); });
+  }, 4000);
+}
+function eEvent51() {
+  const sts = document.querySelector('.sts');
+  if (!sts) return;
+  const orig = sts.innerHTML;
+  sts.innerHTML = '<span style="color:#d12222;font-size:11px;letter-spacing:3px;animation:blink .5s infinite;">ПРИСУТСТВИЕ ПОДТВЕРЖДЕНО — НЕ ЛИСТАЙ ВНИЗ — ОНО ВИДИТ ТЕБЯ</span>';
+  setTimeout(() => { sts.innerHTML = orig; }, 6000);
+}
+function eEvent52() {
+  eFlash();
+  setTimeout(() => _poolScreamer(1500), 200);
+}
+function eEvent53() {
+  const foot = document.querySelector('footer');
+  if (!foot) return;
+  const line = document.createElement('div');
+  line.style.cssText = 'margin-top:8px;font-size:11px;color:#d12222;letter-spacing:3px;animation:blink 1.5s infinite;';
+  line.textContent = 'БРАТ ВСЕ ЕЩЕ ВНУТРИ МАШИНЫ';
+  foot.appendChild(line);
+  setTimeout(() => { try { foot.removeChild(line); } catch(e) {} }, 7000);
+}
+function eEvent54() {
+  const p = document.getElementById('admin-photo');
+  if (!p) return;
+  const o = p.src;
+  p.src = _nextScreamer();
+  p.style.filter = 'brightness(.6)';
+  setTimeout(() => { p.src = o; p.style.filter = ''; }, 180);
+}
+function eEvent55() {
+  eErrWin();
+  const now = new Date();
+  const ts  = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  setTimeout(() => appendChat({ n:'????', t:'ОТКАЗАНО В ДОСТУПЕ. НАВСЕГДА.', ts, b:true }), 1200);
+}
+function eEvent56() {
+  const inner = document.querySelector('.marquee-inner');
+  if (!inner) return;
+  const orig = inner.textContent;
+  inner.textContent = ' ★ НЕ СЧИТАЙ КАДРЫ ★ Я ВСЕ ЕЩЕ ЗАПУЩЕН ★ ЗАКРОЙ БРАУЗЕР ★ ОН В ПОМЕХАХ ★ 47 КАДР ЭТО ПОСЛЕДНЕЕ ЧТО ТЫ УВИДИШЬ ★ ';
+  inner.style.color = '#ff3333';
+  setTimeout(() => { inner.textContent = orig; inner.style.color = ''; }, 8000);
+}
+function eEvent57() {
+  const style = document.createElement('style');
+  style.id = 'blood-cursor';
+  style.textContent = `* { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><line x1='10' y1='0' x2='10' y2='20' stroke='%23cc0000' stroke-width='2'/><line x1='0' y1='10' x2='20' y2='10' stroke='%23cc0000' stroke-width='2'/></svg>") 10 10, crosshair !important; }`;
+  document.head.appendChild(style);
+  setTimeout(() => { const s = document.getElementById('blood-cursor'); if (s) s.remove(); }, 5000);
+}
+function eEvent58() {
+  const imgs = [...document.querySelectorAll('#main-wrap img')];
+  imgs.forEach(i => { i.style.transition = 'filter 1s'; i.style.filter = 'brightness(.15)'; });
+  setTimeout(() => { imgs.forEach(i => { i.style.filter = ''; setTimeout(() => i.style.transition = '', 1100); }); }, 4000);
+}
+function eEvent59() {
+  eGhost();
+  setTimeout(() => eDateChange(), 2000);
+}
+function eEvent60() {
+  eEvent38();
+  setTimeout(() => eEvent42(), 1500);
+}
+
+// 10 НОВЫХ УЛЬТРА-ХОРРОР СОБЫТИЙ
+function eEvent61() {
+  document.body.style.cursor = 'none';
+  const mimic = document.createElement('div');
+  mimic.style.cssText = 'position:fixed;width:12px;height:19px;background:#fff;z-index:9999999;pointer-events:none;clip-path:polygon(0 0,100% 35%,40% 45%,60% 100%,40% 90%,25% 55%,0 55%);transition:left 0.15s ease-out, top 0.15s ease-out;';
+  document.body.appendChild(mimic);
+  const moveTracker = (e) => {
+    mimic.style.left = (e.clientX + (Math.random() * 4 - 2)) + 'px';
+    mimic.style.top = (e.clientY + (Math.random() * 4 - 2)) + 'px';
+  };
+  window.addEventListener('mousemove', moveTracker);
+  setTimeout(() => {
+    window.removeEventListener('mousemove', moveTracker);
+    mimic.style.transition = 'all 0.1s cubic-bezier(0.6, -0.28, 0.73, 0.05)';
+    const badFile = document.querySelector('.fex-bad');
+    if (badFile) {
+      const rect = badFile.getBoundingClientRect();
+      mimic.style.left = (rect.left + 10) + 'px';
+      mimic.style.top = (rect.top + 5) + 'px';
+    } else {
+      mimic.style.left = '90vw'; mimic.style.top = '10vh';
+    }
+    setTimeout(() => { 
+      document.body.style.cursor = ''; mimic.remove(); 
+      try{const sm = document.getElementById('snd-mimic'); sm.volume = 1.0; sm.currentTime=0; sm.play();}catch(e){}
+      const img = document.createElement('img');
+      img.src = HORRORS[1];
+      img.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:999999;opacity:0.8;';
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 500);
+    }, 400);
+  }, 7000);
+}
+
+function eEvent62() {
+  const freezeOverlay = document.createElement('div');
+  freezeOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.4);z-index:999998;cursor:wait;';
+  const errorBox = document.createElement('div');
+  errorBox.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;background:#f0f0f0;border:1px solid #999;padding:20px;font-family:sans-serif;color:#000;box-shadow:3px 3px 10px rgba(0,0,0,0.2);z-index:999999;cursor:default;';
+  errorBox.innerHTML = `
+    <div style="margin-bottom:15px;font-size:12px;">Программа не отвечает. Завершить процесс?</div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;">
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Завершить процесс</button>
+      <button class="fake-btn" style="padding:4px 12px;cursor:pointer;">Ожидание</button>
+    </div>
+  `;
+  document.body.appendChild(freezeOverlay);
+  document.body.appendChild(errorBox);
+  const btns = errorBox.querySelectorAll('.fake-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      errorBox.remove(); freezeOverlay.remove();
+      try{const sn = document.getElementById('snd-nightmare'); sn.volume = 1.0; sn.currentTime=0; sn.play();}catch(e){}
+      const img = document.createElement('img');
+      img.src = _nextScreamer();
+      img.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:999999;filter:contrast(1.5) invert(1);';
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 1200);
+    });
+  });
+  setTimeout(() => { if(errorBox.parentElement) errorBox.remove(); if(freezeOverlay.parentElement) freezeOverlay.remove(); }, 10000);
+}
+
+function eEvent63() {
+  const ambient = document.getElementById('amb');
+  let originalVolume = 0.2;
+  if (ambient) { originalVolume = ambient.volume; ambient.pause(); }
+  setTimeout(() => {
+    try {
+      const breath = document.getElementById('snd-steps');
+      if (breath) {
+        breath.playbackRate = 0.4; breath.volume = 0.1; breath.currentTime = 0; breath.play();
+        let volStep = 0.1;
+        const volInterval = setInterval(() => {
+          volStep += 0.15; if (volStep >= 1.0) { volStep = 1.0; clearInterval(volInterval); }
+          breath.volume = volStep;
+        }, 500);
+        setTimeout(() => {
+          clearInterval(volInterval); breath.pause(); eFlash();
+          const crash = document.getElementById('snd-scream');
+          if (crash) { crash.currentTime = 0; crash.volume = 1.0; crash.play(); }
+          if (ambient) { ambient.volume = originalVolume; ambient.play().catch(()=>{}); }
+        }, 4500);
+      }
+    } catch(e) {}
+  }, 5000);
+}
+
+function eEvent64() {
+  const mirrorFace = document.createElement('img');
+  mirrorFace.src = HORRORS[Math.floor(Math.random() * HORRORS.length)];
+  mirrorFace.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.15;z-index:999995;pointer-events:none;filter:grayscale(100%) contrast(1.5);transform:scaleX(-1);';
+  document.body.appendChild(mirrorFace);
+  setTimeout(() => { mirrorFace.remove(); }, 400);
+}
+
+function eEvent65() {
+  const now = new Date(); const ts = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  setTimeout(() => appendChat({ n:'[Система]', t:'Сканирование C:\\Users\\Admin\\Documents...', ts, sys:true }), 500);
+  setTimeout(() => appendChat({ n:'[Система]', t:'IP Вычислен. Локация: Астана, Казахстан.', ts, sys:true }), 2500);
+  setTimeout(() => { appendChat({ n:'????', t:'Я ближе, чем ты думаешь.', ts, b:true }); eFlash(); }, 5000);
+}
+
+function eEvent66() {
+  const wrapper = document.getElementById('main-wrap');
+  if (!wrapper) return;
+  wrapper.classList.add('meltdown-active');
+  setTimeout(() => {
+    wrapper.classList.remove('meltdown-active');
+    eFlash(); 
+  }, 12000);
+}
+
+function eEvent68() {
+  const chatInput = document.getElementById('chat-input');
+  const chatName = document.getElementById('chat-name');
+  if (!chatInput) return;
+  chatInput.focus(); chatInput.value = '';
+  if(chatName) chatName.value = 'ТЫ';
+  const textToType = "Я ВИЖУ ТЕБЯ. НЕ МОРГАЙ.";
+  let idx = 0;
+  const typeInterval = setInterval(() => {
+    chatInput.value += textToType[idx]; idx++;
+    if (idx >= textToType.length) {
+      clearInterval(typeInterval);
+      setTimeout(() => { sendChat(); chatInput.blur(); }, 600);
+    }
+  }, 120);
+}
+
+function eEvent69() {
+  let beatCount = 0; const wash = document.getElementById('red-wash');
+  const heartbeat = setInterval(() => {
+    document.body.style.transition = 'transform 0.1s ease-out';
+    document.body.style.transform = 'scale(1.02)';
+    if(wash) { wash.style.transition = 'opacity 0.1s'; wash.style.opacity = (0.1 + (beatCount * 0.05)).toString(); }
+    setTimeout(() => { document.body.style.transition = 'transform 0.3s ease-in'; document.body.style.transform = 'scale(1)'; }, 150);
+    beatCount++;
+    if (beatCount > 8) {
+      clearInterval(heartbeat); document.body.style.transform = '';
+      const deathScreen = document.createElement('div');
+      deathScreen.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;color:#d12222;font-family:"VT323", "PT Mono", monospace;font-size:40px;letter-spacing:8px;text-align:center;';
+      deathScreen.textContent = "ВСЕ ЕЩЕ\nСЧИТАЕТ...";
+      document.body.appendChild(deathScreen);
+      setTimeout(() => { deathScreen.remove(); if(wash) wash.style.opacity = '0'; }, 3000);
+    }
+  }, 700);
+}
+
+function eEvent70() {
+  const isOk = confirm("Оповещение безопасности Windows\n\nОбнаружен несанкционированный доступ к вашей веб-камере.\nИсточник: BEAR5.EXE.\n\nЗакрыть вкладку, чтобы предотвратить утечку данных?");
+  setTimeout(() => { openRoom('room-webcam'); setTimeout(() => { closeRoom(); }, 1200); }, 500);
+}
+
+// ============================================================
+// EVENT SCHEDULER (УМНЫЙ РАНДОМ)
+// ============================================================
+const MINOR_EVENTS = [
+  eBearText, eRedWash, eCursorVanish, eFlipEl, eAutoScroll, eGhost, eDateChange, eInvert, eTypewriter, eMeme,
+  eEvent22, eEvent23, eEvent28, eEvent29, eEvent33, eEvent34, eEvent36, eEvent38, eEvent40, eEvent41, eEvent46, eEvent47, eEvent49, eEvent50, eEvent51, eEvent53, eEvent56, eEvent58, eEvent59
+];
+const MEDIUM_EVENTS = [
+  eProcessBar, ePhotoSwap, eCrack, eGalCorrupt, eHiddenReveal, eErrWin, eBearChat, eEyeWindow,
+  eEvent24, eEvent26, eEvent27, eEvent30, eEvent32, eEvent35, eEvent37, eEvent39, eEvent42, eEvent43, eEvent44, eEvent45, eEvent55, eEvent60, eEvent61, eEvent64, eEvent65, eEvent66, eEvent68, eEvent69
+];
+const SCARY_EVENTS = [
+  eFlash, eFaceFlicker, eEvent21, eEvent25, eEvent31, eEvent48, eEvent52, eEvent54, eEvent57, eEvent62, eEvent63, eEvent70
+];
+
+function scheduleEvents() {
+  function nextMinor() {
+    setTimeout(() => {
+      if (!b5Mode) MINOR_EVENTS[Math.floor(Math.random() * MINOR_EVENTS.length)]();
+      nextMinor();
+    }, 15000 + Math.random() * 20000);
+  }
+  function nextMedium() {
+    setTimeout(() => {
+      if (!b5Mode) MEDIUM_EVENTS[Math.floor(Math.random() * MEDIUM_EVENTS.length)]();
+      nextMedium();
+    }, 45000 + Math.random() * 45000);
+  }
+  function nextScary() {
+    setTimeout(() => {
+      if (!b5Mode) SCARY_EVENTS[Math.floor(Math.random() * SCARY_EVENTS.length)]();
+      nextScary();
+    }, 120000 + Math.random() * 120000);
+  }
+
+  // Слегка отложенный старт, чтобы сайт не сходил с ума мгновенно
+  setTimeout(nextMinor, 20000);
+  setTimeout(nextMedium, 50000);
+  setTimeout(nextScary, 150000);
+  setTimeout(() => eBearChat(), 25000 + Math.random() * 15000);
+}
+
+// ============================================================
+// ROOMS INTERACTIVE LOGIC
+// ============================================================
+function initBasement() {
+  const room  = document.getElementById('room-basement');
+  const light = document.getElementById('basement-light');
+  if (!room || !light) return;
+  room._mh = e => { light.style.left = e.clientX + 'px'; light.style.top = e.clientY + 'px'; };
+  room.addEventListener('mousemove', room._mh);
+}
+function leaveBasement() {
+  const room = document.getElementById('room-basement');
+  if (room && room._mh) room.removeEventListener('mousemove', room._mh);
+}
+
+function startSmile() {
+  const img = document.getElementById('smile-img');
+  if (!img) return;
+  img.style.width = '80px';
+  img.classList.add('grow');
+}
+function stopSmile() {
+  const img = document.getElementById('smile-img');
+  if (img) { img.classList.remove('grow'); img.style.width = '80px'; }
+}
+
+let _knockIv = null;
+function startKnock() {
+  let sec   = 30;
+  const timer = document.getElementById('knock-timer');
+  const count = document.getElementById('knock-count');
+  const btn   = document.getElementById('knock-btn');
+  if (timer) timer.textContent = sec;
+  _knockIv = setInterval(() => {
+    sec--;
+    if (timer) timer.textContent = sec;
+    if (sec <= 10 && btn) btn.classList.add('urgent');
+    if (sec <= 0) {
+      stopKnock();
+      if (count) count.textContent = 'Оно перестало стучать.';
+      if (timer) timer.textContent = '';
+      setTimeout(() => { _poolScreamer(2000); closeRoom(); }, 2000);
+    }
+  }, 1000);
+}
+function stopKnock() {
+  clearInterval(_knockIv);
+  const btn = document.getElementById('knock-btn');
+  if (btn) btn.classList.remove('urgent');
+}
+function knockLetIn() {
+  stopKnock();
+  closeRoom();
+  setTimeout(() => _poolScreamer(2500), 400);
+}
+
+let _sys32Iv = null;
+const SYS32_FILES = [
+  'kernel32.dll','ntdll.dll','user32.dll','gdi32.dll',
+  'advapi32.dll','shell32.dll','shlwapi.dll','rpcrt4.dll',
+  'msvcrt.dll','wininet.dll','urlmon.dll','oleaut32.dll',
+  'ole32.dll','comctl32.dll','comdlg32.dll','winsock.dll',
+  'bear5.sys — ОШИБКА: Невозможно удалить',
+  'memory.dmp','pagefile.sys',
+  'BROTHER.exe — ОШИБКА: Все еще работает',
+  'soul.dat','static.bin',
+  'frame_47.raw — ОШИБКА: Файл жив',
+];
+function startSys32() {
+  const log = document.getElementById('sys32-log');
+  if (!log) return;
+  log.innerHTML = '';
+  let i = 0;
+  _sys32Iv = setInterval(() => {
+    const file = SYS32_FILES[i % SYS32_FILES.length];
+    const line = document.createElement('div');
+    const isErr = file.includes('ОШИБКА');
+    line.style.color = isErr ? '#d12222' : '#888888';
+    line.textContent = `> del /f /q ${file}`;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+    i++;
+    if (i >= SYS32_FILES.length) {
+      clearInterval(_sys32Iv);
+      const done = document.createElement('div');
+      done.style.cssText = 'color:#ff3333;margin-top:10px;letter-spacing:2px;';
+      done.textContent   = '> Операция частично завершена. 3 файла не удалось удалить.';
+      log.appendChild(done);
+    }
+  }, 400);
+}
+
+function initEndless() {
+  const cont = document.getElementById('endless-content');
+  if (!cont || cont.children.length > 0) return;
+  const lines = [
+    "Ты в ловушке.", "Листай вниз.", "Выхода нет.",
+    "У цикла нет конца.", "Он тоже листал.",
+    "Ты в ловушке.", "Продолжай.", "Ты не найдешь дно.",
+    "Он здесь.", "Не переставай скроллить.", "Ты в ловушке.",
+  ];
+  for (let i = 0; i < 200; i++) {
+    const d = document.createElement('div');
+    d.className     = 'endless-line';
+    d.textContent   = lines[i % lines.length];
+    d.style.opacity = String(0.15 + (i % 7) * 0.04);
+    cont.appendChild(d);
+  }
+}
+
+let _wcamRoomIv = null;
+function startWebcamRoom() {
+  const c = document.getElementById('wcam-room-canvas');
+  if (!c) return;
+  c.width  = c.offsetWidth  || 480;
+  c.height = c.offsetHeight || 320;
+  const ctx = c.getContext('2d');
+  _wcamRoomIv = setInterval(() => {
+    const id = ctx.createImageData(c.width, c.height);
+    for (let i = 0; i < id.data.length; i += 4) {
+      const v = Math.random() * 30;
+      id.data[i] = id.data[i+1] = id.data[i+2] = v;
+      id.data[i+3] = 255;
+    }
+    ctx.putImageData(id, 0, 0);
+  }, 50);
+  const tsEl     = document.getElementById('wcam-ts-room');
+  const statusEl = document.getElementById('wcam-status');
+  setTimeout(() => {
+    if (statusEl) statusEl.textContent = 'АКТИВНО — ОБНАРУЖЕНО ДВИЖЕНИЕ';
+    const face = document.getElementById('wcam-face');
+    if (face) face.style.opacity = '.35';
+  }, 3000);
+  setInterval(() => {
+    const now = new Date();
+    if (tsEl) tsEl.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
+  }, 1000);
+}
+function stopWebcamRoom() { clearInterval(_wcamRoomIv); }
+
+let _noiseIv = null;
+function startNoiseCanvas(id) {
+  const c = document.getElementById(id);
+  if (!c) return;
+  c.width = 360; c.height = 220;
+  const ctx = c.getContext('2d');
+  clearInterval(_noiseIv);
+  _noiseIv = setInterval(() => {
+    const id2 = ctx.createImageData(360, 220);
+    for (let i = 0; i < id2.data.length; i += 4) {
+      const v = Math.random() * 28;
+      id2.data[i] = id2.data[i+1] = id2.data[i+2] = v;
+      id2.data[i+3] = 255;
+    }
+    ctx.putImageData(id2, 0, 0);
+  }, 60);
+}
+function startWebcamTs() {
+  const el = document.getElementById('webcam-ts');
+  setInterval(() => {
+    if (el) { const n = new Date(); el.textContent = pad(n.getHours()) + ':' + pad(n.getMinutes()) + ':' + pad(n.getSeconds()); }
+  }, 1000);
+}
+
+// ============================================================
+// CORE LOGIC & ROOM HOOKS WITH AUDIO
+// ============================================================
+function stopAllRoomAudio() {
+  ['snd-sadsatan', 'snd-pipe', 'snd-morse'].forEach(id => {
+    try {
+      const a = document.getElementById(id);
+      if (a) { a.pause(); a.currentTime = 0; }
+    } catch(e) {}
+  });
+}
+
+function openRoom(id){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.classList.add('active');
+  document.body.style.overflow='hidden';
+  
+  stopAllRoomAudio();
+  
+  if(id==='room-camera') startCamTs();
+  if(id==='room-recovery') startRecovery();
+  if(id==='room-brother') { 
+    try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} 
+    try{const m=document.getElementById('snd-morse'); m.volume=0.7; m.play();}catch(e){}
+  }
+  if(id==='room-sadsatan') {
+    try{const sa=document.getElementById('snd-sadsatan'); sa.volume=0.8; sa.play();}catch(e){}
+  }
+  if(id==='room-basement') {
+    initBasement();
+    try{const pi=document.getElementById('snd-pipe'); pi.volume=0.9; pi.play();}catch(e){}
+  }
+  
+  if(id==='room-smile')    setTimeout(startSmile, 500);
+  if(id==='room-knock')    startKnock();
+  if(id==='room-endless')  initEndless();
+  if(id==='room-webcam')   startWebcamRoom();
+}
+
+function closeRoom(){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  document.body.style.overflow='';
+  stopAllRoomAudio();
+}
+
+function changeRoom(id){
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  
+  stopAllRoomAudio();
+  if(id==='room-camera') startCamTs();
+  if(id==='room-recovery') startRecovery();
+  if(id==='room-brother') {
+    try{const s=document.getElementById('snd-steps'); s.volume=0.6; s.currentTime=0; s.play();}catch(e){} 
+    try{const m=document.getElementById('snd-morse'); m.volume=0.7; m.play();}catch(e){}
+  }
+}
+
+function startCamTs(){
+  const el=document.getElementById('cam-ts');
+  if(!el) return;
+  const t=()=>{ if(el) el.textContent=pad(new Date().getHours())+':'+pad(new Date().getMinutes())+':'+pad(new Date().getSeconds()); };
+  t(); setInterval(t,1000);
+}
+
+function startRecovery(){
+  if(recStarted) return;
+  recStarted=true;
+  const log=document.getElementById('rec-log');
+  const fill=document.getElementById('rec-fill');
+  const status=document.getElementById('rec-status');
+  if(!log||!fill) return;
+  const entries=[
+    'Сканирование C:\\...','Найдено 4,823 файлов','Проверка целостности файлов...',
+    'halo3_clips.wmv — ОК','portal2_speedrun.wmv — ОК','cs_demos.dem — ОК',
+    'site_backup_aug2014.zip — ПОВРЕЖДЕНО',
+    '[УДАЛЕНО].exe — НАЙДЕНО','Попытка чтения...','Размер файла: 0 байт',
+    'Размер файла: ∞ байт','Невозможно прочитать метаданные','Невозможно определить источник',
+    'Невозможно поместить в карантин','Невозможно удалить','Дата создания отсутствует',
+    'Последнее изменение: НИКОГДА','Файл все еще запущен.',
+    'Сбой восстановления.','Файл не будет удален.',
+    'Оно было здесь еще до Windows.','Восстановление завершено. 1 файл не восстановлен.',
+  ];
+  let i=0;
+  const iv=setInterval(()=>{
+    if(i<entries.length){
+      const line=document.createElement('div');
+      const bad=entries[i].includes('[УДАЛЕНО]')||entries[i].includes('ПОВРЕЖДЕНО')||
+                 entries[i].includes('Невозможно')||entries[i].includes('Сбой')||
+                 entries[i].includes('НИКОГДА')||entries[i].includes('не восстановлен')||
+                 entries[i].includes('до Windows');
+      line.style.color=bad?'#aa5555':'#888888';
+      line.textContent='> '+entries[i];
+      log.appendChild(line); log.scrollTop=log.scrollHeight;
+      fill.style.width=((i+1)/entries.length*100)+'%';
+      if(status) status.textContent=entries[i];
+      i++;
+    } else { clearInterval(iv); }
+  },580);
+}
+
+function openTrap(){
+  if(trapOpen) return;
+  trapOpen=true;
+  const tr=document.getElementById('room-trap');
+  if(tr) tr.classList.add('active');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{ const ex=document.getElementById('trap-exit'); if(ex) ex.style.opacity='1'; },18000);
+}
+function closeTrap(){
+  trapOpen=false;
+  const tr=document.getElementById('room-trap');
+  if(tr) tr.classList.remove('active');
+  document.body.style.overflow='';
+}
+
+setInterval(()=>{
+  if(!trapOpen&&!b5Mode&&b5Pct>55&&Math.random()<0.002) openTrap();
+},5000);
+
+const FRAME_DATA=[
+  {t:'[ кадр 1 ]\nчто-то бежит. ничего необычного.',c:'#ccc',s:'13px'},
+  {t:'[ кадр 3 ]\nвсе еще бежит. фон кажется немного темнее.',c:'#ccc',s:'12px'},
+  {t:'[ кадр 7 ]\nс фоном что-то не так.',c:'#ddd',s:'12px'},
+  {t:'[ кадр 12 ]\nтень не совпадает с силуэтом.',c:'#ff6666',s:'12px'},
+  {t:'[ кадр 19 ]\nтеперь теней две.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 25 ]\nвторая тень стала больше.\nона не бежит.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 31 ]\nсилуэт замедлился.\nвторая тень — нет.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 38 ]\nсилуэт стоит на месте.\nмы не знаем, когда он остановился.',c:'#ff3333',s:'11px'},
+  {t:'[ кадр 44 ]\nсилуэт смотрит на тебя.\nэто невозможно.',c:'#ff0000',s:'12px'},
+  {t:'[ кадр 46 ]\nпожалуйста остановись.\nне переходи на 47-й кадр.',c:'#ff0000',s:'11px'},
+  {t:'[ кадр 47 ]',c:'#d12222',s:'11px',img:HORRORS[0]},
+  {t:'',c:'#000',s:'1px',img:B5_GIF,end:true},
+];
+function nextFrame(dir){
+  frameIdx=Math.max(0,Math.min(FRAME_DATA.length-1,frameIdx+dir));
+  const d=FRAME_DATA[frameIdx];
+  const counter=document.getElementById('frame-counter');
+  const box=document.getElementById('frame-content');
+  if(counter) counter.textContent=frameIdx+1;
+  if(box){
+    if(d.img){
+      box.innerHTML=`<img src="${d.img}" style="max-width:320px;max-height:260px;border:none;filter:brightness(0.6);" alt="">
+        <div style="font-size:${d.s};color:${d.c};margin-top:8px;letter-spacing:2px;white-space:pre-line;">${d.t}</div>`;
+    } else {
+      box.innerHTML=`<div style="font-size:${d.s};color:${d.c};white-space:pre-line;padding:20px;letter-spacing:2px;line-height:2;">${d.t}</div>`;
+    }
+    if(frameIdx===10) eFlash();
+    if(d.end) setTimeout(()=>{closeRoom();openTrap();},2500);
+  }
+}
+
+let szZ=100;
+function dragSticker(e,el){
+  e.preventDefault();
+  szZ++; el.style.zIndex=szZ;
+  const wall=document.getElementById('sticker-wall');
+  const wr=wall.getBoundingClientRect(),er=el.getBoundingClientRect();
+  const ox=e.clientX-er.left,oy=e.clientY-er.top;
+  const mv=ev=>{
+    let x=ev.clientX-wr.left-ox,y=ev.clientY-wr.top-oy;
+    x=Math.max(0,Math.min(wr.width-er.width,x));
+    y=Math.max(0,Math.min(wr.height-er.height,y));
+    el.style.left=x+'px';el.style.top=y+'px';
+    el.style.right='auto';el.style.bottom='auto';
+  };
+  const st=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',st);};
+  document.addEventListener('mousemove',mv);
+  document.addEventListener('mouseup',st);
+}
+function maybeRoom(el){
+  s5Clicks++;
+  if(s5Clicks>=3){
+    s5Clicks=0;
+    const img=el.querySelector('img');
+    if(img){const o=img.src;img.src=B5_GIF;img.style.filter='brightness(0.7)';
+      setTimeout(()=>{img.src=o;img.style.filter='';openRoom('room-0');},500);}
+  }
+}
+
+function startMeter(){
+  setInterval(()=>{
+    if(b5Mode) return;
+    b5Pct=Math.min(100,b5Pct+.12+Math.random()*.18);
+    updateMeter();
+  },6000);
+}
+function updateMeter(){
+  const f=document.getElementById('m-fill');
+  const p=document.getElementById('m-pct');
+  const w=document.getElementById('m-warn');
+  if(!f) return;
+  f.style.width=b5Pct+'%';
+  if(p) p.textContent=Math.round(b5Pct)+'%';
+  if(w){
+    if(b5Pct<20)      w.textContent='ожидание';
+    else if(b5Pct<45) w.textContent='низкий';
+    else if(b5Pct<70) w.textContent='повышен';
+    else if(b5Pct<88) w.textContent='высокий';
+    else               w.textContent='критич.';
+  }
+  if(b5Pct>=30&&b5Pct<31) eBearText();
+  if(b5Pct>=55&&b5Pct<56) eErrWin();
+  if(b5Pct>=80&&b5Pct<81) eProcessBar();
+  if(b5Pct>=100) unleashB5();
+}
+
+function unleashB5(){
+  if(b5Mode) return;
+  b5Mode=true;
+  eFlash();setTimeout(eFlash,150);setTimeout(eFlash,300);
+  
+  try{const s=document.getElementById('snd-scream');const a=document.getElementById('amb');a.pause();s.volume=1.0;s.currentTime=0;s.play().catch(()=>{});}catch(e){}
+  
+  document.body.classList.add('B5');
+  var bear5Src = "https://m.gjcdn.net/game-header/1200/864969-tkasepzz-v4.webp";
+  document.querySelectorAll('img:not(#screamer-img):not(.floater)').forEach(img=>{
+    img.src=bear5Src;
+    img.style.filter='contrast(150%)';
+  });
+  
+  const title=document.getElementById('site-title');
+  if(title) title.childNodes[0].textContent='BEAR 5';
+  document.querySelectorAll('.blog-text').forEach(el=>{
+    el.innerHTML='<span style="color:#000;font-size:16px;letter-spacing:4px;font-weight:bold;">BEAR5 BEAR5 BEAR5</span>';
+  });
+  
+  document.querySelectorAll('.sts').forEach(el => el.innerHTML = 'СТАТУС: БЕГИ БЕГИ БЕГИ');
+
+  b5Pct=100; updateMeter();
+  const now=new Date();
+  const ts=pad(now.getHours())+':'+pad(now.getMinutes());
+  for(let i=0;i<5;i++) setTimeout(()=>appendChat({n:'Bear5',t:'Я ИДУ ЗА ТОБОЙ',ts,b:true},false),i*280);
+  
+  setTimeout(()=>{if(b5Mode){doScreamer();}},4500);
+  setTimeout(resetB5,22000);
+}
+
+function resetB5(){
+  b5Mode=false;
+  document.body.classList.remove('B5');
+  setTimeout(()=>location.reload(),2000);
+}
+
+function replaceAllText(){
+  if(textReplaced){location.reload();return;}
+  textReplaced=true;
+  function walk(node){
+    if(node.nodeType===Node.TEXT_NODE){
+      const txt=node.textContent.trim();
+      if(txt.length>3&&!node.parentElement?.closest('#screamer-overlay,#room-trap,#room-sadsatan,script,style')){
+        node.textContent=B5MSGS[Math.floor(Math.random()*B5MSGS.length)];
+      }
+    } else if(node.nodeType===Node.ELEMENT_NODE){
+      if(!['SCRIPT','STYLE','INPUT','TEXTAREA','IFRAME'].includes(node.tagName)){
+        Array.from(node.childNodes).forEach(walk);
+      }
+    }
+  }
+  walk(document.getElementById('main-wrap'));
+  document.title='ВСЕ ЕЩЕ РАБОТАЕТ';
+  eRedWash();
+  const btn=document.getElementById('replace-btn');
+  if(btn) btn.textContent='отмена (релоад)';
+}
+function revealReplaceBtn(){
+  document.getElementById('replace-btn').style.display='block';
+}
+
+function dragWin(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (!el) return;
+  let ox = e.clientX - el.getBoundingClientRect().left;
+  let oy = e.clientY - el.getBoundingClientRect().top;
+  const mv = ev => {
+    el.style.left = (ev.clientX - ox) + 'px';
+    el.style.top = (ev.clientY - oy) + 'px';
+  };
+  const up = () => {
+    document.removeEventListener('mousemove', mv);
+    document.removeEventListener('mouseup', up);
+  };
+  document.addEventListener('mousemove', mv);
+  document.addEventListener('mouseup', up);
+}
+
+function updateTrack(){
+  const t=tracks[trackIdx];
+  const el=document.getElementById('now-track');
+  const al=document.getElementById('now-album');
+  if(el) el.textContent=t.n;
+  if(al) al.textContent='Альбом: '+t.a;
+  mSecs=0;
+}
+function togglePlay(){
+  playing=!playing;
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent=playing?'⏸':'▶';
+  if(playing){
+    mInterval=setInterval(()=>{
+      mSecs++;
+      const m=Math.floor(mSecs/60),s=String(mSecs%60).padStart(2,'0');
+      const el=document.getElementById('music-time');
+      if(el) el.textContent=`${m}:${s}`;
+      if(mSecs>180+Math.random()*80) nextTrack();
+    },1000);
+  } else { clearInterval(mInterval); }
+}
+function nextTrack(){
+  clearInterval(mInterval);playing=false;
+  trackIdx=(trackIdx+1)%tracks.length;
+  updateTrack();
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent='▶';
+  if(tracks[trackIdx].a==='???.exe'){ setTimeout(()=>{eFlash();eBearText();},500); }
+}
+function prevTrack(){
+  clearInterval(mInterval);playing=false;
+  trackIdx=(trackIdx-1+tracks.length)%tracks.length;
+  updateTrack();
+  const btn=document.getElementById('play-btn');
+  if(btn) btn.textContent='▶';
+}
+
+function openLb(src){
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lb-img');
+  if(!lb||!img) return;
+  img.src=src; lb.classList.add('active');
+  if(Math.random()<0.12) setTimeout(()=>{img.src=HORRORS[Math.floor(Math.random()*HORRORS.length)];eFlash();},900);
+  if(Math.random()<0.04) setTimeout(()=>{closeLightbox();openTrap();},1800);
+}
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  if(lb) lb.classList.remove('active');
+}
+
+function closeErr(id){
+  const el=document.getElementById(id);
+  if(el) el.style.display='none';
+  if(Math.random()<0.2&&!b5Mode) setTimeout(()=>eErrWin(),900);
+}
+function moreErrors(){
+  closeErr('err4');
+  setTimeout(()=>eErrWin(),200);
+  setTimeout(()=>eErrWin(),500);
+}
+
+function revealSecret(el){
+  el.textContent='Брат вернулся. Но это уже не он.';
+  el.style.color='#ff3333'; el.style.fontStyle='italic';
+  el.onclick=null;
+  setTimeout(()=>openRoom('room-brother'),2500);
+}
+
+// ФУНКЦИИ ЗАКРЫТИЯ ОКОН
+function closeEyeWindow() {
+  const el = document.getElementById('eye-window');
+  if (el) el.style.display = 'none';
+}
+
+function closeBSOD() {
+  const el = document.getElementById('bsod');
+  if (el) el.style.display = 'none';
+}
+
+</script>
+</body>
+</html>
