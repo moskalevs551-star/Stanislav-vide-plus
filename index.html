@@ -999,6 +999,34 @@ body.B5, body.B5 a, body.B5 div {
   color: #333;
 }
 
+/* === PS321_2014_REMASTER_CSS_START === */
+:root{--psx-green:#78ff93;--psx-cyan:#57d6ff;--psx-pink:#ff4fa3;--psx-yellow:#ffe66d;--psx-red:#9d0d0d;--psx-blue:#1238a8;--psx-silver:#c0c0c0;}
+body.ps2014-remastered{background:radial-gradient(circle at 14% 8%,rgba(120,255,147,.09),transparent 26%),radial-gradient(circle at 82% 16%,rgba(87,214,255,.08),transparent 28%),linear-gradient(135deg,#050505,#111 38%,#060000);color:#d8d8d8;text-shadow:0 0 2px rgba(120,255,147,.12);}
+body.ps2014-remastered:before{content:'';position:fixed;inset:0;z-index:9988;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,0,0,.018) 0 1px,rgba(0,255,255,.015) 1px 2px,transparent 2px 5px);mix-blend-mode:screen;opacity:.35;animation:psxRoll 11s linear infinite;}
+body.ps2014-remastered:after{content:'';position:fixed;inset:0;z-index:9987;pointer-events:none;background:radial-gradient(circle at center,transparent 0 56%,rgba(0,0,0,.48) 100%);}
+@keyframes psxRoll{from{transform:translateY(0)}to{transform:translateY(8px)}}
+body.ps2014-remastered #bg-stage{background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.55)),repeating-linear-gradient(0deg,#090909 0 2px,#0c0c0c 2px 4px),linear-gradient(135deg,#0b1410,#070707 60%,#140909);}
+body.ps2014-remastered .bg-grid{background-image:linear-gradient(rgba(120,255,147,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(87,214,255,.025) 1px,transparent 1px),radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);background-size:48px 48px,48px 48px,7px 7px;opacity:.85;}
+body.ps2014-remastered #main-wrap{width:min(1380px,calc(100vw - 28px));margin:24px auto 36px;border:1px solid #4a4a4a;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 80px),repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 18px),rgba(7,7,7,.94);box-shadow:0 0 0 1px #000,0 0 36px rgba(120,255,147,.08),0 18px 80px rgba(0,0,0,.7),inset 0 0 70px rgba(157,13,13,.08);}
+body.ps2014-remastered header{min-height:218px;border-bottom:1px solid #303030;background:linear-gradient(90deg,rgba(18,56,168,.45),rgba(0,0,0,.1) 28%,rgba(157,13,13,.22)),repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 2px,transparent 2px 5px),#0b0b0b;overflow:hidden;}
+body.ps2014-remastered header:before{content:'BEST VIEWED IN IE8   HTML4   1024x768   NO HOTLINKING';position:absolute;left:12px;right:12px;bottom:10px;color:rgba(184,255,63,.58);font-family:'VT323','Share Tech Mono',monospace;font-size:18px;text-align:center;border-top:1px dashed rgba(184,255,63,.25);padding-top:6px;}
+body.ps2014-remastered .site-title{color:#fff;font-family:'Permanent Marker','VT323',monospace;font-size:78px;line-height:.95;text-shadow:3px 3px 0 #000,5px 5px 0 rgba(255,79,163,.55),-3px 0 0 rgba(87,214,255,.55),0 0 24px rgba(255,255,255,.18);transform:rotate(-1deg);}
+body.ps2014-remastered .header-tag{border:1px solid #3e3e3e;background:linear-gradient(#1d1d1d,#080808);box-shadow:inset 1px 1px 0 rgba(255,255,255,.08),0 0 12px rgba(87,214,255,.07);color:#d8ffd9;}
+body.ps2014-remastered .px-stripe{height:14px;background:repeating-linear-gradient(90deg,#ff4fa3 0 12px,#57d6ff 12px 24px,#b8ff3f 24px 36px,#ffe66d 36px 48px,#111 48px 60px);border-top:1px solid #000;border-bottom:1px solid #000;box-shadow:0 0 18px rgba(255,255,255,.08);}
+body.ps2014-remastered .panel,body.ps2014-remastered .b5-meter,body.ps2014-remastered .b5-trigger,body.ps2014-remastered .sticker-wall,body.ps2014-remastered .tv-outer{border:1px solid #4a4a4a;background:linear-gradient(180deg,rgba(255,255,255,.035),transparent 70px),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 1px,transparent 1px 8px),#0d0d0d;box-shadow:inset 1px 1px 0 rgba(255,255,255,.06),inset -1px -1px 0 rgba(0,0,0,.85),0 8px 20px rgba(0,0,0,.28);}
+body.ps2014-remastered .panel-title{background:linear-gradient(90deg,#1238a8,#0b0b0b 60%,#7a0909),repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 1px,transparent 1px 6px);border-bottom:1px solid #5a5a5a;color:#fff;text-shadow:1px 1px 0 #000,0 0 10px rgba(87,214,255,.28);min-height:25px;}
+body.ps2014-remastered .blog-entry{background:rgba(0,0,0,.18);border-bottom:1px dashed #2d2d2d;padding-left:8px;padding-right:8px;}body.ps2014-remastered .blog-entry:hover{background:rgba(87,214,255,.035)}body.ps2014-remastered .blog-entry.dark{box-shadow:inset 0 0 22px rgba(157,13,13,.22),0 0 18px rgba(157,13,13,.12)}
+body.ps2014-remastered a{color:#7fd7ff;border-bottom:1px dotted #7fd7ff}body.ps2014-remastered a:hover{color:#fff;background:#1238a8;border-bottom-color:#fff}
+body.ps2014-remastered .admin-photo,body.ps2014-remastered .gal-grid img,body.ps2014-remastered .sticker img,body.ps2014-remastered .b5-img{border:1px solid #5d5d5d;box-shadow:0 0 0 1px #000,0 0 18px rgba(0,0,0,.45)}
+#psx-static-layer{position:fixed;inset:0;z-index:9991;pointer-events:none;opacity:0;mix-blend-mode:screen;background:repeating-radial-gradient(circle at 30% 20%,rgba(255,255,255,.18) 0 1px,transparent 1px 3px),repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 2px);transition:opacity .18s}
+#psx-volume-dock{position:fixed;left:14px;bottom:14px;z-index:1000001;width:250px;background:#c0c0c0;color:#000;border:2px outset #fff;font-family:'Share Tech Mono','PT Mono',monospace;font-size:11px;box-shadow:4px 4px 0 rgba(0,0,0,.45)}#psx-volume-dock.minimized .psx-volume-body{display:none}.psx-volume-bar{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 6px;display:flex;justify-content:space-between;align-items:center}.psx-volume-x{color:#000;background:#c0c0c0;border:1px outset #fff;min-width:18px;text-align:center;cursor:pointer}.psx-volume-body{padding:8px}#psx-master-volume{width:100%;accent-color:#000080}.psx-volume-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:5px}.psx-volume-led{width:9px;height:9px;background:#00b000;border:1px inset #777;box-shadow:0 0 8px #00ff00}
+#psx-case-modal{position:fixed;inset:0;z-index:1000002;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:18px}#psx-case-modal.active{display:flex}.psx-case-window{width:min(720px,94vw);max-height:88vh;background:#f2f0df;color:#111;border:2px outset #fff;box-shadow:0 0 0 1px #111,0 20px 80px rgba(0,0,0,.72);font-family:'Courier New',monospace;overflow:hidden}.psx-case-bar{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:4px 8px;display:flex;justify-content:space-between;align-items:center;font-size:12px}.psx-case-close{color:#000;background:#c0c0c0;border:1px outset #fff;padding:0 6px;cursor:pointer}.psx-case-body{padding:14px;overflow:auto;max-height:calc(88vh - 72px);line-height:1.65;background:linear-gradient(rgba(157,13,13,.07),transparent 90px),repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 1px,transparent 1px 24px),#f2f0df}.psx-case-title{font-size:18px;font-weight:bold;margin-bottom:8px;color:#7a0909}.psx-case-meta{font-size:11px;color:#555;border-bottom:1px dashed #999;padding-bottom:8px;margin-bottom:10px}.psx-case-clue{color:#7a0909;font-weight:bold}
+#psx-achieve{position:fixed;right:16px;bottom:16px;z-index:1000000;display:flex;flex-direction:column;gap:8px;pointer-events:none}.psx-toast{width:min(360px,calc(100vw - 32px));background:linear-gradient(#f5f5f5,#cfcfcf);color:#111;border:2px outset #fff;box-shadow:4px 4px 0 rgba(0,0,0,.45);font-family:'Segoe UI',Arial,sans-serif;font-size:12px;padding:8px 10px;transform:translateX(120%);opacity:0;transition:transform .25s,opacity .25s}.psx-toast.show{transform:translateX(0);opacity:1}.psx-toast strong{color:#000;font-weight:bold}.psx-toast.danger{background:linear-gradient(#2b0000,#070000);color:#ffd9d9;border-color:#750000}.psx-toast.danger strong{color:#fff}
+.psx-hero-sticker{position:absolute;top:44px;right:22px;width:188px;min-height:118px;transform:rotate(4deg);background:#f8f0a6;color:#111;border:1px solid #8c7b1b;box-shadow:4px 6px 0 rgba(0,0,0,.4);padding:10px;font-family:'Caveat',cursive;font-size:21px;line-height:1.05;z-index:2}.psx-hero-sticker small{display:block;font-family:'Share Tech Mono',monospace;font-size:10px;margin-top:8px;color:#690000}.psx-case-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.psx-case-card{min-height:58px;border:1px solid #333;background:linear-gradient(#161616,#090909);padding:6px;color:#d7d7d7;cursor:pointer;position:relative;overflow:hidden}.psx-case-card:after{content:'';position:absolute;inset:auto 0 0;height:2px;background:linear-gradient(90deg,#57d6ff,#ff4fa3,#b8ff3f);opacity:.55}.psx-case-card:hover{background:#111d20;color:#fff}.psx-case-card b{display:block;color:#fff;font-size:11px}.psx-case-card span{display:block;color:#aaa;font-size:10px;margin-top:4px}
+.psx-wall-note{position:fixed;z-index:9996;max-width:260px;background:#f7efa0;color:#111;border:1px solid #776a00;box-shadow:4px 5px 0 rgba(0,0,0,.35);padding:9px;font-family:'Caveat',cursive;font-size:22px;line-height:1.05;pointer-events:none}.psx-system-win,.psx-download{position:fixed;z-index:999980;width:min(430px,calc(100vw - 28px));background:#c0c0c0;color:#000;border:2px outset #fff;font-family:'Share Tech Mono','PT Mono',monospace;font-size:11px;box-shadow:6px 6px 0 rgba(0,0,0,.48)}.psx-system-win .bar,.psx-download .bar{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;padding:3px 7px;display:flex;justify-content:space-between}.psx-system-win .body,.psx-download .body{padding:12px;line-height:1.65}.psx-system-win .foot{border-top:1px solid #999;padding:7px;display:flex;justify-content:flex-end;gap:6px}.psx-system-win button{border:2px outset #fff;background:#c0c0c0;color:#000;padding:3px 12px;cursor:pointer}.psx-download .track{height:18px;border:1px inset #777;background:#fff;margin-top:10px;padding:2px}.psx-download .fill{height:100%;width:0%;background:repeating-linear-gradient(90deg,#2b8a2b 0 12px,#42c742 12px 24px)}
+.psx-full-scare{position:fixed;inset:0;z-index:1000003;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}.psx-full-scare img{width:100%;height:100%;object-fit:cover;filter:contrast(1.35) brightness(.7) saturate(.75)}.psx-full-scare .caption{position:absolute;left:0;right:0;bottom:8vh;text-align:center;color:#fff;font-family:'VT323',monospace;font-size:clamp(24px,5vw,74px);text-shadow:3px 3px 0 #000,0 0 22px #d12222}.psx-tear-strip{position:fixed;left:0;right:0;height:28px;z-index:9997;pointer-events:none;background:rgba(255,255,255,.08);mix-blend-mode:difference}body.psx-desync #main-wrap{animation:psxDesync .55s steps(2) infinite}@keyframes psxDesync{0%{transform:translate(0,0) skewX(0);filter:hue-rotate(0)}25%{transform:translate(5px,-2px) skewX(1deg);filter:hue-rotate(12deg)}50%{transform:translate(-4px,2px) skewX(-1deg);filter:hue-rotate(-12deg)}100%{transform:translate(0,0) skewX(0);filter:hue-rotate(0)}}body.psx-bleed .panel{box-shadow:inset 0 0 24px rgba(157,13,13,.34),0 0 20px rgba(157,13,13,.14)}body.psx-snowing #psx-static-layer{opacity:.35}
+@media(max-width:900px){body.ps2014-remastered #main-wrap{width:calc(100vw - 12px);margin-top:8px}body.ps2014-remastered .site-title{font-size:48px}.psx-hero-sticker{position:relative;top:auto;right:auto;margin:10px auto 28px;width:min(260px,80vw)}#psx-volume-dock{width:min(250px,calc(100vw - 24px));left:8px;bottom:8px}.psx-case-grid{grid-template-columns:1fr}}
+/* === PS321_2014_REMASTER_CSS_END === */
 </style>
 </head>
 <body>
@@ -1054,6 +1082,12 @@ body.B5, body.B5 a, body.B5 div {
 <div id="glitch-flash"></div>
 <div id="red-wash"></div>
 
+<!-- === PS321_2014_REMASTER_HTML_START === -->
+<div id="psx-static-layer" aria-hidden="true"></div>
+<div id="psx-achieve" aria-live="polite"></div>
+<div id="psx-volume-dock"><div class="psx-volume-bar"><span>Volume Control - 2014</span><span class="psx-volume-x" onclick="document.getElementById('psx-volume-dock').classList.toggle('minimized')">_</span></div><div class="psx-volume-body"><input id="psx-master-volume" type="range" min="0" max="100" value="55" aria-label="Master volume"><div class="psx-volume-row"><span>MASTER: <strong id="psx-volume-label">55%</strong></span><span class="psx-volume-led"></span></div></div></div>
+<div id="psx-case-modal" onclick="if(event.target.id==='psx-case-modal')psxCloseCase()"><div class="psx-case-window"><div class="psx-case-bar"><span id="psx-case-filename">casefile.txt - Notepad</span><span class="psx-case-close" onclick="psxCloseCase()">x</span></div><div class="psx-case-body" id="psx-case-body"></div></div></div>
+<!-- === PS321_2014_REMASTER_HTML_END === -->
 <svg id="screen-crack" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
   <path d="M 700 0 L 620 200 L 750 350 L 560 600 L 680 900" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
   <path d="M 700 0 L 780 150 L 650 280 L 820 500" stroke="rgba(255,255,255,0.1)" stroke-width=".8" fill="none"/>
@@ -3465,6 +3499,951 @@ function scheduleEvents() {
 }
 
 // ============================================================
+// === PS321_2014_REMASTER_JS_START ===
+const PSX_EXTRA_EVENTS = [
+  {
+    "id": 71,
+    "tier": "hard",
+    "name": "FRAME_47_IMPACT",
+    "type": "screamer",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "water_glass",
+    "duration": 5200
+  },
+  {
+    "id": 72,
+    "tier": "hard",
+    "name": "BROTHER_AT_GLASS",
+    "type": "blackout",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "frame47",
+    "duration": 5200
+  },
+  {
+    "id": 73,
+    "tier": "hard",
+    "name": "CAMERA_7_OPEN",
+    "type": "fatal",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "ftp_denied",
+    "duration": 5200
+  },
+  {
+    "id": 74,
+    "tier": "hard",
+    "name": "DEAD_TAB_RESTORE",
+    "type": "tear",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "camera7",
+    "duration": 5200
+  },
+  {
+    "id": 75,
+    "tier": "hard",
+    "name": "HALLWAY_RUNNER",
+    "type": "case",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "brother_css",
+    "duration": 5200
+  },
+  {
+    "id": 76,
+    "tier": "hard",
+    "name": "NO_MOUSE_LEFT",
+    "type": "screamer",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "last_login",
+    "duration": 5200
+  },
+  {
+    "id": 77,
+    "tier": "hard",
+    "name": "STATIC_MOUTH",
+    "type": "blackout",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "room_sound",
+    "duration": 5200
+  },
+  {
+    "id": 78,
+    "tier": "hard",
+    "name": "BLACK_SCREEN_COUNT",
+    "type": "fatal",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "zip_backup",
+    "duration": 5200
+  },
+  {
+    "id": 79,
+    "tier": "hard",
+    "name": "WINDOWS_FATAL_FACE",
+    "type": "tear",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "static_gif",
+    "duration": 5200
+  },
+  {
+    "id": 80,
+    "tier": "hard",
+    "name": "LAST_PHOTO_BURNS",
+    "type": "case",
+    "message": "Не считай кадры.",
+    "caseRef": "phone_left",
+    "duration": 5200
+  },
+  {
+    "id": 81,
+    "tier": "hard",
+    "name": "AUDIO_TOO_CLOSE",
+    "type": "screamer",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "water_glass",
+    "duration": 5200
+  },
+  {
+    "id": 82,
+    "tier": "hard",
+    "name": "FULLSCREEN_SIGNAL",
+    "type": "blackout",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "frame47",
+    "duration": 5200
+  },
+  {
+    "id": 83,
+    "tier": "hard",
+    "name": "RED_BOOT_LOOP",
+    "type": "fatal",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "ftp_denied",
+    "duration": 5200
+  },
+  {
+    "id": 84,
+    "tier": "hard",
+    "name": "MIRROR_DOUBLE",
+    "type": "tear",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "camera7",
+    "duration": 5200
+  },
+  {
+    "id": 85,
+    "tier": "hard",
+    "name": "BROTHER_LOGIN",
+    "type": "case",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "brother_css",
+    "duration": 5200
+  },
+  {
+    "id": 86,
+    "tier": "hard",
+    "name": "FILE_OPENS_YOU",
+    "type": "screamer",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "last_login",
+    "duration": 5200
+  },
+  {
+    "id": 87,
+    "tier": "hard",
+    "name": "FROZEN_DESKTOP",
+    "type": "blackout",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "room_sound",
+    "duration": 5200
+  },
+  {
+    "id": 88,
+    "tier": "hard",
+    "name": "HAND_ON_MONITOR",
+    "type": "fatal",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "zip_backup",
+    "duration": 5200
+  },
+  {
+    "id": 89,
+    "tier": "hard",
+    "name": "FNAF_NOT_TOY",
+    "type": "tear",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "static_gif",
+    "duration": 5200
+  },
+  {
+    "id": 90,
+    "tier": "hard",
+    "name": "PIPE_ROOM_BREACH",
+    "type": "case",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "phone_left",
+    "duration": 5200
+  },
+  {
+    "id": 91,
+    "tier": "scary",
+    "name": "SKYPE_AFTER_MIDNIGHT",
+    "type": "image",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "water_glass",
+    "duration": 4300
+  },
+  {
+    "id": 92,
+    "tier": "scary",
+    "name": "PHOTO_REPLACED",
+    "type": "window",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "frame47",
+    "duration": 4300
+  },
+  {
+    "id": 93,
+    "tier": "scary",
+    "name": "TITLE_WHISPERS",
+    "type": "download",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "ftp_denied",
+    "duration": 4300
+  },
+  {
+    "id": 94,
+    "tier": "scary",
+    "name": "CHAT_TYPES_BACK",
+    "type": "cursor",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "camera7",
+    "duration": 4300
+  },
+  {
+    "id": 95,
+    "tier": "scary",
+    "name": "GALLERY_EYES",
+    "type": "title",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "brother_css",
+    "duration": 4300
+  },
+  {
+    "id": 96,
+    "tier": "scary",
+    "name": "TASKMGR_BEAR5",
+    "type": "chat",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "last_login",
+    "duration": 4300
+  },
+  {
+    "id": 97,
+    "tier": "scary",
+    "name": "DOWNLOAD_SOUL",
+    "type": "morse",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "room_sound",
+    "duration": 4300
+  },
+  {
+    "id": 98,
+    "tier": "scary",
+    "name": "COUNTDOWN_THIRTEEN",
+    "type": "corner",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "zip_backup",
+    "duration": 4300
+  },
+  {
+    "id": 99,
+    "tier": "scary",
+    "name": "LOCALHOST_BREATH",
+    "type": "image",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "static_gif",
+    "duration": 4300
+  },
+  {
+    "id": 100,
+    "tier": "scary",
+    "name": "NOTEPAD_WARNING",
+    "type": "window",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "phone_left",
+    "duration": 4300
+  },
+  {
+    "id": 101,
+    "tier": "scary",
+    "name": "FORUM_POST_NOW",
+    "type": "download",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "water_glass",
+    "duration": 4300
+  },
+  {
+    "id": 102,
+    "tier": "scary",
+    "name": "CURSOR_SECOND",
+    "type": "cursor",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "frame47",
+    "duration": 4300
+  },
+  {
+    "id": 103,
+    "tier": "scary",
+    "name": "SCREEN_TEAR_VERTICAL",
+    "type": "title",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "ftp_denied",
+    "duration": 4300
+  },
+  {
+    "id": 104,
+    "tier": "scary",
+    "name": "LOW_BATTERY_SCREAM",
+    "type": "chat",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "camera7",
+    "duration": 4300
+  },
+  {
+    "id": 105,
+    "tier": "scary",
+    "name": "ARCHIVE_404",
+    "type": "morse",
+    "message": "Не считай кадры.",
+    "caseRef": "brother_css",
+    "duration": 4300
+  },
+  {
+    "id": 106,
+    "tier": "scary",
+    "name": "RECOVERY_FAILS",
+    "type": "corner",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "last_login",
+    "duration": 4300
+  },
+  {
+    "id": 107,
+    "tier": "scary",
+    "name": "SILHOUETTE_CORNER",
+    "type": "image",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "room_sound",
+    "duration": 4300
+  },
+  {
+    "id": 108,
+    "tier": "scary",
+    "name": "VHS_REWIND",
+    "type": "window",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "zip_backup",
+    "duration": 4300
+  },
+  {
+    "id": 109,
+    "tier": "scary",
+    "name": "ADMIN_STATUS_MOVES",
+    "type": "download",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "static_gif",
+    "duration": 4300
+  },
+  {
+    "id": 110,
+    "tier": "scary",
+    "name": "LIGHTBOX_TRAP",
+    "type": "cursor",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "phone_left",
+    "duration": 4300
+  },
+  {
+    "id": 111,
+    "tier": "scary",
+    "name": "MORSE_IN_TITLE",
+    "type": "title",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "water_glass",
+    "duration": 4300
+  },
+  {
+    "id": 112,
+    "tier": "scary",
+    "name": "VISITOR_COUNTER_JUMPS",
+    "type": "chat",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "frame47",
+    "duration": 4300
+  },
+  {
+    "id": 113,
+    "tier": "scary",
+    "name": "OLD_AVATAR_BLINK",
+    "type": "morse",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "ftp_denied",
+    "duration": 4300
+  },
+  {
+    "id": 114,
+    "tier": "scary",
+    "name": "HEADER_DESYNC",
+    "type": "corner",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "camera7",
+    "duration": 4300
+  },
+  {
+    "id": 115,
+    "tier": "scary",
+    "name": "BROWSER_CHROME_FAKE",
+    "type": "image",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "brother_css",
+    "duration": 4300
+  },
+  {
+    "id": 116,
+    "tier": "scary",
+    "name": "BROTHER_PORTFOLIO",
+    "type": "window",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "last_login",
+    "duration": 4300
+  },
+  {
+    "id": 117,
+    "tier": "scary",
+    "name": "STICKER_WALL_CRAWL",
+    "type": "download",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "room_sound",
+    "duration": 4300
+  },
+  {
+    "id": 118,
+    "tier": "scary",
+    "name": "CACHE_REPLIES",
+    "type": "cursor",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "zip_backup",
+    "duration": 4300
+  },
+  {
+    "id": 119,
+    "tier": "scary",
+    "name": "CLOCK_2347",
+    "type": "title",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "static_gif",
+    "duration": 4300
+  },
+  {
+    "id": 120,
+    "tier": "scary",
+    "name": "WATER_GLASS",
+    "type": "chat",
+    "message": "Не считай кадры.",
+    "caseRef": "phone_left",
+    "duration": 4300
+  },
+  {
+    "id": 121,
+    "tier": "medium",
+    "name": "BLOG_DUST",
+    "type": "panel",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "water_glass",
+    "duration": 5600
+  },
+  {
+    "id": 122,
+    "tier": "medium",
+    "name": "MARQUEE_BREAK",
+    "type": "case",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "frame47",
+    "duration": 5600
+  },
+  {
+    "id": 123,
+    "tier": "medium",
+    "name": "PANEL_BREATH",
+    "type": "toast",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "ftp_denied",
+    "duration": 5600
+  },
+  {
+    "id": 124,
+    "tier": "medium",
+    "name": "NAV_404",
+    "type": "text",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "camera7",
+    "duration": 5600
+  },
+  {
+    "id": 125,
+    "tier": "medium",
+    "name": "GUESTBOOK_GHOST",
+    "type": "note",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "brother_css",
+    "duration": 5600
+  },
+  {
+    "id": 126,
+    "tier": "medium",
+    "name": "VISITOR_MAP_DOT",
+    "type": "forum",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "last_login",
+    "duration": 5600
+  },
+  {
+    "id": 127,
+    "tier": "medium",
+    "name": "WINAMP_STUTTER",
+    "type": "gallery",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "room_sound",
+    "duration": 5600
+  },
+  {
+    "id": 128,
+    "tier": "medium",
+    "name": "CASE_FILE_UNLOCK",
+    "type": "meter",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "zip_backup",
+    "duration": 5600
+  },
+  {
+    "id": 129,
+    "tier": "medium",
+    "name": "CSS_COMMENT_LEAK",
+    "type": "panel",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "static_gif",
+    "duration": 5600
+  },
+  {
+    "id": 130,
+    "tier": "medium",
+    "name": "FOOTER_REWRITE",
+    "type": "case",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "phone_left",
+    "duration": 5600
+  },
+  {
+    "id": 131,
+    "tier": "medium",
+    "name": "BADGE_FLASH",
+    "type": "toast",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "water_glass",
+    "duration": 5600
+  },
+  {
+    "id": 132,
+    "tier": "medium",
+    "name": "PROFILE_SCAN",
+    "type": "text",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "frame47",
+    "duration": 5600
+  },
+  {
+    "id": 133,
+    "tier": "medium",
+    "name": "SERVER_METER_SPIKE",
+    "type": "note",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "ftp_denied",
+    "duration": 5600
+  },
+  {
+    "id": 134,
+    "tier": "medium",
+    "name": "FORUM_SCROLL",
+    "type": "forum",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "camera7",
+    "duration": 5600
+  },
+  {
+    "id": 135,
+    "tier": "medium",
+    "name": "OLD_POPUP_AD",
+    "type": "gallery",
+    "message": "Не считай кадры.",
+    "caseRef": "brother_css",
+    "duration": 5600
+  },
+  {
+    "id": 136,
+    "tier": "medium",
+    "name": "CRT_DEGAUSS",
+    "type": "meter",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "last_login",
+    "duration": 5600
+  },
+  {
+    "id": 137,
+    "tier": "medium",
+    "name": "TEXT_EROSION",
+    "type": "panel",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "room_sound",
+    "duration": 5600
+  },
+  {
+    "id": 138,
+    "tier": "medium",
+    "name": "LINKS_BLEED",
+    "type": "case",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "zip_backup",
+    "duration": 5600
+  },
+  {
+    "id": 139,
+    "tier": "medium",
+    "name": "WEBCAM_PING",
+    "type": "toast",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "static_gif",
+    "duration": 5600
+  },
+  {
+    "id": 140,
+    "tier": "medium",
+    "name": "RECENT_FILES",
+    "type": "text",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "phone_left",
+    "duration": 5600
+  },
+  {
+    "id": 141,
+    "tier": "medium",
+    "name": "NOTEPAD_AUTOSAVE",
+    "type": "note",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "water_glass",
+    "duration": 5600
+  },
+  {
+    "id": 142,
+    "tier": "medium",
+    "name": "ICQ_KNOCK",
+    "type": "forum",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "frame47",
+    "duration": 5600
+  },
+  {
+    "id": 143,
+    "tier": "medium",
+    "name": "DESKTOP_ICON_DRIFT",
+    "type": "gallery",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "ftp_denied",
+    "duration": 5600
+  },
+  {
+    "id": 144,
+    "tier": "medium",
+    "name": "BORDER_RUST",
+    "type": "meter",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "camera7",
+    "duration": 5600
+  },
+  {
+    "id": 145,
+    "tier": "medium",
+    "name": "WINDOWS_BALLOON",
+    "type": "panel",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "brother_css",
+    "duration": 5600
+  },
+  {
+    "id": 146,
+    "tier": "medium",
+    "name": "CLOCK_DRIFT",
+    "type": "case",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "last_login",
+    "duration": 5600
+  },
+  {
+    "id": 147,
+    "tier": "medium",
+    "name": "AIM_AWAY",
+    "type": "toast",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "room_sound",
+    "duration": 5600
+  },
+  {
+    "id": 148,
+    "tier": "medium",
+    "name": "BROTHER_STATUS_ONLINE",
+    "type": "text",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "zip_backup",
+    "duration": 5600
+  },
+  {
+    "id": 149,
+    "tier": "medium",
+    "name": "IMAGE_NEGATIVE",
+    "type": "note",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "static_gif",
+    "duration": 5600
+  },
+  {
+    "id": 150,
+    "tier": "medium",
+    "name": "ROOM_HINT_DROP",
+    "type": "forum",
+    "message": "Не считай кадры.",
+    "caseRef": "phone_left",
+    "duration": 5600
+  },
+  {
+    "id": 151,
+    "tier": "minor",
+    "name": "TINY_STATIC",
+    "type": "flash",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "water_glass",
+    "duration": 3000
+  },
+  {
+    "id": 152,
+    "tier": "minor",
+    "name": "ONE_WORD_SWAP",
+    "type": "whisper",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "frame47",
+    "duration": 3000
+  },
+  {
+    "id": 153,
+    "tier": "minor",
+    "name": "FAVICON_PULSE",
+    "type": "date",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "ftp_denied",
+    "duration": 3000
+  },
+  {
+    "id": 154,
+    "tier": "minor",
+    "name": "MOUSE_TRAIL_DUST",
+    "type": "marquee",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "camera7",
+    "duration": 3000
+  },
+  {
+    "id": 155,
+    "tier": "minor",
+    "name": "SCROLL_NUDGE",
+    "type": "snow",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "brother_css",
+    "duration": 3000
+  },
+  {
+    "id": 156,
+    "tier": "minor",
+    "name": "HOVER_WHISPER",
+    "type": "badge",
+    "message": "Браузер смотрит обратно.",
+    "caseRef": "last_login",
+    "duration": 3000
+  },
+  {
+    "id": 157,
+    "tier": "minor",
+    "name": "RANDOM_CAPS",
+    "type": "beep",
+    "message": "У него нет рта, но он отвечает.",
+    "caseRef": "room_sound",
+    "duration": 3000
+  },
+  {
+    "id": 158,
+    "tier": "minor",
+    "name": "DATE_FLICKER",
+    "type": "nudge",
+    "message": "Он вышел за водой и не вернулся.",
+    "caseRef": "zip_backup",
+    "duration": 3000
+  },
+  {
+    "id": 159,
+    "tier": "minor",
+    "name": "PIXEL_SNOW",
+    "type": "flash",
+    "message": "Кадр 47 не должен был загрузиться.",
+    "caseRef": "static_gif",
+    "duration": 3000
+  },
+  {
+    "id": 160,
+    "tier": "minor",
+    "name": "BORDER_TICK",
+    "type": "whisper",
+    "message": "В папке стало на один файл больше.",
+    "caseRef": "phone_left",
+    "duration": 3000
+  },
+  {
+    "id": 161,
+    "tier": "minor",
+    "name": "STATUS_TYPING",
+    "type": "date",
+    "message": "Он оставил телефон на столе.",
+    "caseRef": "water_glass",
+    "duration": 3000
+  },
+  {
+    "id": 162,
+    "tier": "minor",
+    "name": "COUNTER_MINUS_ONE",
+    "type": "marquee",
+    "message": "Второй силуэт не принадлежит записи.",
+    "caseRef": "frame47",
+    "duration": 3000
+  },
+  {
+    "id": 163,
+    "tier": "minor",
+    "name": "SMALL_NOTE",
+    "type": "snow",
+    "message": "Не открывай backup_aug2014.zip.",
+    "caseRef": "ftp_denied",
+    "duration": 3000
+  },
+  {
+    "id": 164,
+    "tier": "minor",
+    "name": "ALT_TEXT_LEAK",
+    "type": "badge",
+    "message": "Папка не удаляется, потому что она живая.",
+    "caseRef": "camera7",
+    "duration": 3000
+  },
+  {
+    "id": 165,
+    "tier": "minor",
+    "name": "HEADER_TAG_SWAP",
+    "type": "beep",
+    "message": "Не считай кадры.",
+    "caseRef": "brother_css",
+    "duration": 3000
+  },
+  {
+    "id": 166,
+    "tier": "minor",
+    "name": "PROFILE_SKILL_DROP",
+    "type": "nudge",
+    "message": "Брат не оффлайн. Он в кеше.",
+    "caseRef": "last_login",
+    "duration": 3000
+  },
+  {
+    "id": 167,
+    "tier": "minor",
+    "name": "MINI_BEEP",
+    "type": "flash",
+    "message": "Закрой вкладку до 23:47.",
+    "caseRef": "room_sound",
+    "duration": 3000
+  },
+  {
+    "id": 168,
+    "tier": "minor",
+    "name": "MARQUEE_STUTTER",
+    "type": "whisper",
+    "message": "Если слышишь шаги, звук уже поздно убавлять.",
+    "caseRef": "zip_backup",
+    "duration": 3000
+  },
+  {
+    "id": 169,
+    "tier": "minor",
+    "name": "SHADOW_PASS",
+    "type": "date",
+    "message": "Сайт помнит последний курсор.",
+    "caseRef": "static_gif",
+    "duration": 3000
+  },
+  {
+    "id": 170,
+    "tier": "minor",
+    "name": "CASE_INDEX_BLIP",
+    "type": "marquee",
+    "message": "Никто не писал этот пост.",
+    "caseRef": "phone_left",
+    "duration": 3000
+  }
+];
+const PSX_CASE_FILES=[
+{key:'water_glass',title:'CASE 001: стакан воды',date:'10 ноября 2014, 03:12',meta:'Источник: заметка на телефоне брата.',body:'Он вышел из комнаты за водой. На записи слышно, как дверь открылась, но шагов в коридоре нет. Через 47 секунд компьютер сам снял блокировку.',clue:'Стакан стоял рядом с монитором уже полный.'},
+{key:'frame47',title:'CASE 014: кадр 47',date:'13 ноября 2014, 23:47',meta:'Источник: ARCHIVED_FOOTAGE.',body:'Первые 46 кадров выглядят как обычная гифка. На 47-м силуэт перестает быть частью изображения, а пиксели вокруг него сдвигаются к курсору.',clue:'Если открыть кадр два раза подряд, второй силуэт становится ближе.'},
+{key:'ftp_denied',title:'CASE 021: отказано в доступе',date:'5 ноября 2014, 18:04',meta:'Источник: FTP log.',body:'Peashooter321 пытался удалить файл с сервера. Команда возвращала отказ, хотя права администратора были включены.',clue:'0 байт не значит пусто. Иногда это значит, что размер нельзя измерить.'},
+{key:'camera7',title:'CASE 027: камера 7',date:'22 октября 2014, 01:09',meta:'Источник: вебкам-модуль.',body:'В папке сайта найден скрипт camera7.js, но ссылка на него нигде не подключена. Он все равно выполнялся.',clue:'Камеру нельзя закрыть, если она открыта с другой стороны.'},
+{key:'brother_css',title:'CASE 032: CSS брата',date:'15 июня 2014, 20:33',meta:'Источник: старый CSS.',body:'Брат правил сайт: выравнивал сайдбар, чинил музыкальный плеер и добавил первые скрытые комнаты.',clue:'display:none не удаляет. Оно только просит не смотреть.'},
+{key:'last_login',title:'CASE 047: последний логин',date:'13 ноября 2014, 23:47:02',meta:'Источник: localStorage.',body:'Последняя активная учетная запись: Brother_Primary. Время сессии отрицательное.',clue:'Логин не завершился. Он просто стал фоном.'},
+{key:'room_sound',title:'CASE 052: звук из другой комнаты',date:'ночь без даты',meta:'Источник: audio cache.',body:'На низкой громкости слышны шаги, но спектр показывает, что звук идет из центра страницы.',clue:'Если убавить звук до нуля, шаги ждут следующего клика.'},
+{key:'zip_backup',title:'CASE 060: backup_aug2014.zip',date:'август 2014',meta:'Источник: недоступный архив.',body:'В архиве должны быть скриншоты Minecraft, но список файлов повторяет структуру сайта.',clue:'Архив не распаковывается, потому что он уже распакован вокруг тебя.'},
+{key:'static_gif',title:'CASE 066: гифка с помехами',date:'7 ноября 2014, 22:10',meta:'Источник: форумный пост.',body:'Каждый, кто сохранял гифку, получал другую длительность: 13 сек, 47 сек, иногда 0 сек.',clue:'Гифка не проигрывается. Она проверяет, кто смотрит.'},
+{key:'phone_left',title:'CASE 071: телефон на столе',date:'после исчезновения',meta:'Источник: последнее уведомление Skype.',body:'В телефоне брата было недописанное сообщение: не выключай монитор, пока я не вернусь.',clue:'Сообщения приходят из открытой вкладки.'}
+];
+(function(){
+var psx=window.PSX2014=window.PSX2014||{};psx.started=false;psx.extra=false;psx.master=Number(localStorage.getItem('psx_master_volume')||'.55');psx.ctx=null;psx.gain=null;psx.routed=new WeakSet();psx.seen=new Set(JSON.parse(localStorage.getItem('psx_case_seen')||'[]'));
+var cp={};'ЂЃ‚ѓ„…†‡€‰Љ‹ЊЌЋЏђ‘’“”•–—™љ›њќћџ ЎўЈ¤Ґ¦§Ё©Є«¬­®Ї°±Ііґµ¶·ё№є»јЅѕї'.split('').forEach(function(ch,i){cp[ch]=128+i});
+function by(ch){var c=ch.charCodeAt(0);if(c<128)return c;if(c>=1040&&c<=1103)return c-1040+192;if(c===1025)return 168;if(c===1105)return 184;return cp[ch]}
+function broken(t){return /(?:[РС][Ѐ-џ]|в[ЂЃ‚ѓ„…†‡€‰Љ‹ЊЌЋЏ‘’“”•–—™]|рџ|Г—|В·|В©|вњ|в|Рџ|СЃ|СЊ)/.test(t)}
+window.psxRepairText=function(t){if(!t||!broken(t))return t;var a=[];for(var i=0;i<t.length;i++){var b=by(t[i]);if(typeof b!=='number')return t;a.push(b)}try{var d=new TextDecoder('utf-8').decode(new Uint8Array(a));if(d&&d!==t&&d.indexOf(' ')<0)return d}catch(e){}return t};
+function fix(root){if(!root)return;if(root.nodeType===Node.TEXT_NODE){var f=psxRepairText(root.nodeValue);if(f!==root.nodeValue)root.nodeValue=f;return}if(root.nodeType!==1&&root.nodeType!==9&&root.nodeType!==11)return;if(root.nodeType===1&&/^(SCRIPT|STYLE|TEXTAREA)$/i.test(root.tagName))return;if(root.nodeType===1)['placeholder','title','alt','value'].forEach(function(a){if(root.hasAttribute(a)){var v=root.getAttribute(a),f=psxRepairText(v);if(f!==v)root.setAttribute(a,f)}});var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentElement;return(!p||p.closest('script,style,textarea'))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}}),n;while(n=w.nextNode()){var x=psxRepairText(n.nodeValue);if(x!==n.nodeValue)n.nodeValue=x}}
+function audio(){try{var C=window.AudioContext||window.webkitAudioContext;if(!C)return;if(!psx.ctx){psx.ctx=new C();psx.gain=psx.ctx.createGain();psx.gain.gain.value=psx.master;psx.gain.connect(psx.ctx.destination)}if(psx.ctx.state==='suspended')psx.ctx.resume().catch(function(){});document.querySelectorAll('audio').forEach(function(a){if(psx.routed.has(a))return;try{psx.ctx.createMediaElementSource(a).connect(psx.gain);psx.routed.add(a)}catch(e){}})}catch(e){}}
+window.psxSetMasterVolume=function(v){psx.master=Math.max(0,Math.min(1,Number(v)));localStorage.setItem('psx_master_volume',psx.master);if(psx.gain)psx.gain.gain.value=psx.master;var l=document.getElementById('psx-volume-label');if(l)l.textContent=Math.round(psx.master*100)+'%';var s=document.getElementById('psx-master-volume');if(s&&Number(s.value)!==Math.round(psx.master*100))s.value=Math.round(psx.master*100)};
+function tone(f,d,type,g){audio();try{if(!psx.ctx)return;var o=psx.ctx.createOscillator(),gg=psx.ctx.createGain();o.type=type||'sine';o.frequency.value=f;gg.gain.value=(g||.08)*psx.master;o.connect(gg);gg.connect(psx.ctx.destination);o.start();gg.gain.exponentialRampToValueAtTime(.0001,psx.ctx.currentTime+d);o.stop(psx.ctx.currentTime+d+.02)}catch(e){}}
+function snd(id,v){try{var a=document.getElementById(id);if(a){a.volume=v;a.currentTime=0;a.play().catch(function(){})}}catch(e){}}
+function toast(t,m,bad){var box=document.getElementById('psx-achieve');if(!box)return;var d=document.createElement('div');d.className='psx-toast'+(bad?' danger':'');d.innerHTML='<strong>'+t+'</strong><br>'+m;box.appendChild(d);setTimeout(function(){d.classList.add('show')},30);setTimeout(function(){d.classList.remove('show');setTimeout(function(){d.remove()},320)},bad?6200:4400)}
+function img(seed){var pool=[];try{if(typeof HORRORS!=='undefined')pool=pool.concat(HORRORS)}catch(e){}try{if(typeof SCREAM_POOL_RAW!=='undefined')pool=pool.concat(SCREAM_POOL_RAW)}catch(e){}if(pool.length&&Math.random()<.55)return pool[Math.floor(Math.random()*pool.length)];var h=seed*47%360,svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700"><rect width="900" height="700" fill="#000"/><circle cx="450" cy="330" r="230" fill="hsl('+h+',45%,16%)"/><ellipse cx="355" cy="320" rx="55" ry="90" fill="#eee"/><ellipse cx="545" cy="320" rx="55" ry="90" fill="#eee"/><circle cx="365" cy="350" r="16"/><circle cx="535" cy="350" r="16"/><path d="M310 500 C390 570 510 570 590 500" fill="none" stroke="#b00000" stroke-width="24"/><text x="450" y="90" text-anchor="middle" fill="#fff" font-family="monospace" font-size="36">FRAME '+(47+seed)+'</text></svg>';return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
+function scare(e){snd('snd-scream',.95);tone(43,.22,'sawtooth',.18);var d=document.createElement('div');d.className='psx-full-scare';d.innerHTML='<img src="'+img(e.id)+'"><div class="caption">'+e.message+'</div>';document.body.appendChild(d);setTimeout(function(){d.remove()},Math.min(e.duration,5200))}
+function win(e){var w=document.createElement('div');w.className='psx-system-win';w.style.top=60+Math.random()*260+'px';w.style.left=40+Math.random()*Math.max(60,innerWidth-480)+'px';w.innerHTML='<div class="bar"><span>'+e.name+'.exe</span><span class="psx-win-close">x</span></div><div class="body">'+e.message+'<br><br>Ошибка: BROTHER_NOT_FOUND<br>Код: 0x00000047</div><div class="foot"><button>Повтор</button><button>Отмена</button></div>';var close=w.querySelector('.psx-win-close');if(close)close.onclick=function(){w.remove()};w.querySelectorAll('button').forEach(function(b){b.onclick=function(){scare(e);w.remove()}});document.body.appendChild(w);snd('snd-glitch',.35);setTimeout(function(){if(w.parentElement)w.remove()},e.duration)}
+function dl(e){var w=document.createElement('div');w.className='psx-download';w.style.top=80+Math.random()*260+'px';w.style.left=50+Math.random()*Math.max(60,innerWidth-500)+'px';w.innerHTML='<div class="bar">File Download</div><div class="body"><b>brother_last_frame_'+e.id+'.jpg</b><br>Источник: Peashooter321_ROOT<div class="track"><div class="fill"></div></div><div class="msg">Подготовка...</div></div>';document.body.appendChild(w);var f=w.querySelector('.fill'),m=w.querySelector('.msg'),p=0,iv=setInterval(function(){p+=8+Math.random()*16;if(p>=100)p=100;f.style.width=p+'%';m.textContent=p<100?'Загрузка... '+Math.round(p)+'%':'Файл уже открыт.';if(p>=100){clearInterval(iv);setTimeout(function(){blink(e);w.remove()},400)}},220);setTimeout(function(){clearInterval(iv);if(w.parentElement)w.remove()},e.duration+3000)}
+function blink(e){snd('snd-glitch',.55);var im=document.createElement('img');im.src=img(e.id);im.style.cssText='position:fixed;z-index:999999;pointer-events:none;max-width:70vw;max-height:86vh;left:50%;top:50%;transform:translate(-50%,-50%);filter:contrast(1.45) brightness(.65);box-shadow:0 0 80px #000';document.body.appendChild(im);setTimeout(function(){im.remove()},850)}
+function tear(e){snd('snd-glitch',.65);for(var i=0;i<16;i++){var s=document.createElement('div');s.className='psx-tear-strip';s.style.top=Math.random()*100+'vh';s.style.transform='translateX('+(-40+Math.random()*80)+'px)';s.style.opacity=.08+Math.random()*.24;document.body.appendChild(s);setTimeout(function(x){x.remove()},450+Math.random()*650,s)}document.body.classList.add('psx-desync');setTimeout(function(){document.body.classList.remove('psx-desync')},1100)}
+function openCase(k){var f=PSX_CASE_FILES.find(function(x){return x.key===k})||PSX_CASE_FILES[Math.floor(Math.random()*PSX_CASE_FILES.length)];if(!f)return;psx.seen.add(f.key);localStorage.setItem('psx_case_seen',JSON.stringify(Array.from(psx.seen)));var mo=document.getElementById('psx-case-modal'),na=document.getElementById('psx-case-filename'),bo=document.getElementById('psx-case-body');if(!mo||!bo)return;if(na)na.textContent=f.key+'.txt - Notepad';bo.innerHTML='<div class="psx-case-title">'+f.title+'</div><div class="psx-case-meta">'+f.date+'<br>'+f.meta+'</div><div>'+f.body+'</div><p class="psx-case-clue">'+f.clue+'</p><div style="margin-top:14px;font-size:11px;color:#555">Открыто фрагментов: '+psx.seen.size+' / '+PSX_CASE_FILES.length+'</div>';mo.classList.add('active');tone(80,.18,'triangle',.08)}
+window.psxOpenCase=openCase;window.psxCloseCase=function(){var m=document.getElementById('psx-case-modal');if(m)m.classList.remove('active')};
+function note(e){var n=document.createElement('div');n.className='psx-wall-note';n.style.left=20+Math.random()*Math.max(60,innerWidth-300)+'px';n.style.top=40+Math.random()*Math.max(60,innerHeight-190)+'px';n.style.transform='rotate('+(-6+Math.random()*12)+'deg)';n.textContent=e.message;document.body.appendChild(n);setTimeout(function(){n.remove()},e.duration)}
+function run(e){if(!e||window.b5Mode)return;if(document.hidden&&e.tier==='hard')return;var st=document.getElementById('psx-static-layer');if(e.tier==='hard'||e.tier==='scary'){if(st){st.style.opacity='.42';setTimeout(function(){st.style.opacity='0'},900)}}if(e.type==='screamer'||e.type==='case')return scare(e);if(e.type==='blackout'){var d=document.createElement('div');d.style.cssText='position:fixed;inset:0;background:#000;z-index:1000003;color:#d12222;display:flex;align-items:center;justify-content:center;font-family:VT323,monospace;font-size:clamp(28px,6vw,90px);text-align:center';d.textContent=e.message;document.body.appendChild(d);setTimeout(function(){d.textContent='47';snd('snd-glitch',.75)},900);setTimeout(function(){d.remove()},4300);return}if(e.type==='fatal'||e.type==='window')return win(e);if(e.type==='tear')return tear(e);if(e.type==='download')return dl(e);if(e.type==='image'||e.type==='corner')return blink(e);if(e.type==='title'){var old=document.title,a=['23:47',e.message,'brother_online','FRAME_'+e.id,'не моргай'],i=0,iv=setInterval(function(){document.title=a[i++%a.length];if(i>9){clearInterval(iv);document.title=old}},520);return}if(e.type==='chat'){try{var now=new Date(),ts=pad(now.getHours())+':'+pad(now.getMinutes());appendChat({n:'Brother',t:e.message,ts:ts,b:true})}catch(x){}return}if(e.type==='morse'){[660,660,660,330,330,660,330].forEach(function(f,i){setTimeout(function(){tone(f,.09,'square',.05)},i*140)});return toast('MORSE BUFFER',e.message,false)}if(e.type==='panel'){document.body.classList.add('psx-bleed');setTimeout(function(){document.body.classList.remove('psx-bleed')},e.duration);return}if(e.type==='text'){var q=[...document.querySelectorAll('.blog-text,.c-txt,.gb-msg,.p-when,.panel-title')];if(q.length){var el=q[Math.floor(Math.random()*q.length)],old=el.innerHTML;el.innerHTML='<span style="color:#ff4444;background:#000">'+e.message+'</span>';setTimeout(function(){el.innerHTML=old},e.duration)}return}if(e.type==='note')return note(e);if(e.type==='forum'){var feed=document.getElementById('forum-feed');if(feed){var r=document.createElement('div');r.className='post-row bear-post';r.innerHTML='<div class="post-author-col"><div class="p-name" style="color:#d12222">Brother</div><div class="p-av" style="background:#111;color:#d12222">B</div></div><div class="post-body-col"><span class="p-when" style="color:#d12222">Опубликовано: сейчас</span><span>'+e.message+'</span></div>';feed.insertBefore(r,feed.firstChild);setTimeout(function(){r.remove()},e.duration+5000)}return}if(e.type==='gallery'){var im=[...document.querySelectorAll('.gal-grid img')],old=im.map(function(x){return x.src});im.forEach(function(x,i){if(i%2===e.id%2)x.src=img(e.id+i)});setTimeout(function(){im.forEach(function(x,i){x.src=old[i]})},1800);return}if(e.type==='meter'){try{b5Pct=Math.min(100,b5Pct+3+Math.random()*9);updateMeter()}catch(x){}return toast('SERVER ACTIVITY',e.message,false)}if(e.type==='flash'){try{eFlash()}catch(x){}return}if(e.type==='whisper')return toast('...',e.message,false);if(e.type==='date'){try{eDateChange()}catch(x){}return}if(e.type==='marquee'){var m=document.querySelector('.marquee-inner');if(m){var o=m.textContent;m.textContent=' *** '+e.message+' *** 23:47 *** brother_trace.log *** ';setTimeout(function(){m.textContent=o},e.duration)}return}if(e.type==='snow'){document.body.classList.add('psx-snowing');setTimeout(function(){document.body.classList.remove('psx-snowing')},e.duration);return}if(e.type==='badge'){var bs=[...document.querySelectorAll('.wb,.header-tag,.int-item')];if(bs.length){var b=bs[Math.floor(Math.random()*bs.length)],o=b.textContent;b.textContent='BROTHER ONLINE';b.style.color='#ff4444';setTimeout(function(){b.textContent=o;b.style.color=''},e.duration)}return}if(e.type==='beep')return tone(180+e.id,.08,'square',.035);if(e.type==='nudge'){scrollBy({top:18,behavior:'smooth'});setTimeout(function(){scrollBy({top:-18,behavior:'smooth'})},500)}}
+function pick(t){var p=PSX_EXTRA_EVENTS.filter(function(e){return e.tier===t});return p[Math.floor(Math.random()*p.length)]}
+function extra(){if(psx.extra)return;psx.extra=true;function loop(t,min,spread){setTimeout(function fire(){run(pick(t));setTimeout(fire,min+Math.random()*spread)},min+Math.random()*spread)}loop('minor',9000,15000);loop('medium',26000,36000);loop('scary',62000,65000);loop('hard',140000,120000);setTimeout(function(){toast('Peashooter321 Remaster','100 новых событий подключены. Лор брата активен.',false)},4500)}
+function panels(){if(document.getElementById('psx-case-board'))return;var h=document.querySelector('#main-wrap header');if(h)h.insertAdjacentHTML('beforeend','<div class="psx-hero-sticker">не закрывай вкладку<small>если он вернется, сайт моргнет два раза</small></div>');var col=document.querySelector('.layout-grid .col');if(col){col.insertAdjacentHTML('afterbegin','<div class="panel psx-case-board" id="psx-case-board"><div class="panel-title">BROTHER_CASEFILES</div><div class="panel-body" style="padding:8px"><div class="psx-case-grid" id="psx-case-grid"></div><div style="font-size:9px;color:#888;margin-top:7px;line-height:1.7">Файлы открываются сами, когда рандомные события находят зацепки.</div></div></div>');var g=document.getElementById('psx-case-grid');PSX_CASE_FILES.slice(0,6).forEach(function(f){var d=document.createElement('div');d.className='psx-case-card';d.innerHTML='<b>'+f.title.replace('CASE ','#')+'</b><span>'+f.date+'</span>';d.onclick=function(){openCase(f.key)};g.appendChild(d)})}var nav=document.querySelector('.nav-list');if(nav){var li=document.createElement('li');li.innerHTML='<a href="#" data-psx-case="last_login" style="color:#ff7777">[NEW] brother_trace.log</a>';li.querySelector('a').onclick=function(ev){ev.preventDefault();openCase('last_login')};nav.appendChild(li)}}
+function hooks(){try{MINOR_EVENTS.push.apply(MINOR_EVENTS,PSX_EXTRA_EVENTS.filter(function(e){return e.tier==='minor'}).map(function(e){return function(){run(e)}}));MEDIUM_EVENTS.push.apply(MEDIUM_EVENTS,PSX_EXTRA_EVENTS.filter(function(e){return e.tier==='medium'||e.tier==='scary'}).map(function(e){return function(){run(e)}}));SCARY_EVENTS.push.apply(SCARY_EVENTS,PSX_EXTRA_EVENTS.filter(function(e){return e.tier==='hard'}).map(function(e){return function(){run(e)}}))}catch(e){}try{var os=scheduleEvents;scheduleEvents=function(){if(!window.__psxOldScheduler){window.__psxOldScheduler=true;os()}extra()}}catch(e){}try{var oi=initSite;initSite=function(){audio();psxSetMasterVolume(psx.master);return oi.apply(this,arguments)}}catch(e){}}
+function boot(){if(psx.started)return;psx.started=true;document.body.classList.add('ps2014-remastered');document.title=psxRepairText(document.title);fix(document.body);new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes&&m.addedNodes.forEach(fix);if(m.type==='characterData')fix(m.target)})}).observe(document.body,{childList:true,subtree:true,characterData:true});var oa=alert,oc=confirm;alert=function(m){return oa(psxRepairText(String(m)))};confirm=function(m){return oc(psxRepairText(String(m)))};panels();hooks();var sl=document.getElementById('psx-master-volume');if(sl){sl.value=Math.round(psx.master*100);psxSetMasterVolume(psx.master);sl.addEventListener('input',function(){audio();psxSetMasterVolume(Number(sl.value)/100)})}document.addEventListener('pointerdown',audio,{once:true});var buf='';document.addEventListener('keydown',function(e){if(e.target&&/input|textarea/i.test(e.target.tagName))return;buf=(buf+e.key.toLowerCase()).slice(-32);if(buf.includes('frame47')){buf='';run(PSX_EXTRA_EVENTS[0]);openCase('frame47')}if(buf.includes('brother')){buf='';openCase('last_login');toast('BROTHER','Он услышал свое имя.',true)}if(buf.includes('water')){buf='';openCase('water_glass')}});setTimeout(function(){fix(document.body)},1500);setTimeout(function(){toast('Сайт пересобран','Старый код оставлен внутри. Новые зацепки уже просыпаются.',false)},1200)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+// === PS321_2014_REMASTER_JS_END ===
 // ROOMS INTERACTIVE LOGIC
 // ============================================================
 function initBasement() {
